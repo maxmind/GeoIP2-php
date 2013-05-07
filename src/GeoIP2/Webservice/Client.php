@@ -19,7 +19,7 @@ class Client
   private $language;
   private $base_uri = 'https://geoip.maxmind.com/geoip/v2.0';
 
-  function __construct($user_id, $license_key, $language='en')
+  public function __construct($user_id, $license_key, $language='en')
   {
     $this->user_id = $user_id;
     $this->license_key = $license_key;

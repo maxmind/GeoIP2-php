@@ -2,7 +2,7 @@
 
 namespace GeoIP2\Record;
 
-class Continent
+class Continent extends AbstractPlaceRecord
 {
 
 }

@@ -2,7 +2,7 @@
 
 namespace GeoIP2\Record;
 
-class City
+class City extends AbstractPlaceRecord
 {
 
 }

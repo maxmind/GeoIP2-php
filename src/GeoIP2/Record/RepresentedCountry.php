@@ -2,7 +2,7 @@
 
 namespace GeoIP2\Record;
 
-class RepresentedCountry
+class RepresentedCountry extends Country
 {
 
 }

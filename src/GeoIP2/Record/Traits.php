@@ -2,7 +2,7 @@
 
 namespace GeoIP2\Record;
 
-class Traits
+class Traits extends AbstractRecord
 {
 
 }

@@ -2,7 +2,7 @@
 
 namespace GeoIP2\Record;
 
-class Subdivision
+class Subdivision extends AbstractPlaceRecord
 {
 
 }
