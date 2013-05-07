@@ -9,12 +9,14 @@ use GeoIP2\Model\City;
 use GeoIP2\Model\CityISPOrg;
 use GeoIP2\Model\Country;
 use GeoIP2\Model\Omni;
+use Guzzle\Http\Client as GuzzleClient;
 
 class Client
 {
 
   private $user_id;
   private $license_key;
+  private $base_uri = 'https://geoip.maxmind.com/geoip/v2.0';
 
   function __construct($user_id, $license_key)
   {
@@ -44,7 +46,12 @@ class Client
 
   private function response_for($path, $ip_address)
   {
-
+    $uri = implode('/', array($this->base_uri, $path, $ip_address));
+    $client = new GuzzleClient();
+    $request = $client->get($uri, array('Accept' => 'application/json'));
+    $request->setAuth($this->user_id, $this->license_key);
+    $response = $request->send();
+    echo $response->getBody();
   }
 
   private function handle_success($response, $uri)
