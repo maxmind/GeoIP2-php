@@ -16,14 +16,14 @@ class Client
 
   private $user_id;
   private $license_key;
-  private $language;
+  private $languages;
   private $base_uri = 'https://geoip.maxmind.com/geoip/v2.0';
 
-  public function __construct($user_id, $license_key, $language='en')
+  public function __construct($user_id, $license_key, $languages=array('en'))
   {
     $this->user_id = $user_id;
     $this->license_key = $license_key;
-    $this->language = $language;
+    $this->languages = $languages;
   }
 
   public function city($ip_address = 'me')
@@ -62,7 +62,7 @@ class Client
     if ($response->isSuccessful()) {
       $body = $this->handleSuccess($response, $uri);
       $class = "GeoIP2\\Model\\" . $class;
-      return new $class($body, $this->language);
+      return new $class($body, $this->languages);
     }
   }
 
