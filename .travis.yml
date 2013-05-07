@@ -1,0 +1,16 @@
+language: php
+
+php:
+  - 5.3.3
+  - 5.3
+  - 5.4
+  - 5.5
+
+script: phpunit
+
+notifications:
+  email:
+    recipients:
+      - dev@maxmind.com
+    on_success: change
+    on_failure: always
