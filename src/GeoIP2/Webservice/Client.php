@@ -9,3 +9,8 @@ use GeoIP2\Model\City;
 use GeoIP2\Model\CityISPOrg;
 use GeoIP2\Model\Country;
 use GeoIP2\Model\Omni;
+
+class Client
+{
+
+}
