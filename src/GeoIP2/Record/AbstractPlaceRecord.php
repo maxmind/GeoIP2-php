@@ -11,7 +11,16 @@ abstract class AbstractPlaceRecord extends AbstractRecord
     parent::__construct($record);
   }
 
-  public function name() {
+  public function __get($attr) {
+    if ($attr == 'name') {
+      return $this->name();
+    } else {
+      return parent::__get($attr);
+    }
+  }
+
+
+  private function name() {
     foreach($this->languages as $language) {
       if (isset($this->names[$language])) return $this->names[$language];
     }
