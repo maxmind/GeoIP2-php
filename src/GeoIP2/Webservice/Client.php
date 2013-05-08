@@ -14,45 +14,45 @@ use Guzzle\Http\Client as GuzzleClient;
 class Client
 {
 
-  private $user_id;
-  private $license_key;
+  private $userId;
+  private $licenseKey;
   private $languages;
-  private $base_uri = 'https://geoip.maxmind.com/geoip/v2.0';
+  private $baseUri = 'https://geoip.maxmind.com/geoip/v2.0';
 
-  public function __construct($user_id, $license_key, $languages=array('en'))
+  public function __construct($userId, $licenseKey, $languages=array('en'))
   {
-    $this->user_id = $user_id;
-    $this->license_key = $license_key;
+    $this->userId = $userId;
+    $this->licenseKey = $licenseKey;
     $this->languages = $languages;
   }
 
-  public function city($ip_address = 'me')
+  public function city($ipAddress = 'me')
   {
-    return $this->response_for('city', 'City', $ip_address);
+    return $this->responseFor('city', 'City', $ipAddress);
   }
 
-  public function country($ip_address = 'me')
+  public function country($ipAddress = 'me')
   {
-    return $this->response_for('country', 'Country', $ip_address);
+    return $this->responseFor('country', 'Country', $ipAddress);
   }
 
-  public function cityISPOrg($ip_address = 'me')
+  public function cityISPOrg($ipAddress = 'me')
   {
-    return $this->response_for('city_isp_org', 'CityISPOrg', $ip_address);
+    return $this->responseFor('city_isp_org', 'CityISPOrg', $ipAddress);
   }
 
-  public function omni($ip_address = 'me')
+  public function omni($ipAddress = 'me')
   {
-    return $this->response_for('omni', 'Omni', $ip_address);
+    return $this->responseFor('omni', 'Omni', $ipAddress);
   }
 
-  private function response_for($path, $class, $ip_address)
+  private function responseFor($path, $class, $ipAddress)
   {
-    $uri = implode('/', array($this->base_uri, $path, $ip_address));
+    $uri = implode('/', array($this->baseUri, $path, $ipAddress));
 
     $client = new GuzzleClient();
     $request = $client->get($uri, array('Accept' => 'application/json'));
-    $request->setAuth($this->user_id, $this->license_key);
+    $request->setAuth($this->userId, $this->licenseKey);
     $ua = $request->getHeader('User-Agent');
     $ua = "GeoIP2 PHP API ($ua)";
     $request->setHeader('User-Agent', $ua);
