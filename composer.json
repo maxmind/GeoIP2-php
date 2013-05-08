@@ -1,5 +1,25 @@
 {
+    "name": "maxmind/GeoIP2-php",
+    "description": "GeoIP2 PHP API",
+    "keywords": [ "geoip", "geolocation", "maxmind" ],
+    "homepage": "https://github.com/maxmind/GeoIP2-php",
+    "type": "library",
+    "license": "LGPL-2.1+",
+    "authors": [
+        {
+            "name": "Gregory J. Oschwald",
+            "email": "goschwald@maxmind.com",
+            "homepage": "http://www.maxmind.com/"
+        }
+    ],
     "require": {
-        "guzzle/guzzle": "~3.1.1"
+        "guzzle/guzzle": "~3.1.1",
+        "php": ">=5.3.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "3.7.*"
+    },
+    "autoload": {
+        "psr-0": { "GeoIP2": "src/" }
     }
 }
