@@ -30,9 +30,9 @@ class Country
     return isset($this->raw[$field]) ? $this->raw[$field] : Array();
   }
 
-  public function __get ($var)
+  public function __get ($attr)
   {
-	if ($var != "instance" && isset($this->$var)) return $this->$var;
+	if ($attr != "instance" && isset($this->$attr)) return $this->$attr;
 
     throw new \RuntimeException("Unknown attribute: $attr");
   }
