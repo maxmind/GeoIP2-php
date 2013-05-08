@@ -3,3 +3,6 @@ composer.lock
 composer.phar
 phpunit.xml
 vendor/
+*.sw?
+t.php
+*.old

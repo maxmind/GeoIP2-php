@@ -2,7 +2,7 @@
 
 namespace GeoIP2\Model;
 
-class CityISPOrg extends City
+class CityIspOrg extends City
 {
 
 }

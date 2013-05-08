@@ -2,14 +2,17 @@
 
 namespace GeoIP2\Webservice;
 
-use GeoIP2\Error\Generic;
+use GeoIP2\Exception\GenericException;
 use GeoIP2\Exception\HttpException;
-use GeoIP2\Error\Webservice;
+use GeoIP2\Exception\WebserviceException;
 use GeoIP2\Model\City;
-use GeoIP2\Model\CityISPOrg;
+use GeoIP2\Model\CityIspOrg;
 use GeoIP2\Model\Country;
 use GeoIP2\Model\Omni;
 use Guzzle\Http\Client as GuzzleClient;
+use Guzzle\Common\Exception\RuntimeException;
+use Guzzle\Http\Exception\ClientErrorResponseException;
+use Guzzle\Http\Exception\ServerErrorResponseException;
 
 class Client
 {
@@ -18,12 +21,16 @@ class Client
   private $licenseKey;
   private $languages;
   private $baseUri = 'https://geoip.maxmind.com/geoip/v2.0';
+  private $guzzleClient;
 
-  public function __construct($userId, $licenseKey, $languages=array('en'))
+  public function __construct($userId, $licenseKey, $languages=array('en'),
+                              $guzzleClient = null)
   {
     $this->userId = $userId;
     $this->licenseKey = $licenseKey;
     $this->languages = $languages;
+    // To enable unit testing
+    $this->guzzleClient = $guzzleClient;
   }
 
   public function city($ipAddress = 'me')
@@ -36,9 +43,9 @@ class Client
     return $this->responseFor('country', 'Country', $ipAddress);
   }
 
-  public function cityISPOrg($ipAddress = 'me')
+  public function cityIspOrg($ipAddress = 'me')
   {
-    return $this->responseFor('city_isp_org', 'CityISPOrg', $ipAddress);
+    return $this->responseFor('city_isp_org', 'CityIspOrg', $ipAddress);
   }
 
   public function omni($ipAddress = 'me')
@@ -50,67 +57,69 @@ class Client
   {
     $uri = implode('/', array($this->baseUri, $path, $ipAddress));
 
-    $client = new GuzzleClient();
+    $client = $this->guzzleClient ? $this->guzzleClient : new GuzzleClient();
     $request = $client->get($uri, array('Accept' => 'application/json'));
     $request->setAuth($this->userId, $this->licenseKey);
     $ua = $request->getHeader('User-Agent');
     $ua = "GeoIP2 PHP API ($ua)";
     $request->setHeader('User-Agent', $ua);
 
-    $response = $request->send();
+    $response = null;
+    try{
+      $response = $request->send();
+    }
+    catch (ClientErrorResponseException $e) {
+      $this->handle4xx($e->getResponse(), $uri); 
+    }
+    catch (ServerErrorResponseException $e) {
+      $this->handle5xx($e->getResponse(), $uri); 
+    }
 
-    if ($response->isSuccessful()) {
+    if ($response && $response->isSuccessful()) {
       $body = $this->handleSuccess($response, $uri);
       $class = "GeoIP2\\Model\\" . $class;
       return new $class($body, $this->languages);
+    }
+    else {
+      $this->handleNon200($response, $uri);
     }
   }
 
   private function handleSuccess($response, $uri)
   {
-    // XXX - handle exceptions
+    if ($response->getContentLength() == 0) {
+      throw new GenericException("Received a 200 response for $uri but did not receive a HTTP body.");
+    }
+
     try {
       return $response->json();
     }
-    // XXX - figure out what sort of exception to catch
-    catch (Exception $e) {
+    catch (RuntimeException $e) {
       throw new GenericException("Received a 200 response for $uri but could not decode the response as JSON: " . $e->getMessage());
 
     }
   }
 
-  private function handleError($response, $uri)
+  private function handle4xx($response, $uri)
   {
     $status = $response->getStatusCode();
 
-    if ($status >= 400 && $status <= 499) {
-      $this->handle4xx($response, $uri);
-    }
-    elseif ($status >= 500 && $status <= 599){
-      $this->handle5xx($response, $uri);
-    }
-    else {
-      $this->hanldeNon200($reponse, $uri);
-    }
-  }
+    $body = array();
 
-  private function handle4xx($response, $uri)
-  {
     if ( $response->getContentLength() > 0 ) {
       if( strstr($response->getContentType(), 'json')) {
         try {
           $body = $response->json();
-          if (!$body['code'] || $body['error'] ){
-            throw new GenericException('Response contains JSON but it does not specify code or error keys');
+          if (!isset($body['code']) || !isset($body['error']) ){
+            throw new GenericException('Response contains JSON but it does not specify code or error keys: ' . $response->getBody());
           }
         }
-        // XXX - don't catch all exceptions
-        catch (Exception $e){
+        catch (RuntimeException $e){
           throw new HttpException("Received a $status error for $uri but it did not include the expected JSON body: " . $e->getMessage(), $status, $uri);
         }
       }
       else {
-        throw new HttpException("Received a $status error for $uri with the following body: $content",
+        throw new HttpException("Received a $status error for $uri with the following body: " . $response->getBody(),
                                 $status, $uri);
       }
     }
@@ -119,17 +128,21 @@ class Client
                               $status, $uri);
     }
 
-    throw new WebserviceException($body['error'], $status, $uri);
+    throw new WebserviceException($body['error'], $body['code'], $status, $uri);
   }
 
   private function handle5xx($response, $uri)
   {
+    $status = $response->getStatusCode();
+
     throw new HttpException("Received a server error ($status) for $uri",
                             $status,$uri);
   }
 
   private function handleNon200($response, $uri)
   {
+    $status = $response->getStatusCode();
+
     throw new HttpException("Received a very surprising HTTP status " .
                             "($status) for $uri",
                             $status, $uri);
