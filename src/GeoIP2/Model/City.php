@@ -28,7 +28,4 @@ class City extends Country
                  new \GeoIP2\Record\Subdivision($sub, $languages));
     }
   }
-
-
-
 }
