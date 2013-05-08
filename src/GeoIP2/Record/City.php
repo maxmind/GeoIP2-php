@@ -4,5 +4,5 @@ namespace GeoIP2\Record;
 
 class City extends AbstractPlaceRecord
 {
-  protected $validAttribute = Array('confidence', 'geonameId', 'names');
+  protected $validAttributes = Array('confidence', 'geonameId', 'names');
 }
