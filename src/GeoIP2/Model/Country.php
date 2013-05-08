@@ -34,6 +34,6 @@ class Country
   {
 	if ($var != "instance" && isset($this->$var)) return $this->$var;
 
-    throw new RuntimeException("Unknown attribute: $attr");
+    throw new \RuntimeException("Unknown attribute: $attr");
   }
 }

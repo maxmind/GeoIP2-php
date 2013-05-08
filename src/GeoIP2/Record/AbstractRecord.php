@@ -12,8 +12,11 @@ abstract class AbstractRecord
 
   public function __get($attr) {
     $valid = in_array($attr, $this->validAttributes);
-    if ($valid && isset($this->record[$attr])){
-      return $this->record[$attr];
+    // XXX - kind of ugly but greatly reduces boilerplate code
+    $key = strtolower(preg_replace('/([A-Z])/', '_\1', $attr));
+
+    if ($valid && isset($this->record[$key])){
+      return $this->record[$key];
     } elseif ($valid) {
       return null;
     } else {

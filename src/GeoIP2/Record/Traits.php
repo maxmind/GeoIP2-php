@@ -4,14 +4,14 @@ namespace GeoIP2\Record;
 
 class Traits extends AbstractRecord
 {
-  protected $validAttributes = Array('autonomous_system_number',
-                                     'autonomous_system_organization',
+  protected $validAttributes = Array('autonomousSystemNumber',
+                                     'autonomousSystemOrganization',
                                      'domain',
-                                     'is_anonymous_proxy',
-                                     'is_satellite_provider',
+                                     'isAnonymousProxy',
+                                     'isSatelliteProvider',
                                      'isp',
-                                     'ip_address',
+                                     'ipAddress',
                                      'organization',
-                                     'user_type');
+                                     'userType');
 
 }
