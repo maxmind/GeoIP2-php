@@ -180,7 +180,8 @@ class Client
         );
     }
 
-    private function baseUri() {
+    private function baseUri()
+    {
         return 'https://' . $this->host . '/geoip/v2.0';
     }
 }
