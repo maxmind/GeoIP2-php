@@ -32,7 +32,7 @@ class CountryTest extends \PHPUnit_Framework_TestCase
 
     public function setUp ()
     {
-        $this->model = new Country($this->raw, ['en']);
+        $this->model = new Country($this->raw, array('en'));
     }
 
     public function testObjects ()
