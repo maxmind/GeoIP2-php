@@ -6,7 +6,12 @@ php:
   - 5.4
   - 5.5
 
-script: phpunit
+before_install:
+  - pear install pear/PHP_CodeSniffer
+
+script:
+  - phpcs --standard=PSR2 src/
+  - phpunit
 
 notifications:
   email:

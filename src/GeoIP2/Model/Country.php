@@ -4,36 +4,50 @@ namespace GeoIP2\Model;
 
 class Country
 {
-  private $continent;
-  private $country;
-  private $registeredCountry;
-  private $representedCountry;
-  private $traits;
-  private $raw;
+    private $continent;
+    private $country;
+    private $languages;
+    private $registeredCountry;
+    private $representedCountry;
+    private $traits;
+    private $raw;
 
-  public function __construct($raw, $languages) {
-    $this->raw = $raw;
+    public function __construct($raw, $languages)
+    {
+        $this->raw = $raw;
 
-    $this->continent = new \GeoIP2\Record\Continent($this->get('continent'),
-                                                    $languages);
-    $this->country = new \GeoIP2\Record\Country($this->get('country'),
-                                                $languages);
-    $this->registeredCountry =
-      new \GeoIP2\Record\Country($this->get('registered_country'), $languages);
-    $this->representedCountry =
-      new \GeoIP2\Record\RepresentedCountry($this->get('represented_country'),
-                                            $languages);
-    $this->traits = new \GeoIP2\Record\Traits($this->get('traits'));
-  }
+        $this->continent = new \GeoIP2\Record\Continent(
+            $this->get('continent'),
+            $languages
+        );
+        $this->country = new \GeoIP2\Record\Country(
+            $this->get('country'),
+            $languages
+        );
+        $this->registeredCountry = new \GeoIP2\Record\Country(
+            $this->get('registered_country'),
+            $languages
+        );
+        $this->representedCountry = new \GeoIP2\Record\RepresentedCountry(
+            $this->get('represented_country'),
+            $languages
+        );
+        $this->traits = new \GeoIP2\Record\Traits($this->get('traits'));
 
-  protected function get($field) {
-    return isset($this->raw[$field]) ? $this->raw[$field] : Array();
-  }
+        $this->languages = $languages;
+    }
 
-  public function __get ($attr)
-  {
-	if ($attr != "instance" && isset($this->$attr)) return $this->$attr;
+    protected function get($field)
+    {
+        return isset($this->raw[$field]) ? $this->raw[$field] : array();
+    }
 
-    throw new \RuntimeException("Unknown attribute: $attr");
-  }
+    public function __get ($attr)
+    {
+        if ($attr != "instance" && isset($this->$attr)) {
+            return $this->$attr;
+        }
+
+        throw new \RuntimeException("Unknown attribute: $attr");
+    }
 }

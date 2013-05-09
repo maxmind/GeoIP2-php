@@ -4,11 +4,13 @@ namespace GeoIP2\Record;
 
 class Location extends AbstractRecord
 {
-  protected $validAttributes = Array('accuracyRadius',
-                                     'latitude',
-                                     'longitude',
-                                     'metroCode',
-                                     'postalCode',
-                                     'postalConfidence',
-                                     'timeZone');
+    protected $validAttributes = array(
+        'accuracyRadius',
+        'latitude',
+        'longitude',
+        'metroCode',
+        'postalCode',
+        'postalConfidence',
+        'timeZone'
+    );
 }

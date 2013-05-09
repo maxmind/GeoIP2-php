@@ -5,4 +5,3 @@ if (!$loader = @include __DIR__.'/../vendor/autoload.php') {
 }
 
 $loader->add('GeoIP2\Test', __DIR__);
-
