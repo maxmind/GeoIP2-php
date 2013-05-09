@@ -1,6 +1,6 @@
 <?php
 
-namespace GeoIP2\Test\Webservice;
+namespace GeoIP2\Test\Model;
 
 use GeoIP2\Model\Omni;
 
