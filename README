@@ -48,7 +48,8 @@ REPORTING DATA PROBLEMS
     http://www.maxmind.com/en/support for help.
 
 PHP VERSION SUPPORT
-    This code requires PHP 5. Older versions of PHP are not supported.
+    This code requires PHP 5.3 or greater. Older versions of PHP are not
+    supported.
 
 SUPPORT
     Please report all issues with this code using the GitHub issue tracker
