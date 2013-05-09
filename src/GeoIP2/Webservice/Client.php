@@ -20,18 +20,20 @@ class Client
     private $userId;
     private $licenseKey;
     private $languages;
-    private $baseUri = 'https://geoip.maxmind.com/geoip/v2.0';
+    private $host;
     private $guzzleClient;
 
     public function __construct(
         $userId,
         $licenseKey,
         $languages = array('en'),
+        $host = 'geoip.maxmind.com',
         $guzzleClient = null
     ) {
         $this->userId = $userId;
         $this->licenseKey = $licenseKey;
         $this->languages = $languages;
+        $this->host = $host;
         // To enable unit testing
         $this->guzzleClient = $guzzleClient;
     }
@@ -56,9 +58,9 @@ class Client
         return $this->responseFor('omni', 'Omni', $ipAddress);
     }
 
-    private function responseFor($path, $class, $ipAddress)
+    private function responseFor($endpoint, $class, $ipAddress)
     {
-        $uri = implode('/', array($this->baseUri, $path, $ipAddress));
+        $uri = implode('/', array($this->baseUri(), $endpoint, $ipAddress));
 
         $client = $this->guzzleClient ?
             $this->guzzleClient : new GuzzleClient();
@@ -176,5 +178,9 @@ class Client
             $status,
             $uri
         );
+    }
+
+    private function baseUri() {
+        return 'https://' . $this->host . '/geoip/v2.0';
     }
 }

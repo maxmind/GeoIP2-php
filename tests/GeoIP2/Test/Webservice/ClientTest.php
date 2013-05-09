@@ -273,6 +273,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
             42,
             'abcdef123456',
             array('en'),
+            'geoip.maxmind.com',
             $guzzleClient
         );
         $client->country('1.2.3.4');
@@ -316,6 +317,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
             42,
             'abcdef123456',
             $languages,
+            'geoip.maxmind.com',
             $guzzleClient
         );
 
