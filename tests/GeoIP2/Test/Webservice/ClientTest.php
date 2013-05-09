@@ -277,8 +277,9 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         );
         $client->country('1.2.3.4');
 
-        $request = $plugin->getReceivedRequests()[0];
-
+        $all_requests = $plugin->getReceivedRequests();
+        $request = $all_requests[0];
+        
         $this->assertEquals(
             'https://geoip.maxmind.com/geoip/v2.0/country/1.2.3.4',
             $request->getUrl(),
