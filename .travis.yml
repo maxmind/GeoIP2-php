@@ -6,7 +6,8 @@ php:
   - 5.5
 
 before_install:
-  - pear install pear/PHP_CodeSniffer
+  - pyrus install pear/PHP_CodeSniffer
+  - phpenv rehash
 
 script:
   - phpcs --standard=PSR2 src/
