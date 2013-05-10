@@ -14,17 +14,15 @@ API.
 
 ## Installation ##
 
-**Note: package not yet uploaded**
-
 ### Define Your Dependencies ###
 
 We recommend installing this package with [Composer](http://getcomposer.org/).
-To do this, add ```NOT UPLOADED YET``` to your ```composer.json``` file.
+To do this, add ```geoip2/geoip2``` to your ```composer.json``` file.
 
 ```json
 {
     "require": {
-        "NOT YET UPLOADED": "1.0.*"
+        "geoip2/geoip2": "1.0.*"
     }
 }
 ```
