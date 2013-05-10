@@ -3,33 +3,79 @@
 ## Description ##
 
 Currently, this distribution provides an API for the GeoIP2 web services
- (as documented at http://dev.maxmind.com/geoip/precision).
+ (as documented at http://dev.maxmind.com/geoip/geoip2/web-services).
 
 In the future, this distribution will also provide the same API for the
 GeoIP2 downloadable databases. These databases have not yet been
 released as a downloadable product.
 
-See GeoIP2::Webservice::Client for details on the web service client
+See GeoIP2\Webservice\Client for details on the web service client
 API.
+
+## Installation ##
+
+**Note: package not yet uploaded**
+
+### Define Your Dependencies ###
+
+We recommend installing this package with [Composer](http://getcomposer.org/).
+To do this, add ```NOT UPLOADED YET``` to your ```composer.json``` file.
+
+```json
+{
+    "require": {
+        "NOT YET UPLOADED": "1.0.*"
+    }
+}
+```
+
+### Install Composer ###
+
+Run in your project root:
+
+```
+curl -s http://getcomposer.org/installer | php
+```
+
+### Install Depdendencies ###
+
+Run in your project root:
+
+```
+php composer.phar install
+```
+
+### Require Autoloader ###
+
+You can autoload all dependencies by adding this to your code:
+```
+require 'vendor/autoload.php';
+```
 
 ## Usage ##
 
-The basic API for this class is the same for all of the web service end
-points. First you create a web service client object with your MaxMind
-``userId`` and ``licenseKey``, then you call the method corresponding to
-a specific end point, passing it the IP address you want to look up.
+To use this API, you must create a new ``\GeoIP2\Webservice\Client``
+object with your ``userId`` and ``licenseKey``, then you call the method
+corresponding to a specific end point, passing it the IP address you want to
+look up.
 
 If the request succeeds, the method call will return a model class for the end
 point you called. This model in turn contains multiple record classes, each of
 which represents part of the data returned by the web service.
 
+See the API documentation for more details.
+
 ## Example ##
 
-    >>> use \GeoIP2\Webservice\Client;
-    >>> $client = new Client(42, 'abcdef123456');
-    >>> $omni = $client.omni('24.24.24.24');
-    >>> $country = $omni.country;
-    >>> echo $country.isoCode;
+```php
+<?php
+require_once 'vendor/autoload.php';
+use \GeoIP2\Webservice\Client;
+
+$client = new Client(42, 'abcdef123456');
+$omni = $client->omni('24.24.24.24');
+echo $omni->country->isoCode;
+```
 
 ## Exceptions ##
 
@@ -61,18 +107,18 @@ piece of data for any given IP address.
 Because of these factors, it is possible for any end point to return a record
 where some or all of the attributes are unpopulated.
 
-See http://dev.maxmind.com/geoip/precision for details on what data each end
-point may return.
+See http://dev.maxmind.com/geoip/geoip2/web-services for details on what data
+each end point may return.
 
-The only piece of data which is always returned is the :py:attr:`ip_address`
-attribute in the :py:class:`geoip2.records.Traits` record.
+The only piece of data which is always returned is the ```ipAddress```
+attribute in the ``GeoIP2\Record\Traits`` record.
 
 Every record class attribute has a corresponding predicate method so you can
 check to see if the attribute is set.
 
 ## Integration with GeoNames ##
 
-GeoNames (http://www.geonames.org/) offers web services and downloadable
+[GeoNames](http://www.geonames.org/) offers web services and downloadable
 databases with data on geographical features around the world, including
 populated places. They offer both free and paid premium data. Each
 feature is unique identified by a ```geonameId```, which is an integer.
@@ -117,7 +163,7 @@ details.
 This code requires PHP 5.3 or greater. Older versions of PHP are not
 supported.
 
-This library also relies on the Guzze HTTP client, http://guzzlephp.org/
+This library also relies on the [Guzze HTTP client](http://guzzlephp.org/).
 
 ## Contributing ##
 
@@ -126,7 +172,7 @@ PSR-2 style guidelines. Please include unit tests whenever possible.
 
 ## Author ##
 
-Gregory Oschwald <goschwald@maxmind.com>
+[Gregory Oschwald](mailto:goschwald@maxmind.com)
 
 ## Copyright and License ##
 
