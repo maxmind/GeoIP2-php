@@ -1,5 +1,5 @@
 {
-    "name": "maxmind/GeoIP2-php",
+    "name": "geoip2/geoip2",
     "description": "GeoIP2 PHP API",
     "keywords": [ "geoip", "geolocation", "maxmind" ],
     "homepage": "https://github.com/maxmind/GeoIP2-php",
