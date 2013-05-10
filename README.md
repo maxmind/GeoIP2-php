@@ -53,7 +53,7 @@ require 'vendor/autoload.php';
 ## Usage ##
 
 To use this API, you must create a new ``\GeoIP2\Webservice\Client``
-object with your ``userId`` and ``licenseKey``, then you call the method
+object with your ``$userId`` and ``$licenseKey``, then you call the method
 corresponding to a specific end point, passing it the IP address you want to
 look up.
 

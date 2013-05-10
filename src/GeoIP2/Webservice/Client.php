@@ -29,6 +29,41 @@ use Guzzle\Http\Exception\ServerErrorResponseException;
  *
  * The web service may not return any information for an entire record, in
  * which case all of the attributes for that record class will be empty.
+ *
+ * **Usage**
+ *
+ * The basic API for this class is the same for all of the web service end
+ * points. First you create a web service object with your MaxMind
+ * <code>$userId</code> and <code>$licenseKey</code>, then you call the method
+ * corresponding to a specific end point, passing it the IP address you want
+ * to look up.
+ *
+ * If the request succeeds, the method call will return a model class for
+ * the end point you called. This model in turn contains multiple record
+ * classes, each of which represents part of the data returned by the web
+ * service.
+ *
+ * If the request fails, the client class throws an exception.
+ *
+ * **Exceptions**
+ *
+ * For details on the possible errors returned by the web service itself, see
+ * {@link http://dev.maxmind.com/geoip2/geoip/web-services the GeoIP2 web
+ * service docs}.
+ *
+ * If the web service returns an explicit error document, this is thrown as a
+ * {@link \GeoIP2\Exception\WebserviceException}. If some other sort of
+ * transport error occurs, this is thrown as a {@link
+ * \GeoIP2\Exception\HttpException}. The difference is that the webservice
+ * error includes an error message and error code delivered by the web
+ * service. The latter is thrown when some sort of unanticipated error occurs,
+ * such as the web service returning a 500 or an invalid error document.
+ *
+ * If the web service returns any status code besides 200, 4xx, or 5xx, this
+ * also becomes a {@link \GeoIP2\Exception\HttpException}.
+ *
+ * Finally, if the web service returns a 200 but the body is invalid, the
+ * client throws a {@link \GeoIP2\Exception\GenericException}.
  */
 class Client
 {
