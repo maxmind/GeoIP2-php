@@ -14,15 +14,41 @@ use Guzzle\Common\Exception\RuntimeException;
 use Guzzle\Http\Exception\ClientErrorResponseException;
 use Guzzle\Http\Exception\ServerErrorResponseException;
 
+/**
+ * This class provides a client API for all the GeoIP Precision web service's
+ * end points. The end points are Country, City, City/ISP/Org, and Omni. Each
+ * end point returns a different set of data about an IP address, with Country
+ * returning the least data and Omni the most.
+ *
+ * Each web service end point is represented by a different model class, and
+ * these model classes in turn contain multiple Record classes. The record
+ * classes have attributes which contain data about the IP address.
+ *
+ * If the web service does not return a particular piece of data for an IP
+ * address, the associated attribute is not populated.
+ *
+ * The web service may not return any information for an entire record, in
+ * which case all of the attributes for that record class will be empty.
+ */
 class Client
 {
-
     private $userId;
     private $licenseKey;
     private $languages;
     private $host;
     private $guzzleClient;
 
+    /**
+     * Constructor.
+     *
+     * @param int    $userId     Your MaxMind user ID
+     * @param string $licenseKey Your MaxMind license key
+     * @param array  $languages  List of language codes to use in name property
+     * from most preferred to least preferred.
+     * @param string $host Optional host parameter
+     * @param object $guzzleClient Optional Guzzle client to use (to facilitate
+     * unit testing).
+     */
     public function __construct(
         $userId,
         $licenseKey,
@@ -38,21 +64,57 @@ class Client
         $this->guzzleClient = $guzzleClient;
     }
 
+    /**
+     * This method calls the GeoIP2 Precision City endpoint.
+     *
+     * @param string $ipAddress IPv4 or IPv6 address as a string. If no
+     * address is provided, the address that the web service is called
+     * from will be used.
+     *
+     * @return \GeoIP2\Model\City object
+     */
     public function city($ipAddress = 'me')
     {
         return $this->responseFor('city', 'City', $ipAddress);
     }
 
+    /**
+     * This method calls the GeoIP2 Country endpoint.
+     *
+     * @param string $ipAddress IPv4 or IPv6 address as a string. If no
+     * address is provided, the address that the web service is called
+     * from will be used.
+     *
+     * @return \GeoIP2\Model\City object
+     */
     public function country($ipAddress = 'me')
     {
         return $this->responseFor('country', 'Country', $ipAddress);
     }
 
+    /**
+     * This method calls the GeoIP2 Precision City/ISP/Org endpoint.
+     *
+     * @param string $ipAddress IPv4 or IPv6 address as a string. If no
+     * address is provided, the address that the web service is called
+     * from will be used.
+     *
+     * @return \GeoIP2\Model\City object
+     */
     public function cityIspOrg($ipAddress = 'me')
     {
         return $this->responseFor('city_isp_org', 'CityIspOrg', $ipAddress);
     }
 
+    /**
+     * This method calls the GeoIP2 Precision Omni endpoint.
+     *
+     * @param string $ipAddress IPv4 or IPv6 address as a string. If no
+     * address is provided, the address that the web service is called
+     * from will be used.
+     *
+     * @return \GeoIP2\Model\City object
+     */
     public function omni($ipAddress = 'me')
     {
         return $this->responseFor('omni', 'Omni', $ipAddress);
