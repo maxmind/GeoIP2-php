@@ -71,7 +71,14 @@ class Client
      * address is provided, the address that the web service is called
      * from will be used.
      *
-     * @return \GeoIP2\Model\City object
+     * @return \GeoIP2\Model\City
+     *
+     * @throws \GeoIP2\Exception\GenericException if there was a generic
+     * error processing your request.
+     * @throws \GeoIP2\Exception\HttpException if there was an HTTP transport
+     * error.
+     * @throws \GeoIP2\Exception\WebserviceException if an error was returned
+     * by MaxMind's GeoIP2 web service.
      */
     public function city($ipAddress = 'me')
     {
@@ -85,7 +92,14 @@ class Client
      * address is provided, the address that the web service is called
      * from will be used.
      *
-     * @return \GeoIP2\Model\City object
+     * @return \GeoIP2\Model\Country
+     *
+     * @throws \GeoIP2\Exception\GenericException if there was a generic
+     * error processing your request.
+     * @throws \GeoIP2\Exception\HttpException if there was an HTTP transport
+     * error.
+     * @throws \GeoIP2\Exception\WebserviceException if an error was returned
+     * by MaxMind's GeoIP2 web service.
      */
     public function country($ipAddress = 'me')
     {
@@ -99,7 +113,14 @@ class Client
      * address is provided, the address that the web service is called
      * from will be used.
      *
-     * @return \GeoIP2\Model\City object
+     * @return \GeoIP2\Model\CityIspOrg
+     *
+     * @throws \GeoIP2\Exception\GenericException if there was a generic
+     * error processing your request.
+     * @throws \GeoIP2\Exception\HttpException if there was an HTTP transport
+     * error.
+     * @throws \GeoIP2\Exception\WebserviceException if an error was returned
+     * by MaxMind's GeoIP2 web service.
      */
     public function cityIspOrg($ipAddress = 'me')
     {
@@ -113,7 +134,14 @@ class Client
      * address is provided, the address that the web service is called
      * from will be used.
      *
-     * @return \GeoIP2\Model\City object
+     * @return \GeoIP2\Model\Omni
+     *
+     * @throws \GeoIP2\Exception\GenericException if there was a generic
+     * error processing your request.
+     * @throws \GeoIP2\Exception\HttpException if there was an HTTP transport
+     * error.
+     * @throws \GeoIP2\Exception\WebserviceException if an error was returned
+     * by MaxMind's GeoIP2 web service.
      */
     public function omni($ipAddress = 'me')
     {

@@ -177,7 +177,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @expectedException GeoIP2\Exception\WebserviceException
-     * @expectedExceptionCode IP_ADDRESS_INVALID
+     * @expectedExceptionCode 400
      * @expectedExceptionMessage The value "1.2.3" is not a valid ip address
      */
     public function testInvalidIPException()

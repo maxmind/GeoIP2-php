@@ -2,18 +2,25 @@
 
 namespace GeoIP2\Exception;
 
+/**
+ * This class represents an error returned by MaxMind's GeoIP2 Precision
+ * web service.
+ */
 class WebserviceException extends HttpException
 {
-    public $httpStatus;
+    /**
+     * The code returned by the MaxMind web service
+     */
+    public $error;
 
     public function __construct(
         $message,
-        $code,
+        $error,
         $httpStatus,
         $uri,
         Exception $previous = null
     ) {
-        $this->httpStatus = $httpStatus;
-        parent::__construct($message, $code, $uri, $previous);
+        $this->error = $error;
+        parent::__construct($message, $httpStatus, $uri, $previous);
     }
 }

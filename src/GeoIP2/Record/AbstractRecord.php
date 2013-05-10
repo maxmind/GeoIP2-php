@@ -6,11 +6,17 @@ abstract class AbstractRecord
 {
     private $record;
 
+    /**
+     * @ignore
+     */
     public function __construct($record)
     {
         $this->record = $record;
     }
 
+    /**
+     * @ignore
+     */
     public function __get($attr)
     {
         $valid = in_array($attr, $this->validAttributes);

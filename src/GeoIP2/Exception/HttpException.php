@@ -2,17 +2,24 @@
 
 namespace GeoIP2\Exception;
 
-class HttpException extends \Exception
+/**
+ *  This class represents an HTTP transport error.
+ */
+
+class HttpException extends GenericException
 {
-    public $code;
+    /**
+     * The URI queried
+     */
+    public $uri;
 
     public function __construct(
         $message,
-        $code,
+        $httpStatus,
         $uri,
         Exception $previous = null
     ) {
-        $this->code = $code;
-        parent::__construct($message, null, $previous);
+        $this->uri = $uri;
+        parent::__construct($message, $httpStatus, $previous);
     }
 }
