@@ -1,10 +1,10 @@
 <?php
 
-namespace GeoIP2\Webservice;
+namespace GeoIP2\WebService;
 
 use GeoIP2\Exception\GenericException;
 use GeoIP2\Exception\HttpException;
-use GeoIP2\Exception\WebserviceException;
+use GeoIP2\Exception\WebServiceException;
 use GeoIP2\Model\City;
 use GeoIP2\Model\CityIspOrg;
 use GeoIP2\Model\Country;
@@ -52,9 +52,9 @@ use Guzzle\Http\Exception\ServerErrorResponseException;
  * service docs}.
  *
  * If the web service returns an explicit error document, this is thrown as a
- * {@link \GeoIP2\Exception\WebserviceException}. If some other sort of
+ * {@link \GeoIP2\Exception\WebServiceException}. If some other sort of
  * transport error occurs, this is thrown as a {@link
- * \GeoIP2\Exception\HttpException}. The difference is that the webservice
+ * \GeoIP2\Exception\HttpException}. The difference is that the web service
  * error includes an error message and error code delivered by the web
  * service. The latter is thrown when some sort of unanticipated error occurs,
  * such as the web service returning a 500 or an invalid error document.
@@ -112,7 +112,7 @@ class Client
      * error processing your request.
      * @throws \GeoIP2\Exception\HttpException if there was an HTTP transport
      * error.
-     * @throws \GeoIP2\Exception\WebserviceException if an error was returned
+     * @throws \GeoIP2\Exception\WebServiceException if an error was returned
      * by MaxMind's GeoIP2 web service.
      */
     public function city($ipAddress = 'me')
@@ -133,7 +133,7 @@ class Client
      * error processing your request.
      * @throws \GeoIP2\Exception\HttpException if there was an HTTP transport
      * error.
-     * @throws \GeoIP2\Exception\WebserviceException if an error was returned
+     * @throws \GeoIP2\Exception\WebServiceException if an error was returned
      * by MaxMind's GeoIP2 web service.
      */
     public function country($ipAddress = 'me')
@@ -154,7 +154,7 @@ class Client
      * error processing your request.
      * @throws \GeoIP2\Exception\HttpException if there was an HTTP transport
      * error.
-     * @throws \GeoIP2\Exception\WebserviceException if an error was returned
+     * @throws \GeoIP2\Exception\WebServiceException if an error was returned
      * by MaxMind's GeoIP2 web service.
      */
     public function cityIspOrg($ipAddress = 'me')
@@ -175,7 +175,7 @@ class Client
      * error processing your request.
      * @throws \GeoIP2\Exception\HttpException if there was an HTTP transport
      * error.
-     * @throws \GeoIP2\Exception\WebserviceException if an error was returned
+     * @throws \GeoIP2\Exception\WebServiceException if an error was returned
      * by MaxMind's GeoIP2 web service.
      */
     public function omni($ipAddress = 'me')
@@ -274,7 +274,7 @@ class Client
             );
         }
 
-        throw new WebserviceException(
+        throw new WebServiceException(
             $body['error'],
             $body['code'],
             $status,

@@ -9,7 +9,7 @@ In the future, this distribution will also provide the same API for the
 GeoIP2 downloadable databases. These databases have not yet been
 released as a downloadable product.
 
-See GeoIP2\Webservice\Client for details on the web service client
+See GeoIP2\WebService\Client for details on the web service client
 API.
 
 ## Installation ##
@@ -52,7 +52,7 @@ require 'vendor/autoload.php';
 
 ## Usage ##
 
-To use this API, you must create a new ``\GeoIP2\Webservice\Client``
+To use this API, you must create a new ``\GeoIP2\WebService\Client``
 object with your ``$userId`` and ``$licenseKey``, then you call the method
 corresponding to a specific end point, passing it the IP address you want to
 look up.
@@ -68,7 +68,7 @@ See the API documentation for more details.
 ```php
 <?php
 require_once 'vendor/autoload.php';
-use \GeoIP2\Webservice\Client;
+use \GeoIP2\WebService\Client;
 
 $client = new Client(42, 'abcdef123456');
 $omni = $client->omni('24.24.24.24');
@@ -82,9 +82,9 @@ http://dev.maxmind.com/geoip2/geoip/web-services for the GeoIP2 web service
 docs.
 
 If the web service returns an explicit error document, this is thrown as a
-```\GeoIP2\Exception\WebserviceException```. If some other sort of transport
+```\GeoIP2\Exception\WebServiceException```. If some other sort of transport
 error occurs, this is thrown as a ```\GeoIP2\Exception\HttpException```.
-The difference is that the webservice error includes an error message and
+The difference is that the web service error includes an error message and
 error code delivered by the web service. The latter is thrown when some sort
 of unanticipated error occurs, such as the web service returning a 500 or an
 invalid error document.

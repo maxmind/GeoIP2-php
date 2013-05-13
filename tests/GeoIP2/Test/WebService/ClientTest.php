@@ -1,8 +1,8 @@
 <?php
 
-namespace GeoIP2\Test\Webservice;
+namespace GeoIP2\Test\WebService;
 
-use GeoIP2\Webservice\Client;
+use GeoIP2\WebService\Client;
 use Guzzle\Http\Client as GuzzleClient;
 use Guzzle\Http\Message\Response;
 use Guzzle\Plugin\Mock\MockPlugin;
@@ -176,7 +176,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
 
     /**
-     * @expectedException GeoIP2\Exception\WebserviceException
+     * @expectedException GeoIP2\Exception\WebServiceException
      * @expectedExceptionCode 400
      * @expectedExceptionMessage The value "1.2.3" is not a valid ip address
      */
