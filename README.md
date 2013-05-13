@@ -35,7 +35,7 @@ Run in your project root:
 curl -s http://getcomposer.org/installer | php
 ```
 
-### Install Depdendencies ###
+### Install Dependencies ###
 
 Run in your project root:
 
