@@ -22,7 +22,7 @@ To do this, add ```geoip2/geoip2``` to your ```composer.json``` file.
 ```json
 {
     "require": {
-        "geoip2/geoip2": "1.0.*"
+        "geoip2/geoip2": "0.1.*"
     }
 }
 ```
