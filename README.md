@@ -168,6 +168,10 @@ This library also relies on the [Guzze HTTP client](http://guzzlephp.org/).
 Patches and pull requests are encouraged. All code should follow the
 PSR-2 style guidelines. Please include unit tests whenever possible.
 
+## Versioning ##
+
+The GeoIP2 PHP API uses [Semantic Versioning](http://semver.org/).
+
 ## Author ##
 
 [Gregory Oschwald](mailto:goschwald@maxmind.com)
@@ -178,4 +182,3 @@ This software is Copyright (c) 2013 by MaxMind, Inc.
 
 This is free software, licensed under the GNU Lesser General Public License
 version 2.1 or later.
-
