@@ -161,7 +161,7 @@ details.
 This code requires PHP 5.3 or greater. Older versions of PHP are not
 supported.
 
-This library also relies on the [Guzze HTTP client](http://guzzlephp.org/).
+This library also relies on the [Guzzle HTTP client](http://guzzlephp.org/).
 
 ## Contributing ##
 
