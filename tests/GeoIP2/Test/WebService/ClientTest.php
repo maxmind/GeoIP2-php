@@ -156,6 +156,14 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         );
     }
 
+    public function testCity()
+    {
+        $city = $this->client($this->getResponse('1.2.3.4'))
+            ->city('1.2.3.4');
+
+        $this->assertInstanceOf('GeoIP2\Model\City', $city);
+    }
+
     public function testMe()
     {
         $client = $this->client($this->getResponse('me'));
