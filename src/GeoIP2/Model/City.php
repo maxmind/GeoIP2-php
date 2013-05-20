@@ -10,7 +10,7 @@ namespace GeoIP2\Model;
  * classes is which fields in each record may be populated. See
  * http://dev.maxmind.com/geoip/geoip2/web-services more details.
  *
- * @property \GeoIP2\Record\City $city Country data for the requested IP
+ * @property \GeoIP2\Record\City $city City data for the requested IP
  * address.
  *
  * @property \GeoIP2\Record\Continent $continent Continent data for the
