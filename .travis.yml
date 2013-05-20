@@ -7,13 +7,16 @@ php:
 
 before_install:
   - composer self-update
-  - composer install
+  - composer install --dev --no-interaction
   - pyrus install pear/PHP_CodeSniffer
   - phpenv rehash
 
 script:
   - phpcs --standard=PSR2 src/
   - phpunit
+
+after_script:
+  - php vendor/bin/coveralls
 
 notifications:
   email:
