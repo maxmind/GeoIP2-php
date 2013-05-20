@@ -141,6 +141,21 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         );
     }
 
+
+    public function testOmni()
+    {
+        $omni = $this->client($this->getResponse('1.2.3.10'))
+            ->omni('1.2.3.10');
+
+        $this->assertInstanceOf('GeoIP2\Model\Omni', $omni);
+
+        $this->assertEquals(
+            42,
+            $omni->continent->geonameId,
+            'continent geoname_id is 42'
+        );
+    }
+
     public function testMe()
     {
         $client = $this->client($this->getResponse('me'));
@@ -280,7 +295,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
         $all_requests = $plugin->getReceivedRequests();
         $request = $all_requests[0];
-        
+
         $this->assertEquals(
             'https://geoip.maxmind.com/geoip/v2.0/country/1.2.3.4',
             $request->getUrl(),
