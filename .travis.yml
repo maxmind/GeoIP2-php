@@ -7,7 +7,7 @@ php:
 
 before_install:
   - composer self-update
-  - composer install --dev
+  - composer install --dev -n
   - pyrus install pear/PHP_CodeSniffer
   - phpenv rehash
 
