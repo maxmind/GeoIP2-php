@@ -35,6 +35,10 @@ namespace GeoIP2\Record;
  * anonymous proxy. See {@link http://dev.maxmind.com/faq/geoip#anonproxy}
  * for further details. This attribute is returned by all end points.
  *
+ * @property boolean $isSatelliteProvider This is true if the IP belongs
+ * to a satellite Internet provider.  This attribute is returned by all
+ * end points.
+ *
  * @property string $isp The name of the ISP associated the IP address.
  * This attribute is only available from the City/ISP/Org and Omni end
  * points.
