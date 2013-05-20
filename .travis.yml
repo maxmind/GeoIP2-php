@@ -6,15 +6,14 @@ php:
   - 5.5
 
 before_install:
-  - curl -s http://getcomposer.org/installer | php
-  - php composer.phar install --dev --no-interaction
+  - composer install
   - pyrus install pear/PHP_CodeSniffer
   - phpenv rehash
 
 script:
   - mkdir -p build/logs
   - phpcs --standard=PSR2 src/
-  - php vendor/bin/phpunit -c phpunit.xml.dist
+  - phpunit -c phpunit.xml.dist
 
 after_script:
   - php vendor/bin/coveralls
