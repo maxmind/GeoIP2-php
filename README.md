@@ -93,7 +93,7 @@ If the web service returns any status code besides 200, 4xx, or 5xx, this also
 becomes a ```\GeoIP2\Exception\HttpException```.
 
 Finally, if the web service returns a 200 but the body is invalid, the client
-throws a ```\GeoIP2\Exception\GenericException```.
+throws a ```\GeoIP2\Exception\GeoIP2Exception```.
 
 ## What data is returned? ##
 

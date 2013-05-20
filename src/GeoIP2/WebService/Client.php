@@ -2,7 +2,7 @@
 
 namespace GeoIP2\WebService;
 
-use GeoIP2\Exception\GenericException;
+use GeoIP2\Exception\GeoIP2Exception;
 use GeoIP2\Exception\HttpException;
 use GeoIP2\Exception\WebServiceException;
 use GeoIP2\Model\City;
@@ -63,7 +63,7 @@ use Guzzle\Http\Exception\ServerErrorResponseException;
  * also becomes a {@link \GeoIP2\Exception\HttpException}.
  *
  * Finally, if the web service returns a 200 but the body is invalid, the
- * client throws a {@link \GeoIP2\Exception\GenericException}.
+ * client throws a {@link \GeoIP2\Exception\GeoIP2Exception}.
  */
 class Client
 {
@@ -108,7 +108,7 @@ class Client
      *
      * @return \GeoIP2\Model\City
      *
-     * @throws \GeoIP2\Exception\GenericException if there was a generic
+     * @throws \GeoIP2\Exception\GeoIP2Exception if there was a generic
      * error processing your request.
      * @throws \GeoIP2\Exception\HttpException if there was an HTTP transport
      * error.
@@ -129,7 +129,7 @@ class Client
      *
      * @return \GeoIP2\Model\Country
      *
-     * @throws \GeoIP2\Exception\GenericException if there was a generic
+     * @throws \GeoIP2\Exception\GeoIP2Exception if there was a generic
      * error processing your request.
      * @throws \GeoIP2\Exception\HttpException if there was an HTTP transport
      * error.
@@ -150,7 +150,7 @@ class Client
      *
      * @return \GeoIP2\Model\CityIspOrg
      *
-     * @throws \GeoIP2\Exception\GenericException if there was a generic
+     * @throws \GeoIP2\Exception\GeoIP2Exception if there was a generic
      * error processing your request.
      * @throws \GeoIP2\Exception\HttpException if there was an HTTP transport
      * error.
@@ -171,7 +171,7 @@ class Client
      *
      * @return \GeoIP2\Model\Omni
      *
-     * @throws \GeoIP2\Exception\GenericException if there was a generic
+     * @throws \GeoIP2\Exception\GeoIP2Exception if there was a generic
      * error processing your request.
      * @throws \GeoIP2\Exception\HttpException if there was an HTTP transport
      * error.
@@ -216,7 +216,7 @@ class Client
     private function handleSuccess($response, $uri)
     {
         if ($response->getContentLength() == 0) {
-            throw new GenericException(
+            throw new GeoIP2Exception(
                 "Received a 200 response for $uri but did not " .
                 "receive a HTTP body."
             );
@@ -225,7 +225,7 @@ class Client
         try {
             return $response->json();
         } catch (RuntimeException $e) {
-            throw new GenericException(
+            throw new GeoIP2Exception(
                 "Received a 200 response for $uri but could not decode " .
                 "the response as JSON: " . $e->getMessage()
             );
@@ -244,7 +244,7 @@ class Client
                 try {
                     $body = $response->json();
                     if (!isset($body['code']) || !isset($body['error'])) {
-                        throw new GenericException(
+                        throw new GeoIP2Exception(
                             'Response contains JSON but it does not specify ' .
                             'code or error keys: ' . $response->getBody()
                         );

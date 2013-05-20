@@ -5,6 +5,6 @@ namespace GeoIP2\Exception;
 /**
  * This class represents a generic error.
  */
-class GenericException extends \Exception
+class GeoIP2Exception extends \Exception
 {
 }

@@ -6,7 +6,7 @@ namespace GeoIP2\Exception;
  *  This class represents an HTTP transport error.
  */
 
-class HttpException extends GenericException
+class HttpException extends GeoIP2Exception
 {
     /**
      * The URI queried

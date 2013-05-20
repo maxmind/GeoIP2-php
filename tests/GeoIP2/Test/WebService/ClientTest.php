@@ -176,7 +176,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException GeoIP2\Exception\GenericException
+     * @expectedException GeoIP2\Exception\GeoIP2Exception
      * @expectedExceptionMessage Received a 200 response for https://geoip.maxmind.com/geoip/v2.0/country/1.2.3.5 but did not receive a HTTP body.
      */
     public function testNoBodyException()
@@ -187,7 +187,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException GeoIP2\Exception\GenericException
+     * @expectedException GeoIP2\Exception\GeoIP2Exception
      * @expectedExceptionMessage Received a 200 response for https://geoip.maxmind.com/geoip/v2.0/country/2.2.3.5 but could not decode the response as JSON:
      */
     public function testBadBodyException()
@@ -224,7 +224,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException GeoIP2\Exception\GenericException
+     * @expectedException GeoIP2\Exception\GeoIP2Exception
      * @expectedExceptionMessage Response contains JSON but it does not specify code or error keys
      */
     public function testWeirdErrorBodyIPException()
