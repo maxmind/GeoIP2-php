@@ -3,7 +3,7 @@
 namespace GeoIP2\Exception;
 
 /**
- * This class represents an error returned by MaxMind's GeoIP2 Precision
+ * This class represents an error returned by MaxMind's GeoIP2
  * web service.
  */
 class WebServiceException extends HttpException

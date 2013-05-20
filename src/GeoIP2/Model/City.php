@@ -3,7 +3,7 @@
 namespace GeoIP2\Model;
 
 /**
- * This class provides a model for the data returned by the GeoIP2 Precision
+ * This class provides a model for the data returned by the GeoIP2
  * City end point.
  *
  * The only difference between the City, City/ISP/Org, and Omni model

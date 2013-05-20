@@ -15,7 +15,7 @@ use Guzzle\Http\Exception\ClientErrorResponseException;
 use Guzzle\Http\Exception\ServerErrorResponseException;
 
 /**
- * This class provides a client API for all the GeoIP Precision web service's
+ * This class provides a client API for all the GeoIP2 web service's
  * end points. The end points are Country, City, City/ISP/Org, and Omni. Each
  * end point returns a different set of data about an IP address, with Country
  * returning the least data and Omni the most.
@@ -100,7 +100,7 @@ class Client
     }
 
     /**
-     * This method calls the GeoIP2 Precision City endpoint.
+     * This method calls the GeoIP2 City endpoint.
      *
      * @param string $ipAddress IPv4 or IPv6 address as a string. If no
      * address is provided, the address that the web service is called
@@ -142,7 +142,7 @@ class Client
     }
 
     /**
-     * This method calls the GeoIP2 Precision City/ISP/Org endpoint.
+     * This method calls the GeoIP2 City/ISP/Org endpoint.
      *
      * @param string $ipAddress IPv4 or IPv6 address as a string. If no
      * address is provided, the address that the web service is called
@@ -163,7 +163,7 @@ class Client
     }
 
     /**
-     * This method calls the GeoIP2 Precision Omni endpoint.
+     * This method calls the GeoIP2 Omni endpoint.
      *
      * @param string $ipAddress IPv4 or IPv6 address as a string. If no
      * address is provided, the address that the web service is called
