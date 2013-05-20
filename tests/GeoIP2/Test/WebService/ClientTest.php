@@ -144,8 +144,8 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
     public function testOmni()
     {
-        $omni = $this->client($this->getResponse('1.2.3.10'))
-            ->omni('1.2.3.10');
+        $omni = $this->client($this->getResponse('1.2.3.4'))
+            ->omni('1.2.3.4');
 
         $this->assertInstanceOf('GeoIP2\Model\Omni', $omni);
 
