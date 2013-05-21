@@ -17,9 +17,9 @@ class OmniTest extends \PHPUnit_Framework_TestCase
                 'names'      => array( 'en' => 'Minneapolis' ),
             ),
             'continent' => array(
-                'continent_code' => 'NA',
-                'geoname_id'     => 42,
-                'names'          => array( 'en' => 'North America' ),
+                'code'       => 'NA',
+                'geoname_id' => 42,
+                'names'      => array( 'en' => 'North America' ),
             ),
             'country' => array(
                 'confidence' => 99,
@@ -181,7 +181,7 @@ class OmniTest extends \PHPUnit_Framework_TestCase
             $model->representedCountry,
             '$model->representedCountry'
         );
-        
+
         $this->assertCount(
             0,
             $model->subdivisions,

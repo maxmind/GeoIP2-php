@@ -9,9 +9,9 @@ class CountryTest extends \PHPUnit_Framework_TestCase
 
     private $raw = array(
         'continent' => array(
-            'continent_code' => 'NA',
-            'geoname_id'     => 42,
-            'names'          => array( 'en' => 'North America' ),
+            'code'       => 'NA',
+            'geoname_id' => 42,
+            'names'      => array( 'en' => 'North America' ),
         ),
         'country' => array(
             'geoname_id' => 1,
@@ -75,8 +75,8 @@ class CountryTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(
             'NA',
-            $this->model->continent->continentCode,
-            'continent continent_code is NA'
+            $this->model->continent->code,
+            'continent code is NA'
         );
 
         $this->assertEquals(

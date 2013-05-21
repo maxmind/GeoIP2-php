@@ -8,9 +8,9 @@ class NameTest extends \PHPUnit_Framework_TestCase
 {
     public $raw = array(
             'continent' => array(
-                'continent_code' => 'NA',
-                'geoname_id'     => 42,
-                'names'          => array(
+                'code'       => 'NA',
+                'geoname_id' => 42,
+                'names'      => array(
                     'en'    => 'North America',
                     'zh-CN' => '北美洲',
                 ),

@@ -7,9 +7,8 @@ namespace GeoIP2\Record;
  *
  * This record is returned by all the end points.
  *
- * @property string $continentCode A two character continent code
- * like "NA" (North America) or "OC" (Oceania). This attribute is returned
- * by all end points.
+ * @property string $code A two character continent code like "NA" (North
+ * America) or "OC" (Oceania). This attribute is returned by all end points.
  *
  * @property int $geonameId The GeoName ID for the continent. This attribute
  * is returned by all end points.
@@ -27,7 +26,7 @@ class Continent extends AbstractPlaceRecord
      * @ignore
      */
     protected $validAttributes = array(
-        'continentCode',
+        'code',
         'geonameId',
         'names'
     );
