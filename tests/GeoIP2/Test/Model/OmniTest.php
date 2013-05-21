@@ -36,6 +36,9 @@ class OmniTest extends \PHPUnit_Framework_TestCase
                 'postal_confidence' => 33,
                 'time_zone'         => 'America/Chicago',
             ),
+            'maxmind' => array(
+                'queries_remaining' => 22,
+            ),
             'registered_country' => array(
                 'geoname_id' => 2,
                 'iso_code'   => 'CA',
@@ -125,6 +128,12 @@ class OmniTest extends \PHPUnit_Framework_TestCase
             'GeoIP2\Record\Traits',
             $model->traits,
             '$model->traits'
+        );
+
+        $this->assertEquals(
+            22,
+            $model->maxmind->queriesRemaining,
+            'queriesRemaining is correct'
         );
 
         $this->assertEquals(

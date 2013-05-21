@@ -22,6 +22,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
                 'iso_code'   => 'US',
                 'names'      => array( 'en' => 'United States of America' ),
             ),
+            'maxmind' => array('queries_remaining' => 11),
             'traits' => array(
                 'ip_address' => '1.2.3.4',
             ),
@@ -139,6 +140,13 @@ class ClientTest extends \PHPUnit_Framework_TestCase
             $country->country->name,
             'country name is United States of America'
         );
+
+        $this->assertEquals(
+            11,
+            $country->maxmind->queriesRemaining,
+            'queriesRemaining is correct'
+        );
+
     }
 
 

@@ -17,6 +17,9 @@ namespace GeoIP2\Model;
  * IP address. This object represents the country where MaxMind believes the
  * end user is located.
  *
+ * @property \GeoIP2\Record\MaxMind $maxmind Data related to your MaxMind
+ * account.
+  *
  * @property \GeoIP2\Record\Country $registeredCountry Registered country
  * data for the requested IP address. This record represents the country
  * where the ISP has registered a given IP block in and may differ from the
@@ -35,6 +38,7 @@ class Country
     private $continent;
     private $country;
     private $languages;
+    private $maxmind;
     private $registeredCountry;
     private $representedCountry;
     private $traits;
@@ -55,6 +59,7 @@ class Country
             $this->get('country'),
             $languages
         );
+        $this->maxmind = new \GeoIP2\Record\MaxMind($this->get('maxmind'));
         $this->registeredCountry = new \GeoIP2\Record\Country(
             $this->get('registered_country'),
             $languages

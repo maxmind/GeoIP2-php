@@ -23,6 +23,9 @@ namespace GeoIP2\Model;
  * @property \GeoIP2\Record\Location $location Location data for the
  * requested IP address.
  *
+ * @property \GeoIP2\Record\MaxMind $maxmind Data related to your MaxMind
+ * account.
+ *
  * @property \GeoIP2\Record\Country $registeredCountry Registered country
  * data for the requested IP address. This record represents the country
  * where the ISP has registered a given IP block in and may differ from the
