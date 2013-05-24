@@ -17,7 +17,7 @@ if [ ! -d .gh-pages ]; then
     git clone -b gh-pages git@git.maxmind.com:GeoIP2-php .gh-pages
     cd .gh-pages
 else
-    echo "Updating .ghpages"
+    echo "Updating .gh-pages"
     cd .gh-pages
     git pull
 fi
