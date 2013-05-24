@@ -1,6 +1,5 @@
 _site
 .gh-pages
-bin/
 composer.lock
 composer.phar
 phpunit.xml
