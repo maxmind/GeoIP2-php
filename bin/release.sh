@@ -29,6 +29,8 @@ fi
 
 cp ../README.md _includes/README.md
 apigen --quiet --source ../src --destination doc/$TAG
+rm doc/latest
+ln -s $TAG doc/latest
 
 git add doc/
 git commit -m "Updated for $TAG"
