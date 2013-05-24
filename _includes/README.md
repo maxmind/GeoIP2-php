@@ -5,14 +5,14 @@ production release.
 
 ## Description ##
 
-Currently, this distribution provides an API for the GeoIP2 web services
- (as documented at http://dev.maxmind.com/geoip/geoip2/web-services).
+Currently, this distribution provides an API for the [GeoIP2 web services]
+(http://dev.maxmind.com/geoip/geoip2/web-services).
 
 In the future, this distribution will also provide the same API for the
 GeoIP2 downloadable databases. These databases have not yet been
 released as a downloadable product.
 
-See GeoIP2\WebService\Client for details on the web service client
+See ``GeoIP2\WebService\Client`` for details on the web service client
 API.
 
 ## Installation ##
@@ -81,8 +81,8 @@ echo $omni->country->isoCode;
 ## Exceptions ##
 
 For details on the possible errors returned by the web service itself, see
-http://dev.maxmind.com/geoip2/geoip/web-services for the GeoIP2 web service
-docs.
+the
+[GeoIP2 web service docs](http://dev.maxmind.com/geoip2/geoip/web-service).
 
 If the web service returns an explicit error document, this is thrown as a
 ```\GeoIP2\Exception\WebServiceException```. If some other sort of transport
@@ -108,8 +108,9 @@ piece of data for any given IP address.
 Because of these factors, it is possible for any end point to return a record
 where some or all of the attributes are unpopulated.
 
-See http://dev.maxmind.com/geoip/geoip2/web-services for details on what data
-each end point may return.
+See the
+[GeoIP2 web service docs](http://dev.maxmind.com/geoip/geoip2/web-services)
+for details on what data each end point may return.
 
 The only piece of data which is always returned is the ```ipAddress```
 attribute in the ``GeoIP2\Record\Traits`` record.
@@ -135,11 +136,11 @@ the GeoNames premium data set.
 ## Reporting data problems ##
 
 If the problem you find is that an IP address is incorrectly mapped,
-please submit your correction to MaxMind at
-http://www.maxmind.com/en/correction.
+please
+[submit your correction to MaxMind](http://www.maxmind.com/en/correction).
 
 If you find some other sort of mistake, like an incorrect spelling,
-please check the GeoNames site (http://www.geonames.org/) first. Once
+please check the [GeoNames site](http://www.geonames.org/) first. Once
 you've searched for a place and found it on the GeoNames map view, there
 are a number of links you can use to correct data ("move", "edit",
 "alternate names", etc.). Once the correction is part of the GeoNames
@@ -147,17 +148,17 @@ data set, it will be automatically incorporated into future MaxMind
 releases.
 
 If you are a paying MaxMind customer and you're not sure where to submit
-a correction, please contact MaxMind support at
-http://www.maxmind.com/en/support for help.
+a correction, please
+[contact MaxMind support](http://www.maxmind.com/en/support) for help.
 
 ## Other Support ##
 
-Please report all issues with this code using the GitHub issue tracker
-at https://github.com/maxmind/GeoIP2-php/issues
+Please report all issues with this code using the
+[GitHub issue tracker](https://github.com/maxmind/GeoIP2-php/issues).
 
 If you are having an issue with a MaxMind service that is not specific
-to the client API please see http://www.maxmind.com/en/support for
-details.
+to the client API, please see
+[our support page](http://www.maxmind.com/en/support).
 
 ## Requirements  ##
 
@@ -174,10 +175,6 @@ PSR-2 style guidelines. Please include unit tests whenever possible.
 ## Versioning ##
 
 The GeoIP2 PHP API uses [Semantic Versioning](http://semver.org/).
-
-## Author ##
-
-[Gregory Oschwald](mailto:goschwald@maxmind.com)
 
 ## Copyright and License ##
 
