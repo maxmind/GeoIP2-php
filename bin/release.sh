@@ -28,7 +28,7 @@ if [ -n "$(git status --porcelain)" ]; then
 fi
 
 cp ../README.md _includes/README.md
-apigen --quiet --source ../src --destination doc/$TAG
+apigen --quiet --download --title "GeoIP2 PHP API $TAG" --source ../src --destination doc/$TAG
 echo $TAG > _includes/version
 
 git add doc/
