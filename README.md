@@ -12,7 +12,7 @@ In the future, this distribution will also provide the same API for the
 GeoIP2 downloadable databases. These databases have not yet been
 released as a downloadable product.
 
-See GeoIP2\WebService\Client for details on the web service client
+See ``GeoIP2\WebService\Client`` for details on the web service client
 API.
 
 ## Installation ##
