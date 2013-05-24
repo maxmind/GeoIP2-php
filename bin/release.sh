@@ -32,7 +32,7 @@ apigen --quiet --download --title "GeoIP2 PHP API $TAG" --source ../src --destin
 echo $TAG > _includes/version
 
 git add doc/
-git commit -m "Updated for $TAG"
+git commit -m "Updated for $TAG" -a
 
 read -e -p "Push to origin? " SHOULD_PUSH
 
