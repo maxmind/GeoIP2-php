@@ -42,7 +42,11 @@ if [ "$SHOULD_PUSH" != "y" ]; then
     exit 1
 fi
 
+# If we don't push directly to github, the page doesn't get built for some
+# reason.
+git push git@github.com:maxmind/GeoIP2-php.git
 git push
+
 cd ..
 git tag $TAG
 git push
