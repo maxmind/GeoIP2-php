@@ -1,0 +1,5 @@
+auto:        true
+pygments:    false
+lsi:         true
+markdown: redcarpet
+permalink:   /title.html

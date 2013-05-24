@@ -1,3 +1,4 @@
+_site/
 bin/
 composer.lock
 composer.phar
