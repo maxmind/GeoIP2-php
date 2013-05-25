@@ -7,7 +7,7 @@
   <meta name="author" content="MaxMind, Inc.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="//www.maxmind.com/css/maxmind.css" rel="stylesheet">
-  <link href="//dev.maxmind.com/css//css/dev.maxmind.com.css" rel="stylesheet">
+  <link href="//dev.maxmind.com/css/dev.maxmind.com.css" rel="stylesheet">
   <link href="//dev.maxmind.com/css/highlight-github.css" rel="stylesheet" >
   <link rel="shortcut icon" href="//dev.maxmind.com/static/favicon.ico">
   <script src="//dev.maxmind.com/js/highlight.pack.js"></script>
@@ -38,10 +38,10 @@
           <a href="index.html">Overview</a>
         </li>
         <li>
-          <a href="doc/{%include version%}/">API</a>
+          <a href="doc/{{ page.version }}/">API</a>
         </li>
         <li>
-          <a href="https://github.com/maxmind/GeoIP2-php">GitHub</a>
+          <a href="https://github.com/maxmind/GeoIP2-{{ page.language }}">GitHub</a>
         </li>
         <li>
          <a href="http://dev.maxmind.com/geoip/geoip2/web-services">Web Services</a>
@@ -56,7 +56,6 @@
 
 
 	  {{ content }}
-  </div>
 </div>
 
 </body>
