@@ -29,7 +29,7 @@ fi
 
 apigen --quiet --download --title "GeoIP2 PHP API $TAG" --source ../src --destination doc/$TAG
 
-PAGE=.gh-pages/index.md
+PAGE=index.md
 cat <<EOF > $PAGE
 ---
 layout: default
@@ -40,7 +40,7 @@ version: $TAG
 
 EOF
 
-cat README.md >> $PAGE
+cat ../README.md >> $PAGE
 
 git add doc/
 git commit -m "Updated for $TAG" -a
