@@ -27,9 +27,20 @@ if [ -n "$(git status --porcelain)" ]; then
     exit 1
 fi
 
-cp ../README.md _includes/README.md
 apigen --quiet --download --title "GeoIP2 PHP API $TAG" --source ../src --destination doc/$TAG
-echo $TAG > _includes/version
+
+PAGE=.gh-pages/index.md
+cat <<EOF > $PAGE
+---
+layout: default
+title: MaxMind GeoIP2 PHP API
+language: php
+version: $TAG
+---
+
+EOF
+
+cat README.md >> $PAGE
 
 git add doc/
 git commit -m "Updated for $TAG" -a
