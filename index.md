@@ -2,13 +2,14 @@
 layout: default
 title: MaxMind GeoIP2 PHP API
 language: php
-version: v0.1.1
+version: v0.2.0
 ---
 
 # GeoIP2 PHP API #
 
 **NOTE**: This is an alpha release. The API may change before the final
-production release.
+production release. The first production release will have the version
+number 2.0.0.
 
 ## Description ##
 
