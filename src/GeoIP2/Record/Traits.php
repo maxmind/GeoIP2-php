@@ -39,12 +39,12 @@ namespace GeoIP2\Record;
  * to a satellite Internet provider.  This attribute is returned by all
  * end points.
  *
- * @property string $isp The name of the ISP associated the IP address.
+ * @property string $isp The name of the ISP associated with the IP address.
  * This attribute is only available from the City/ISP/Org and Omni end
  * points.
  *
  * @property string $organization The name of the organization associated
- * the IP address. This attribute is only available from the City/ISP/Org
+ * with the IP address. This attribute is only available from the City/ISP/Org
  * and Omni end points.
  *
  * @property string $userType <p>The user type associated with the IP
