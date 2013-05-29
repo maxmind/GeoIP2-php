@@ -1,7 +1,8 @@
 # GeoIP2 PHP API #
 
 **NOTE**: This is an alpha release. The API may change before the final
-production release.
+production release. The first production release will have the version
+number 2.0.0.
 
 ## Description ##
 
