@@ -28,7 +28,7 @@ namespace GeoIP2\Model;
  *
  * @property \GeoIP2\Record\Country $registeredCountry Registered country
  * data for the requested IP address. This record represents the country
- * where the ISP has registered a given IP block in and may differ from the
+ * where the ISP has registered a given IP block and may differ from the
  * user's country.
  *
  * @property \GeoIP2\Record\RepresentedCountry $representedCountry
