@@ -1,7 +1,15 @@
 # GeoIP2 PHP API #
 
-**NOTE**: This is an alpha release, and APIs may change before the final
-production release, which will be numbered 2.0.0.
+## Beta Note ##
+
+This is a beta release. The API may change before the first production
+release, which will be numbered 2.0.0.
+
+You may find information on the GeoIP2 beta release process on [our
+website](http://www.maxmind.com/en/geoip2_beta).
+
+To provide feedback or get support during the beta, please see the
+[MaxMind Customer Community](https://getsatisfaction.com/maxmind).
 
 ## Description ##
 
