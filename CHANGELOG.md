@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+0.2.1 (2013-06-10)
+------------------
+
+* First official beta release.
+* Documentation updates and corrections.
+
 0.2.0 (2013-05-29)
 ------------------
 
