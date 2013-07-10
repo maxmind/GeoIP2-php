@@ -21,6 +21,6 @@
         "satooshi/php-coveralls": "dev-master"
     },
     "autoload": {
-        "psr-0": { "GeoIP2": "src/" }
+        "psr-0": { "GeoIp2": "src/" }
     }
 }
