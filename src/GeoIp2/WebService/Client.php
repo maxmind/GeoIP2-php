@@ -15,7 +15,7 @@ use Guzzle\Http\Exception\ClientErrorResponseException;
 use Guzzle\Http\Exception\ServerErrorResponseException;
 
 /**
- * This class provides a client API for all the GeoIp2 web service's
+ * This class provides a client API for all the GeoIP2 web service's
  * end points. The end points are Country, City, City/ISP/Org, and Omni. Each
  * end point returns a different set of data about an IP address, with Country
  * returning the least data and Omni the most.
@@ -113,7 +113,7 @@ class Client
      * @throws \GeoIp2\Exception\HttpException if there was an HTTP transport
      * error.
      * @throws \GeoIp2\Exception\WebServiceException if an error was returned
-     * by MaxMind's GeoIp2 web service.
+     * by MaxMind's GeoIP2 web service.
      */
     public function city($ipAddress = 'me')
     {
@@ -134,7 +134,7 @@ class Client
      * @throws \GeoIp2\Exception\HttpException if there was an HTTP transport
      * error.
      * @throws \GeoIp2\Exception\WebServiceException if an error was returned
-     * by MaxMind's GeoIp2 web service.
+     * by MaxMind's GeoIP2 web service.
      */
     public function country($ipAddress = 'me')
     {
@@ -155,7 +155,7 @@ class Client
      * @throws \GeoIp2\Exception\HttpException if there was an HTTP transport
      * error.
      * @throws \GeoIp2\Exception\WebServiceException if an error was returned
-     * by MaxMind's GeoIp2 web service.
+     * by MaxMind's GeoIP2 web service.
      */
     public function cityIspOrg($ipAddress = 'me')
     {
@@ -176,7 +176,7 @@ class Client
      * @throws \GeoIp2\Exception\HttpException if there was an HTTP transport
      * error.
      * @throws \GeoIp2\Exception\WebServiceException if an error was returned
-     * by MaxMind's GeoIp2 web service.
+     * by MaxMind's GeoIP2 web service.
      */
     public function omni($ipAddress = 'me')
     {
