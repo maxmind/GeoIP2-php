@@ -20,7 +20,7 @@ In the future, this distribution will also provide the same API for the
 GeoIP2 downloadable databases. These databases have not yet been
 released as a downloadable product.
 
-See ``GeoIP2\WebService\Client`` for details on the web service client
+See ``GeoIp2\WebService\Client`` for details on the web service client
 API.
 
 ## Installation ##
@@ -63,7 +63,7 @@ require 'vendor/autoload.php';
 
 ## Usage ##
 
-To use this API, you must create a new ``\GeoIP2\WebService\Client``
+To use this API, you must create a new ``\GeoIp2\WebService\Client``
 object with your ``$userId`` and ``$licenseKey``, then you call the method
 corresponding to a specific end point, passing it the IP address you want to
 look up.
@@ -79,7 +79,7 @@ See the API documentation for more details.
 ```php
 <?php
 require_once 'vendor/autoload.php';
-use \GeoIP2\WebService\Client;
+use \GeoIp2\WebService\Client;
 
 $client = new Client(42, 'abcdef123456');
 $omni = $client->omni('24.24.24.24');
@@ -93,18 +93,18 @@ the
 [GeoIP2 web service docs](http://dev.maxmind.com/geoip2/geoip/web-service).
 
 If the web service returns an explicit error document, this is thrown as a
-```\GeoIP2\Exception\WebServiceException```. If some other sort of transport
-error occurs, this is thrown as a ```\GeoIP2\Exception\HttpException```.
+```\GeoIp2\Exception\WebServiceException```. If some other sort of transport
+error occurs, this is thrown as a ```\GeoIp2\Exception\HttpException```.
 The difference is that the web service error includes an error message and
 error code delivered by the web service. The latter is thrown when some sort
 of unanticipated error occurs, such as the web service returning a 500 or an
 invalid error document.
 
 If the web service returns any status code besides 200, 4xx, or 5xx, this also
-becomes a ```\GeoIP2\Exception\HttpException```.
+becomes a ```\GeoIp2\Exception\HttpException```.
 
 Finally, if the web service returns a 200 but the body is invalid, the client
-throws a ```\GeoIP2\Exception\GeoIP2Exception```.
+throws a ```\GeoIp2\Exception\GeoIp2Exception```.
 
 ## What data is returned? ##
 
@@ -121,7 +121,7 @@ See the
 for details on what data each end point may return.
 
 The only piece of data which is always returned is the ```ipAddress```
-attribute in the ``GeoIP2\Record\Traits`` record.
+attribute in the ``GeoIp2\Record\Traits`` record.
 
 Every record class attribute has a corresponding predicate method so you can
 check to see if the attribute is set.

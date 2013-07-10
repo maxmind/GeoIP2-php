@@ -3,13 +3,13 @@
 <phpunit bootstrap="./tests/bootstrap.php" colors="true">
     <testsuites>
         <testsuite name="GeoIP2 Test Suite">
-            <directory suffix="Test.php">./tests/GeoIP2/Test/</directory>
+            <directory suffix="Test.php">./tests/GeoIp2/Test/</directory>
         </testsuite>
     </testsuites>
 
     <filter>
         <whitelist>
-            <directory suffix=".php">./src/GeoIP2/</directory>
+            <directory suffix=".php">./src/GeoIp2/</directory>
         </whitelist>
     </filter>
 
