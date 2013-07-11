@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+0.3.0 (2013-07-XX)
+------------------
+
+* In namespaces and class names, "GeoIP2" was renamed to "GeoIp2" to improve
+  consistency.
+
 0.2.1 (2013-06-10)
 ------------------
 
@@ -13,18 +19,18 @@ CHANGELOG
 * `GenericException` was renamed to `GeoIP2Exception`.
 * We now support more languages. The new languages are de, es, fr, and pt-BR.
 * The REST API now returns a record with data about your account. There is
-  a new geoip.records.MaxMind class for this data.
+  a new `GeoIP\Records\MaxMind` class for this data.
 * The `continentCode` attribute on `Continent` was renamed to `code`.
 * Documentation updates.
 
 0.1.1 (2013-05-14)
 ------------------
 
-* Updated Guzzle version requirement
-* Fixed Composer example in README.md
+* Updated Guzzle version requirement.
+* Fixed Composer example in README.md.
 
 
 0.1.0 (2013-05-13)
 ------------------
 
-* Initial release
+* Initial release.
