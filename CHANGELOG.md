@@ -1,7 +1,7 @@
 CHANGELOG
 =========
 
-0.3.0 (2013-07-XX)
+0.3.0 (2013-07-12)
 ------------------
 
 * In namespaces and class names, "GeoIP2" was renamed to "GeoIp2" to improve
