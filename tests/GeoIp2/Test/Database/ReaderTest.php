@@ -8,7 +8,7 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
 {
     public function testDefaultLanguage()
     {
-        $reader = new Reader('maxmind-db/test-data/GeoIP2-City.mmdb');
+        $reader = new Reader('maxmind-db/test-data/GeoIP2-City-Test.mmdb');
         $city = $reader->city('81.2.69.160');
         $this->assertEquals('London', $city->city->name);
         $reader->close();
@@ -17,7 +17,7 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
     public function testLanguageList()
     {
         $reader = new Reader(
-            'maxmind-db/test-data/GeoIP2-City.mmdb',
+            'maxmind-db/test-data/GeoIP2-City-Test.mmdb',
             array('xx', 'ru', 'pt-BR', 'es', 'en')
         );
         $omni = $reader->omni('81.2.69.160');
@@ -27,7 +27,7 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
 
     public function testHasIpAddress()
     {
-        $reader = new Reader('maxmind-db/test-data/GeoIP2-City.mmdb');
+        $reader = new Reader('maxmind-db/test-data/GeoIP2-City-Test.mmdb');
         $cio = $reader->cityIspOrg('81.2.69.160');
         $this->assertEquals('81.2.69.160', $cio->traits->ipAddress);
         $reader->close();
@@ -39,7 +39,7 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
      */
     public function testUnknownAddress()
     {
-        $reader = new Reader('maxmind-db/test-data/GeoIP2-City.mmdb');
+        $reader = new Reader('maxmind-db/test-data/GeoIP2-City-Test.mmdb');
         $reader->city('10.10.10.10');
         $reader->close();
     }
@@ -50,7 +50,7 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
      */
     public function testInvalidAddress()
     {
-        $reader = new Reader('maxmind-db/test-data/GeoIP2-City.mmdb');
+        $reader = new Reader('maxmind-db/test-data/GeoIP2-City-Test.mmdb');
         $reader->city('invalid');
         $reader->close();
     }
