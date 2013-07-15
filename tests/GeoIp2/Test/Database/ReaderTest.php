@@ -43,4 +43,15 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
         $reader->city('10.10.10.10');
         $reader->close();
     }
+
+    /**
+     * @expectedException InvalidArgumentException
+     * @expectedExceptionMessage invalid is not a valid IP address
+     */
+    public function testInvalidAddress()
+    {
+        $reader = new Reader('maxmind-db/test-data/GeoIP2-City.mmdb');
+        $reader->city('invalid');
+        $reader->close();
+    }
 }
