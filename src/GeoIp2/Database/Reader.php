@@ -7,6 +7,7 @@ use GeoIp2\Model\City;
 use GeoIp2\Model\CityIspOrg;
 use GeoIp2\Model\Country;
 use GeoIp2\Model\Omni;
+use MaxMind\Db\Reader as DbReader;
 
 /**
  * Instances of this class provide a reader for the GeoIP2 database format.
@@ -53,7 +54,7 @@ class Reader
         $filename,
         $languages = array('en')
     ) {
-        $this->dbReader = new MaxMind\Db\Reader($filename);
+        $this->dbReader = new DbReader($filename);
         $this->languages = $languages;
     }
 
@@ -71,7 +72,7 @@ class Reader
      */
     public function city($ipAddress)
     {
-        return $this->responseFor('City', $ipAddress);
+        return $this->modelFor('City', $ipAddress);
     }
 
     /**
@@ -88,7 +89,7 @@ class Reader
      */
     public function country($ipAddress)
     {
-        return $this->responseFor('Country', $ipAddress);
+        return $this->modelFor('Country', $ipAddress);
     }
 
     /**
@@ -105,7 +106,7 @@ class Reader
      */
     public function cityIspOrg($ipAddress)
     {
-        return $this->responseFor('CityIspOrg', $ipAddress);
+        return $this->modelFor('CityIspOrg', $ipAddress);
     }
 
     /**
@@ -122,19 +123,25 @@ class Reader
      */
     public function omni($ipAddress)
     {
-        return $this->responseFor('Omni', $ipAddress);
+        return $this->modelFor('Omni', $ipAddress);
     }
 
-    private function responseFor($class, $ipAddress)
+    private function modelFor($class, $ipAddress)
     {
         $record = $this->dbReader->get($ipAddress);
         if ($record === null) {
             throw new AddressNotFoundException(
-                "$ipAddress was not found in the database."
+                "The address $ipAddress is not in the database."
             );
         }
+        $record['traits']['ip_address'] = $ipAddress;
         $class = "GeoIp2\\Model\\" . $class;
 
         return new $class($record, $this->languages);
+    }
+
+    public function close()
+    {
+        $this->dbReader->close();
     }
 }
