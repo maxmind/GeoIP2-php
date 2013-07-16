@@ -82,6 +82,54 @@ class ClientTest extends \PHPUnit_Framework_TestCase
                 null,
                 'text/plain'
             ),
+            '1.2.3.13'=> $this->response(
+                'error',
+                404,
+                array(
+                    'code'  => 'IP_ADDRESS_NOT_FOUND',
+                    'error' => 'The address "1.2.3.13" is not in our database.'
+                )
+            ),
+            '1.2.3.14'=> $this->response(
+                'error',
+                400,
+                array(
+                    'code'  => 'IP_ADDRESS_RESERVED',
+                    'error' => 'The address "1.2.3.14" is a private address.'
+                )
+            ),
+            '1.2.3.15'=> $this->response(
+                'error',
+                401,
+                array(
+                    'code'  => 'AUTHORIZATION_INVALID',
+                    'error' => 'A user ID and license key are required to use this service'
+                )
+            ),
+            '1.2.3.16'=> $this->response(
+                'error',
+                401,
+                array(
+                    'code'  => 'LICENSE_KEY_REQUIRED',
+                    'error' => 'A license key is required to use this service'
+                )
+            ),
+            '1.2.3.17'=> $this->response(
+                'error',
+                401,
+                array(
+                    'code'  => 'USER_ID_REQUIRED',
+                    'error' => 'A user ID is required to use this service'
+                )
+            ),
+            '1.2.3.18'=> $this->response(
+                'error',
+                402,
+                array(
+                    'code'  => 'OUT_OF_QUERIES',
+                    'error' => 'The license key you have provided is out of queries.'
+                )
+            ),
         );
         return $responses[$ip];
     }
@@ -207,7 +255,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
 
     /**
-     * @expectedException GeoIp2\Exception\WebServiceException
+     * @expectedException GeoIp2\Exception\InvalidRequestException
      * @expectedExceptionCode 400
      * @expectedExceptionMessage The value "1.2.3" is not a valid ip address
      */
@@ -216,7 +264,6 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $client = $this->client($this->getResponse('1.2.3.6'));
 
         $client->country('1.2.3.6');
-
     }
 
     /**
@@ -293,6 +340,71 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $client->country('1.2.3.12');
     }
 
+    /**
+     * @expectedException GeoIp2\Exception\AddressNotFoundException
+     * @expectedExceptionMessage The address "1.2.3.13" is not in our database.
+     */
+    public function testAddressNotFoundException()
+    {
+        $client = $this->client($this->getResponse('1.2.3.13'));
+
+        $client->country('1.2.3.13');
+    }
+
+    /**
+     * @expectedException GeoIp2\Exception\AddressNotFoundException
+     * @expectedExceptionMessage The address "1.2.3.14" is a private address.
+     */
+    public function testAddressReservedException()
+    {
+        $client = $this->client($this->getResponse('1.2.3.14'));
+
+        $client->country('1.2.3.14');
+    }
+
+    /**
+     * @expectedException GeoIp2\Exception\AuthenticationException
+     * @expectedExceptionMessage A user ID and license key are required to use this service
+     */
+    public function testAuthorizationException()
+    {
+        $client = $this->client($this->getResponse('1.2.3.15'));
+
+        $client->country('1.2.3.15');
+    }
+
+    /**
+     * @expectedException GeoIp2\Exception\AuthenticationException
+     * @expectedExceptionMessage A license key is required to use this service
+     */
+    public function testMissingLicenseKeyException()
+    {
+        $client = $this->client($this->getResponse('1.2.3.16'));
+
+        $client->country('1.2.3.16');
+    }
+
+    /**
+     * @expectedException GeoIp2\Exception\AuthenticationException
+     * @expectedExceptionMessage A user ID is required to use this service
+     */
+    public function testMissingUserIdException()
+    {
+        $client = $this->client($this->getResponse('1.2.3.17'));
+
+        $client->country('1.2.3.17');
+    }
+
+    /**
+     * @expectedException GeoIp2\Exception\OutOfQueriesException
+     * @expectedExceptionMessage The license key you have provided is out of queries.
+     */
+    public function testOutOfQueriesException()
+    {
+        $client = $this->client($this->getResponse('1.2.3.18'));
+
+        $client->country('1.2.3.18');
+    }
     public function testParams()
     {
         $plugin = new MockPlugin();

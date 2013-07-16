@@ -4,7 +4,10 @@ namespace GeoIp2\WebService;
 
 use GeoIp2\Exception\GeoIp2Exception;
 use GeoIp2\Exception\HttpException;
-use GeoIp2\Exception\WebServiceException;
+use GeoIp2\Exception\AddressNotFoundException;
+use GeoIp2\Exception\AuthenticationException;
+use GeoIp2\Exception\InvalidRequestException;
+use GeoIp2\Exception\OutOfQueriesException;
 use GeoIp2\Model\City;
 use GeoIp2\Model\CityIspOrg;
 use GeoIp2\Model\Country;
@@ -273,13 +276,34 @@ class Client
                 $uri
             );
         }
-
-        throw new WebServiceException(
+        $this->handleWebServiceError(
             $body['error'],
             $body['code'],
             $status,
             $uri
         );
+    }
+
+    private function handleWebServiceError($message, $code, $status, $uri)
+    {
+        switch ($code) {
+            case 'IP_ADDRESS_NOT_FOUND':
+            case 'IP_ADDRESS_RESERVED':
+                throw new AddressNotFoundException($message);
+            case 'AUTHORIZATION_INVALID':
+            case 'LICENSE_KEY_REQUIRED':
+            case 'USER_ID_REQUIRED':
+                throw new AuthenticationException($message);
+            case 'OUT_OF_QUERIES':
+                throw new OutOfQueriesException($message);
+            default:
+                throw new InvalidRequestException(
+                    $message,
+                    $code,
+                    $status,
+                    $uri
+                );
+        }
     }
 
     private function handle5xx($response, $uri)
