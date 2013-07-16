@@ -74,7 +74,7 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
     public function checkAllMethods($testCb)
     {
         foreach (array('city', 'cityIspOrg', 'country', 'omni') as $method) {
-            call_user_func_array($testCb, array($method));
+            $testCb($method);
         }
     }
 }
