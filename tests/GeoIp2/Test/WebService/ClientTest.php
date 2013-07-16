@@ -405,6 +405,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
         $client->country('1.2.3.18');
     }
+
     public function testParams()
     {
         $plugin = new MockPlugin();

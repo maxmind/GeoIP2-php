@@ -47,26 +47,6 @@ use Guzzle\Http\Exception\ServerErrorResponseException;
  * service.
  *
  * If the request fails, the client class throws an exception.
- *
- * **Exceptions**
- *
- * For details on the possible errors returned by the web service itself, see
- * {@link http://dev.maxmind.com/geoip2/geoip/web-services the GeoIP2 web
- * service docs}.
- *
- * If the web service returns an explicit error document, this is thrown as a
- * {@link \GeoIp2\Exception\WebServiceException}. If some other sort of
- * transport error occurs, this is thrown as a {@link
- * \GeoIp2\Exception\HttpException}. The difference is that the web service
- * error includes an error message and error code delivered by the web
- * service. The latter is thrown when some sort of unanticipated error occurs,
- * such as the web service returning a 500 or an invalid error document.
- *
- * If the web service returns any status code besides 200, 4xx, or 5xx, this
- * also becomes a {@link \GeoIp2\Exception\HttpException}.
- *
- * Finally, if the web service returns a 200 but the body is invalid, the
- * client throws a {@link \GeoIp2\Exception\GeoIp2Exception}.
  */
 class Client
 {
@@ -111,12 +91,23 @@ class Client
      *
      * @return \GeoIp2\Model\City
      *
-     * @throws \GeoIp2\Exception\GeoIp2Exception if there was a generic
-     * error processing your request.
-     * @throws \GeoIp2\Exception\HttpException if there was an HTTP transport
-     * error.
-     * @throws \GeoIp2\Exception\WebServiceException if an error was returned
-     * by MaxMind's GeoIP2 web service.
+     * @throws \GeoIp2\Exception\AddressNotFoundException if the address you
+     *   provided is not in our database (e.g., a private address).
+     * @throws \GeoIp2\Exception\AuthenticationException if there is a problem
+     *   with the user ID or license key that you provided.
+     * @throws \GeoIp2\Exception\QutOfQueriesException if your account is out
+     *   of queries.
+     * @throws \GeoIp2\Exception\InvalidRequestException} if your request was
+     *   received by the web service but is invalid for some other reason.
+     *   This may indicate an issue with this API. Please report the error to
+     *   MaxMind.
+     * @throws \GeoIp2\Exception\HttpException if an unexpected HTTP error
+     *   code or message was returned. This could indicate a problem with the
+     *   connection between your server and the web service or that the web
+     *   service returned an invalid document or 500 error code.
+     * @throws \GeoIp2\Exception\GeoIp2Exception This serves as the parent
+     *   class to the above exceptions. It will be thrown directly if a 200
+     *   status code is returned but the body is invalid.
      */
     public function city($ipAddress = 'me')
     {
@@ -132,12 +123,23 @@ class Client
      *
      * @return \GeoIp2\Model\Country
      *
-     * @throws \GeoIp2\Exception\GeoIp2Exception if there was a generic
-     * error processing your request.
-     * @throws \GeoIp2\Exception\HttpException if there was an HTTP transport
-     * error.
-     * @throws \GeoIp2\Exception\WebServiceException if an error was returned
-     * by MaxMind's GeoIP2 web service.
+     * @throws \GeoIp2\Exception\AddressNotFoundException if the address you
+     *   provided is not in our database (e.g., a private address).
+     * @throws \GeoIp2\Exception\AuthenticationException if there is a problem
+     *   with the user ID or license key that you provided.
+     * @throws \GeoIp2\Exception\QutOfQueriesException if your account is out
+     *   of queries.
+     * @throws \GeoIp2\Exception\InvalidRequestException} if your request was
+     *   received by the web service but is invalid for some other reason.
+     *   This may indicate an issue with this API. Please report the error to
+     *   MaxMind.
+     * @throws \GeoIp2\Exception\HttpException if an unexpected HTTP error
+     *   code or message was returned. This could indicate a problem with the
+     *   connection between your server and the web service or that the web
+     *   service returned an invalid document or 500 error code.
+     * @throws \GeoIp2\Exception\GeoIp2Exception This serves as the parent
+     *   class to the above exceptions. It will be thrown directly if a 200
+     *   status code is returned but the body is invalid.
      */
     public function country($ipAddress = 'me')
     {
@@ -153,12 +155,23 @@ class Client
      *
      * @return \GeoIp2\Model\CityIspOrg
      *
-     * @throws \GeoIp2\Exception\GeoIp2Exception if there was a generic
-     * error processing your request.
-     * @throws \GeoIp2\Exception\HttpException if there was an HTTP transport
-     * error.
-     * @throws \GeoIp2\Exception\WebServiceException if an error was returned
-     * by MaxMind's GeoIP2 web service.
+     * @throws \GeoIp2\Exception\AddressNotFoundException if the address you
+     *   provided is not in our database (e.g., a private address).
+     * @throws \GeoIp2\Exception\AuthenticationException if there is a problem
+     *   with the user ID or license key that you provided.
+     * @throws \GeoIp2\Exception\QutOfQueriesException if your account is out
+     *   of queries.
+     * @throws \GeoIp2\Exception\InvalidRequestException} if your request was
+     *   received by the web service but is invalid for some other reason.
+     *   This may indicate an issue with this API. Please report the error to
+     *   MaxMind.
+     * @throws \GeoIp2\Exception\HttpException if an unexpected HTTP error
+     *   code or message was returned. This could indicate a problem with the
+     *   connection between your server and the web service or that the web
+     *   service returned an invalid document or 500 error code.
+     * @throws \GeoIp2\Exception\GeoIp2Exception This serves as the parent
+     *   class to the above exceptions. It will be thrown directly if a 200
+     *   status code is returned but the body is invalid.
      */
     public function cityIspOrg($ipAddress = 'me')
     {
@@ -174,12 +187,23 @@ class Client
      *
      * @return \GeoIp2\Model\Omni
      *
-     * @throws \GeoIp2\Exception\GeoIp2Exception if there was a generic
-     * error processing your request.
-     * @throws \GeoIp2\Exception\HttpException if there was an HTTP transport
-     * error.
-     * @throws \GeoIp2\Exception\WebServiceException if an error was returned
-     * by MaxMind's GeoIP2 web service.
+     * @throws \GeoIp2\Exception\AddressNotFoundException if the address you
+     *   provided is not in our database (e.g., a private address).
+     * @throws \GeoIp2\Exception\AuthenticationException if there is a problem
+     *   with the user ID or license key that you provided.
+     * @throws \GeoIp2\Exception\QutOfQueriesException if your account is out
+     *   of queries.
+     * @throws \GeoIp2\Exception\InvalidRequestException} if your request was
+     *   received by the web service but is invalid for some other reason.
+     *   This may indicate an issue with this API. Please report the error to
+     *   MaxMind.
+     * @throws \GeoIp2\Exception\HttpException if an unexpected HTTP error
+     *   code or message was returned. This could indicate a problem with the
+     *   connection between your server and the web service or that the web
+     *   service returned an invalid document or 500 error code.
+     * @throws \GeoIp2\Exception\GeoIp2Exception This serves as the parent
+     *   class to the above exceptions. It will be thrown directly if a 200
+     *   status code is returned but the body is invalid.
      */
     public function omni($ipAddress = 'me')
     {
@@ -194,11 +218,8 @@ class Client
             $this->guzzleClient : new GuzzleClient();
         $request = $client->get($uri, array('Accept' => 'application/json'));
         $request->setAuth($this->userId, $this->licenseKey);
-        $ua = $request->getHeader('User-Agent');
-        $ua = "GeoIP2 PHP API ($ua)";
-        $request->setHeader('User-Agent', $ua);
+        $this->setUserAgent($request);
 
-        $response = null;
         try {
             $response = $request->send();
         } catch (ClientErrorResponseException $e) {
@@ -327,6 +348,13 @@ class Client
             $status,
             $uri
         );
+    }
+
+    private function setUserAgent($request)
+    {
+        $userAgent = $request->getHeader('User-Agent');
+        $userAgent = "GeoIP2 PHP API ($userAgent)";
+        $request->setHeader('User-Agent', $userAgent);
     }
 
     private function baseUri()
