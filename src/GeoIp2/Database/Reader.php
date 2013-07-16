@@ -140,6 +140,9 @@ class Reader
         return new $class($record, $this->languages);
     }
 
+    /**
+     * Closes the GeoIP2 database and returns the resources to the system.
+     */
     public function close()
     {
         $this->dbReader->close();
