@@ -2,7 +2,7 @@
 layout: default
 title: MaxMind GeoIP2 PHP API
 language: php
-version: v0.3.0
+version: v0.4.0
 ---
 
 # GeoIP2 PHP API #
@@ -20,27 +20,22 @@ To provide feedback or get support during the beta, please see the
 
 ## Description ##
 
-Currently, this distribution provides an API for the [GeoIP2 web services]
-(http://dev.maxmind.com/geoip/geoip2/web-services).
-
-In the future, this distribution will also provide the same API for the
-GeoIP2 downloadable databases. These databases have not yet been
-released as a downloadable product.
-
-See ``GeoIp2\WebService\Client`` for details on the web service client
-API.
+This distribution provides an API for the [GeoIP2 web services]
+(http://dev.maxmind.com/geoip/geoip2/web-services) and the [GeoLite2
+databases](http://dev.maxmind.com/geoip/geoip2/geolite2/). The commercial
+GeoIP2 databases have not yet been released as a downloadable product.
 
 ## Installation ##
 
 ### Define Your Dependencies ###
 
 We recommend installing this package with [Composer](http://getcomposer.org/).
-To do this, add ```geoip2/geoip2``` to your ```composer.json``` file.
+To do this, add `geoip2/geoip2` to your `composer.json` file.
 
 ```json
 {
     "require": {
-        "geoip2/geoip2": "0.3.*"
+        "geoip2/geoip2": "0.4.*"
     }
 }
 ```
@@ -67,11 +62,43 @@ You can autoload all dependencies by adding this to your code:
 ```
 require 'vendor/autoload.php';
 ```
+## Database Reader ##
 
-## Usage ##
+### Usage ###
 
-To use this API, you must create a new ``\GeoIp2\WebService\Client``
-object with your ``$userId`` and ``$licenseKey``, then you call the method
+To use this API, you must create a new `\GeoIp2\Database\Reader` object with
+the path to the database file as the first argument to the constructor. You
+may then call the method corresponding to the database you are using.
+
+If the lookup succeeds, the method call will return a model class for the
+record in the database. This model in turn contains multiple container
+classes for the different parts of the data such as the city in which the
+IP address is located.
+
+If the record is not found, a `\GeoIp2\Exception\AddressNotFoundException`
+is returned. If the database is invalid or corrupt, a
+`\MaxMind\Db\InvalidDatabaseException` will be thrown.
+
+See the API documentation for more details.
+
+### Example ###
+
+```php
+<?php
+require_once 'vendor/autoload.php';
+use \GeoIp2\Database\Reader;
+
+$reader = new Reader('/usr/local/share/GeoIP2/GeoIP2-City.mmdb');
+$record = $reader->city('24.24.24.24');
+print($record->country->isoCode);
+```
+
+## Web Service Client ##
+
+### Usage ###
+
+To use this API, you must create a new `\GeoIp2\WebService\Client`
+object with your `$userId` and `$licenseKey`, then you call the method
 corresponding to a specific end point, passing it the IP address you want to
 look up.
 
@@ -79,9 +106,11 @@ If the request succeeds, the method call will return a model class for the end
 point you called. This model in turn contains multiple record classes, each of
 which represents part of the data returned by the web service.
 
+If there is an error, a structured exception is thrown.
+
 See the API documentation for more details.
 
-## Example ##
+### Example ###
 
 ```php
 <?php
@@ -90,30 +119,10 @@ use \GeoIp2\WebService\Client;
 
 $client = new Client(42, 'abcdef123456');
 $omni = $client->omni('24.24.24.24');
-echo $omni->country->isoCode;
+print($omni->country->isoCode);
 ```
 
-## Exceptions ##
-
-For details on the possible errors returned by the web service itself, see
-the
-[GeoIP2 web service docs](http://dev.maxmind.com/geoip2/geoip/web-service).
-
-If the web service returns an explicit error document, this is thrown as a
-```\GeoIp2\Exception\WebServiceException```. If some other sort of transport
-error occurs, this is thrown as a ```\GeoIp2\Exception\HttpException```.
-The difference is that the web service error includes an error message and
-error code delivered by the web service. The latter is thrown when some sort
-of unanticipated error occurs, such as the web service returning a 500 or an
-invalid error document.
-
-If the web service returns any status code besides 200, 4xx, or 5xx, this also
-becomes a ```\GeoIp2\Exception\HttpException```.
-
-Finally, if the web service returns a 200 but the body is invalid, the client
-throws a ```\GeoIp2\Exception\GeoIp2Exception```.
-
-## What data is returned? ##
+### What data is returned? ###
 
 While many of the end points return the same basic records, the attributes
 which can be populated vary between end points. In addition, while an end
@@ -127,8 +136,8 @@ See the
 [GeoIP2 web service docs](http://dev.maxmind.com/geoip/geoip2/web-services)
 for details on what data each end point may return.
 
-The only piece of data which is always returned is the ```ipAddress```
-attribute in the ``GeoIp2\Record\Traits`` record.
+The only piece of data which is always returned is the `ipAddress`
+attribute in the `GeoIp2\Record\Traits` record.
 
 Every record class attribute has a corresponding predicate method so you can
 check to see if the attribute is set.
@@ -138,10 +147,10 @@ check to see if the attribute is set.
 [GeoNames](http://www.geonames.org/) offers web services and downloadable
 databases with data on geographical features around the world, including
 populated places. They offer both free and paid premium data. Each
-feature is unique identified by a ```geonameId```, which is an integer.
+feature is unique identified by a `geonameId`, which is an integer.
 
 Many of the records returned by the GeoIP2 web services and databases
-include a ```geonameId``` property. This is the ID of a geographical feature
+include a `geonameId` property. This is the ID of a geographical feature
 (city, region, country, etc.) in the GeoNames database.
 
 Some of the data that MaxMind provides is also sourced from GeoNames. We
