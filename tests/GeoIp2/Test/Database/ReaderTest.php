@@ -9,10 +9,12 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
     public function testDefaultLanguage()
     {
         $reader = new Reader('maxmind-db/test-data/GeoIP2-City-Test.mmdb');
+        // Needed for PHP 5.3
+        $that = $this;
         $this->checkAllMethods(
-            function ($method) use (&$reader) {
+            function ($method) use (&$that, &$reader) {
                 $record = $reader->$method('81.2.69.160');
-                $this->assertEquals('United Kingdom', $record->country->name);
+                $that->assertEquals('United Kingdom', $record->country->name);
             }
         );
         $reader->close();
@@ -24,10 +26,11 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
             'maxmind-db/test-data/GeoIP2-City-Test.mmdb',
             array('xx', 'ru', 'pt-BR', 'es', 'en')
         );
+        $that = $this;
         $this->checkAllMethods(
-            function ($method) use (&$reader) {
+            function ($method) use (&$that, &$reader) {
                 $record = $reader->$method('81.2.69.160');
-                $this->assertEquals('Великобритания', $record->country->name);
+                $that->assertEquals('Великобритания', $record->country->name);
             }
         );
         $reader->close();
@@ -36,10 +39,11 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
     public function testHasIpAddress()
     {
         $reader = new Reader('maxmind-db/test-data/GeoIP2-City-Test.mmdb');
+        $that = $this;
         $this->checkAllMethods(
-            function ($method) use (&$reader) {
+            function ($method) use (&$that, &$reader) {
                 $record = $reader->$method('81.2.69.160');
-                $this->assertEquals('81.2.69.160', $record->traits->ipAddress);
+                $that->assertEquals('81.2.69.160', $record->traits->ipAddress);
             }
         );
         $reader->close();
