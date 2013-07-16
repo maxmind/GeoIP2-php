@@ -9,8 +9,12 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
     public function testDefaultLanguage()
     {
         $reader = new Reader('maxmind-db/test-data/GeoIP2-City-Test.mmdb');
-        $city = $reader->city('81.2.69.160');
-        $this->assertEquals('London', $city->city->name);
+        $this->checkAllMethods(
+            function ($method) use (&$reader) {
+                $record = $reader->$method('81.2.69.160');
+                $this->assertEquals('United Kingdom', $record->country->name);
+            }
+        );
         $reader->close();
     }
 
@@ -20,16 +24,24 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
             'maxmind-db/test-data/GeoIP2-City-Test.mmdb',
             array('xx', 'ru', 'pt-BR', 'es', 'en')
         );
-        $omni = $reader->omni('81.2.69.160');
-        $this->assertEquals('Лондон', $omni->city->name);
+        $this->checkAllMethods(
+            function ($method) use (&$reader) {
+                $record = $reader->$method('81.2.69.160');
+                $this->assertEquals('Великобритания', $record->country->name);
+            }
+        );
         $reader->close();
     }
 
     public function testHasIpAddress()
     {
         $reader = new Reader('maxmind-db/test-data/GeoIP2-City-Test.mmdb');
-        $cio = $reader->cityIspOrg('81.2.69.160');
-        $this->assertEquals('81.2.69.160', $cio->traits->ipAddress);
+        $this->checkAllMethods(
+            function ($method) use (&$reader) {
+                $record = $reader->$method('81.2.69.160');
+                $this->assertEquals('81.2.69.160', $record->traits->ipAddress);
+            }
+        );
         $reader->close();
     }
 
@@ -53,5 +65,12 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
         $reader = new Reader('maxmind-db/test-data/GeoIP2-City-Test.mmdb');
         $reader->city('invalid');
         $reader->close();
+    }
+
+    public function checkAllMethods($testCb)
+    {
+        foreach (array('city', 'cityIspOrg', 'country', 'omni') as $method) {
+            call_user_func_array($testCb, array($method));
+        }
     }
 }
