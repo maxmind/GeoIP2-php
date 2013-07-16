@@ -1,6 +1,14 @@
 CHANGELOG
 =========
 
+0.4.0 (2013-07-16)
+------------------
+
+* This is the first release with the GeoIP2 database reader. Please see the
+  `README.md` file and the `\GeoIp2\Database\Reader` class.
+* The general exception classes were replaced with specific exception classes
+  representing particular types of errors, such as an authentication error.
+
 0.3.0 (2013-07-12)
 ------------------
 

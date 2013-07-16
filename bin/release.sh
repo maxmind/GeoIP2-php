@@ -58,6 +58,6 @@ git push git@github.com:maxmind/GeoIP2-php.git
 git push
 
 cd ..
-git tag $TAG
+git tag -a $TAG
 git push
 git push --tags
