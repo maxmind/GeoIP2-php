@@ -81,9 +81,23 @@ See the API documentation for more details.
 require_once 'vendor/autoload.php';
 use \GeoIp2\Database\Reader;
 
-$reader = new Reader('/usr/local/share/GeoIP2/GeoIP2-City.mmdb');
-$record = $reader->city('24.24.24.24');
-print($record->country->isoCode);
+$reader = new Reader('/usr/local/share/GeoIP/GeoIP2-City.mmdb');
+$record = $reader->city('128.101.101.101');
+
+print($record->country->isoCode . "\n"); // 'US'
+print($record->country->name . "\n"); // 'United States'
+print($record->country->names['zh-CN'] . "\n"); // '美国'
+
+print($record->mostSpecificSubdivision->name . "\n"); // 'Minnesota'
+print($record->mostSpecificSubdivision->isoCode . "\n"); // 'MN'
+
+print($record->city->name . "\n"); // 'Minneapolis'
+
+print($record->postal->code . "\n"); // '55455'
+
+print($record->location->latitude . "\n"); // 44.9733
+print($record->location->longitude . "\n"); // -93.2323
+
 ```
 
 ## Web Service Client ##
@@ -111,8 +125,22 @@ require_once 'vendor/autoload.php';
 use \GeoIp2\WebService\Client;
 
 $client = new Client(42, 'abcdef123456');
-$omni = $client->omni('24.24.24.24');
-print($omni->country->isoCode);
+$record = $client->city('128.101.101.101');
+
+print($record->country->isoCode . "\n"); // 'US'
+print($record->country->name . "\n"); // 'United States'
+print($record->country->names['zh-CN'] . "\n"); // '美国'
+
+print($record->mostSpecificSubdivision->name . "\n"); // 'Minnesota'
+print($record->mostSpecificSubdivision->isoCode . "\n"); // 'MN'
+
+print($record->city->name . "\n"); // 'Minneapolis'
+
+print($record->postal->code . "\n"); // '55455'
+
+print($record->location->latitude . "\n"); // 44.9733
+print($record->location->longitude . "\n"); // -93.2323
+
 ```
 
 ### What data is returned? ###
