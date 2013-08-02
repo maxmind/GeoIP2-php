@@ -47,6 +47,8 @@ class Reader
      * Constructor.
      *
      * @param string $filename The path to the GeoIP2 database file.
+     * @param array  $languages  List of language codes to use in name property
+     * from most preferred to least preferred.
      * @throws \MaxMind\Db\Reader\InvalidDatabaseException if the database
      *          is corrupt or invalid
      */
