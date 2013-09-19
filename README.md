@@ -81,7 +81,12 @@ See the API documentation for more details.
 require_once 'vendor/autoload.php';
 use \GeoIp2\Database\Reader;
 
+// This creates the Reader object, which should be reused across
+// lookups.
 $reader = new Reader('/usr/local/share/GeoIP/GeoIP2-City.mmdb');
+
+// Replace "city" with the appropriate method for your database, e.g.,
+// "country".
 $record = $reader->city('128.101.101.101');
 
 print($record->country->isoCode . "\n"); // 'US'
@@ -124,7 +129,11 @@ See the API documentation for more details.
 require_once 'vendor/autoload.php';
 use \GeoIp2\WebService\Client;
 
+// This creates a Client object that can be reused across requests.
 $client = new Client(42, 'abcdef123456');
+
+// Replace "city" with the method corresponding to the web service that
+// you are using, e.g., "country", "cityIspOrg", "omni".
 $record = $client->city('128.101.101.101');
 
 print($record->country->isoCode . "\n"); // 'US'
