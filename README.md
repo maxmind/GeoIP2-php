@@ -130,6 +130,8 @@ require_once 'vendor/autoload.php';
 use \GeoIp2\WebService\Client;
 
 // This creates a Client object that can be reused across requests.
+// Replace "42" with your user ID and "license_key" with your license
+// key.
 $client = new Client(42, 'abcdef123456');
 
 // Replace "city" with the method corresponding to the web service that
