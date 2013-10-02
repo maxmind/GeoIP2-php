@@ -12,6 +12,7 @@ use GeoIp2\Model\City;
 use GeoIp2\Model\CityIspOrg;
 use GeoIp2\Model\Country;
 use GeoIp2\Model\Omni;
+use GeoIp2\ProviderInterface;
 use Guzzle\Http\Client as GuzzleClient;
 use Guzzle\Common\Exception\RuntimeException;
 use Guzzle\Http\Exception\ClientErrorResponseException;
@@ -48,7 +49,7 @@ use Guzzle\Http\Exception\ServerErrorResponseException;
  *
  * If the request fails, the client class throws an exception.
  */
-class Client
+class Client implements ProviderInterface
 {
     private $userId;
     private $licenseKey;
