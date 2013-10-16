@@ -96,7 +96,7 @@ class Client implements ProviderInterface
      *   provided is not in our database (e.g., a private address).
      * @throws \GeoIp2\Exception\AuthenticationException if there is a problem
      *   with the user ID or license key that you provided.
-     * @throws \GeoIp2\Exception\QutOfQueriesException if your account is out
+     * @throws \GeoIp2\Exception\OutOfQueriesException if your account is out
      *   of queries.
      * @throws \GeoIp2\Exception\InvalidRequestException} if your request was
      *   received by the web service but is invalid for some other reason.
@@ -128,7 +128,7 @@ class Client implements ProviderInterface
      *   provided is not in our database (e.g., a private address).
      * @throws \GeoIp2\Exception\AuthenticationException if there is a problem
      *   with the user ID or license key that you provided.
-     * @throws \GeoIp2\Exception\QutOfQueriesException if your account is out
+     * @throws \GeoIp2\Exception\OutOfQueriesException if your account is out
      *   of queries.
      * @throws \GeoIp2\Exception\InvalidRequestException} if your request was
      *   received by the web service but is invalid for some other reason.
@@ -160,7 +160,7 @@ class Client implements ProviderInterface
      *   provided is not in our database (e.g., a private address).
      * @throws \GeoIp2\Exception\AuthenticationException if there is a problem
      *   with the user ID or license key that you provided.
-     * @throws \GeoIp2\Exception\QutOfQueriesException if your account is out
+     * @throws \GeoIp2\Exception\OutOfQueriesException if your account is out
      *   of queries.
      * @throws \GeoIp2\Exception\InvalidRequestException} if your request was
      *   received by the web service but is invalid for some other reason.
@@ -192,7 +192,7 @@ class Client implements ProviderInterface
      *   provided is not in our database (e.g., a private address).
      * @throws \GeoIp2\Exception\AuthenticationException if there is a problem
      *   with the user ID or license key that you provided.
-     * @throws \GeoIp2\Exception\QutOfQueriesException if your account is out
+     * @throws \GeoIp2\Exception\OutOfQueriesException if your account is out
      *   of queries.
      * @throws \GeoIp2\Exception\InvalidRequestException} if your request was
      *   received by the web service but is invalid for some other reason.
