@@ -3,10 +3,6 @@
 namespace GeoIp2\Database;
 
 use GeoIp2\Exception\AddressNotFoundException;
-use GeoIp2\Model\City;
-use GeoIp2\Model\CityIspOrg;
-use GeoIp2\Model\Country;
-use GeoIp2\Model\Omni;
 use GeoIp2\ProviderInterface;
 use MaxMind\Db\Reader as DbReader;
 
