@@ -79,7 +79,7 @@ See the API documentation for more details.
 ```php
 <?php
 require_once 'vendor/autoload.php';
-use \GeoIp2\Database\Reader;
+use GeoIp2\Database\Reader;
 
 // This creates the Reader object, which should be reused across
 // lookups.
@@ -127,7 +127,7 @@ See the API documentation for more details.
 ```php
 <?php
 require_once 'vendor/autoload.php';
-use \GeoIp2\WebService\Client;
+use GeoIp2\WebService\Client;
 
 // This creates a Client object that can be reused across requests.
 // Replace "42" with your user ID and "license_key" with your license
