@@ -450,7 +450,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     }
 
 
-    private function client($response, $languages = array('en'))
+    private function client($response, $locales = array('en'))
     {
         $plugin = new MockPlugin();
         $plugin->addResponse($response);
@@ -460,7 +460,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $client = new Client(
             42,
             'abcdef123456',
-            $languages,
+            $locales,
             'geoip.maxmind.com',
             $guzzleClient
         );

@@ -14,7 +14,7 @@ namespace GeoIp2\Record;
  * is returned by all end points.
  *
  * @property string $name Returns the name of the continent based on the
- * languages list passed to the constructor. This attribute is returned by
+ * locales list passed to the constructor. This attribute is returned by
  * all end points.
  *
  * @property array $names An array map where the keys are locale codes

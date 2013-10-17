@@ -49,7 +49,7 @@ class Client implements ProviderInterface
 {
     private $userId;
     private $licenseKey;
-    private $languages;
+    private $locales;
     private $host;
     private $guzzleClient;
 
@@ -58,7 +58,7 @@ class Client implements ProviderInterface
      *
      * @param int    $userId     Your MaxMind user ID
      * @param string $licenseKey Your MaxMind license key
-     * @param array  $languages  List of locale codes to use in name property
+     * @param array  $locales  List of locale codes to use in name property
      * from most preferred to least preferred.
      * @param string $host Optional host parameter
      * @param object $guzzleClient Optional Guzzle client to use (to facilitate
@@ -67,13 +67,13 @@ class Client implements ProviderInterface
     public function __construct(
         $userId,
         $licenseKey,
-        $languages = array('en'),
+        $locales = array('en'),
         $host = 'geoip.maxmind.com',
         $guzzleClient = null
     ) {
         $this->userId = $userId;
         $this->licenseKey = $licenseKey;
-        $this->languages = $languages;
+        $this->locales = $locales;
         $this->host = $host;
         // To enable unit testing
         $this->guzzleClient = $guzzleClient;
@@ -228,7 +228,7 @@ class Client implements ProviderInterface
         if ($response && $response->isSuccessful()) {
             $body = $this->handleSuccess($response, $uri);
             $class = "GeoIp2\\Model\\" . $class;
-            return new $class($body, $this->languages);
+            return new $class($body, $this->locales);
         } else {
             $this->handleNon200($response, $uri);
         }

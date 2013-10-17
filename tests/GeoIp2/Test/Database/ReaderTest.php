@@ -6,7 +6,7 @@ use GeoIp2\Database\Reader;
 
 class ReaderTest extends \PHPUnit_Framework_TestCase
 {
-    public function testDefaultLanguage()
+    public function testDefaultLocale()
     {
         $reader = new Reader('maxmind-db/test-data/GeoIP2-City-Test.mmdb');
         // Needed for PHP 5.3
@@ -20,7 +20,7 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
         $reader->close();
     }
 
-    public function testLanguageList()
+    public function testLocaleList()
     {
         $reader = new Reader(
             'maxmind-db/test-data/GeoIP2-City-Test.mmdb',

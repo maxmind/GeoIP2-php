@@ -18,7 +18,7 @@ namespace GeoIp2\Record;
  * two-character ISO 3166-1 alpha code} for the country. This attribute is
  * returned by all end points.
  *
- * @property string $name The name of the country based on the languages list
+ * @property string $name The name of the country based on the locales list
  * passed to the constructor. This attribute is returned by all end points.
  *
  * @property array $names An array map where the keys are locale codes and

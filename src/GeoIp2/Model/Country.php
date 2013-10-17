@@ -37,7 +37,7 @@ class Country
 {
     private $continent;
     private $country;
-    private $languages;
+    private $locales;
     private $maxmind;
     private $registeredCountry;
     private $representedCountry;
@@ -47,30 +47,30 @@ class Country
     /**
      * @ignore
      */
-    public function __construct($raw, $languages)
+    public function __construct($raw, $locales)
     {
         $this->raw = $raw;
 
         $this->continent = new \GeoIp2\Record\Continent(
             $this->get('continent'),
-            $languages
+            $locales
         );
         $this->country = new \GeoIp2\Record\Country(
             $this->get('country'),
-            $languages
+            $locales
         );
         $this->maxmind = new \GeoIp2\Record\MaxMind($this->get('maxmind'));
         $this->registeredCountry = new \GeoIp2\Record\Country(
             $this->get('registered_country'),
-            $languages
+            $locales
         );
         $this->representedCountry = new \GeoIp2\Record\RepresentedCountry(
             $this->get('represented_country'),
-            $languages
+            $locales
         );
         $this->traits = new \GeoIp2\Record\Traits($this->get('traits'));
 
-        $this->languages = $languages;
+        $this->locales = $locales;
     }
 
     /**

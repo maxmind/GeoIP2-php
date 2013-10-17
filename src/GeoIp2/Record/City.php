@@ -14,7 +14,7 @@ namespace GeoIp2\Record;
  * @property int $geonameId The GeoName ID for the city. This attribute
  * is returned by all end points.
  *
- * @property string $name The name of the city based on the languages list
+ * @property string $name The name of the city based on the locales list
  * passed to the constructor. This attribute is returned by all end points.
  *
  * @property array $names A array map where the keys are locale codes

@@ -20,7 +20,7 @@ namespace GeoIp2\Record;
  * http://en.wikipedia.org/wiki/ISO_3166-2 ISO 3166-2 code}. This attribute
  * is returned by all end points except Country.
  *
- * @property string $name The name of the subdivision based on the languages
+ * @property string $name The name of the subdivision based on the locales
  * list passed to the constructor. This attribute is returned by all end
  * points except Country.
  *

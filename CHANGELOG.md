@@ -1,6 +1,13 @@
 CHANGELOG
 =========
 
+0.5.0 (2013-10-XX)
+------------------
+
+* Renamed $languages constructor parameters to $locales for both the Client
+  and Reader classes.
+* Documentation and code clean-up (Ben Morel).
+
 0.4.0 (2013-07-16)
 ------------------
 

@@ -74,18 +74,18 @@ class City extends Country
     /**
      * @ignore
      */
-    public function __construct($raw, $languages)
+    public function __construct($raw, $locales)
     {
-        parent::__construct($raw, $languages);
+        parent::__construct($raw, $locales);
 
-        $this->city = new \GeoIp2\Record\City($this->get('city'), $languages);
+        $this->city = new \GeoIp2\Record\City($this->get('city'), $locales);
         $this->location = new \GeoIp2\Record\Location($this->get('location'));
         $this->postal = new \GeoIp2\Record\Postal($this->get('postal'));
 
-        $this->createSubdivisions($raw, $languages);
+        $this->createSubdivisions($raw, $locales);
     }
 
-    private function createSubdivisions($raw, $languages)
+    private function createSubdivisions($raw, $locales)
     {
         if (!isset($raw['subdivisions'])) {
             return;
@@ -94,7 +94,7 @@ class City extends Country
         foreach ($raw['subdivisions'] as $sub) {
             array_push(
                 $this->subdivisions,
-                new \GeoIp2\Record\Subdivision($sub, $languages)
+                new \GeoIp2\Record\Subdivision($sub, $locales)
             );
         }
     }
@@ -114,7 +114,7 @@ class City extends Country
     private function mostSpecificSubdivision()
     {
         return empty($this->subdivisions)?
-            new \GeoIp2\Record\Subdivision(array(), $this->languages):
+            new \GeoIp2\Record\Subdivision(array(), $this->locales):
             end($this->subdivisions);
     }
 }

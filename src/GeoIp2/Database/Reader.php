@@ -38,23 +38,23 @@ use MaxMind\Db\Reader as DbReader;
 class Reader implements ProviderInterface
 {
     private $dbReader;
-    private $languages;
+    private $locales;
 
     /**
      * Constructor.
      *
      * @param string $filename The path to the GeoIP2 database file.
-     * @param array  $languages  List of locale codes to use in name property
+     * @param array  $locales  List of locale codes to use in name property
      * from most preferred to least preferred.
      * @throws \MaxMind\Db\Reader\InvalidDatabaseException if the database
      *          is corrupt or invalid
      */
     public function __construct(
         $filename,
-        $languages = array('en')
+        $locales = array('en')
     ) {
         $this->dbReader = new DbReader($filename);
-        $this->languages = $languages;
+        $this->locales = $locales;
     }
 
     /**
@@ -136,7 +136,7 @@ class Reader implements ProviderInterface
         $record['traits']['ip_address'] = $ipAddress;
         $class = "GeoIp2\\Model\\" . $class;
 
-        return new $class($record, $this->languages);
+        return new $class($record, $this->locales);
     }
 
     /**

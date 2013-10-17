@@ -4,14 +4,14 @@ namespace GeoIp2\Record;
 
 abstract class AbstractPlaceRecord extends AbstractRecord
 {
-    private $languages;
+    private $locales;
 
     /**
      * @ignore
      */
-    public function __construct($record, $languages)
+    public function __construct($record, $locales)
     {
-        $this->languages = $languages;
+        $this->locales = $locales;
         parent::__construct($record);
     }
 
@@ -29,9 +29,9 @@ abstract class AbstractPlaceRecord extends AbstractRecord
 
     private function name()
     {
-        foreach ($this->languages as $language) {
-            if (isset($this->names[$language])) {
-                return $this->names[$language];
+        foreach ($this->locales as $locale) {
+            if (isset($this->names[$locale])) {
+                return $this->names[$locale];
             }
         }
     }
