@@ -17,7 +17,7 @@ namespace GeoIp2\Record;
  * @property string $name The name of the city based on the languages list
  * passed to the constructor. This attribute is returned by all end points.
  *
- * @property array $names A array map where the keys are language codes
+ * @property array $names A array map where the keys are locale codes
  * and the values are names. This attribute is returned by all end points.
  */
 class City extends AbstractPlaceRecord

@@ -24,7 +24,7 @@ namespace GeoIp2\Record;
  * list passed to the constructor. This attribute is returned by all end
  * points except Country.
  *
- * @property array $names An array map where the keys are language codes and
+ * @property array $names An array map where the keys are locale codes and
  * the values are names. This attribute is returned by all end points except
  * Country.
 */

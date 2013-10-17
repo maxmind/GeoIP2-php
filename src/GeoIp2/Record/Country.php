@@ -21,7 +21,7 @@ namespace GeoIp2\Record;
  * @property string $name The name of the country based on the languages list
  * passed to the constructor. This attribute is returned by all end points.
  *
- * @property array $names An array map where the keys are language codes and
+ * @property array $names An array map where the keys are locale codes and
  * the values are names. This attribute is returned by all end points.
  */
 class Country extends AbstractPlaceRecord

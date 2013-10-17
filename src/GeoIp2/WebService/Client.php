@@ -58,7 +58,7 @@ class Client implements ProviderInterface
      *
      * @param int    $userId     Your MaxMind user ID
      * @param string $licenseKey Your MaxMind license key
-     * @param array  $languages  List of language codes to use in name property
+     * @param array  $languages  List of locale codes to use in name property
      * from most preferred to least preferred.
      * @param string $host Optional host parameter
      * @param object $guzzleClient Optional Guzzle client to use (to facilitate
