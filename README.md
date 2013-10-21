@@ -52,6 +52,16 @@ You can autoload all dependencies by adding this to your code:
 ```
 require 'vendor/autoload.php';
 ```
+
+### Optional C Extension ###
+
+The [MaxMind DB API](https://github.com/maxmind/MaxMind-DB-Reader-php)
+includes an optional C extension that you may install to dramatically increase
+the performance of lookups in GeoIP2 or GeoLite2 databases. To install, please
+follow the instructions included with that API.
+
+The extension has no effect on web-service lookups.
+
 ## Database Reader ##
 
 ### Usage ###

@@ -1,12 +1,14 @@
 CHANGELOG
 =========
 
-0.5.0 (2013-10-XX)
+0.5.0 (2013-10-21)
 ------------------
 
 * Renamed $languages constructor parameters to $locales for both the Client
   and Reader classes.
 * Documentation and code clean-up (Ben Morel).
+* Added the interface `GeoIp2\ProviderInterface`, which is implemented by both
+  `\GeoIp2\Database\Reader` and `\GeoIp2\WebService\Client`.
 
 0.4.0 (2013-07-16)
 ------------------
