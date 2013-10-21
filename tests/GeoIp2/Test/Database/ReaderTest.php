@@ -62,7 +62,7 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @expectedException InvalidArgumentException
-     * @expectedExceptionMessage invalid is not a valid IP address
+     * @expectedExceptionMessage is not a valid IP address
      */
     public function testInvalidAddress()
     {
