@@ -2,7 +2,7 @@
 layout: default
 title: MaxMind GeoIP2 PHP API
 language: php
-version: v0.4.0
+version: v0.5.0
 ---
 
 # GeoIP2 PHP API #
@@ -32,7 +32,7 @@ To do this, add `geoip2/geoip2` to your `composer.json` file.
 ```json
 {
     "require": {
-        "geoip2/geoip2": "0.4.*"
+        "geoip2/geoip2": "0.5.*"
     }
 }
 ```
@@ -59,6 +59,16 @@ You can autoload all dependencies by adding this to your code:
 ```
 require 'vendor/autoload.php';
 ```
+
+### Optional C Extension ###
+
+The [MaxMind DB API](https://github.com/maxmind/MaxMind-DB-Reader-php)
+includes an optional C extension that you may install to dramatically increase
+the performance of lookups in GeoIP2 or GeoLite2 databases. To install, please
+follow the instructions included with that API.
+
+The extension has no effect on web-service lookups.
+
 ## Database Reader ##
 
 ### Usage ###
@@ -83,11 +93,30 @@ See the API documentation for more details.
 ```php
 <?php
 require_once 'vendor/autoload.php';
-use \GeoIp2\Database\Reader;
+use GeoIp2\Database\Reader;
 
-$reader = new Reader('/usr/local/share/GeoIP2/GeoIP2-City.mmdb');
-$record = $reader->city('24.24.24.24');
-print($record->country->isoCode);
+// This creates the Reader object, which should be reused across
+// lookups.
+$reader = new Reader('/usr/local/share/GeoIP/GeoIP2-City.mmdb');
+
+// Replace "city" with the appropriate method for your database, e.g.,
+// "country".
+$record = $reader->city('128.101.101.101');
+
+print($record->country->isoCode . "\n"); // 'US'
+print($record->country->name . "\n"); // 'United States'
+print($record->country->names['zh-CN'] . "\n"); // '美国'
+
+print($record->mostSpecificSubdivision->name . "\n"); // 'Minnesota'
+print($record->mostSpecificSubdivision->isoCode . "\n"); // 'MN'
+
+print($record->city->name . "\n"); // 'Minneapolis'
+
+print($record->postal->code . "\n"); // '55455'
+
+print($record->location->latitude . "\n"); // 44.9733
+print($record->location->longitude . "\n"); // -93.2323
+
 ```
 
 ## Web Service Client ##
@@ -112,11 +141,31 @@ See the API documentation for more details.
 ```php
 <?php
 require_once 'vendor/autoload.php';
-use \GeoIp2\WebService\Client;
+use GeoIp2\WebService\Client;
 
+// This creates a Client object that can be reused across requests.
+// Replace "42" with your user ID and "license_key" with your license
+// key.
 $client = new Client(42, 'abcdef123456');
-$omni = $client->omni('24.24.24.24');
-print($omni->country->isoCode);
+
+// Replace "city" with the method corresponding to the web service that
+// you are using, e.g., "country", "cityIspOrg", "omni".
+$record = $client->city('128.101.101.101');
+
+print($record->country->isoCode . "\n"); // 'US'
+print($record->country->name . "\n"); // 'United States'
+print($record->country->names['zh-CN'] . "\n"); // '美国'
+
+print($record->mostSpecificSubdivision->name . "\n"); // 'Minnesota'
+print($record->mostSpecificSubdivision->isoCode . "\n"); // 'MN'
+
+print($record->city->name . "\n"); // 'Minneapolis'
+
+print($record->postal->code . "\n"); // '55455'
+
+print($record->location->latitude . "\n"); // 44.9733
+print($record->location->longitude . "\n"); // -93.2323
+
 ```
 
 ### What data is returned? ###
