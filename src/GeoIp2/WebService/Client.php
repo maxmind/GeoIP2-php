@@ -2,15 +2,15 @@
 
 namespace GeoIp2\WebService;
 
-use GeoIp2\Exception\GeoIp2Exception;
-use GeoIp2\Exception\HttpException;
 use GeoIp2\Exception\AddressNotFoundException;
 use GeoIp2\Exception\AuthenticationException;
+use GeoIp2\Exception\GeoIp2Exception;
+use GeoIp2\Exception\HttpException;
 use GeoIp2\Exception\InvalidRequestException;
 use GeoIp2\Exception\OutOfQueriesException;
 use GeoIp2\ProviderInterface;
-use Guzzle\Http\Client as GuzzleClient;
 use Guzzle\Common\Exception\RuntimeException;
+use Guzzle\Http\Client as GuzzleClient;
 use Guzzle\Http\Exception\ClientErrorResponseException;
 use Guzzle\Http\Exception\ServerErrorResponseException;
 
@@ -56,9 +56,9 @@ class Client implements ProviderInterface
     /**
      * Constructor.
      *
-     * @param int    $userId     Your MaxMind user ID
+     * @param int $userId     Your MaxMind user ID
      * @param string $licenseKey Your MaxMind license key
-     * @param array  $locales  List of locale codes to use in name property
+     * @param array $locales  List of locale codes to use in name property
      * from most preferred to least preferred.
      * @param string $host Optional host parameter
      * @param object $guzzleClient Optional Guzzle client to use (to facilitate
@@ -257,8 +257,6 @@ class Client implements ProviderInterface
     private function handle4xx($response, $uri)
     {
         $status = $response->getStatusCode();
-
-        $body = array();
 
         if ($response->getContentLength() > 0) {
             if (strstr($response->getContentType(), 'json')) {

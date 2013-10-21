@@ -27,7 +27,7 @@ namespace GeoIp2\Record;
  * @property array $names An array map where the keys are locale codes and
  * the values are names. This attribute is returned by all end points except
  * Country.
-*/
+ */
 class Subdivision extends AbstractPlaceRecord
 {
     /**

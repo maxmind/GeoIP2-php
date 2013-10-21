@@ -9,19 +9,19 @@ class CountryTest extends \PHPUnit_Framework_TestCase
 
     private $raw = array(
         'continent' => array(
-            'code'       => 'NA',
+            'code' => 'NA',
             'geoname_id' => 42,
-            'names'      => array( 'en' => 'North America' ),
+            'names' => array('en' => 'North America'),
         ),
         'country' => array(
             'geoname_id' => 1,
-            'iso_code'   => 'US',
-            'names'      => array( 'en' => 'United States of America' ),
+            'iso_code' => 'US',
+            'names' => array('en' => 'United States of America'),
         ),
         'registered_country' => array(
             'geoname_id' => 2,
-            'iso_code'   => 'CA',
-            'names'      => array( 'en' => 'Canada' ),
+            'iso_code' => 'CA',
+            'names' => array('en' => 'Canada'),
         ),
         'traits' => array(
             'ip_address' => '1.2.3.4',
@@ -30,12 +30,12 @@ class CountryTest extends \PHPUnit_Framework_TestCase
 
     private $model;
 
-    public function setUp ()
+    public function setUp()
     {
         $this->model = new Country($this->raw, array('en'));
     }
 
-    public function testObjects ()
+    public function testObjects()
     {
         $this->assertInstanceOf(
             'GeoIp2\Model\Country',
@@ -80,7 +80,7 @@ class CountryTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertEquals(
-            array( 'en' => 'North America' ),
+            array('en' => 'North America'),
             $this->model->continent->names,
             'continent names'
         );
@@ -104,7 +104,7 @@ class CountryTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertEquals(
-            array( 'en' => 'United States of America' ),
+            array('en' => 'United States of America'),
             $this->model->country->names,
             'country name'
         );
@@ -134,7 +134,7 @@ class CountryTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertEquals(
-            array( 'en' => 'Canada' ),
+            array('en' => 'Canada'),
             $this->model->registeredCountry->names,
             'registered_country names'
         );
@@ -145,7 +145,7 @@ class CountryTest extends \PHPUnit_Framework_TestCase
             'registered_country name is Canada'
         );
 
-        foreach (array( 'isAnonymousProxy', 'isSatelliteProvider' ) as $meth) {
+        foreach (array('isAnonymousProxy', 'isSatelliteProvider') as $meth) {
             $this->assertEquals(
                 0,
                 $this->model->traits->$meth,

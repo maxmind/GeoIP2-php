@@ -14,58 +14,58 @@ class OmniTest extends \PHPUnit_Framework_TestCase
             'city' => array(
                 'confidence' => 76,
                 'geoname_id' => 9876,
-                'names'      => array( 'en' => 'Minneapolis' ),
+                'names' => array('en' => 'Minneapolis'),
             ),
             'continent' => array(
-                'code'       => 'NA',
+                'code' => 'NA',
                 'geoname_id' => 42,
-                'names'      => array( 'en' => 'North America' ),
+                'names' => array('en' => 'North America'),
             ),
             'country' => array(
                 'confidence' => 99,
                 'geoname_id' => 1,
-                'iso_code'   => 'US',
-                'names'      => array( 'en' => 'United States of America' ),
+                'iso_code' => 'US',
+                'names' => array('en' => 'United States of America'),
             ),
             'location' => array(
-                'accuracy_radius'   => 1500,
-                'latitude'          => 44.98,
-                'longitude'         => 93.2636,
-                'metro_code'        => 765,
-                'postal_code'       => '55401',
+                'accuracy_radius' => 1500,
+                'latitude' => 44.98,
+                'longitude' => 93.2636,
+                'metro_code' => 765,
+                'postal_code' => '55401',
                 'postal_confidence' => 33,
-                'time_zone'         => 'America/Chicago',
+                'time_zone' => 'America/Chicago',
             ),
             'maxmind' => array(
                 'queries_remaining' => 22,
             ),
             'registered_country' => array(
                 'geoname_id' => 2,
-                'iso_code'   => 'CA',
-                'names'      => array( 'en' => 'Canada' ),
+                'iso_code' => 'CA',
+                'names' => array('en' => 'Canada'),
             ),
             'represented_country' => array(
                 'geoname_id' => 3,
-                'iso_code'   => 'GB',
-                'names'      => array( 'en' => 'United Kingdom' ),
+                'iso_code' => 'GB',
+                'names' => array('en' => 'United Kingdom'),
             ),
             'subdivisions' => array(
                 array(
                     'confidence' => 88,
                     'geoname_id' => 574635,
-                    'iso_code'   => 'MN',
-                    'names'      => array( 'en' => 'Minnesota' ),
+                    'iso_code' => 'MN',
+                    'names' => array('en' => 'Minnesota'),
                 )
             ),
             'traits' => array(
-                'autonomous_system_number'       => 1234,
+                'autonomous_system_number' => 1234,
                 'autonomous_system_organization' => 'AS Organization',
-                'domain'                         => 'example.com',
-                'ip_address'                     => '1.2.3.4',
-                'is_satellite_provider'          => 1,
-                'isp'                            => 'Comcast',
-                'organization'                   => 'Blorg',
-                'user_type'                      => 'college',
+                'domain' => 'example.com',
+                'ip_address' => '1.2.3.4',
+                'is_satellite_provider' => 1,
+                'isp' => 'Comcast',
+                'organization' => 'Blorg',
+                'user_type' => 'college',
             ),
         );
 
@@ -145,7 +145,7 @@ class OmniTest extends \PHPUnit_Framework_TestCase
 
     public function testEmptyObjects()
     {
-        $raw = array( 'traits' => array( 'ip_address' => '5.6.7.8' ) );
+        $raw = array('traits' => array('ip_address' => '5.6.7.8'));
 
         $model = new Omni($raw, array('en'));
 
@@ -220,14 +220,14 @@ class OmniTest extends \PHPUnit_Framework_TestCase
     public function testUnknown()
     {
         $raw = array(
-            'new_top_level' => array( 'foo' => 42 ),
-            'city'          => array(
+            'new_top_level' => array('foo' => 42),
+            'city' => array(
                 'confidence' => 76,
-            'geoname_id_id' => 9876,
-                'names'      => array( 'en' => 'Minneapolis' ),
+                'geoname_id_id' => 9876,
+                'names' => array('en' => 'Minneapolis'),
                 'population' => 50,
             ),
-            'traits' => array( 'ip_address' => '5.6.7.8' )
+            'traits' => array('ip_address' => '5.6.7.8')
         );
 
         // checking whether there are exceptions with unknown keys

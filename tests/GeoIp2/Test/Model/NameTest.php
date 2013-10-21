@@ -7,31 +7,31 @@ use GeoIp2\Model\Country;
 class NameTest extends \PHPUnit_Framework_TestCase
 {
     public $raw = array(
-            'continent' => array(
-                'code'       => 'NA',
-                'geoname_id' => 42,
-                'names'      => array(
-                    'en'    => 'North America',
-                    'zh-CN' => '北美洲',
-                ),
+        'continent' => array(
+            'code' => 'NA',
+            'geoname_id' => 42,
+            'names' => array(
+                'en' => 'North America',
+                'zh-CN' => '北美洲',
             ),
-            'country' => array(
-                'geoname_id' => 1,
-                'iso_code'   => 'US',
-                'names'      => array(
-                    'en'    => 'United States of America',
-                    'ru'    => 'объединяет государства',
-                    'zh-CN' => '美国',
-                ),
+        ),
+        'country' => array(
+            'geoname_id' => 1,
+            'iso_code' => 'US',
+            'names' => array(
+                'en' => 'United States of America',
+                'ru' => 'объединяет государства',
+                'zh-CN' => '美国',
             ),
-            'traits' => array(
-                'ip_address' => '1.2.3.4',
-            ),
-        );
+        ),
+        'traits' => array(
+            'ip_address' => '1.2.3.4',
+        ),
+    );
 
     public function testFallback()
     {
-        $model = new Country($this->raw, array( 'ru', 'zh-CN', 'en' ));
+        $model = new Country($this->raw, array('ru', 'zh-CN', 'en'));
 
         $this->assertEquals(
             '北美洲',

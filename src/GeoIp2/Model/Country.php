@@ -84,7 +84,7 @@ class Country
     /**
      * @ignore
      */
-    public function __get ($attr)
+    public function __get($attr)
     {
         if ($attr != "instance" && isset($this->$attr)) {
             return $this->$attr;

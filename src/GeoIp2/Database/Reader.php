@@ -14,7 +14,7 @@ use MaxMind\Db\Reader as DbReader;
  * client, although we may offer the ability to specify additional databases
  * to replicate these web services in the future (e.g., the ISP/Org database).
  *
-  * **Usage**
+ * **Usage**
  *
  * The basic API for this class is the same for every database. First, you
  * create a reader object, specifying a file name. You then call the method
@@ -44,7 +44,7 @@ class Reader implements ProviderInterface
      * Constructor.
      *
      * @param string $filename The path to the GeoIP2 database file.
-     * @param array  $locales  List of locale codes to use in name property
+     * @param array $locales  List of locale codes to use in name property
      * from most preferred to least preferred.
      * @throws \MaxMind\Db\Reader\InvalidDatabaseException if the database
      *          is corrupt or invalid

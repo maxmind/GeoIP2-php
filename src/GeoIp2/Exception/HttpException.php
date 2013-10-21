@@ -17,7 +17,7 @@ class HttpException extends GeoIp2Exception
         $message,
         $httpStatus,
         $uri,
-        Exception $previous = null
+        \Exception $previous = null
     ) {
         $this->uri = $uri;
         parent::__construct($message, $httpStatus, $previous);

@@ -13,14 +13,14 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     private $country
         = array(
             'continent' => array(
-                'code'       => 'NA',
+                'code' => 'NA',
                 'geoname_id' => 42,
-                'names'      => array( 'en' => 'North America' ),
+                'names' => array('en' => 'North America'),
             ),
             'country' => array(
                 'geoname_id' => 1,
-                'iso_code'   => 'US',
-                'names'      => array( 'en' => 'United States of America' ),
+                'iso_code' => 'US',
+                'names' => array('en' => 'United States of America'),
             ),
             'maxmind' => array('queries_remaining' => 11),
             'traits' => array(
@@ -44,11 +44,11 @@ class ClientTest extends \PHPUnit_Framework_TestCase
             ),
             '1.2.3.5' => $this->response('country', 200),
             '2.2.3.5' => $this->response('country', 200, 'bad body'),
-            '1.2.3.6'=> $this->response(
+            '1.2.3.6' => $this->response(
                 'error',
                 400,
                 array(
-                    'code'  => 'IP_ADDRESS_INVALID',
+                    'code' => 'IP_ADDRESS_INVALID',
                     'error' => 'The value "1.2.3" is not a valid ip address'
                 )
             ),
@@ -59,7 +59,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
             '1.2.3.8' => $this->response(
                 'error',
                 400,
-                array( 'weird' => 42 )
+                array('weird' => 42)
             ),
             '1.2.3.9' => $this->response(
                 'error',
@@ -82,51 +82,51 @@ class ClientTest extends \PHPUnit_Framework_TestCase
                 null,
                 'text/plain'
             ),
-            '1.2.3.13'=> $this->response(
+            '1.2.3.13' => $this->response(
                 'error',
                 404,
                 array(
-                    'code'  => 'IP_ADDRESS_NOT_FOUND',
+                    'code' => 'IP_ADDRESS_NOT_FOUND',
                     'error' => 'The address "1.2.3.13" is not in our database.'
                 )
             ),
-            '1.2.3.14'=> $this->response(
+            '1.2.3.14' => $this->response(
                 'error',
                 400,
                 array(
-                    'code'  => 'IP_ADDRESS_RESERVED',
+                    'code' => 'IP_ADDRESS_RESERVED',
                     'error' => 'The address "1.2.3.14" is a private address.'
                 )
             ),
-            '1.2.3.15'=> $this->response(
+            '1.2.3.15' => $this->response(
                 'error',
                 401,
                 array(
-                    'code'  => 'AUTHORIZATION_INVALID',
+                    'code' => 'AUTHORIZATION_INVALID',
                     'error' => 'A user ID and license key are required to use this service'
                 )
             ),
-            '1.2.3.16'=> $this->response(
+            '1.2.3.16' => $this->response(
                 'error',
                 401,
                 array(
-                    'code'  => 'LICENSE_KEY_REQUIRED',
+                    'code' => 'LICENSE_KEY_REQUIRED',
                     'error' => 'A license key is required to use this service'
                 )
             ),
-            '1.2.3.17'=> $this->response(
+            '1.2.3.17' => $this->response(
                 'error',
                 401,
                 array(
-                    'code'  => 'USER_ID_REQUIRED',
+                    'code' => 'USER_ID_REQUIRED',
                     'error' => 'A user ID is required to use this service'
                 )
             ),
-            '1.2.3.18'=> $this->response(
+            '1.2.3.18' => $this->response(
                 'error',
                 402,
                 array(
-                    'code'  => 'OUT_OF_QUERIES',
+                    'code' => 'OUT_OF_QUERIES',
                     'error' => 'The license key you have provided is out of queries.'
                 )
             ),
@@ -178,7 +178,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertEquals(
-            array( 'en' => 'United States of America' ),
+            array('en' => 'United States of America'),
             $country->country->names,
             'country names'
         );
@@ -478,7 +478,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $headers = array();
         if ($contentType) {
             $headers['Content-Type'] = $contentType;
-        } elseif ($status == 200 || ( $status >= 400 && $status < 500 )) {
+        } elseif ($status == 200 || ($status >= 400 && $status < 500)) {
             $headers['Content-Type'] = 'application/vnd.maxmind.com-'
                 . $endpoint . '+json; charset=UTF-8; version=1.0;';
         }
@@ -486,7 +486,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         if ($bad) {
             $body = '{ invalid: }';
         } elseif (is_array($body)) {
-            $body =  json_encode($body);
+            $body = json_encode($body);
         }
 
         $headers['Content-Length'] = strlen($body);

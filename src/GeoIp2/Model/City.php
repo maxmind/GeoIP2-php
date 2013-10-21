@@ -113,8 +113,8 @@ class City extends Country
 
     private function mostSpecificSubdivision()
     {
-        return empty($this->subdivisions)?
-            new \GeoIp2\Record\Subdivision(array(), $this->locales):
+        return empty($this->subdivisions) ?
+            new \GeoIp2\Record\Subdivision(array(), $this->locales) :
             end($this->subdivisions);
     }
 }
