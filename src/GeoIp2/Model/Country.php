@@ -33,7 +33,7 @@ namespace GeoIp2\Model;
  * @property \GeoIp2\Record\Traits $traits Data for the traits of the
  * requested IP address.
  */
-class Country
+class Country implements \JsonSerializable
 {
     private $continent;
     private $country;
@@ -95,5 +95,9 @@ class Country
 
     public function getRaw() {
         return $this->raw;
+    }
+
+    public function jsonSerialize() {
+        return $this->getRaw();
     }
 }
