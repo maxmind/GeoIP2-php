@@ -47,7 +47,7 @@ class Country
     /**
      * @ignore
      */
-    public function __construct($raw, $locales)
+    public function __construct($raw, $locales = = array('en'))
     {
         $this->raw = $raw;
 
@@ -91,5 +91,9 @@ class Country
         }
 
         throw new \RuntimeException("Unknown attribute: $attr");
+    }
+
+    public function getRaw() {
+        return $this->raw;
     }
 }
