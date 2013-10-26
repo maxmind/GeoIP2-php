@@ -2,7 +2,7 @@
 
 namespace GeoIp2\Record;
 
-abstract class AbstractRecord
+abstract class AbstractRecord implements \JsonSerializable
 {
     private $record;
 
@@ -30,5 +30,10 @@ abstract class AbstractRecord
         } else {
             throw new \RuntimeException("Unknown attribute: $attr");
         }
+    }
+
+    public function jsonSerialize()
+    {
+        return $this->record;
     }
 }

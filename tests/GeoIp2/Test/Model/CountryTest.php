@@ -159,4 +159,35 @@ class CountryTest extends \PHPUnit_Framework_TestCase
             'raw method returns raw input'
         );
     }
+
+    public function testJsonSerialize()
+    {
+        $this->assertEquals(
+            $this->raw,
+            $this->model->jsonSerialize(),
+            'jsonSerialize returns initial array'
+        );
+
+        $this->assertEquals(
+            $this->raw['country'],
+            $this->model->country->jsonSerialize(),
+            'jsonSerialize returns initial array for the record'
+        );
+
+        if (version_compare(PHP_VERSION, '5.4.0', '<')) {
+            $this->markTestSkipped('Requires PHP 5.4+.');
+        }
+
+        $this->assertEquals(
+            json_encode($this->raw),
+            json_encode($this->model),
+            'json_encode can be called on the model object directly'
+        );
+
+        $this->assertEquals(
+            json_encode($this->raw['country']),
+            json_encode($this->model->country),
+            'json_encode can be called on the record object directly'
+        );
+    }
 }
