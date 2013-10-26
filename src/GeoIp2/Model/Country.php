@@ -47,7 +47,7 @@ class Country
     /**
      * @ignore
      */
-    public function __construct($raw, $locales = = array('en'))
+    public function __construct($raw, $locales = array('en'))
     {
         $this->raw = $raw;
 
