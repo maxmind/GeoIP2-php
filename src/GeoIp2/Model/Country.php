@@ -33,7 +33,7 @@ namespace GeoIp2\Model;
  * @property \GeoIp2\Record\Traits $traits Data for the traits of the
  * requested IP address.
  */
-class Country
+class Country implements \JsonSerializable
 {
     private $continent;
     private $country;
@@ -47,7 +47,7 @@ class Country
     /**
      * @ignore
      */
-    public function __construct($raw, $locales)
+    public function __construct($raw, $locales = array('en'))
     {
         $this->raw = $raw;
 
@@ -91,5 +91,13 @@ class Country
         }
 
         throw new \RuntimeException("Unknown attribute: $attr");
+    }
+
+    public function getRaw() {
+        return $this->raw;
+    }
+
+    public function jsonSerialize() {
+        return $this->getRaw();
     }
 }
