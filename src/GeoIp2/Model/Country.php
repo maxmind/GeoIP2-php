@@ -47,7 +47,7 @@ class Country implements \JsonSerializable
     /**
      * @ignore
      */
-    public function __construct($raw, $locales)
+    public function __construct($raw, $locales = array('en'))
     {
         $this->raw = $raw;
 

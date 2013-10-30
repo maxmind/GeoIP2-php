@@ -9,7 +9,7 @@ abstract class AbstractPlaceRecord extends AbstractRecord
     /**
      * @ignore
      */
-    public function __construct($record, $locales)
+    public function __construct($record, $locales = array('en'))
     {
         $this->locales = $locales;
         parent::__construct($record);
