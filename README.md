@@ -243,5 +243,5 @@ The GeoIP2 PHP API uses [Semantic Versioning](http://semver.org/).
 
 This software is Copyright (c) 2013 by MaxMind, Inc.
 
-This is free software, licensed under the GNU Lesser General Public License
-version 2.1 or later.
+This is free software, licensed under the Apache License, Version 2.0.
+
