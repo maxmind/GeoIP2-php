@@ -15,6 +15,7 @@
     "require": {
         "guzzle/guzzle": "3.*",
         "maxmind-db/reader": "0.2.*",
+        "ext-bcmath":"*",
         "php": ">=5.3.1"
     },
     "require-dev": {
