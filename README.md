@@ -10,10 +10,10 @@ website](http://www.maxmind.com/en/geoip2_beta).
 
 ## Description ##
 
-This distribution provides an API for the [GeoIP2 web services]
-(http://dev.maxmind.com/geoip/geoip2/web-services) and the [GeoLite2
-databases](http://dev.maxmind.com/geoip/geoip2/geolite2/). The commercial
-GeoIP2 databases have not yet been released as a downloadable product.
+This package provides an API for the GeoIP2 [web services]
+(http://dev.maxmind.com/geoip/geoip2/web-services) and [databases]
+(http://dev.maxmind.com/geoip/geoip2/downloadable). The API also works with
+the free [GeoLite2 databases](http://dev.maxmind.com/geoip/geoip2/geolite2/).
 
 ## Installation ##
 
