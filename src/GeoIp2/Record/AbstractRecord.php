@@ -42,7 +42,7 @@ abstract class AbstractRecord implements \JsonSerializable
         return strtolower(preg_replace('/([A-Z])/', '_\1', $attr));
     }
 
-    public function validAttribute($attr)
+    private function validAttribute($attr)
     {
         return in_array($attr, $this->validAttributes);
     }
