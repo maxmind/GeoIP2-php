@@ -93,6 +93,14 @@ class Country implements \JsonSerializable
         throw new \RuntimeException("Unknown attribute: $attr");
     }
 
+    /**
+     * @ignore
+     */
+    public function __isset($attr)
+    {
+        return $attr != "instance" && isset($this->$attr);
+    }
+
     public function jsonSerialize()
     {
         return $this->raw;

@@ -190,4 +190,20 @@ class CountryTest extends \PHPUnit_Framework_TestCase
             'json_encode can be called on the record object directly'
         );
     }
+
+    public function testIsSet()
+    {
+        $this->assertTrue(isset($this->model->traits), 'traits is set');
+        $this->assertFalse(isset($this->model->unknown), 'unknown is not set');
+
+        $this->assertTrue(
+            isset($this->model->traits->ipAddress),
+            'ip_address is set'
+        );
+        $this->assertFalse(
+            isset($this->model->traits->unknown),
+            'unknown trait is not set'
+        );
+
+    }
 }
