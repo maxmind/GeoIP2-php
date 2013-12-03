@@ -204,6 +204,23 @@ class CountryTest extends \PHPUnit_Framework_TestCase
             isset($this->model->traits->unknown),
             'unknown trait is not set'
         );
+    }
 
+    /**
+     * @expectedException RuntimeException
+     * @expectedExceptionMessage Unknown attribute
+     */
+    public function testUnknownRecord()
+    {
+        $this->model->unknownRecord;
+    }
+
+    /**
+     * @expectedException RuntimeException
+     * @expectedExceptionMessage Unknown attribute
+     */
+    public function testUnknownTrait()
+    {
+        $this->model->traits->unknown;
     }
 }
