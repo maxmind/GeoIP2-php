@@ -2,25 +2,17 @@
 layout: default
 title: MaxMind GeoIP2 PHP API
 language: php
-version: v0.5.0
+version: v0.6.0
 ---
 
 # GeoIP2 PHP API #
 
-## Beta Note ##
-
-This is a beta release. The API may change before the first production
-release, which will be numbered 2.0.0.
-
-You may find information on the GeoIP2 beta release process on [our
-website](http://www.maxmind.com/en/geoip2_beta).
-
 ## Description ##
 
-This distribution provides an API for the [GeoIP2 web services]
-(http://dev.maxmind.com/geoip/geoip2/web-services) and the [GeoLite2
-databases](http://dev.maxmind.com/geoip/geoip2/geolite2/). The commercial
-GeoIP2 databases have not yet been released as a downloadable product.
+This package provides an API for the GeoIP2 [web services]
+(http://dev.maxmind.com/geoip/geoip2/web-services) and [databases]
+(http://dev.maxmind.com/geoip/geoip2/downloadable). The API also works with
+the free [GeoLite2 databases](http://dev.maxmind.com/geoip/geoip2/geolite2/).
 
 ## Installation ##
 
@@ -32,7 +24,7 @@ To do this, add `geoip2/geoip2` to your `composer.json` file.
 ```json
 {
     "require": {
-        "geoip2/geoip2": "0.5.*"
+        "geoip2/geoip2": "0.6.*"
     }
 }
 ```
@@ -235,7 +227,8 @@ to the client API, please see
 This code requires PHP 5.3 or greater. Older versions of PHP are not
 supported.
 
-This library also relies on the [Guzzle HTTP client](http://guzzlephp.org/).
+This library also relies on the [Guzzle HTTP client](http://guzzlephp.org/)
+and the [MaxMind DB Reader](https://github.com/maxmind/MaxMind-DB-Reader-php).
 
 ## Contributing ##
 
@@ -250,5 +243,5 @@ The GeoIP2 PHP API uses [Semantic Versioning](http://semver.org/).
 
 This software is Copyright (c) 2013 by MaxMind, Inc.
 
-This is free software, licensed under the GNU Lesser General Public License
-version 2.1 or later.
+This is free software, licensed under the Apache License, Version 2.0.
+
