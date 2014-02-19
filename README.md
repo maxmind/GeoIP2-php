@@ -1,13 +1,5 @@
 # GeoIP2 PHP API #
 
-## Beta Note ##
-
-This is a beta release. The API may change before the first production
-release, which will be numbered 2.0.0.
-
-You may find information on the GeoIP2 beta release process on [our
-website](http://www.maxmind.com/en/geoip2_beta).
-
 ## Description ##
 
 This package provides an API for the GeoIP2 [web services]
@@ -25,7 +17,7 @@ To do this, add `geoip2/geoip2` to your `composer.json` file.
 ```json
 {
     "require": {
-        "geoip2/geoip2": "0.5.*"
+        "geoip2/geoip2": "0.6.*"
     }
 }
 ```
@@ -228,7 +220,8 @@ to the client API, please see
 This code requires PHP 5.3 or greater. Older versions of PHP are not
 supported.
 
-This library also relies on the [Guzzle HTTP client](http://guzzlephp.org/).
+This library also relies on the [Guzzle HTTP client](http://guzzlephp.org/)
+and the [MaxMind DB Reader](https://github.com/maxmind/MaxMind-DB-Reader-php).
 
 ## Contributing ##
 

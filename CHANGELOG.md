@@ -1,6 +1,14 @@
 CHANGELOG
 =========
 
+0.6.0 (2014-02-19)
+------------------
+
+* First full release.
+* This API is now licensed under the Apache License, Version 2.0.
+* Model and record classes now implement `JsonSerializable`.
+* `isset` now works with model and record classes.
+
 0.5.0 (2013-10-21)
 ------------------
 
