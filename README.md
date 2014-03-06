@@ -12,7 +12,8 @@ the free [GeoLite2 databases](http://dev.maxmind.com/geoip/geoip2/geolite2/).
 ### Define Your Dependencies ###
 
 We recommend installing this package with [Composer](http://getcomposer.org/).
-To do this, add `geoip2/geoip2` to your `composer.json` file.
+To do this, add `geoip2/geoip2` to your `composer.json` file. If you don't
+have a `composer.json` file, create one in the root directory of your project.
 
 ```json
 {
