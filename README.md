@@ -7,7 +7,7 @@ This package provides an API for the GeoIP2 [web services]
 (http://dev.maxmind.com/geoip/geoip2/downloadable). The API also works with
 the free [GeoLite2 databases](http://dev.maxmind.com/geoip/geoip2/geolite2/).
 
-## Installation ##
+## Install via Composer ##
 
 ### Define Your Dependencies ###
 
@@ -46,7 +46,20 @@ You can autoload all dependencies by adding this to your code:
 require 'vendor/autoload.php';
 ```
 
-### Optional C Extension ###
+## Installing via Phar ##
+
+Although we strongly recommend using Composer, we also provide a
+[phar archive](http://php.net/manual/en/book.phar.php) containing all of the
+dependencies for GeoIP2. Our latest phar archive is available on
+[our releases page](https://github.com/maxmind/GeoIP2-php/releases).
+
+To use the archive, just require it from your script:
+
+```php
+require 'geoip2.phar';
+```
+
+## Optional C Extension ##
 
 The [MaxMind DB API](https://github.com/maxmind/MaxMind-DB-Reader-php)
 includes an optional C extension that you may install to dramatically increase
