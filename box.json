@@ -1,0 +1,32 @@
+{
+    "main": "vendor/autoload.php",
+    "output": "geoip2.phar",
+    "compactors": [
+        "Herrera\\Box\\Compactor\\Composer",
+        "Herrera\\Box\\Compactor\\Json",
+        "Herrera\\Box\\Compactor\\Php"
+    ],
+    "files": [
+        "LICENSE"
+    ],
+    "finder": [
+        {
+            "name": [
+                "LICENSE",
+                "*.php",
+                "*.json"
+            ],
+            "notName": [
+                "composer.json"
+            ],
+            "exclude": [
+                "phpunit",
+                "satooshi",
+                "tests"
+            ],
+            "in": ["compat", "src", "vendor"]
+        }
+    ],
+    "directories": ["compat", "src/", "vendor/"],
+    "stub": true
+}
