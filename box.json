@@ -12,21 +12,22 @@
     "finder": [
         {
             "name": [
-                "LICENSE",
                 "*.php",
-                "*.json"
-            ],
-            "notName": [
-                "composer.json"
+                "*.pem",
+                "*.pem.md5"
             ],
             "exclude": [
                 "phpunit",
                 "satooshi",
-                "tests"
+                "Tests",
+                "tests",
+                "yaml"
             ],
-            "in": ["compat", "src", "vendor"]
-        }
+            "in": "vendor"
+            }
     ],
-    "directories": ["compat", "src/", "vendor/"],
+
+    "directories": ["compat", "src/"],
+    "git-version": "git-version",
     "stub": true
 }
