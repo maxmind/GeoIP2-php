@@ -24,7 +24,7 @@
     "autoload": {
         "psr-0": {
             "GeoIp2": "src/",
-            "" : "compat/"
+            "JsonSerializable" : "compat/"
          }
     }
 }
