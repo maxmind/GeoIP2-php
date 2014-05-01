@@ -1,6 +1,15 @@
 CHANGELOG
 =========
 
+0.6.1 (2014-05-01)
+------------------
+
+* This API now officially supports HHVM.
+* The `maxmind-db/reader` dependency was updated to a version that does not
+  require BC Math.
+* The Composer compatibility autoload rules are now targeted more narrowly.
+* A `box.json` file is included to build a Phar package.
+
 0.6.0 (2014-02-19)
 ------------------
 

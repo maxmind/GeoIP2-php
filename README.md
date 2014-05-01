@@ -234,6 +234,8 @@ to the client API, please see
 This code requires PHP 5.3 or greater. Older versions of PHP are not
 supported.
 
+This library works and is tested with HHVM.
+
 This library also relies on the [Guzzle HTTP client](http://guzzlephp.org/)
 and the [MaxMind DB Reader](https://github.com/maxmind/MaxMind-DB-Reader-php).
 
@@ -248,7 +250,7 @@ The GeoIP2 PHP API uses [Semantic Versioning](http://semver.org/).
 
 ## Copyright and License ##
 
-This software is Copyright (c) 2013 by MaxMind, Inc.
+This software is Copyright (c) 2014 by MaxMind, Inc.
 
 This is free software, licensed under the Apache License, Version 2.0.
 

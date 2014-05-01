@@ -1,7 +1,7 @@
 {
     "name": "geoip2/geoip2",
     "description": "MaxMind GeoIP2 PHP API",
-    "keywords": [ "geoip", "geolocation", "maxmind" ],
+    "keywords": ["geoip", "geoip2", "geolocation", "ip", "maxmind"],
     "homepage": "https://github.com/maxmind/GeoIP2-php",
     "type": "library",
     "license": "Apache-2.0",
@@ -14,7 +14,7 @@
     ],
     "require": {
         "guzzle/guzzle": "3.*",
-        "maxmind-db/reader": "0.3.*",
+        "maxmind-db/reader": "~0.3.1",
         "php": ">=5.3.1"
     },
     "require-dev": {
@@ -24,7 +24,7 @@
     "autoload": {
         "psr-0": {
             "GeoIp2": "src/",
-            "JsonSerializable" : "compat/"
-         }
+            "JsonSerializable": "compat/"
+        }
     }
 }
