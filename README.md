@@ -82,7 +82,7 @@ classes for the different parts of the data such as the city in which the
 IP address is located.
 
 If the record is not found, a `\GeoIp2\Exception\AddressNotFoundException`
-is returned. If the database is invalid or corrupt, a
+is thrown. If the database is invalid or corrupt, a
 `\MaxMind\Db\InvalidDatabaseException` will be thrown.
 
 See the API documentation for more details.
