@@ -10,12 +10,12 @@ php:
 before_install:
   - composer self-update
   - composer install --dev -n --prefer-source
-  - if [ "hhvm" != "$(phpenv version-name)" ]; then pyrus install pear/PHP_CodeSniffer; fi
+  - if [ "5.5" == $TRAVIS_PHP_VERSION ]; then pyrus install pear/PHP_CodeSniffer; fi
   - phpenv rehash
 
 script:
   - mkdir -p build/logs
-  - if [ "hhvm" != "$(phpenv version-name)" ]; then phpcs --standard=PSR2 src/; fi
+  - if [ "5.5" == $TRAVIS_PHP_VERSION ]; then phpcs --standard=PSR2 src/; fi
   - phpunit -c phpunit.xml.dist
 
 after_script:
