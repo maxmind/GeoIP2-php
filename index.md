@@ -2,7 +2,7 @@
 layout: default
 title: MaxMind GeoIP2 PHP API
 language: php
-version: v0.6.0
+version: v0.6.1
 ---
 
 # GeoIP2 PHP API #
@@ -14,12 +14,13 @@ This package provides an API for the GeoIP2 [web services]
 (http://dev.maxmind.com/geoip/geoip2/downloadable). The API also works with
 the free [GeoLite2 databases](http://dev.maxmind.com/geoip/geoip2/geolite2/).
 
-## Installation ##
+## Install via Composer ##
 
 ### Define Your Dependencies ###
 
 We recommend installing this package with [Composer](http://getcomposer.org/).
-To do this, add `geoip2/geoip2` to your `composer.json` file.
+To do this, add `geoip2/geoip2` to your `composer.json` file. If you don't
+have a `composer.json` file, create one in the root directory of your project.
 
 ```json
 {
@@ -52,7 +53,20 @@ You can autoload all dependencies by adding this to your code:
 require 'vendor/autoload.php';
 ```
 
-### Optional C Extension ###
+## Installing via Phar ##
+
+Although we strongly recommend using Composer, we also provide a
+[phar archive](http://php.net/manual/en/book.phar.php) containing all of the
+dependencies for GeoIP2. Our latest phar archive is available on
+[our releases page](https://github.com/maxmind/GeoIP2-php/releases).
+
+To use the archive, just require it from your script:
+
+```php
+require 'geoip2.phar';
+```
+
+## Optional C Extension ##
 
 The [MaxMind DB API](https://github.com/maxmind/MaxMind-DB-Reader-php)
 includes an optional C extension that you may install to dramatically increase
@@ -75,7 +89,7 @@ classes for the different parts of the data such as the city in which the
 IP address is located.
 
 If the record is not found, a `\GeoIp2\Exception\AddressNotFoundException`
-is returned. If the database is invalid or corrupt, a
+is thrown. If the database is invalid or corrupt, a
 `\MaxMind\Db\InvalidDatabaseException` will be thrown.
 
 See the API documentation for more details.
@@ -227,6 +241,8 @@ to the client API, please see
 This code requires PHP 5.3 or greater. Older versions of PHP are not
 supported.
 
+This library works and is tested with HHVM.
+
 This library also relies on the [Guzzle HTTP client](http://guzzlephp.org/)
 and the [MaxMind DB Reader](https://github.com/maxmind/MaxMind-DB-Reader-php).
 
@@ -241,7 +257,7 @@ The GeoIP2 PHP API uses [Semantic Versioning](http://semver.org/).
 
 ## Copyright and License ##
 
-This software is Copyright (c) 2013 by MaxMind, Inc.
+This software is Copyright (c) 2014 by MaxMind, Inc.
 
 This is free software, licensed under the Apache License, Version 2.0.
 
