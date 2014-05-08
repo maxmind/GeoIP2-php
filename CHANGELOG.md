@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+0.6.2 (2014-05-08)
+------------------
+
+* The Phar build was broken with Guzzle 3.9.0+. This has been fixed.
+
 0.6.1 (2014-05-01)
 ------------------
 
