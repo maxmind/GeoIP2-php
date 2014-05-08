@@ -4,6 +4,7 @@ _site
 composer.lock
 composer.phar
 phpunit.xml
+geoip2.phar
 geoip2-php.sublime-*
 vendor/
 *.sw?
