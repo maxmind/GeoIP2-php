@@ -1,5 +1,5 @@
 {
-    "main": "vendor/autoload.php",
+    "main": "phar-stub.php",
     "output": "geoip2.phar",
     "compactors": [
         "Herrera\\Box\\Compactor\\Composer",
