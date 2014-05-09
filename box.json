@@ -1,4 +1,5 @@
 {
+    "alias": "geoip2.phar",
     "main": "phar-stub.php",
     "output": "geoip2.phar",
     "compactors": [

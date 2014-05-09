@@ -1,6 +1,6 @@
 <?php
 
-require_once 'vendor/autoload.php';
+require_once 'phar://geoip2.phar/vendor/autoload.php';
 
 // The following was taken from Guzzle (MIT license)
 
