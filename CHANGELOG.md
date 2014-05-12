@@ -1,6 +1,13 @@
 CHANGELOG
 =========
 
+0.6.3 (2014-05-12)
+------------------
+
+* With the previous Phar builds, some users received `phar error: invalid url
+  or non-existent phar` errors. The correct alias is now used for the Phar,
+  and this should no longer be an issue.
+
 0.6.2 (2014-05-08)
 ------------------
 
