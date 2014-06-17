@@ -24,7 +24,7 @@ abstract class AbstractModel implements \JsonSerializable
      */
     protected function get($field)
     {
-        return isset($this->raw[$field]) ? $this->raw[$field] : array();
+        return isset($this->raw[$field]) ? $this->raw[$field] : null;
     }
 
     /**
@@ -32,7 +32,7 @@ abstract class AbstractModel implements \JsonSerializable
      */
     public function __get($attr)
     {
-        if ($attr != "instance" && isset($this->$attr)) {
+        if ($attr != "instance" && property_exists($this, $attr)) {
             return $this->$attr;
         }
 
