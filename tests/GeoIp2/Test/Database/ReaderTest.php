@@ -71,6 +71,46 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
         $reader->close();
     }
 
+    public function testConnectionType()
+    {
+        $reader = new Reader('maxmind-db/test-data/GeoIP2-Connection-Type-Test.mmdb');
+        $ipAddress = '1.0.1.0';
+
+        $record = $reader->connectionType($ipAddress);
+        $this->assertEquals('Cable/DSL', $record->connectionType);
+        $this->assertEquals($ipAddress, $record->ipAddress);
+        $reader->close();
+    }
+
+    public function testDomain()
+    {
+        $reader = new Reader('maxmind-db/test-data/GeoIP2-Domain-Test.mmdb');
+
+        $ipAddress = '1.2.0.0';
+        $record = $reader->domain($ipAddress);
+        $this->assertEquals('maxmind.com', $record->domain);
+        $this->assertEquals($ipAddress, $record->ipAddress);
+        $reader->close();
+    }
+
+    public function testIsp()
+    {
+        $reader = new Reader('maxmind-db/test-data/GeoIP2-ISP-Org-Test.mmdb');
+
+        $ipAddress = '2001:1700::';
+        $record = $reader->isp($ipAddress);
+        $this->assertEquals(6730, $record->autonomousSystemNumber);
+        $this->assertEquals(
+            'Sunrise Communications AG',
+            $record->autonomousSystemOrganization
+        );
+
+        // XXX - Add org/isp when available
+
+        $this->assertEquals($ipAddress, $record->ipAddress);
+        $reader->close();
+    }
+
     public function checkAllMethods($testCb)
     {
         foreach (array('city', 'cityIspOrg', 'country', 'omni') as $method) {
