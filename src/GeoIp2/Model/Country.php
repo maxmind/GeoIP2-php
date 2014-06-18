@@ -3,8 +3,7 @@
 namespace GeoIp2\Model;
 
 /**
- * This class provides a model for the data returned by the GeoIP2 Country
- * end point.
+ * This class provides a model for the data returned by the GeoIP2 Country.
  *
  * The only difference between the City, City/ISP/Org, and Omni model
  * classes is which fields in each record may be populated. See
@@ -33,23 +32,22 @@ namespace GeoIp2\Model;
  * @property \GeoIp2\Record\Traits $traits Data for the traits of the
  * requested IP address.
  */
-class Country implements \JsonSerializable
+class Country extends AbstractModel
 {
-    private $continent;
-    private $country;
-    private $locales;
-    private $maxmind;
-    private $registeredCountry;
-    private $representedCountry;
-    private $traits;
-    private $raw;
+    protected $continent;
+    protected $country;
+    protected $locales;
+    protected $maxmind;
+    protected $registeredCountry;
+    protected $representedCountry;
+    protected $traits;
 
     /**
      * @ignore
      */
     public function __construct($raw, $locales = array('en'))
     {
-        $this->raw = $raw;
+        parent::__construct($raw);
 
         $this->continent = new \GeoIp2\Record\Continent(
             $this->get('continent'),
@@ -71,38 +69,5 @@ class Country implements \JsonSerializable
         $this->traits = new \GeoIp2\Record\Traits($this->get('traits'));
 
         $this->locales = $locales;
-    }
-
-    /**
-     * @ignore
-     */
-    protected function get($field)
-    {
-        return isset($this->raw[$field]) ? $this->raw[$field] : array();
-    }
-
-    /**
-     * @ignore
-     */
-    public function __get($attr)
-    {
-        if ($attr != "instance" && isset($this->$attr)) {
-            return $this->$attr;
-        }
-
-        throw new \RuntimeException("Unknown attribute: $attr");
-    }
-
-    /**
-     * @ignore
-     */
-    public function __isset($attr)
-    {
-        return $attr != "instance" && isset($this->$attr);
-    }
-
-    public function jsonSerialize()
-    {
-        return $this->raw;
     }
 }

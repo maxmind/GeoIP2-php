@@ -71,6 +71,47 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
         $reader->close();
     }
 
+    public function testConnectionType()
+    {
+        $reader = new Reader('maxmind-db/test-data/GeoIP2-Connection-Type-Test.mmdb');
+        $ipAddress = '1.0.1.0';
+
+        $record = $reader->connectionType($ipAddress);
+        $this->assertEquals('Cable/DSL', $record->connectionType);
+        $this->assertEquals($ipAddress, $record->ipAddress);
+        $reader->close();
+    }
+
+    public function testDomain()
+    {
+        $reader = new Reader('maxmind-db/test-data/GeoIP2-Domain-Test.mmdb');
+
+        $ipAddress = '1.2.0.0';
+        $record = $reader->domain($ipAddress);
+        $this->assertEquals('maxmind.com', $record->domain);
+        $this->assertEquals($ipAddress, $record->ipAddress);
+        $reader->close();
+    }
+
+    public function testIsp()
+    {
+        $reader = new Reader('maxmind-db/test-data/GeoIP2-ISP-Test.mmdb');
+
+        $ipAddress = '1.128.0.0';
+        $record = $reader->isp($ipAddress);
+        $this->assertEquals(1221, $record->autonomousSystemNumber);
+        $this->assertEquals(
+            'Telstra Pty Ltd',
+            $record->autonomousSystemOrganization
+        );
+
+        $this->assertEquals('Telstra Internet', $record->isp);
+        $this->assertEquals('Telstra Internet', $record->organization);
+
+        $this->assertEquals($ipAddress, $record->ipAddress);
+        $reader->close();
+    }
+
     public function checkAllMethods($testCb)
     {
         foreach (array('city', 'cityIspOrg', 'country', 'omni') as $method) {

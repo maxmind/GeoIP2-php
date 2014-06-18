@@ -87,7 +87,7 @@ is thrown. If the database is invalid or corrupt, a
 
 See the API documentation for more details.
 
-### Example ###
+### City Example ###
 
 ```php
 <?php
@@ -115,6 +115,64 @@ print($record->postal->code . "\n"); // '55455'
 
 print($record->location->latitude . "\n"); // 44.9733
 print($record->location->longitude . "\n"); // -93.2323
+
+```
+
+### Connection-Type Example ###
+
+```php
+<?php
+require_once 'vendor/autoload.php';
+use GeoIp2\Database\Reader;
+
+// This creates the Reader object, which should be reused across
+// lookups.
+$reader = new Reader('/usr/local/share/GeoIP/GeoIP2-Connection-Type.mmdb');
+
+$record = $reader->connectionType('128.101.101.101');
+
+print($record->connectionType . "\n"); // 'Corporate'
+print($record->ipAddress . "\n"); // '128.101.101.101'
+
+```
+
+### Domain Example ###
+
+```php
+<?php
+require_once 'vendor/autoload.php';
+use GeoIp2\Database\Reader;
+
+// This creates the Reader object, which should be reused across
+// lookups.
+$reader = new Reader('/usr/local/share/GeoIP/GeoIP2-Domain.mmdb');
+
+$record = $reader->domain('128.101.101.101');
+
+print($record->domain . "\n"); // 'umn.edu'
+print($record->ipAddress . "\n"); // '128.101.101.101'
+
+```
+
+### ISP Example ###
+
+```php
+<?php
+require_once 'vendor/autoload.php';
+use GeoIp2\Database\Reader;
+
+// This creates the Reader object, which should be reused across
+// lookups.
+$reader = new Reader('/usr/local/share/GeoIP/GeoIP2-ISP.mmdb');
+
+$record = $reader->isp('128.101.101.101');
+
+print($record->autonomousSystemNumber . "\n"); // 217
+print($record->autonomousSystemOrganization . "\n"); // 'University of Minnesota'
+print($record->isp . "\n"); // 'University of Minnesota'
+print($record->organization . "\n"); // 'University of Minnesota'
+
+print($record->ipAddress . "\n"); // '128.101.101.101'
 
 ```
 

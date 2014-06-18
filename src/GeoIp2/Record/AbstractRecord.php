@@ -11,7 +11,7 @@ abstract class AbstractRecord implements \JsonSerializable
      */
     public function __construct($record)
     {
-        $this->record = $record;
+        $this->record = isset($record) ? $record : array();
     }
 
     /**

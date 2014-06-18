@@ -125,7 +125,42 @@ class Reader implements ProviderInterface
         return $this->modelFor('Omni', $ipAddress);
     }
 
+    public function connectionType($ipAddress)
+    {
+        return $this->flatModelFor('ConnectionType', $ipAddress);
+    }
+
+    public function domain($ipAddress)
+    {
+        return $this->flatModelFor('Domain', $ipAddress);
+    }
+
+    public function isp($ipAddress)
+    {
+        return $this->flatModelFor('Isp', $ipAddress);
+    }
+
     private function modelFor($class, $ipAddress)
+    {
+        $record = $this->getRecord($ipAddress);
+
+        $record['traits']['ip_address'] = $ipAddress;
+        $class = "GeoIp2\\Model\\" . $class;
+
+        return new $class($record, $this->locales);
+    }
+
+    private function flatModelFor($class, $ipAddress)
+    {
+        $record = $this->getRecord($ipAddress);
+
+        $record['ip_address'] = $ipAddress;
+        $class = "GeoIp2\\Model\\" . $class;
+
+        return new $class($record);
+    }
+
+    private function getRecord($ipAddress)
     {
         $record = $this->dbReader->get($ipAddress);
         if ($record === null) {
@@ -133,10 +168,7 @@ class Reader implements ProviderInterface
                 "The address $ipAddress is not in the database."
             );
         }
-        $record['traits']['ip_address'] = $ipAddress;
-        $class = "GeoIp2\\Model\\" . $class;
-
-        return new $class($record, $this->locales);
+        return $record;
     }
 
     /**
