@@ -95,17 +95,18 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
 
     public function testIsp()
     {
-        $reader = new Reader('maxmind-db/test-data/GeoIP2-ISP-Org-Test.mmdb');
+        $reader = new Reader('maxmind-db/test-data/GeoIP2-ISP-Test.mmdb');
 
-        $ipAddress = '2001:1700::';
+        $ipAddress = '1.128.0.0';
         $record = $reader->isp($ipAddress);
-        $this->assertEquals(6730, $record->autonomousSystemNumber);
+        $this->assertEquals(1221, $record->autonomousSystemNumber);
         $this->assertEquals(
-            'Sunrise Communications AG',
+            'Telstra Pty Ltd',
             $record->autonomousSystemOrganization
         );
 
-        // XXX - Add org/isp when available
+        $this->assertEquals('Telstra Internet', $record->isp);
+        $this->assertEquals('Telstra Internet', $record->organization);
 
         $this->assertEquals($ipAddress, $record->ipAddress);
         $reader->close();
