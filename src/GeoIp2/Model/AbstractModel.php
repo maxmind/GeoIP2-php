@@ -8,8 +8,7 @@ namespace GeoIp2\Model;
  */
 abstract class AbstractModel implements \JsonSerializable
 {
-    private $raw;
-
+    protected $raw;
 
     /**
      * @ignore
