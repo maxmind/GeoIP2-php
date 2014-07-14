@@ -11,7 +11,7 @@ the free [GeoLite2 databases](http://dev.maxmind.com/geoip/geoip2/geolite2/).
 
 We recommend installing this package with [Composer](http://getcomposer.org/).
 
-### Downloading Composer ###
+### Download Composer ###
 
 To download Composer, run in the root directory of your project:
 
@@ -42,7 +42,7 @@ from your code:
 require 'vendor/autoload.php';
 ```
 
-## Installing via Phar ##
+## Install via Phar ##
 
 Although we strongly recommend using Composer, we also provide a
 [phar archive](http://php.net/manual/en/book.phar.php) containing all of the
