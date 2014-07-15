@@ -13,7 +13,7 @@ namespace GeoIp2\Record;
  *
  * @property int $confidence A value from 0-100 indicating MaxMind's
  * confidence that the country is correct. This attribute is only available
- * from the Omni end point.
+ * from the Insights end point.
  *
  * @property int $geonameId The GeoName ID for the country. This attribute is
  * returned by all end points.

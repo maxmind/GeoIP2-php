@@ -3,11 +3,10 @@
 namespace GeoIp2\Model;
 
 /**
- * This class provides a model for the data returned by the GeoIP2
- * Omni end point.
+ * Model class for the data returned by GeoIP2 Precision: Insights web service.
  *
- * The only difference between the City, City/ISP/Org, and Omni model
- * classes is which fields in each record may be populated. See
+ * The only difference between the City and Insights model classes is which
+ * fields in each record may be populated. See
  * http://dev.maxmind.com/geoip/geoip2/web-services more details.
  *
  * @property \GeoIp2\Record\City $city City data for the requested IP
@@ -52,6 +51,6 @@ namespace GeoIp2\Model;
  * @property \GeoIp2\Record\Traits $traits Data for the traits of the
  * requested IP address.
  */
-class Omni extends CityIspOrg
+class Insights extends City
 {
 }

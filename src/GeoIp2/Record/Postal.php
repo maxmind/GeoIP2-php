@@ -14,7 +14,7 @@ namespace GeoIp2\Record;
  *
  * @property int $confidence A value from 0-100 indicating MaxMind's
  * confidence that the postal code is correct. This attribute is only
- * available from the Omni end point.
+ * available from the Insights end point.
  */
 class Postal extends AbstractRecord
 {

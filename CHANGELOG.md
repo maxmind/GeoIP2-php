@@ -1,6 +1,16 @@
 CHANGELOG
 =========
 
+0.7.0 (2014-07-XX)
+------------------
+
+* The web service client API has been updated for the v2.1 release of the web
+  service. In particular, the `cityIspOrg` and `omni` methods on
+  `GeoIP2\WebService\Client` should be considered deprecated. The `city`
+  method now provides all of the data formerly provided by `cityIspOrg`, and
+  the `omni` method has been replaced by the `insights` method.
+
+
 0.6.3 (2014-05-12)
 ------------------
 

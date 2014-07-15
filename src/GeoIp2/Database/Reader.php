@@ -92,37 +92,41 @@ class Reader implements ProviderInterface
     }
 
     /**
-     * This method returns a GeoIP2 City/ISP/Org model.
+     * This method returns a GeoIP2 City model.
      *
      * @param string $ipAddress IPv4 or IPv6 address as a string.
      *
-     * @return \GeoIp2\Model\CityIspOrg
+     * @return \GeoIp2\Model\City
      *
      * @throws \GeoIp2\Exception\AddressNotFoundException if the address is
      *         not in the database.
      * @throws \MaxMind\Db\Reader\InvalidDatabaseException if the database
      *         is corrupt or invalid
+     *
+     * @deprecated deprecated since version 0.7.0
      */
     public function cityIspOrg($ipAddress)
     {
-        return $this->modelFor('CityIspOrg', $ipAddress);
+        return $this->modelFor('City', $ipAddress);
     }
 
     /**
-     * This method returns a GeoIP2 Omni model.
+     * This method returns a GeoIP2 Insights model.
      *
      * @param string $ipAddress IPv4 or IPv6 address as a string.
      *
-     * @return \GeoIp2\Model\Omni
+     * @return \GeoIp2\Model\Insights
      *
      * @throws \GeoIp2\Exception\AddressNotFoundException if the address is
      *         not in the database.
      * @throws \MaxMind\Db\Reader\InvalidDatabaseException if the database
      *         is corrupt or invalid
+     *
+     * @deprecated deprecated since version 0.7.0
      */
     public function omni($ipAddress)
     {
-        return $this->modelFor('Omni', $ipAddress);
+        return $this->modelFor('Insights', $ipAddress);
     }
 
     public function connectionType($ipAddress)
