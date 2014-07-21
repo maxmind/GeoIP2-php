@@ -32,8 +32,8 @@ namespace GeoIp2\Model;
  *
  * @property \GeoIp2\Record\RepresentedCountry $representedCountry
  * Represented country data for the requested IP address. The represented
- * country is used for things like military bases or embassies. It is only
- * present when the represented country differs from the country.
+ * country is used for things like military bases. It is only present when
+ * the represented country differs from the country.
  *
  * @property array $subdivisions An array of {@link \GeoIp2\Record\Subdivision}
  * objects representing the country subdivisions for the requested IP
