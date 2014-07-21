@@ -67,7 +67,7 @@ namespace GeoIp2\Record;
  *    <li>traveler
  * </ul>
  * <p>
- *   This attribute is only available from the Insight web service end
+ *   This attribute is only available from the Insights web service end
  *   point.
  * </p>
  */
