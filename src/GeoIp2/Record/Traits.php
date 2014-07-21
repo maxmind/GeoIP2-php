@@ -11,18 +11,18 @@ namespace GeoIp2\Record;
  * @property int $autonomousSystemNumber The {@link
  * http://en.wikipedia.org/wiki/Autonomous_system_(Internet) autonomous
  * system number} associated with the IP address. This attribute is only
- * available from the City/ISP/Org and Omni end points.
+ * available from the City and Insights web service end points.
  *
  * @property string $autonomousSystemOrganization The organization
  * associated with the registered {@link
  * http://en.wikipedia.org/wiki/Autonomous_system_(Internet) autonomous
  * system number} for the IP address. This attribute is only available from
- * the City/ISP/Org and Omni end points.
+ * the City and Insights web service end points.
  *
  * @property string $domain The second level domain associated with the
  * IP address. This will be something like "example.com" or "example.co.uk",
  * not "foo.example.com". This attribute is only available from the
- * City/ISP/Org and Omni end points.
+ * City and Insights web service end points.
  *
  * @property string $ipAddress The IP address that the data in the model
  * is for. If you performed a "me" lookup against the web service, this
@@ -40,12 +40,12 @@ namespace GeoIp2\Record;
  * end points.
  *
  * @property string $isp The name of the ISP associated with the IP address.
- * This attribute is only available from the City/ISP/Org and Omni end
+ * This attribute is only available from the City and Insights web service end
  * points.
  *
  * @property string $organization The name of the organization associated
- * with the IP address. This attribute is only available from the City/ISP/Org
- * and Omni end points.
+ * with the IP address. This attribute is only available from the City and
+ * Insights web service end points.
  *
  * @property string $userType <p>The user type associated with the IP
  *  address. This can be one of the following values:</p>
@@ -66,7 +66,10 @@ namespace GeoIp2\Record;
  *    <li>search_engine_spider
  *    <li>traveler
  * </ul>
- * <p>This attribute is only available from the Omni end point.</p>
+ * <p>
+ *   This attribute is only available from the Insights web service end
+ *   point.
+ * </p>
  */
 class Traits extends AbstractRecord
 {

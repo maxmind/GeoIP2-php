@@ -3,10 +3,10 @@
 namespace GeoIp2\Model;
 
 /**
- * This class provides a model for the data returned by the GeoIP2 Country.
+ * Model class for the data returned by GeoIP2 Country web service and database.
  *
- * The only difference between the City, City/ISP/Org, and Omni model
- * classes is which fields in each record may be populated. See
+ * The only difference between the City and Insights model classes is which
+ * fields in each record may be populated. See
  * http://dev.maxmind.com/geoip/geoip2/web-services more details.
  *
  * @property \GeoIp2\Record\Continent $continent Continent data for the
@@ -26,8 +26,8 @@ namespace GeoIp2\Model;
  *
  * @property \GeoIp2\Record\RepresentedCountry $representedCountry
  * Represented country data for the requested IP address. The represented
- * country is used for things like military bases or embassies. It is only
- * present when the represented country differs from the country.
+ * country is used for things like military bases. It is only present when
+ * the represented country differs from the country.
  *
  * @property \GeoIp2\Record\Traits $traits Data for the traits of the
  * requested IP address.

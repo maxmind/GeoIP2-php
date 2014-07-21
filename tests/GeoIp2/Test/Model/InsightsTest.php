@@ -2,9 +2,9 @@
 
 namespace GeoIp2\Test\Model;
 
-use GeoIp2\Model\Omni;
+use GeoIp2\Model\Insights;
 
-class OmniTest extends \PHPUnit_Framework_TestCase
+class InsightsTest extends \PHPUnit_Framework_TestCase
 {
 
     public function testFull()
@@ -69,12 +69,12 @@ class OmniTest extends \PHPUnit_Framework_TestCase
             ),
         );
 
-        $model = new Omni($raw, array('en'));
+        $model = new Insights($raw, array('en'));
 
         $this->assertInstanceOf(
-            'GeoIp2\Model\Omni',
+            'GeoIp2\Model\Insights',
             $model,
-            'GeoIp2\Model\Omni object'
+            'GeoIp2\Model\Insights object'
         );
 
         $this->assertInstanceOf(
@@ -147,12 +147,12 @@ class OmniTest extends \PHPUnit_Framework_TestCase
     {
         $raw = array('traits' => array('ip_address' => '5.6.7.8'));
 
-        $model = new Omni($raw, array('en'));
+        $model = new Insights($raw, array('en'));
 
         $this->assertInstanceOf(
-            'GeoIp2\Model\Omni',
+            'GeoIp2\Model\Insights',
             $model,
-            'GeoIp2\Model\Omni object with no data except traits.ipAddress'
+            'GeoIp2\Model\Insights object with no data except traits.ipAddress'
         );
 
         $this->assertInstanceOf(
@@ -231,12 +231,12 @@ class OmniTest extends \PHPUnit_Framework_TestCase
         );
 
         // checking whether there are exceptions with unknown keys
-        $model = new Omni($raw, array('en'));
+        $model = new Insights($raw, array('en'));
 
         $this->assertInstanceOf(
-            'GeoIp2\Model\Omni',
+            'GeoIp2\Model\Insights',
             $model,
-            'no exception when Omni model gets raw data with unknown keys'
+            'no exception when Insights model gets raw data with unknown keys'
         );
 
         $this->assertEquals(

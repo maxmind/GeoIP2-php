@@ -202,7 +202,7 @@ use GeoIp2\WebService\Client;
 $client = new Client(42, 'abcdef123456');
 
 // Replace "city" with the method corresponding to the web service that
-// you are using, e.g., "country", "cityIspOrg", "omni".
+// you are using, e.g., "country", "insights".
 $record = $client->city('128.101.101.101');
 
 print($record->country->isoCode . "\n"); // 'US'
@@ -232,7 +232,7 @@ Because of these factors, it is possible for any end point to return a record
 where some or all of the attributes are unpopulated.
 
 See the
-[GeoIP2 web service docs](http://dev.maxmind.com/geoip/geoip2/web-services)
+[GeoIP2 Precision web service docs](http://dev.maxmind.com/geoip/geoip2/web-services)
 for details on what data each end point may return.
 
 The only piece of data which is always returned is the `ipAddress`

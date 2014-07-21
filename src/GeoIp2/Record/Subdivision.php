@@ -10,7 +10,7 @@ namespace GeoIp2\Record;
  *
  * @property int $confidence This is a value from 0-100 indicating MaxMind's
  * confidence that the subdivision is correct. This attribute is only
- * available from the Omni end point.
+ * available from the Insights end point.
  *
  * @property int $geonameId This is a GeoName ID for the subdivision. This
  * attribute is returned by all end points except Country.

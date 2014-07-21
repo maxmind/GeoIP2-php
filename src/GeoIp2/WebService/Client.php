@@ -15,10 +15,10 @@ use Guzzle\Http\Exception\ClientErrorResponseException;
 use Guzzle\Http\Exception\ServerErrorResponseException;
 
 /**
- * This class provides a client API for all the GeoIP2 web service's
- * end points. The end points are Country, City, City/ISP/Org, and Omni. Each
- * end point returns a different set of data about an IP address, with Country
- * returning the least data and Omni the most.
+ * This class provides a client API for all the GeoIP2 Precision web service
+ * end points. The end points are Country, City, and Insights. Each end point
+ * returns a different set of data about an IP address, with Country returning
+ * the least data and Insights the most.
  *
  * Each web service end point is represented by a different model class, and
  * these model classes in turn contain multiple Record classes. The record
@@ -80,7 +80,7 @@ class Client implements ProviderInterface
     }
 
     /**
-     * This method calls the GeoIP2 City endpoint.
+     * This method calls the GeoIP2 Precision: City endpoint.
      *
      * @param string $ipAddress IPv4 or IPv6 address as a string. If no
      * address is provided, the address that the web service is called
@@ -112,7 +112,41 @@ class Client implements ProviderInterface
     }
 
     /**
-     * This method calls the GeoIP2 Country endpoint.
+     * This method calls the GeoIP2 Precision: City endpoint.
+     *
+     * @param string $ipAddress IPv4 or IPv6 address as a string. If no
+     * address is provided, the address that the web service is called
+     * from will be used.
+     *
+     * @return \GeoIp2\Model\City
+     *
+     * @throws \GeoIp2\Exception\AddressNotFoundException if the address you
+     *   provided is not in our database (e.g., a private address).
+     * @throws \GeoIp2\Exception\AuthenticationException if there is a problem
+     *   with the user ID or license key that you provided.
+     * @throws \GeoIp2\Exception\OutOfQueriesException if your account is out
+     *   of queries.
+     * @throws \GeoIp2\Exception\InvalidRequestException} if your request was
+     *   received by the web service but is invalid for some other reason.
+     *   This may indicate an issue with this API. Please report the error to
+     *   MaxMind.
+     * @throws \GeoIp2\Exception\HttpException if an unexpected HTTP error
+     *   code or message was returned. This could indicate a problem with the
+     *   connection between your server and the web service or that the web
+     *   service returned an invalid document or 500 error code.
+     * @throws \GeoIp2\Exception\GeoIp2Exception This serves as the parent
+     *   class to the above exceptions. It will be thrown directly if a 200
+     *   status code is returned but the body is invalid.
+     *
+     * @deprecated deprecated since version 0.7.0
+     */
+    public function cityIspOrg($ipAddress = 'me')
+    {
+        return $this->city($ipAddress);
+    }
+
+    /**
+     * This method calls the GeoIP2 Precision: Country endpoint.
      *
      * @param string $ipAddress IPv4 or IPv6 address as a string. If no
      * address is provided, the address that the web service is called
@@ -144,13 +178,13 @@ class Client implements ProviderInterface
     }
 
     /**
-     * This method calls the GeoIP2 City/ISP/Org endpoint.
+     * This method calls the GeoIP2 Precision: Insights endpoint.
      *
      * @param string $ipAddress IPv4 or IPv6 address as a string. If no
      * address is provided, the address that the web service is called
      * from will be used.
      *
-     * @return \GeoIp2\Model\CityIspOrg
+     * @return \GeoIp2\Model\Insights
      *
      * @throws \GeoIp2\Exception\AddressNotFoundException if the address you
      *   provided is not in our database (e.g., a private address).
@@ -169,20 +203,22 @@ class Client implements ProviderInterface
      * @throws \GeoIp2\Exception\GeoIp2Exception This serves as the parent
      *   class to the above exceptions. It will be thrown directly if a 200
      *   status code is returned but the body is invalid.
+     *
+     * @deprecated deprecated since version 0.7.0
      */
-    public function cityIspOrg($ipAddress = 'me')
+    public function insights($ipAddress = 'me')
     {
-        return $this->responseFor('city_isp_org', 'CityIspOrg', $ipAddress);
+        return $this->responseFor('insights', 'Insights', $ipAddress);
     }
 
     /**
-     * This method calls the GeoIP2 Omni endpoint.
+     * This method calls the GeoIP2 Precision: Insights (prev. Omni) endpoint.
      *
      * @param string $ipAddress IPv4 or IPv6 address as a string. If no
      * address is provided, the address that the web service is called
      * from will be used.
      *
-     * @return \GeoIp2\Model\Omni
+     * @return \GeoIp2\Model\Insights
      *
      * @throws \GeoIp2\Exception\AddressNotFoundException if the address you
      *   provided is not in our database (e.g., a private address).
@@ -201,10 +237,12 @@ class Client implements ProviderInterface
      * @throws \GeoIp2\Exception\GeoIp2Exception This serves as the parent
      *   class to the above exceptions. It will be thrown directly if a 200
      *   status code is returned but the body is invalid.
+     *
+     * @deprecated deprecated since version 0.7.0
      */
     public function omni($ipAddress = 'me')
     {
-        return $this->responseFor('omni', 'Omni', $ipAddress);
+        return $this->insights($ipAddress);
     }
 
     private function responseFor($endpoint, $class, $ipAddress)
@@ -354,6 +392,6 @@ class Client implements ProviderInterface
 
     private function baseUri()
     {
-        return 'https://' . $this->host . '/geoip/v2.0';
+        return 'https://' . $this->host . '/geoip/v2.1';
     }
 }
