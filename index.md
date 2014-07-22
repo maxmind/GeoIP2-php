@@ -2,7 +2,7 @@
 layout: default
 title: MaxMind GeoIP2 PHP API
 language: php
-version: v0.6.1
+version: v0.7.0
 ---
 
 # GeoIP2 PHP API #
@@ -16,44 +16,40 @@ the free [GeoLite2 databases](http://dev.maxmind.com/geoip/geoip2/geolite2/).
 
 ## Install via Composer ##
 
-### Define Your Dependencies ###
-
 We recommend installing this package with [Composer](http://getcomposer.org/).
-To do this, add `geoip2/geoip2` to your `composer.json` file. If you don't
-have a `composer.json` file, create one in the root directory of your project.
 
-```json
-{
-    "require": {
-        "geoip2/geoip2": "0.6.*"
-    }
-}
+### Download Composer ###
+
+To download Composer, run in the root directory of your project:
+
+```bash
+curl -sS https://getcomposer.org/installer | php
 ```
 
-### Install Composer ###
-
-Run in your project root:
-
-```
-curl -s http://getcomposer.org/installer | php
-```
+You should now have the file `composer.phar` in your project directory.
 
 ### Install Dependencies ###
 
 Run in your project root:
 
 ```
-php composer.phar install
+php composer.phar require geoip2/geoip2:~0.7.0
 ```
+
+You should now have the files `composer.json` and `composer.lock` as well as
+the directory `vendor` in your project directory. If you use a version control
+system, `composer.json` should be added to it.
 
 ### Require Autoloader ###
 
-You can autoload all dependencies by adding this to your code:
-```
+After installing the dependencies, you need to require the Composer autoloader
+from your code:
+
+```php
 require 'vendor/autoload.php';
 ```
 
-## Installing via Phar ##
+## Install via Phar ##
 
 Although we strongly recommend using Composer, we also provide a
 [phar archive](http://php.net/manual/en/book.phar.php) containing all of the
@@ -94,7 +90,7 @@ is thrown. If the database is invalid or corrupt, a
 
 See the API documentation for more details.
 
-### Example ###
+### City Example ###
 
 ```php
 <?php
@@ -122,6 +118,64 @@ print($record->postal->code . "\n"); // '55455'
 
 print($record->location->latitude . "\n"); // 44.9733
 print($record->location->longitude . "\n"); // -93.2323
+
+```
+
+### Connection-Type Example ###
+
+```php
+<?php
+require_once 'vendor/autoload.php';
+use GeoIp2\Database\Reader;
+
+// This creates the Reader object, which should be reused across
+// lookups.
+$reader = new Reader('/usr/local/share/GeoIP/GeoIP2-Connection-Type.mmdb');
+
+$record = $reader->connectionType('128.101.101.101');
+
+print($record->connectionType . "\n"); // 'Corporate'
+print($record->ipAddress . "\n"); // '128.101.101.101'
+
+```
+
+### Domain Example ###
+
+```php
+<?php
+require_once 'vendor/autoload.php';
+use GeoIp2\Database\Reader;
+
+// This creates the Reader object, which should be reused across
+// lookups.
+$reader = new Reader('/usr/local/share/GeoIP/GeoIP2-Domain.mmdb');
+
+$record = $reader->domain('128.101.101.101');
+
+print($record->domain . "\n"); // 'umn.edu'
+print($record->ipAddress . "\n"); // '128.101.101.101'
+
+```
+
+### ISP Example ###
+
+```php
+<?php
+require_once 'vendor/autoload.php';
+use GeoIp2\Database\Reader;
+
+// This creates the Reader object, which should be reused across
+// lookups.
+$reader = new Reader('/usr/local/share/GeoIP/GeoIP2-ISP.mmdb');
+
+$record = $reader->isp('128.101.101.101');
+
+print($record->autonomousSystemNumber . "\n"); // 217
+print($record->autonomousSystemOrganization . "\n"); // 'University of Minnesota'
+print($record->isp . "\n"); // 'University of Minnesota'
+print($record->organization . "\n"); // 'University of Minnesota'
+
+print($record->ipAddress . "\n"); // '128.101.101.101'
 
 ```
 
@@ -155,7 +209,7 @@ use GeoIp2\WebService\Client;
 $client = new Client(42, 'abcdef123456');
 
 // Replace "city" with the method corresponding to the web service that
-// you are using, e.g., "country", "cityIspOrg", "omni".
+// you are using, e.g., "country", "insights".
 $record = $client->city('128.101.101.101');
 
 print($record->country->isoCode . "\n"); // 'US'
@@ -185,7 +239,7 @@ Because of these factors, it is possible for any end point to return a record
 where some or all of the attributes are unpopulated.
 
 See the
-[GeoIP2 web service docs](http://dev.maxmind.com/geoip/geoip2/web-services)
+[GeoIP2 Precision web service docs](http://dev.maxmind.com/geoip/geoip2/web-services)
 for details on what data each end point may return.
 
 The only piece of data which is always returned is the `ipAddress`
