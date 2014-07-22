@@ -1,6 +1,7 @@
 _site
 .gh-pages
 .idea
+build
 composer.lock
 composer.phar
 phpunit.xml
