@@ -34,7 +34,7 @@ class RepresentedCountry extends Country
         'confidence',
         'geonameId',
         'isoCode',
-        'namespace',
+        'names',
         'type'
     );
 }

@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+0.7.x (2014-0X-XX)
+------------------
+
+* The name attribute was missing from the RepresentedCountry class.
+
 0.7.0 (2014-07-22)
 ------------------
 
