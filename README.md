@@ -293,6 +293,9 @@ This library works and is tested with HHVM.
 This library also relies on the [Guzzle HTTP client](http://guzzlephp.org/)
 and the [MaxMind DB Reader](https://github.com/maxmind/MaxMind-DB-Reader-php).
 
+If you are using PHP 5.3 with an autoloader besides Composer, you must load
+`JsonSerializable.php` in the `compat` directory.
+
 ## Contributing ##
 
 Patches and pull requests are encouraged. All code should follow the
