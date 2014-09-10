@@ -1,9 +1,16 @@
 CHANGELOG
 =========
 
-0.7.x (2014-0X-XX)
+0.8.0 (2014-0X-XX)
 ------------------
 
+* The `GeoIP2\Database\Reader` lookup methods (e.g., `city()`, `isp()`) now
+  throw an `BadMethodCallException` if they are used with a database that
+  does not match the method. In particular, doing a `city()` lookup on a
+  GeoIP2 Country database will result in an exception, and vice versa.
+* A `metadata()` method has been added to the `GeoIP2\Database\Reader` class.
+  This returns a `MaxMind\Db\Reader\Metadata` class with information about the
+  database.
 * The name attribute was missing from the RepresentedCountry class.
 
 0.7.0 (2014-07-22)

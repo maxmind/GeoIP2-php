@@ -8,44 +8,39 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
 {
     public function testDefaultLocale()
     {
-        $reader = new Reader('maxmind-db/test-data/GeoIP2-City-Test.mmdb');
-        // Needed for PHP 5.3
-        $that = $this;
-        $this->checkAllMethods(
-            function ($method) use (&$that, &$reader) {
-                $record = $reader->$method('81.2.69.160');
-                $that->assertEquals('United Kingdom', $record->country->name);
-            }
-        );
+        foreach (array('City', 'Country') as $type) {
+            $reader = new Reader("maxmind-db/test-data/GeoIP2-$type-Test.mmdb");
+            $method = lcfirst($type);
+            $record = $reader->$method('81.2.69.160');
+            $this->assertEquals('United Kingdom', $record->country->name);
+        }
         $reader->close();
     }
 
     public function testLocaleList()
     {
-        $reader = new Reader(
-            'maxmind-db/test-data/GeoIP2-City-Test.mmdb',
-            array('xx', 'ru', 'pt-BR', 'es', 'en')
-        );
-        $that = $this;
-        $this->checkAllMethods(
-            function ($method) use (&$that, &$reader) {
-                $record = $reader->$method('81.2.69.160');
-                $that->assertEquals('Великобритания', $record->country->name);
-            }
-        );
+
+        foreach (array('City', 'Country') as $type) {
+            $reader = new Reader(
+                "maxmind-db/test-data/GeoIP2-$type-Test.mmdb",
+                array('xx', 'ru', 'pt-BR', 'es', 'en')
+            );
+            $method = lcfirst($type);
+
+            $record = $reader->$method('81.2.69.160');
+            $this->assertEquals('Великобритания', $record->country->name);
+        }
         $reader->close();
     }
 
     public function testHasIpAddress()
     {
-        $reader = new Reader('maxmind-db/test-data/GeoIP2-City-Test.mmdb');
-        $that = $this;
-        $this->checkAllMethods(
-            function ($method) use (&$that, &$reader) {
-                $record = $reader->$method('81.2.69.160');
-                $that->assertEquals('81.2.69.160', $record->traits->ipAddress);
-            }
-        );
+        foreach (array('City', 'Country') as $type) {
+            $reader = new Reader("maxmind-db/test-data/GeoIP2-$type-Test.mmdb");
+            $method = lcfirst($type);
+            $record = $reader->$method('81.2.69.160');
+            $this->assertEquals('81.2.69.160', $record->traits->ipAddress);
+        }
         $reader->close();
     }
 
@@ -61,6 +56,28 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @expectedException BadMethodCallException
+     * @expectedExceptionMessage The country method cannot be used to open a GeoIP2-City database
+     */
+    public function testIncorrectDatabase()
+    {
+        $reader = new Reader('maxmind-db/test-data/GeoIP2-City-Test.mmdb');
+        $reader->country('10.10.10.10');
+        $reader->close();
+    }
+
+    /**
+     * @expectedException BadMethodCallException
+     * @expectedExceptionMessage The domain method cannot be used to open a GeoIP2-City database
+     */
+    public function testIncorrectDatabaseFlat()
+    {
+        $reader = new Reader('maxmind-db/test-data/GeoIP2-City-Test.mmdb');
+        $reader->domain('10.10.10.10');
+        $reader->close();
+    }
+
+    /**
      * @expectedException InvalidArgumentException
      * @expectedExceptionMessage is not a valid IP address
      */
@@ -70,6 +87,7 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
         $reader->city('invalid');
         $reader->close();
     }
+
 
     public function testConnectionType()
     {
@@ -112,10 +130,11 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
         $reader->close();
     }
 
-    public function checkAllMethods($testCb)
+    public function testMetadata()
     {
-        foreach (array('city', 'cityIspOrg', 'country', 'omni') as $method) {
-            $testCb($method);
-        }
+        $reader = new Reader('maxmind-db/test-data/GeoIP2-City-Test.mmdb');
+        $this->assertEquals('GeoIP2-City', $reader->metadata()->databaseType);
+
+        $reader->close();
     }
 }
