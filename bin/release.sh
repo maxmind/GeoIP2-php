@@ -27,7 +27,7 @@ if [ -n "$(git status --porcelain)" ]; then
     exit 1
 fi
 
-../vendor/bin/apigen.php --quiet --download --title "GeoIP2 PHP API $TAG" --source ../src --destination doc/$TAG
+../vendor/bin/apigen --quiet --download --title "GeoIP2 PHP API $TAG" --source ../src --destination doc/$TAG
 
 PAGE=index.md
 cat <<EOF > $PAGE
