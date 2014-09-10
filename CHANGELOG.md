@@ -1,7 +1,7 @@
 CHANGELOG
 =========
 
-0.8.0 (2014-0X-XX)
+0.8.0 (2014-09-10)
 ------------------
 
 * The `GeoIP2\Database\Reader` lookup methods (e.g., `city()`, `isp()`) now

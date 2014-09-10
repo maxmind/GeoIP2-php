@@ -14,7 +14,7 @@
     ],
     "require": {
         "guzzle/guzzle": "3.*",
-        "maxmind-db/reader": "~0.3.1",
+        "maxmind-db/reader": "~0.3.2",
         "php": ">=5.3.1"
     },
     "require-dev": {
