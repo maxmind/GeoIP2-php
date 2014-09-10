@@ -71,7 +71,11 @@ class Reader implements ProviderInterface
      */
     public function city($ipAddress)
     {
-        return $this->modelFor('City', $ipAddress);
+        return $this->modelFor(
+            'City',
+            array('GeoLite2-City', 'GeoIP2-City'),
+            $ipAddress
+        );
     }
 
     /**
@@ -88,64 +92,49 @@ class Reader implements ProviderInterface
      */
     public function country($ipAddress)
     {
-        return $this->modelFor('Country', $ipAddress);
-    }
-
-    /**
-     * This method returns a GeoIP2 City model.
-     *
-     * @param string $ipAddress IPv4 or IPv6 address as a string.
-     *
-     * @return \GeoIp2\Model\City
-     *
-     * @throws \GeoIp2\Exception\AddressNotFoundException if the address is
-     *         not in the database.
-     * @throws \MaxMind\Db\Reader\InvalidDatabaseException if the database
-     *         is corrupt or invalid
-     *
-     * @deprecated deprecated since version 0.7.0
-     */
-    public function cityIspOrg($ipAddress)
-    {
-        return $this->modelFor('City', $ipAddress);
-    }
-
-    /**
-     * This method returns a GeoIP2 Insights model.
-     *
-     * @param string $ipAddress IPv4 or IPv6 address as a string.
-     *
-     * @return \GeoIp2\Model\Insights
-     *
-     * @throws \GeoIp2\Exception\AddressNotFoundException if the address is
-     *         not in the database.
-     * @throws \MaxMind\Db\Reader\InvalidDatabaseException if the database
-     *         is corrupt or invalid
-     *
-     * @deprecated deprecated since version 0.7.0
-     */
-    public function omni($ipAddress)
-    {
-        return $this->modelFor('Insights', $ipAddress);
+        return $this->modelFor(
+            'Country',
+            array('GeoLite2-Country', 'GeoIP2-Country'),
+            $ipAddress
+        );
     }
 
     public function connectionType($ipAddress)
     {
-        return $this->flatModelFor('ConnectionType', $ipAddress);
+        return $this->flatModelFor(
+            'ConnectionType',
+            'GeoIP2-Connection-Type',
+            $ipAddress
+        );
     }
 
     public function domain($ipAddress)
     {
-        return $this->flatModelFor('Domain', $ipAddress);
+        return $this->flatModelFor(
+            'Domain',
+            'GeoIP2-Domain',
+            $ipAddress
+        );
     }
 
     public function isp($ipAddress)
     {
-        return $this->flatModelFor('Isp', $ipAddress);
+        return $this->flatModelFor(
+            'Isp',
+            'GeoIP2-ISP',
+            $ipAddress
+        );
     }
 
-    private function modelFor($class, $ipAddress)
+    private function modelFor($class, $types, $ipAddress)
     {
+        if (!in_array($this->metadata()->databaseType, $types)) {
+            $method = lcfirst($class);
+            throw new \BadMethodCallException(
+                "The $method method cannot be used to open a "
+                . $this->metadata()->databaseType . " database"
+            );
+        }
         $record = $this->getRecord($ipAddress);
 
         $record['traits']['ip_address'] = $ipAddress;
@@ -154,8 +143,16 @@ class Reader implements ProviderInterface
         return new $class($record, $this->locales);
     }
 
-    private function flatModelFor($class, $ipAddress)
+    private function flatModelFor($class, $type, $ipAddress)
     {
+        if ($this->metadata()->databaseType !== $type) {
+            $method = lcfirst($class);
+            throw new \BadMethodCallException(
+                "The $method method cannot be used to open a "
+                . $this->metadata()->databaseType . " database"
+            );
+        }
+
         $record = $this->getRecord($ipAddress);
 
         $record['ip_address'] = $ipAddress;
@@ -173,6 +170,16 @@ class Reader implements ProviderInterface
             );
         }
         return $record;
+    }
+
+    /**
+     * @throws \InvalidArgumentException if arguments are passed to the method.
+     * @throws \BadMethodCallException if the database has been closed.
+     * @return \MaxMind\Db\Reader\Metadata object for the database.
+     */
+    public function metadata()
+    {
+        return $this->dbReader->metadata();
     }
 
     /**
