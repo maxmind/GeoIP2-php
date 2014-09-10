@@ -2,7 +2,7 @@
 layout: default
 title: MaxMind GeoIP2 PHP API
 language: php
-version: v0.7.0
+version: v0.8.0
 ---
 
 # GeoIP2 PHP API #
@@ -33,7 +33,7 @@ You should now have the file `composer.phar` in your project directory.
 Run in your project root:
 
 ```
-php composer.phar require geoip2/geoip2:~0.7.0
+php composer.phar require geoip2/geoip2:~0.8.0
 ```
 
 You should now have the files `composer.json` and `composer.lock` as well as
@@ -299,6 +299,9 @@ This library works and is tested with HHVM.
 
 This library also relies on the [Guzzle HTTP client](http://guzzlephp.org/)
 and the [MaxMind DB Reader](https://github.com/maxmind/MaxMind-DB-Reader-php).
+
+If you are using PHP 5.3 with an autoloader besides Composer, you must load
+`JsonSerializable.php` in the `compat` directory.
 
 ## Contributing ##
 
