@@ -1,6 +1,13 @@
 CHANGELOG
 =========
 
+0.8.1 (2014-09-12)
+------------------
+
+* The check added to the `GeoIP2\Database\Reader` lookup methods in 0.8.0 did
+  not work with the GeoIP2 City Database Subset by Continent with World
+  Countries databases. This has been fixed. Fixes GitHub issue #23.
+
 0.8.0 (2014-09-10)
 ------------------
 
