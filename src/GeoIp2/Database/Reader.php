@@ -73,7 +73,7 @@ class Reader implements ProviderInterface
     {
         return $this->modelFor(
             'City',
-            array('GeoLite2-City', 'GeoIP2-City'),
+            array('GeoLite2-City', 'GeoIP2-City', 'GeoIP2-City-Europe'),
             $ipAddress
         );
     }
