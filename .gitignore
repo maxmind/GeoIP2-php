@@ -1,6 +1,7 @@
 _site
 .gh-pages
 .idea
+GeoLite2-City.mmdb
 build
 composer.lock
 composer.phar
