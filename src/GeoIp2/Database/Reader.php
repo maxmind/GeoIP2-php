@@ -71,11 +71,7 @@ class Reader implements ProviderInterface
      */
     public function city($ipAddress)
     {
-        return $this->modelFor(
-            'City',
-            array('GeoLite2-City', 'GeoIP2-City'),
-            $ipAddress
-        );
+        return $this->modelFor('City', 'City', $ipAddress);
     }
 
     /**
@@ -92,11 +88,7 @@ class Reader implements ProviderInterface
      */
     public function country($ipAddress)
     {
-        return $this->modelFor(
-            'Country',
-            array('GeoLite2-Country', 'GeoIP2-Country'),
-            $ipAddress
-        );
+        return $this->modelFor('Country', 'Country', $ipAddress);
     }
 
     public function connectionType($ipAddress)
@@ -126,16 +118,9 @@ class Reader implements ProviderInterface
         );
     }
 
-    private function modelFor($class, $types, $ipAddress)
+    private function modelFor($class, $type, $ipAddress)
     {
-        if (!in_array($this->metadata()->databaseType, $types)) {
-            $method = lcfirst($class);
-            throw new \BadMethodCallException(
-                "The $method method cannot be used to open a "
-                . $this->metadata()->databaseType . " database"
-            );
-        }
-        $record = $this->getRecord($ipAddress);
+        $record = $this->getRecord($class, $type, $ipAddress);
 
         $record['traits']['ip_address'] = $ipAddress;
         $class = "GeoIp2\\Model\\" . $class;
@@ -145,15 +130,7 @@ class Reader implements ProviderInterface
 
     private function flatModelFor($class, $type, $ipAddress)
     {
-        if ($this->metadata()->databaseType !== $type) {
-            $method = lcfirst($class);
-            throw new \BadMethodCallException(
-                "The $method method cannot be used to open a "
-                . $this->metadata()->databaseType . " database"
-            );
-        }
-
-        $record = $this->getRecord($ipAddress);
+        $record = $this->getRecord($class, $type, $ipAddress);
 
         $record['ip_address'] = $ipAddress;
         $class = "GeoIp2\\Model\\" . $class;
@@ -161,8 +138,15 @@ class Reader implements ProviderInterface
         return new $class($record);
     }
 
-    private function getRecord($ipAddress)
+    private function getRecord($class, $type, $ipAddress)
     {
+        if (strpos($this->metadata()->databaseType, $type) === false) {
+            $method = lcfirst($class);
+            throw new \BadMethodCallException(
+                "The $method method cannot be used to open a "
+                . $this->metadata()->databaseType . " database"
+            );
+        }
         $record = $this->dbReader->get($ipAddress);
         if ($record === null) {
             throw new AddressNotFoundException(
