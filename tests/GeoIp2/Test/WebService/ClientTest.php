@@ -201,19 +201,16 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     public function testInsights()
     {
 
-        $methods = array('omni', 'insights');
-        foreach ($methods as $method) {
-            $record = $this->client($this->getResponse('1.2.3.4'))
-                ->$method('1.2.3.4');
+        $record = $this->client($this->getResponse('1.2.3.4'))
+            ->insights('1.2.3.4');
 
-            $this->assertInstanceOf('GeoIp2\Model\Insights', $record);
+        $this->assertInstanceOf('GeoIp2\Model\Insights', $record);
 
-            $this->assertEquals(
-                42,
-                $record->continent->geonameId,
-                'continent geoname_id is 42'
-            );
-        }
+        $this->assertEquals(
+            42,
+            $record->continent->geonameId,
+            'continent geoname_id is 42'
+        );
     }
 
     public function testCity()
@@ -230,7 +227,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf(
             'GeoIp2\Model\City',
-            $client->cityIspOrg('me'),
+            $client->city('me'),
             'can set ip parameter to me'
         );
     }
