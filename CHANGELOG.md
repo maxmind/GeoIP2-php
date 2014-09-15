@@ -1,7 +1,7 @@
 CHANGELOG
 =========
 
-0.9.0 (2014-09-XX)
+0.9.0 (2014-09-15)
 ------------------
 
 * IMPORTANT: The deprecated `omni()` and `cityIspOrg()` methods have been
