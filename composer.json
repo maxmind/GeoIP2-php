@@ -14,13 +14,13 @@
     ],
     "require": {
         "guzzle/guzzle": "3.*",
-        "maxmind-db/reader": "~0.3.2",
+        "maxmind-db/reader": "~1.0",
         "php": ">=5.3.1"
     },
     "require-dev": {
         "apigen/apigen": "~2.8.0",
         "nette/nette": "~2.1.3",
-        "phpunit/phpunit": "4.1.*",
+        "phpunit/phpunit": "4.2.*",
         "satooshi/php-coveralls": "dev-master"
     },
     "autoload": {
