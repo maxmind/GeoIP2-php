@@ -2,7 +2,7 @@
 layout: default
 title: MaxMind GeoIP2 PHP API
 language: php
-version: v0.9.0
+version: v2.0.0
 ---
 
 # GeoIP2 PHP API #
@@ -33,7 +33,7 @@ You should now have the file `composer.phar` in your project directory.
 Run in your project root:
 
 ```
-php composer.phar require geoip2/geoip2:~0.9.0
+php composer.phar require geoip2/geoip2:~2.0
 ```
 
 You should now have the files `composer.json` and `composer.lock` as well as
