@@ -19,7 +19,6 @@
     },
     "require-dev": {
         "apigen/apigen": "~2.8.0",
-        "nette/nette": "~2.1.3",
         "phpunit/phpunit": "4.2.*",
         "satooshi/php-coveralls": "dev-master"
     },
