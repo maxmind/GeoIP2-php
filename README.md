@@ -238,9 +238,6 @@ for details on what data each end point may return.
 The only piece of data which is always returned is the `ipAddress`
 attribute in the `GeoIp2\Record\Traits` record.
 
-Every record class attribute has a corresponding predicate method so you can
-check to see if the attribute is set.
-
 ## Integration with GeoNames ##
 
 [GeoNames](http://www.geonames.org/) offers web services and downloadable
