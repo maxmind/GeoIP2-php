@@ -92,6 +92,27 @@ class Reader implements ProviderInterface
     }
 
     /**
+     * This method returns a GeoIP2 Anonymous IP model.
+     *
+     * @param string $ipAddress IPv4 or IPv6 address as a string.
+     *
+     * @return \GeoIp2\Model\Domain
+     *
+     * @throws \GeoIp2\Exception\AddressNotFoundException if the address is
+     *         not in the database.
+     * @throws \MaxMind\Db\Reader\InvalidDatabaseException if the database
+     *         is corrupt or invalid
+     */
+    public function anonymousIp($ipAddress)
+    {
+        return $this->flatModelFor(
+            'AnonymousIp',
+            'GeoIP2-Anonymous-IP',
+            $ipAddress
+        );
+    }
+
+    /**
      * This method returns a GeoIP2 Connection Type model.
      *
      * @param string $ipAddress IPv4 or IPv6 address as a string.

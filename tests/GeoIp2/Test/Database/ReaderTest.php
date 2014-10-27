@@ -88,6 +88,20 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
         $reader->close();
     }
 
+    public function testAnonymousIp()
+    {
+        $reader = new Reader('maxmind-db/test-data/GeoIP2-Anonymous-IP-Test.mmdb');
+        $ipAddress = '1.2.0.1';
+
+        $record = $reader->anonymousIp($ipAddress);
+        $this->assertEquals(1, $record->isAnonymous);
+        $this->assertEquals(1, $record->isAnonymousVpn);
+        $this->assertEquals(0, $record->isHostingProvider);
+        $this->assertEquals(0, $record->isPublicProxy);
+        $this->assertEquals(0, $record->isTorExitNode);
+        $this->assertEquals($ipAddress, $record->ipAddress);
+        $reader->close();
+    }
 
     public function testConnectionType()
     {
