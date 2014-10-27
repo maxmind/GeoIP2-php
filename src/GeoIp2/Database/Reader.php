@@ -96,7 +96,7 @@ class Reader implements ProviderInterface
      *
      * @param string $ipAddress IPv4 or IPv6 address as a string.
      *
-     * @return \GeoIp2\Model\Domain
+     * @return \GeoIp2\Model\AnonymousIp
      *
      * @throws \GeoIp2\Exception\AddressNotFoundException if the address is
      *         not in the database.
