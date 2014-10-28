@@ -2,7 +2,7 @@
 layout: default
 title: MaxMind GeoIP2 PHP API
 language: php
-version: v2.0.0
+version: v2.0.1
 ---
 
 # GeoIP2 PHP API #
@@ -118,6 +118,24 @@ print($record->postal->code . "\n"); // '55455'
 
 print($record->location->latitude . "\n"); // 44.9733
 print($record->location->longitude . "\n"); // -93.2323
+
+```
+
+### Anonymoous-IP Example ###
+
+```php
+<?php
+require_once 'vendor/autoload.php';
+use GeoIp2\Database\Reader;
+
+// This creates the Reader object, which should be reused across
+// lookups.
+$reader = new Reader('/usr/local/share/GeoIP/GeoIP2-Anonymous-IP.mmdb');
+
+$record = $reader->anonymousIp('128.101.101.101');
+
+if ($record->isAnonymous) { print "anon\n"; }
+print($record->ipAddress . "\n"); // '128.101.101.101'
 
 ```
 
@@ -244,9 +262,6 @@ for details on what data each end point may return.
 
 The only piece of data which is always returned is the `ipAddress`
 attribute in the `GeoIp2\Record\Traits` record.
-
-Every record class attribute has a corresponding predicate method so you can
-check to see if the attribute is set.
 
 ## Integration with GeoNames ##
 
