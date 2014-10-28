@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 TAG=$1
 
 if [ -z $TAG ]; then
@@ -7,18 +9,37 @@ if [ -z $TAG ]; then
     exit 1
 fi
 
+rm geoip2.phar
+
 if [ -n "$(git status --porcelain)" ]; then
     echo ". is not clean." >&2
     exit 1
 fi
 
+if [ -d vendor ]; then
+    rm -fr vendor
+fi
+
+php composer.phar self-update
+php composer.phar update --no-dev
+
+if [ ! -f box.phar ]; then
+    wget -O box.phar "https://github.com/kherge-archive/Box/releases/download/2.4.4/box-2.4.4.phar"
+fi
+
+php box.phar build
+
+php composer.phar update
+
+./vendor/bin/phpunit
+
 if [ ! -d .gh-pages ]; then
     echo "Checking out gh-pages in .gh-pages"
     git clone -b gh-pages git@git.maxmind.com:GeoIP2-php .gh-pages
-    cd .gh-pages
+    pushd .gh-pages
 else
     echo "Updating .gh-pages"
-    cd .gh-pages
+    pushd .gh-pages
     git pull
 fi
 
@@ -27,7 +48,25 @@ if [ -n "$(git status --porcelain)" ]; then
     exit 1
 fi
 
-../vendor/bin/apigen --quiet --download --title "GeoIP2 PHP API $TAG" --source ../src --destination doc/$TAG
+# We no longer have apigen as a dependency in Composer as releases are
+# sporadically deleted upstream and compatibility is often broken on patch
+# releases.
+if [ ! -f apigen.phar ]; then
+    wget -O apigen.phar "https://github.com/apigen/apigen/releases/download/v4.0.0-RC3/apigen-4.0.0-RC3.phar"
+fi
+
+
+cat <<EOF > apigen.neon
+destination doc/$TAG
+
+source:
+    ../src
+
+title: "GeoIP2 PHP API $TAG"
+EOF
+
+php apigen.phar
+
 
 PAGE=index.md
 cat <<EOF > $PAGE
@@ -57,7 +96,8 @@ fi
 git push git@github.com:maxmind/GeoIP2-php.git
 git push
 
-cd ..
+popd
+
 git tag -a $TAG
 git push
 git push --tags
