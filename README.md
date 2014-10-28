@@ -114,6 +114,24 @@ print($record->location->longitude . "\n"); // -93.2323
 
 ```
 
+### Anonymoous-IP Example ###
+
+```php
+<?php
+require_once 'vendor/autoload.php';
+use GeoIp2\Database\Reader;
+
+// This creates the Reader object, which should be reused across
+// lookups.
+$reader = new Reader('/usr/local/share/GeoIP/GeoIP2-Anonymous-IP.mmdb');
+
+$record = $reader->anonymousIp('128.101.101.101');
+
+if ($record->isAnonymous) { print "anon\n"; }
+print($record->ipAddress . "\n"); // '128.101.101.101'
+
+```
+
 ### Connection-Type Example ###
 
 ```php

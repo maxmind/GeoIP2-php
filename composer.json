@@ -18,7 +18,6 @@
         "php": ">=5.3.1"
     },
     "require-dev": {
-        "apigen/apigen": "2.8.2",
         "phpunit/phpunit": "4.2.*",
         "satooshi/php-coveralls": "dev-master"
     },

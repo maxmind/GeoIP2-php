@@ -91,6 +91,39 @@ class Reader implements ProviderInterface
         return $this->modelFor('Country', 'Country', $ipAddress);
     }
 
+    /**
+     * This method returns a GeoIP2 Anonymous IP model.
+     *
+     * @param string $ipAddress IPv4 or IPv6 address as a string.
+     *
+     * @return \GeoIp2\Model\AnonymousIp
+     *
+     * @throws \GeoIp2\Exception\AddressNotFoundException if the address is
+     *         not in the database.
+     * @throws \MaxMind\Db\Reader\InvalidDatabaseException if the database
+     *         is corrupt or invalid
+     */
+    public function anonymousIp($ipAddress)
+    {
+        return $this->flatModelFor(
+            'AnonymousIp',
+            'GeoIP2-Anonymous-IP',
+            $ipAddress
+        );
+    }
+
+    /**
+     * This method returns a GeoIP2 Connection Type model.
+     *
+     * @param string $ipAddress IPv4 or IPv6 address as a string.
+     *
+     * @return \GeoIp2\Model\ConnectionType
+     *
+     * @throws \GeoIp2\Exception\AddressNotFoundException if the address is
+     *         not in the database.
+     * @throws \MaxMind\Db\Reader\InvalidDatabaseException if the database
+     *         is corrupt or invalid
+     */
     public function connectionType($ipAddress)
     {
         return $this->flatModelFor(
@@ -100,6 +133,18 @@ class Reader implements ProviderInterface
         );
     }
 
+    /**
+     * This method returns a GeoIP2 Domain model.
+     *
+     * @param string $ipAddress IPv4 or IPv6 address as a string.
+     *
+     * @return \GeoIp2\Model\Domain
+     *
+     * @throws \GeoIp2\Exception\AddressNotFoundException if the address is
+     *         not in the database.
+     * @throws \MaxMind\Db\Reader\InvalidDatabaseException if the database
+     *         is corrupt or invalid
+     */
     public function domain($ipAddress)
     {
         return $this->flatModelFor(
@@ -109,6 +154,18 @@ class Reader implements ProviderInterface
         );
     }
 
+    /**
+     * This method returns a GeoIP2 ISP model.
+     *
+     * @param string $ipAddress IPv4 or IPv6 address as a string.
+     *
+     * @return \GeoIp2\Model\Isp
+     *
+     * @throws \GeoIp2\Exception\AddressNotFoundException if the address is
+     *         not in the database.
+     * @throws \MaxMind\Db\Reader\InvalidDatabaseException if the database
+     *         is corrupt or invalid
+     */
     public function isp($ipAddress)
     {
         return $this->flatModelFor(
