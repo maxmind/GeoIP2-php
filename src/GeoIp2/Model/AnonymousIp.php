@@ -9,7 +9,7 @@ namespace GeoIp2\Model;
  *     any sort of anonymous network.
  *
  * @property boolean $isAnonymousVpn This is true if the IP address belongs to
- *     an anonymous Vpn system.
+ *     an anonymous VPN system.
  *
  * @property boolean $isHostingProvider This is true if the IP address belongs
  *     to a hosting provider.
@@ -17,8 +17,8 @@ namespace GeoIp2\Model;
  * @property boolean $isPublicProxy This is true if the IP address belongs to
  *     a public proxy.
  *
- * @property boolean $isAnonymous This is true if the IP address is a Tor exit
- *     node.
+ * @property boolean $isTorExitNode This is true if the IP address is a Tor
+ *     exit node.
  *
  * @property string $ipAddress The IP address that the data in the model is
  *     for.
