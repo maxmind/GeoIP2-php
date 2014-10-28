@@ -1,7 +1,7 @@
 CHANGELOG
 =========
 
-2.0.1 (2014-09-XX)
+2.1.0 (2014-09-XX)
 ------------------
 
 * Update ApiGen dependency to version that isn't broken on case sensitive
