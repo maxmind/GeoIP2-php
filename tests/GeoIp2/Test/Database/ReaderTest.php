@@ -96,9 +96,9 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
         $record = $reader->anonymousIp($ipAddress);
         $this->assertSame(true, $record->isAnonymous);
         $this->assertSame(true, $record->isAnonymousVpn);
-        $this->assertSame(null, $record->isHostingProvider);
-        $this->assertSame(null, $record->isPublicProxy);
-        $this->assertSame(null, $record->isTorExitNode);
+        $this->assertSame(false, $record->isHostingProvider);
+        $this->assertSame(false, $record->isPublicProxy);
+        $this->assertSame(false, $record->isTorExitNode);
         $this->assertEquals($ipAddress, $record->ipAddress);
         $reader->close();
     }
