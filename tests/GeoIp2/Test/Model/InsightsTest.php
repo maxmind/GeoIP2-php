@@ -62,7 +62,7 @@ class InsightsTest extends \PHPUnit_Framework_TestCase
                 'autonomous_system_organization' => 'AS Organization',
                 'domain' => 'example.com',
                 'ip_address' => '1.2.3.4',
-                'is_satellite_provider' => 1,
+                'is_satellite_provider' => true,
                 'isp' => 'Comcast',
                 'organization' => 'Blorg',
                 'user_type' => 'college',
@@ -128,6 +128,18 @@ class InsightsTest extends \PHPUnit_Framework_TestCase
             'GeoIp2\Record\Traits',
             $model->traits,
             '$model->traits'
+        );
+
+        $this->assertSame(
+            true,
+            $model->traits->isSatelliteProvider,
+            '$model->traits->isSatelliteProvider is true'
+        );
+
+        $this->assertSame(
+            false,
+            $model->traits->isAnonymousProxy,
+            '$model->traits->isAnonymousProxy is false'
         );
 
         $this->assertEquals(
