@@ -13,6 +13,8 @@
     "finder": [
         {
             "name": [
+                "LICENSE",
+                "LICENSE.*",
                 "*.php",
                 "*.pem",
                 "*.pem.md5"

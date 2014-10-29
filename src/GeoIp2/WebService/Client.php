@@ -30,13 +30,12 @@ use Guzzle\Http\Exception\ServerErrorResponseException;
  * The web service may not return any information for an entire record, in
  * which case all of the attributes for that record class will be empty.
  *
- * **Usage**
+ * ## Usage ##
  *
  * The basic API for this class is the same for all of the web service end
- * points. First you create a web service object with your MaxMind
- * <code>$userId</code> and <code>$licenseKey</code>, then you call the method
- * corresponding to a specific end point, passing it the IP address you want
- * to look up.
+ * points. First you create a web service object with your MaxMind `$userId`
+ * and `$licenseKey`, then you call the method corresponding to a specific end
+ * point, passing it the IP address you want to look up.
  *
  * If the request succeeds, the method call will return a model class for
  * the end point you called. This model in turn contains multiple record

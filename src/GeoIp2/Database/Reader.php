@@ -8,13 +8,9 @@ use MaxMind\Db\Reader as DbReader;
 
 /**
  * Instances of this class provide a reader for the GeoIP2 database format.
- * IP addresses can be looked up using the <code>country</code>
- * and <code>city</code> methods. We also provide <code>cityIspOrg</code>
- * and <code>omni</code> methods to ease compatibility with the web service
- * client, although we may offer the ability to specify additional databases
- * to replicate these web services in the future (e.g., the ISP/Org database).
+ * IP addresses can be looked up using the database specific methods.
  *
- * **Usage**
+ * ## Usage ##
  *
  * The basic API for this class is the same for every database. First, you
  * create a reader object, specifying a file name. You then call the method
@@ -25,7 +21,7 @@ use MaxMind\Db\Reader as DbReader;
  * the method you called. This model in turn contains multiple record classes,
  * each of which represents part of the data returned by the database. If
  * the database does not contain the requested information, the attributes
- * on the record class will have a <code>null</code> value.
+ * on the record class will have a `null` value.
  *
  * If the address is not in the database, an
  * {@link \GeoIp2\Exception\AddressNotFoundException} exception will be
