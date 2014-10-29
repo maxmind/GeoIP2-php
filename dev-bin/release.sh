@@ -9,7 +9,9 @@ if [ -z $TAG ]; then
     exit 1
 fi
 
-rm geoip2.phar
+if [ -f geoip2.phar ]; then
+    rm geoip2.phar
+fi
 
 if [ -n "$(git status --porcelain)" ]; then
     echo ". is not clean." >&2
@@ -57,15 +59,15 @@ fi
 
 
 cat <<EOF > apigen.neon
-destination doc/$TAG
+destination: doc/$TAG
 
 source:
-    ../src
+    - ../src
 
 title: "GeoIP2 PHP API $TAG"
 EOF
 
-php apigen.phar
+php apigen.phar generate
 
 
 PAGE=index.md
