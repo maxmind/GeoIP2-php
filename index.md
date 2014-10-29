@@ -2,7 +2,7 @@
 layout: default
 title: MaxMind GeoIP2 PHP API
 language: php
-version: v2.0.1
+version: v2.1.0
 ---
 
 # GeoIP2 PHP API #
