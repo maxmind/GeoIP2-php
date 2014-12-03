@@ -34,7 +34,12 @@ php composer.phar update --no-dev
 # fi
 
 ../box2/bin/box build
-./dev-bin/phar-test.php
+
+PHAR_TEST=$(./dev-bin/phar-test.php)
+if [[ -n $PHAR_TEST ]]; then
+    echo "Phar test outputed non-empty string: $PHAR_TEST"
+    exit 1
+fi
 
 # Download test deps
 php composer.phar update
