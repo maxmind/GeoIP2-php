@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+2.1.1 (2014-12-03)
+------------------
+
+* The 2.1.0 Phar builds included a shebang line, causing issues when loading
+  it as a library. This has been corrected. GitHub #33.
+
 2.1.0 (2014-10-29)
 ------------------
 

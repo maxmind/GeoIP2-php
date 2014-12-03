@@ -29,8 +29,8 @@
             "in": "vendor"
             }
     ],
-
     "directories": ["compat", "src/"],
     "git-version": "git-version",
+    "shebang": "",
     "stub": true
 }

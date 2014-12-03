@@ -114,7 +114,7 @@ print($record->location->longitude . "\n"); // -93.2323
 
 ```
 
-### Anonymoous-IP Example ###
+### Anonymous IP Example ###
 
 ```php
 <?php

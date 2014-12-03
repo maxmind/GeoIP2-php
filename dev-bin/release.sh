@@ -25,12 +25,18 @@ fi
 php composer.phar self-update
 php composer.phar update --no-dev
 
-if [ ! -f box.phar ]; then
-    wget -O box.phar "https://github.com/kherge-archive/Box/releases/download/2.4.4/box-2.4.4.phar"
-fi
+# We currently use a custom version of Box due to
+# https://github.com/box-project/box2/issues/88. There are PRs from Greg with
+# the fixes.
+#
+# if [ ! -f box.phar ]; then
+#     wget -O box.phar "https://github.com/kherge-archive/Box/releases/download/2.4.4/box-2.4.4.phar"
+# fi
 
-php box.phar build
+../box2/bin/box build
+./dev-bin/phar-test.php
 
+# Download test deps
 php composer.phar update
 
 ./vendor/bin/phpunit
