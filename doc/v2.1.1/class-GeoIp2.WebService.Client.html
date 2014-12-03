@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class GeoIp2\WebService\Client | GeoIP2 PHP API v2.1.1</title>
+
+	<link rel="stylesheet" href="resources/style.css?1648332946">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Namespaces</h3>
+			<ul>
+				<li class="active"><a href="namespace-GeoIp2.html">GeoIp2<span></span></a>
+						<ul>
+				<li><a href="namespace-GeoIp2.Database.html">Database</a>
+						</li>
+				<li><a href="namespace-GeoIp2.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-GeoIp2.Model.html">Model</a>
+						</li>
+				<li><a href="namespace-GeoIp2.Record.html">Record</a>
+						</li>
+				<li class="active"><a href="namespace-GeoIp2.WebService.html">WebService</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-PHP.html">PHP</a>
+						</li>
+			</ul>
+		</div>
+
+		<hr>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li class="active"><a href="class-GeoIp2.WebService.Client.html">Client</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-GeoIp2.WebService.html" title="Summary of GeoIp2\WebService"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class Client</h1>
+
+
+	<div class="description">
+	<p>This class provides a client API for all the GeoIP2 Precision web service
+end points. The end points are Country, City, and Insights. Each end point
+returns a different set of data about an IP address, with Country returning
+the least data and Insights the most.</p>
+
+<p>Each web service end point is represented by a different model class, and
+these model classes in turn contain multiple Record classes. The record
+classes have attributes which contain data about the IP address.</p>
+
+<p>If the web service does not return a particular piece of data for an IP
+address, the associated attribute is not populated.</p>
+
+<p>The web service may not return any information for an entire record, in
+which case all of the attributes for that record class will be empty.</p>
+
+<h2>Usage</h2>
+
+<p>The basic API for this class is the same for all of the web service end
+points. First you create a web service object with your MaxMind <code>$userId</code>
+and <code>$licenseKey</code>, then you call the method corresponding to a specific end
+point, passing it the IP address you want to look up.</p>
+
+<p>If the request succeeds, the method call will return a model class for
+the end point you called. This model in turn contains multiple record
+classes, each of which represents part of the data returned by the web
+service.</p>
+
+<p>If the request fails, the client class throws an exception.</p>
+
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+<b><span>GeoIp2\WebService\Client</span></b>			
+			 implements 
+				<a href="class-GeoIp2.ProviderInterface.html"><span>GeoIp2\ProviderInterface</span></a>
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> GeoIp2\WebService<br>
+		
+
+		<b>Located at</b> <a href="source-class-GeoIp2.WebService.Client.html#17-326" title="Go to source code">GeoIp2/WebService/Client.php</a><br>
+	</div>
+
+
+
+	<table class="summary methods" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="__construct" id="___construct">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___construct">#</a>
+		<code><a href="source-class-GeoIp2.WebService.Client.html#55-79" title="Go to source code">__construct</a>( <span>integer <var>$userId</var></span>, <span>string <var>$licenseKey</var></span>, <span>array <var>$locales</var> = <span class="php-keyword1">array</span>(<span class="php-quote">'en'</span>)</span>, <span>string <var>$host</var> = <span class="php-quote">'geoip.maxmind.com'</span></span>, <span>object <var>$guzzleClient</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			<p>Constructor.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Constructor.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$userId</var></dt>
+					<dd>Your MaxMind user ID
+</dd>
+					<dt><var>$licenseKey</var></dt>
+					<dd>Your MaxMind license key
+</dd>
+					<dt><var>$locales</var></dt>
+					<dd>&lt;p&gt;List of locale codes to use in name property
+from most preferred to least preferred.&lt;/p&gt;
+</dd>
+					<dt><var>$host</var></dt>
+					<dd>Optional host parameter
+</dd>
+					<dt><var>$guzzleClient</var></dt>
+					<dd>&lt;p&gt;Optional Guzzle client to use (to facilitate
+unit testing).&lt;/p&gt;
+</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="city" id="_city">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-GeoIp2.Model.City.html">GeoIp2\Model\City</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_city">#</a>
+		<code><a href="source-class-GeoIp2.WebService.Client.html#81-111" title="Go to source code">city</a>( <span>string <var>$ipAddress</var> = <span class="php-quote">'me'</span></span> )</code>
+
+		<div class="description short">
+			<p>This method calls the GeoIP2 Precision: City endpoint.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>This method calls the GeoIP2 Precision: City endpoint.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$ipAddress</var></dt>
+					<dd>&lt;p&gt;IPv4 or IPv6 address as a string. If no
+address is provided, the address that the web service is called
+from will be used.&lt;/p&gt;
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-GeoIp2.Model.City.html">GeoIp2\Model\City</a></code></code>
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-GeoIp2.Exception.AddressNotFoundException.html">GeoIp2\Exception\AddressNotFoundException</a></code><br><p>if the address you
+  provided is not in our database (e.g., a private address).</p>
+<br>
+					<code><a href="class-GeoIp2.Exception.AuthenticationException.html">GeoIp2\Exception\AuthenticationException</a></code><br><p>if there is a problem
+  with the user ID or license key that you provided.</p>
+<br>
+					<code><a href="class-GeoIp2.Exception.OutOfQueriesException.html">GeoIp2\Exception\OutOfQueriesException</a></code><br><p>if your account is out
+  of queries.</p>
+<br>
+					GeoIp2\Exception\InvalidRequestException}<br><p>if your request was
+  received by the web service but is invalid for some other reason.
+  This may indicate an issue with this API. Please report the error to
+  MaxMind.</p>
+<br>
+					<code><a href="class-GeoIp2.Exception.HttpException.html">GeoIp2\Exception\HttpException</a></code><br><p>if an unexpected HTTP error
+  code or message was returned. This could indicate a problem with the
+  connection between your server and the web service or that the web
+  service returned an invalid document or 500 error code.</p>
+<br>
+					<code><a href="class-GeoIp2.Exception.GeoIp2Exception.html">GeoIp2\Exception\GeoIp2Exception</a></code><br><p>This serves as the parent
+  class to the above exceptions. It will be thrown directly if a 200
+  status code is returned but the body is invalid.</p>
+
+				</div>
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-GeoIp2.ProviderInterface.html#_city">GeoIp2\ProviderInterface::city()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="country" id="_country">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-GeoIp2.Model.Country.html">GeoIp2\Model\Country</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_country">#</a>
+		<code><a href="source-class-GeoIp2.WebService.Client.html#113-143" title="Go to source code">country</a>( <span>string <var>$ipAddress</var> = <span class="php-quote">'me'</span></span> )</code>
+
+		<div class="description short">
+			<p>This method calls the GeoIP2 Precision: Country endpoint.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>This method calls the GeoIP2 Precision: Country endpoint.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$ipAddress</var></dt>
+					<dd>&lt;p&gt;IPv4 or IPv6 address as a string. If no
+address is provided, the address that the web service is called
+from will be used.&lt;/p&gt;
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-GeoIp2.Model.Country.html">GeoIp2\Model\Country</a></code></code>
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-GeoIp2.Exception.AddressNotFoundException.html">GeoIp2\Exception\AddressNotFoundException</a></code><br><p>if the address you
+  provided is not in our database (e.g., a private address).</p>
+<br>
+					<code><a href="class-GeoIp2.Exception.AuthenticationException.html">GeoIp2\Exception\AuthenticationException</a></code><br><p>if there is a problem
+  with the user ID or license key that you provided.</p>
+<br>
+					<code><a href="class-GeoIp2.Exception.OutOfQueriesException.html">GeoIp2\Exception\OutOfQueriesException</a></code><br><p>if your account is out
+  of queries.</p>
+<br>
+					GeoIp2\Exception\InvalidRequestException}<br><p>if your request was
+  received by the web service but is invalid for some other reason.
+  This may indicate an issue with this API. Please report the error to
+  MaxMind.</p>
+<br>
+					<code><a href="class-GeoIp2.Exception.HttpException.html">GeoIp2\Exception\HttpException</a></code><br><p>if an unexpected HTTP error
+  code or message was returned. This could indicate a problem with the
+  connection between your server and the web service or that the web
+  service returned an invalid document or 500 error code.</p>
+<br>
+					<code><a href="class-GeoIp2.Exception.GeoIp2Exception.html">GeoIp2\Exception\GeoIp2Exception</a></code><br><p>This serves as the parent
+  class to the above exceptions. It will be thrown directly if a 200
+  status code is returned but the body is invalid.</p>
+
+				</div>
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-GeoIp2.ProviderInterface.html#_country">GeoIp2\ProviderInterface::country()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="insights" id="_insights">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-GeoIp2.Model.Insights.html">GeoIp2\Model\Insights</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_insights">#</a>
+		<code><a href="source-class-GeoIp2.WebService.Client.html#145-175" title="Go to source code">insights</a>( <span>string <var>$ipAddress</var> = <span class="php-quote">'me'</span></span> )</code>
+
+		<div class="description short">
+			<p>This method calls the GeoIP2 Precision: Insights endpoint.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>This method calls the GeoIP2 Precision: Insights endpoint.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$ipAddress</var></dt>
+					<dd>&lt;p&gt;IPv4 or IPv6 address as a string. If no
+address is provided, the address that the web service is called
+from will be used.&lt;/p&gt;
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-GeoIp2.Model.Insights.html">GeoIp2\Model\Insights</a></code></code>
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-GeoIp2.Exception.AddressNotFoundException.html">GeoIp2\Exception\AddressNotFoundException</a></code><br><p>if the address you
+  provided is not in our database (e.g., a private address).</p>
+<br>
+					<code><a href="class-GeoIp2.Exception.AuthenticationException.html">GeoIp2\Exception\AuthenticationException</a></code><br><p>if there is a problem
+  with the user ID or license key that you provided.</p>
+<br>
+					<code><a href="class-GeoIp2.Exception.OutOfQueriesException.html">GeoIp2\Exception\OutOfQueriesException</a></code><br><p>if your account is out
+  of queries.</p>
+<br>
+					GeoIp2\Exception\InvalidRequestException}<br><p>if your request was
+  received by the web service but is invalid for some other reason.
+  This may indicate an issue with this API. Please report the error to
+  MaxMind.</p>
+<br>
+					<code><a href="class-GeoIp2.Exception.HttpException.html">GeoIp2\Exception\HttpException</a></code><br><p>if an unexpected HTTP error
+  code or message was returned. This could indicate a problem with the
+  connection between your server and the web service or that the web
+  service returned an invalid document or 500 error code.</p>
+<br>
+					<code><a href="class-GeoIp2.Exception.GeoIp2Exception.html">GeoIp2\Exception\GeoIp2Exception</a></code><br><p>This serves as the parent
+  class to the above exceptions. It will be thrown directly if a 200
+  status code is returned but the body is invalid.</p>
+
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		GeoIP2 PHP API v2.1.1 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js?721046668"></script>
+<script src="elementlist.js?1983305385"></script>
+</body>
+</html>

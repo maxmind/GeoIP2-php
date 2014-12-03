@@ -2,7 +2,7 @@
 layout: default
 title: MaxMind GeoIP2 PHP API
 language: php
-version: v2.1.0
+version: v2.1.1
 ---
 
 # GeoIP2 PHP API #
@@ -121,7 +121,7 @@ print($record->location->longitude . "\n"); // -93.2323
 
 ```
 
-### Anonymoous-IP Example ###
+### Anonymous IP Example ###
 
 ```php
 <?php
