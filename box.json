@@ -31,6 +31,6 @@
     ],
     "directories": ["compat", "src/"],
     "git-version": "git-version",
-    "shebang": "",
+    "shebang": false,
     "stub": true
 }
