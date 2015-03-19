@@ -51,6 +51,8 @@ class Client implements ProviderInterface
     private $locales;
     private $host;
     private $guzzleClient;
+    private $timeout;
+    private $connectTimeout;
 
     /**
      * Constructor.
@@ -62,13 +64,17 @@ class Client implements ProviderInterface
      * @param string $host Optional host parameter
      * @param object $guzzleClient Optional Guzzle client to use (to facilitate
      * unit testing).
+     * @param string $timeout Total transaction timeout
+     * @param string $connectTimeout Initial connection timeout
      */
     public function __construct(
         $userId,
         $licenseKey,
         $locales = array('en'),
         $host = 'geoip.maxmind.com',
-        $guzzleClient = null
+        $guzzleClient = null,
+        $timeout = null,
+        $connectTimeout = null
     ) {
         $this->userId = $userId;
         $this->licenseKey = $licenseKey;
@@ -76,6 +82,8 @@ class Client implements ProviderInterface
         $this->host = $host;
         // To enable unit testing
         $this->guzzleClient = $guzzleClient;
+        $this->timeout = $timeout;
+        $this->connectTimeout = $connectTimeout;
     }
 
     /**
@@ -180,7 +188,14 @@ class Client implements ProviderInterface
 
         $client = $this->guzzleClient ?
             $this->guzzleClient : new GuzzleClient();
-        $request = $client->get($uri, array('Accept' => 'application/json'));
+        $options = array();
+        if($this->timeout != null){
+            $options['timeout'] = $this->timeout;
+        }
+        if($this->connectTimeout != null){
+            $options['connect_timeout'] = $this->connectTimeout;
+        }
+        $request = $client->get($uri, array('Accept' => 'application/json'), $options);
         $request->setAuth($this->userId, $this->licenseKey);
         $this->setUserAgent($request);
 

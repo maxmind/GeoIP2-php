@@ -419,7 +419,9 @@ class ClientTest extends \PHPUnit_Framework_TestCase
             'abcdef123456',
             array('en'),
             'geoip.maxmind.com',
-            $guzzleClient
+            $guzzleClient,
+            27,
+            72
         );
         $client->country('1.2.3.4');
 
@@ -446,7 +448,19 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $this->assertStringMatchesFormat(
             'GeoIP2 PHP API (Guzzle%s)',
             $request->getHeader('User-Agent') . '',
-            'request sets Accept header to application/json'
+            'request sets Accept header to GeoIP2 PHP API (Guzzle%s)'
+        );
+
+        $this->assertEquals(
+            '27000',
+            $request->getCurlOptions()[CURLOPT_TIMEOUT_MS],
+            'request sets Curl Option Timeout to 27 seconds'
+        );
+
+        $this->assertEquals(
+            '72000',
+            $request->getCurlOptions()[CURLOPT_CONNECTTIMEOUT_MS],
+            'request sets Curl Option Connect Timeout to 72 seconds'
         );
     }
 
@@ -464,6 +478,10 @@ class ClientTest extends \PHPUnit_Framework_TestCase
             $locales,
             'geoip.maxmind.com',
             $guzzleClient
+            // intentionally not specifying the below, to ensure backwards compatibility
+            //,
+            // 1, // optional timeout
+            // 1  // optional connect timeout
         );
 
         return $client;
