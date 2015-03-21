@@ -451,15 +451,17 @@ class ClientTest extends \PHPUnit_Framework_TestCase
             'request sets Accept header to GeoIP2 PHP API (Guzzle%s)'
         );
 
+        $curlOptions = $request->getCurlOptions();
+
         $this->assertEquals(
             '27000',
-            $request->getCurlOptions()[CURLOPT_TIMEOUT_MS],
+            $curlOptions[CURLOPT_TIMEOUT_MS],
             'request sets Curl Option Timeout to 27 seconds'
         );
 
         $this->assertEquals(
             '72000',
-            $request->getCurlOptions()[CURLOPT_CONNECTTIMEOUT_MS],
+            $curlOptions[CURLOPT_CONNECTTIMEOUT_MS],
             'request sets Curl Option Connect Timeout to 72 seconds'
         );
     }

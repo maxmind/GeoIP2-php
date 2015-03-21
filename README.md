@@ -314,7 +314,7 @@ If you are using PHP 5.3 with an autoloader besides Composer, you must load
 ## Contributing ##
 
 Patches and pull requests are encouraged. All code should follow the
-PSR-2 style guidelines. Please include unit tests whenever possible. You may obtain the test data for the maxmind-db folder from https://github.com/maxmind/MaxMind-DB
+PSR-2 style guidelines. Please include unit tests whenever possible. You may obtain the test data for the maxmind-db folder by running `git submodule update --init --recursive` or adding `--recursive` to your initial clone, or from https://github.com/maxmind/MaxMind-DB
 
 ## Versioning ##
 

@@ -2,7 +2,6 @@
 
 namespace GeoIp2\Model;
 
-
 /**
  * @ignore
  */

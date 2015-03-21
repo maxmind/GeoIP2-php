@@ -64,8 +64,8 @@ class Client implements ProviderInterface
      * @param string $host Optional host parameter
      * @param object $guzzleClient Optional Guzzle client to use (to facilitate
      * unit testing).
-     * @param string $timeout Total transaction timeout
-     * @param string $connectTimeout Initial connection timeout
+     * @param string $timeout Total transaction timeout in seconds
+     * @param string $connectTimeout Initial connection timeout in seconds
      */
     public function __construct(
         $userId,
@@ -189,10 +189,10 @@ class Client implements ProviderInterface
         $client = $this->guzzleClient ?
             $this->guzzleClient : new GuzzleClient();
         $options = array();
-        if($this->timeout != null){
+        if ($this->timeout !== null) {
             $options['timeout'] = $this->timeout;
         }
-        if($this->connectTimeout != null){
+        if ($this->connectTimeout !== null) {
             $options['connect_timeout'] = $this->connectTimeout;
         }
         $request = $client->get($uri, array('Accept' => 'application/json'), $options);
