@@ -1,11 +1,13 @@
 CHANGELOG
 =========
 
-2.2.0 (2015-XX-XX)
-------------------
+2.2.0-alpha1 (2015-05-22)
+-------------------------
 
-* Optional constructor parameters were added to `GeoIp2\WebService\Client` for
-  `$timeout` and `$connectTimeout`. Pull request by Will Bradley. GitHub #36.
+* The library no longer uses Guzzle and instead used curl directly.
+* Support for `timeout` and `connectTimout` were added to the `$options` array
+  passed to the `GeoIp2\WebService\Client` constructor. Pull request by Will
+  Bradley. GitHub #36.
 
 2.1.1 (2014-12-03)
 ------------------

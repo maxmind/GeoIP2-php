@@ -73,10 +73,7 @@ class Client implements ProviderInterface
         $userId,
         $licenseKey,
         $locales = array('en'),
-        $options = array(),
-        $unused = null,
-        $deprecatedTimeout = null,
-        $deprecatedConnectTimeout = null
+        $options = array()
     ) {
         $this->locales = $locales;
 
@@ -88,14 +85,6 @@ class Client implements ProviderInterface
 
         if (!isset($options['host'])) {
             $options['host'] = 'geoip.maxmind.com';
-        }
-
-        if ($deprecatedTimeout !== null) {
-            $options['timeout'] = $deprecatedTimeout;
-        }
-
-        if ($deprecatedConnectTimeout !== null) {
-            $options['connectTimeout'] = $deprecatedConnectTimeout;
         }
 
         $options['userAgent'] = $this->userAgent();
