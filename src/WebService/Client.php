@@ -9,10 +9,8 @@ use GeoIp2\Exception\HttpException;
 use GeoIp2\Exception\InvalidRequestException;
 use GeoIp2\Exception\OutOfQueriesException;
 use GeoIp2\ProviderInterface;
-use Guzzle\Common\Exception\RuntimeException;
-use Guzzle\Http\Client as GuzzleClient;
-use Guzzle\Http\Exception\ClientErrorResponseException;
-use Guzzle\Http\Exception\ServerErrorResponseException;
+use MaxMind\Exception\InvalidInputException;
+use MaxMind\WebService\Client as WsClient;
 
 /**
  * This class provides a client API for all the GeoIP2 Precision web service
@@ -49,10 +47,11 @@ class Client implements ProviderInterface
     private $userId;
     private $licenseKey;
     private $locales;
-    private $host;
-    private $guzzleClient;
-    private $timeout;
-    private $connectTimeout;
+    private $client;
+    private static $basePath = '/geoip/v2.1';
+
+    // XXX - don't merge until release script automatically updates this
+    const VERSION = 'v2.2.0-alpha';
 
     /**
      * Constructor.
@@ -61,7 +60,10 @@ class Client implements ProviderInterface
      * @param string $licenseKey Your MaxMind license key
      * @param array $locales  List of locale codes to use in name property
      * from most preferred to least preferred.
-     * @param string $host Optional host parameter
+     * @param array $options Array of options. Valid options include:
+     *      * `host` - The host to use when querying the web service.
+     *      * `timeout` - Timeout in seconds.
+     *      * `connectTimeout` - Initial connection timeout in seconds.
      * @param object $guzzleClient Optional Guzzle client to use (to facilitate
      * unit testing).
      * @param string $timeout Total transaction timeout in seconds
@@ -71,19 +73,38 @@ class Client implements ProviderInterface
         $userId,
         $licenseKey,
         $locales = array('en'),
-        $host = 'geoip.maxmind.com',
-        $guzzleClient = null,
-        $timeout = null,
-        $connectTimeout = null
+        $options = array(),
+        $unused = null,
+        $deprecatedTimeout = null,
+        $deprecatedConnectTimeout = null
     ) {
-        $this->userId = $userId;
-        $this->licenseKey = $licenseKey;
         $this->locales = $locales;
-        $this->host = $host;
-        // To enable unit testing
-        $this->guzzleClient = $guzzleClient;
-        $this->timeout = $timeout;
-        $this->connectTimeout = $connectTimeout;
+
+        // This is for backwards compatibility. Do not remove except for a
+        // major version bump.
+        if (is_string($options)) {
+            $options = array( 'host' => $options );
+        }
+
+        if (!isset($options['host'])) {
+            $options['host'] = 'geoip.maxmind.com';
+        }
+
+        if ($deprecatedTimeout !== null) {
+            $options['timeout'] = $deprecatedTimeout;
+        }
+
+        if ($deprecatedConnectTimeout !== null) {
+            $options['connectTimeout'] = $deprecatedConnectTimeout;
+        }
+
+        $options['userAgent'] = $this->userAgent();
+
+        $this->client = new WsClient($userId, $licenseKey, $options);
+    }
+
+    private function userAgent() {
+        return 'GeoIP2-API/' . Client::VERSION;
     }
 
     /**
@@ -184,158 +205,54 @@ class Client implements ProviderInterface
 
     private function responseFor($endpoint, $class, $ipAddress)
     {
-        $uri = implode('/', array($this->baseUri(), $endpoint, $ipAddress));
-
-        $client = $this->guzzleClient ?
-            $this->guzzleClient : new GuzzleClient();
-        $options = array();
-        if ($this->timeout !== null) {
-            $options['timeout'] = $this->timeout;
-        }
-        if ($this->connectTimeout !== null) {
-            $options['connect_timeout'] = $this->connectTimeout;
-        }
-        $request = $client->get($uri, array('Accept' => 'application/json'), $options);
-        $request->setAuth($this->userId, $this->licenseKey);
-        $this->setUserAgent($request);
+        $path = implode('/', array(self::$basePath, $endpoint, $ipAddress));
 
         try {
-            $response = $request->send();
-        } catch (ClientErrorResponseException $e) {
-            $this->handle4xx($e->getResponse(), $uri);
-        } catch (ServerErrorResponseException $e) {
-            $this->handle5xx($e->getResponse(), $uri);
-        }
-
-        if ($response && $response->isSuccessful()) {
-            $body = $this->handleSuccess($response, $uri);
-            $class = "GeoIp2\\Model\\" . $class;
-            return new $class($body, $this->locales);
-        } else {
-            $this->handleNon200($response, $uri);
-        }
-    }
-
-    private function handleSuccess($response, $uri)
-    {
-        if ($response->getContentLength() == 0) {
-            throw new GeoIp2Exception(
-                "Received a 200 response for $uri but did not " .
-                "receive a HTTP body."
+            $body = $this->client->get('GeoIP2 ' . $class, $path);
+        } catch (\MaxMind\Exception\IpAddressNotFoundException $ex) {
+            throw new AddressNotFoundException(
+                $ex->getMessage(),
+                $ex->getStatusCode(),
+                $ex
             );
-        }
-
-        try {
-            return $response->json();
-        } catch (RuntimeException $e) {
-            throw new GeoIp2Exception(
-                "Received a 200 response for $uri but could not decode " .
-                "the response as JSON: " . $e->getMessage()
+        } catch (\MaxMind\Exception\AuthenticationException $ex) {
+            throw new AuthenticationException(
+                $ex->getMessage(),
+                $ex->getStatusCode(),
+                $ex
             );
-
-        }
-    }
-
-    private function handle4xx($response, $uri)
-    {
-        $status = $response->getStatusCode();
-
-        if ($response->getContentLength() > 0) {
-            if (strstr($response->getContentType(), 'json')) {
-                try {
-                    $body = $response->json();
-                    if (!isset($body['code']) || !isset($body['error'])) {
-                        throw new GeoIp2Exception(
-                            'Response contains JSON but it does not specify ' .
-                            'code or error keys: ' . $response->getBody()
-                        );
-                    }
-                } catch (RuntimeException $e) {
-                    throw new HttpException(
-                        "Received a $status error for $uri but it did not " .
-                        "include the expected JSON body: " .
-                        $e->getMessage(),
-                        $status,
-                        $uri
-                    );
-                }
-            } else {
-                throw new HttpException(
-                    "Received a $status error for $uri with the " .
-                    "following body: " . $response->getBody(),
-                    $status,
-                    $uri
-                );
-            }
-        } else {
+        } catch (\MaxMind\Exception\InsufficientFundsException $ex) {
+            throw new OutOfQueriesException(
+                $ex->getMessage(),
+                $ex->getStatusCode(),
+                $ex
+            );
+        } catch (\MaxMind\Exception\InvalidRequestException $ex) {
+            throw new InvalidRequestException(
+                $ex->getMessage(),
+                $ex->getErrorCode(),
+                $ex->getStatusCode(),
+                $ex->getUri(),
+                $ex
+            );
+        } catch (\MaxMind\Exception\HttpException $ex) {
             throw new HttpException(
-                "Received a $status error for $uri with no body",
-                $status,
-                $uri
+                $ex->getMessage(),
+                $ex->getStatusCode(),
+                $ex->getUri(),
+                $ex
+            );
+
+        } catch (\MaxMind\Exception\WebServiceException $ex) {
+            throw new GeoIp2Exception(
+                $ex->getMessage(),
+                $ex->getCode(),
+                $ex
             );
         }
-        $this->handleWebServiceError(
-            $body['error'],
-            $body['code'],
-            $status,
-            $uri
-        );
-    }
 
-    private function handleWebServiceError($message, $code, $status, $uri)
-    {
-        switch ($code) {
-            case 'IP_ADDRESS_NOT_FOUND':
-            case 'IP_ADDRESS_RESERVED':
-                throw new AddressNotFoundException($message);
-            case 'AUTHORIZATION_INVALID':
-            case 'LICENSE_KEY_REQUIRED':
-            case 'USER_ID_REQUIRED':
-                throw new AuthenticationException($message);
-            case 'OUT_OF_QUERIES':
-                throw new OutOfQueriesException($message);
-            default:
-                throw new InvalidRequestException(
-                    $message,
-                    $code,
-                    $status,
-                    $uri
-                );
-        }
-    }
+        $class = "GeoIp2\\Model\\" . $class;
+        return new $class($body, $this->locales);
 
-    private function handle5xx($response, $uri)
-    {
-        $status = $response->getStatusCode();
-
-        throw new HttpException(
-            "Received a server error ($status) for $uri",
-            $status,
-            $uri
-        );
-    }
-
-    private function handleNon200($response, $uri)
-    {
-        $status = $response->getStatusCode();
-
-        throw new HttpException(
-            "Received a very surprising HTTP status " .
-            "($status) for $uri",
-            $status,
-            $uri
-        );
-    }
-
-    private function setUserAgent($request)
-    {
-        $userAgent = $request->getHeader('User-Agent');
-        $userAgent = "GeoIP2 PHP API ($userAgent)";
-        $request->setHeader('User-Agent', $userAgent);
-    }
-
-    private function baseUri()
-    {
-        return 'https://' . $this->host . '/geoip/v2.1';
     }
 }

@@ -3,9 +3,7 @@
 namespace GeoIp2\Test\WebService;
 
 use GeoIp2\WebService\Client;
-use Guzzle\Http\Client as GuzzleClient;
-use Guzzle\Http\Message\Response;
-use Guzzle\Plugin\Mock\MockPlugin;
+use MaxMind\WebService\Client as WsClient;
 
 class ClientTest extends \PHPUnit_Framework_TestCase
 {
@@ -136,8 +134,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
     public function testCountry()
     {
-        $country = $this->client($this->getResponse('1.2.3.4'))
-            ->country('1.2.3.4');
+        $country = $this->makeRequest('Country', '1.2.3.4');
 
         $this->assertInstanceOf('GeoIp2\Model\Country', $country);
 
@@ -200,9 +197,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
     public function testInsights()
     {
-
-        $record = $this->client($this->getResponse('1.2.3.4'))
-            ->insights('1.2.3.4');
+        $record = $this->makeRequest('Insights', '1.2.3.4');
 
         $this->assertInstanceOf('GeoIp2\Model\Insights', $record);
 
@@ -215,43 +210,38 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
     public function testCity()
     {
-        $city = $this->client($this->getResponse('1.2.3.4'))
-            ->city('1.2.3.4');
+        $city = $this->makeRequest('City', '1.2.3.4');
 
         $this->assertInstanceOf('GeoIp2\Model\City', $city);
     }
 
     public function testMe()
     {
-        $client = $this->client($this->getResponse('me'));
+        $city = $this->makeRequest('City', 'me');
 
         $this->assertInstanceOf(
             'GeoIp2\Model\City',
-            $client->city('me'),
+            $city,
             'can set ip parameter to me'
         );
     }
 
     /**
      * @expectedException GeoIp2\Exception\GeoIp2Exception
-     * @expectedExceptionMessage Received a 200 response for https://geoip.maxmind.com/geoip/v2.1/country/1.2.3.5 but did not receive a HTTP body.
+     * @expectedExceptionMessage Received a 200 response for GeoIP2 Country but did not receive a HTTP body.
      */
     public function testNoBodyException()
     {
-        $client = $this->client($this->getResponse('1.2.3.5'));
-
-        $client->country('1.2.3.5');
+        $this->makeRequest('Country', '1.2.3.5');
     }
 
     /**
      * @expectedException GeoIp2\Exception\GeoIp2Exception
-     * @expectedExceptionMessage Received a 200 response for https://geoip.maxmind.com/geoip/v2.1/country/2.2.3.5 but could not decode the response as JSON:
+     * @expectedExceptionMessage Received a 200 response for GeoIP2 Country but could not decode the response as JSON:
      */
     public function testBadBodyException()
     {
-        $client = $this->client($this->getResponse('2.2.3.5'));
-
-        $client->country('2.2.3.5');
+        $this->makeRequest('Country', '2.2.3.5');
     }
 
 
@@ -262,9 +252,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
      */
     public function testInvalidIPException()
     {
-        $client = $this->client($this->getResponse('1.2.3.6'));
-
-        $client->country('1.2.3.6');
+        $this->makeRequest('Country', '1.2.3.6');
     }
 
     /**
@@ -274,33 +262,27 @@ class ClientTest extends \PHPUnit_Framework_TestCase
      */
     public function testNoErrorBodyIPException()
     {
-        $client = $this->client($this->getResponse('1.2.3.7'));
-
-        $client->country('1.2.3.7');
+        $this->makeRequest('Country', '1.2.3.7');
     }
 
     /**
      * @expectedException GeoIp2\Exception\GeoIp2Exception
-     * @expectedExceptionMessage Response contains JSON but it does not specify code or error keys
+     * @expectedExceptionMessage Error response contains JSON but it does not specify code or error keys: {"weird":42}
      */
     public function testWeirdErrorBodyIPException()
     {
-        $client = $this->client($this->getResponse('1.2.3.8'));
-
-        $client->country('1.2.3.8');
+        $this->makeRequest('Country', '1.2.3.8');
 
     }
 
     /**
      * @expectedException GeoIp2\Exception\HttpException
      * @expectedExceptionCode 400
-     * @expectedExceptionMessage did not include the expected JSON body
+     * @expectedExceptionMessage Received a 400 error for GeoIP2 Country but could not decode the response as JSON: Syntax error. Body: { invalid: }
      */
     public function testInvalidErrorBodyIPException()
     {
-        $client = $this->client($this->getResponse('1.2.3.9'));
-
-        $client->country('1.2.3.9');
+        $this->makeRequest('Country', '1.2.3.9');
 
     }
 
@@ -311,34 +293,27 @@ class ClientTest extends \PHPUnit_Framework_TestCase
      */
     public function test500PException()
     {
-        $client = $this->client($this->getResponse('1.2.3.10'));
-
-        $client->country('1.2.3.10');
-
+        $this->makeRequest('Country', '1.2.3.10');
     }
 
     /**
      * @expectedException GeoIp2\Exception\HttpException
      * @expectedExceptionCode 300
-     * @expectedExceptionMessage Received a very surprising HTTP status (300)
+     * @expectedExceptionMessage Received an unexpected HTTP status (300) for GeoIP2 Country
      */
     public function test3xxException()
     {
-        $client = $this->client($this->getResponse('1.2.3.11'));
-
-        $client->country('1.2.3.11');
-
+        $this->makeRequest('Country', '1.2.3.11');
     }
 
     /**
      * @expectedException GeoIp2\Exception\HttpException
      * @expectedExceptionCode 406
-     * @expectedExceptionMessage Received a 406 error for https://geoip.maxmind.com/geoip/v2.1/country/1.2.3.12 with the following body: Cannot satisfy your Accept-Charset requirements
+     * @expectedExceptionMessage Received a 406 error for GeoIP2 Country with the following body: Cannot satisfy your Accept-Charset requirements
      */
     public function test406Exception()
     {
-        $client = $this->client($this->getResponse('1.2.3.12'));
-        $client->country('1.2.3.12');
+        $this->makeRequest('Country','1.2.3.12');
     }
 
     /**
@@ -347,9 +322,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
      */
     public function testAddressNotFoundException()
     {
-        $client = $this->client($this->getResponse('1.2.3.13'));
-
-        $client->country('1.2.3.13');
+        $this->makeRequest('Country', '1.2.3.13');
     }
 
     /**
@@ -358,9 +331,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
      */
     public function testAddressReservedException()
     {
-        $client = $this->client($this->getResponse('1.2.3.14'));
-
-        $client->country('1.2.3.14');
+        $this->makeRequest('Country', '1.2.3.14');
     }
 
     /**
@@ -369,9 +340,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
      */
     public function testAuthorizationException()
     {
-        $client = $this->client($this->getResponse('1.2.3.15'));
-
-        $client->country('1.2.3.15');
+        $this->makeRequest('Country', '1.2.3.15');
     }
 
     /**
@@ -380,9 +349,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
      */
     public function testMissingLicenseKeyException()
     {
-        $client = $this->client($this->getResponse('1.2.3.16'));
-
-        $client->country('1.2.3.16');
+        $this->makeRequest('Country', '1.2.3.16');
     }
 
     /**
@@ -391,9 +358,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
      */
     public function testMissingUserIdException()
     {
-        $client = $this->client($this->getResponse('1.2.3.17'));
-
-        $client->country('1.2.3.17');
+        $this->makeRequest('Country', '1.2.3.17');
     }
 
     /**
@@ -402,92 +367,23 @@ class ClientTest extends \PHPUnit_Framework_TestCase
      */
     public function testOutOfQueriesException()
     {
-        $client = $this->client($this->getResponse('1.2.3.18'));
-
-        $client->country('1.2.3.18');
+        $this->makeRequest('Country', '1.2.3.18');
     }
 
     public function testParams()
     {
-        $plugin = new MockPlugin();
-        $plugin->addResponse($this->getResponse('1.2.3.4'));
-        $guzzleClient = new GuzzleClient();
-        $guzzleClient->addSubscriber($plugin);
-
-        $client = new Client(
-            42,
-            'abcdef123456',
+        $this->makeRequest(
+            'Country',
+            '1.2.3.4',
             array('en'),
-            'geoip.maxmind.com',
-            $guzzleClient,
-            27,
-            72
-        );
-        $client->country('1.2.3.4');
-
-        $all_requests = $plugin->getReceivedRequests();
-        $request = $all_requests[0];
-
-        $this->assertEquals(
-            'https://geoip.maxmind.com/geoip/v2.1/country/1.2.3.4',
-            $request->getUrl(),
-            'got expected URI for Country request'
-        );
-        $this->assertEquals(
-            'GET',
-            $request->getMethod(),
-            'request is a GET'
-        );
-
-        $this->assertEquals(
-            'application/json',
-            $request->getHeader('Accept'),
-            'request sets Accept header to application/json'
-        );
-
-        $this->assertStringMatchesFormat(
-            'GeoIP2 PHP API (Guzzle%s)',
-            $request->getHeader('User-Agent') . '',
-            'request sets Accept header to GeoIP2 PHP API (Guzzle%s)'
-        );
-
-        $curlOptions = $request->getCurlOptions();
-
-        $this->assertEquals(
-            '27000',
-            $curlOptions[CURLOPT_TIMEOUT_MS],
-            'request sets Curl Option Timeout to 27 seconds'
-        );
-
-        $this->assertEquals(
-            '72000',
-            $curlOptions[CURLOPT_CONNECTTIMEOUT_MS],
-            'request sets Curl Option Connect Timeout to 72 seconds'
+            array(
+                'host' => 'api.maxmind.com',
+                'timeout' => 27,
+                'connectTimeout' => 72,
+            )
         );
     }
 
-
-    private function client($response, $locales = array('en'))
-    {
-        $plugin = new MockPlugin();
-        $plugin->addResponse($response);
-        $guzzleClient = new GuzzleClient();
-        $guzzleClient->addSubscriber($plugin);
-
-        $client = new Client(
-            42,
-            'abcdef123456',
-            $locales,
-            'geoip.maxmind.com',
-            $guzzleClient
-            // intentionally not specifying the below, to ensure backwards compatibility
-            //,
-            // 1, // optional timeout
-            // 1  // optional connect timeout
-        );
-
-        return $client;
-    }
 
     private function response(
         $endpoint,
@@ -512,11 +408,74 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
         $headers['Content-Length'] = strlen($body);
 
-        return new Response($status, $headers, $body);
+        return array($status, $headers,  $body, );
     }
 
-    public function testTest()
-    {
-        $this->assertEquals(1, 1);
+    private function makeRequest(
+        $service,
+        $ipAddress,
+        $locales = array('en'),
+        $options = array(),
+        $callsToRequest = 1
+    ) {
+        $userId = 42;
+        $licenseKey = 'abcdef123456';
+
+        list($statusCode, $headers, $responseBody)
+            = $this->getResponse($ipAddress);
+
+        $stub = $this->getMockForAbstractClass(
+            'MaxMind\\WebService\\Http\\Request'
+        );
+        $contentType = isset($headers['Content-Type'])
+            ? $headers['Content-Type']
+            : null;
+        $stub->expects($this->exactly($callsToRequest))
+            ->method('get')
+            ->willReturn(array($statusCode, $contentType, $responseBody));
+        $factory = $this->getMockBuilder(
+            'MaxMind\\WebService\\Http\\RequestFactory'
+        )->getMock();
+        $host = isset($options['host']) ? $options['host'] : 'geoip.maxmind.com';
+        $url = 'https://' . $host . '/geoip/v2.1/' . strtolower($service)
+            . '/' . $ipAddress;
+        $headers = array(
+            'Authorization: Basic '
+            . base64_encode($userId . ':' . $licenseKey),
+            'Accept: application/json',
+        );
+
+        $file = (new \ReflectionClass('MaxMind\\WebService\\Client'))->getFileName();
+        $caBundle = dirname($file) . '/cacert.pem';
+
+        $factory->expects($this->exactly($callsToRequest))
+            ->method('request')
+            ->with(
+                $this->equalTo($url),
+                $this->equalTo(
+                    array(
+                        'headers' => $headers,
+                        'userAgent' => 'GeoIP2-API/' . \GeoIp2\WebService\Client::VERSION
+                            . ' MaxMind-WS-API/' . WsClient::VERSION
+                            . ' PHP/' . PHP_VERSION
+                            . ' curl/' . curl_version()['version'],
+                        'connectTimeout' => isset($options['connectTimeout'])
+                            ? $options['connectTimeout'] : null,
+                        'timeout' => isset($options['timeout'])
+                            ? $options['timeout'] : null,
+                        'caBundle' => $caBundle,
+                    )
+                )
+            )->willReturn($stub);
+        $options['httpRequestFactory'] = $factory;
+
+        $method = strtolower($service);
+        return (new \GeoIp2\WebService\Client(
+            $userId,
+            $licenseKey,
+            $locales,
+            $options
+        ))->$method($ipAddress);
     }
+
 }

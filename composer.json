@@ -12,21 +12,13 @@
             "homepage": "http://www.maxmind.com/"
         }
     ],
-    "repositories": [
-        {
-            "url": "https://github.maxmind.com/maxmind/web-service-common-php.git",
-            "type": "vcs"
-        }
-    ],
     "require": {
-    "guzzle/guzzle": "3.*",
-    "maxmind-db/reader": "~1.0",
-        "maxmind/web-service-common": "dev-master",
+        "maxmind-db/reader": "~1.0",
+        "maxmind-ws/web-service-common": "dev-master",
         "php": ">=5.3.1"
     },
     "require-dev": {
-        "phpunit/phpunit": "4.2.*",
-        "satooshi/php-coveralls": "dev-master"
+        "phpunit/phpunit": "4.2.*"
     },
     "autoload": {
         "psr-4": {
