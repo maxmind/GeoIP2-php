@@ -103,7 +103,8 @@ class Client implements ProviderInterface
         $this->client = new WsClient($userId, $licenseKey, $options);
     }
 
-    private function userAgent() {
+    private function userAgent()
+    {
         return 'GeoIP2-API/' . Client::VERSION;
     }
 

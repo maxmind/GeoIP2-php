@@ -445,7 +445,8 @@ class ClientTest extends \PHPUnit_Framework_TestCase
             'Accept: application/json',
         );
 
-        $file = (new \ReflectionClass('MaxMind\\WebService\\Client'))->getFileName();
+        $reflectionClass = new \ReflectionClass('MaxMind\\WebService\\Client');
+        $file = $reflectionClass->getFileName();
         $caBundle = dirname($file) . '/cacert.pem';
 
         $factory->expects($this->exactly($callsToRequest))
@@ -470,12 +471,14 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $options['httpRequestFactory'] = $factory;
 
         $method = strtolower($service);
-        return (new \GeoIp2\WebService\Client(
+
+        $client = new \GeoIp2\WebService\Client(
             $userId,
             $licenseKey,
             $locales,
             $options
-        ))->$method($ipAddress);
+        );
+        return $client->$method($ipAddress);
     }
 
 }
