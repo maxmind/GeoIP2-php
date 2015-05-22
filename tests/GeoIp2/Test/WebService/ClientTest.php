@@ -449,6 +449,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $file = $reflectionClass->getFileName();
         $caBundle = dirname($file) . '/cacert.pem';
 
+        $curlVersion = curl_version();
         $factory->expects($this->exactly($callsToRequest))
             ->method('request')
             ->with(
@@ -459,7 +460,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
                         'userAgent' => 'GeoIP2-API/' . \GeoIp2\WebService\Client::VERSION
                             . ' MaxMind-WS-API/' . WsClient::VERSION
                             . ' PHP/' . PHP_VERSION
-                            . ' curl/' . curl_version()['version'],
+                            . ' curl/' . $curlVersion['version'],
                         'connectTimeout' => isset($options['connectTimeout'])
                             ? $options['connectTimeout'] : null,
                         'timeout' => isset($options['timeout'])
