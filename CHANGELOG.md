@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+2.2.0-alpha2 (2015-06-01)
+-------------------------
+
+* `maxmind-ws/web-service-common` was renamed to `maxmind/web-service-common`.
+
 2.2.0-alpha1 (2015-05-22)
 -------------------------
 
