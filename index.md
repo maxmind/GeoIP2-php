@@ -2,7 +2,7 @@
 layout: default
 title: MaxMind GeoIP2 PHP API
 language: php
-version: v2.1.1
+version: v2.2.0-beta1
 ---
 
 # GeoIP2 PHP API #
@@ -312,7 +312,7 @@ supported.
 
 This library works and is tested with HHVM.
 
-This library also relies on the [Guzzle HTTP client](http://guzzlephp.org/)
+This library also relies on the [Guzzle3 HTTP client](https://github.com/guzzle/guzzle3)
 and the [MaxMind DB Reader](https://github.com/maxmind/MaxMind-DB-Reader-php).
 
 If you are using PHP 5.3 with an autoloader besides Composer, you must load
@@ -321,7 +321,7 @@ If you are using PHP 5.3 with an autoloader besides Composer, you must load
 ## Contributing ##
 
 Patches and pull requests are encouraged. All code should follow the
-PSR-2 style guidelines. Please include unit tests whenever possible.
+PSR-2 style guidelines. Please include unit tests whenever possible. You may obtain the test data for the maxmind-db folder by running `git submodule update --init --recursive` or adding `--recursive` to your initial clone, or from https://github.com/maxmind/MaxMind-DB
 
 ## Versioning ##
 
