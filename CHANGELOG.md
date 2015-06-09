@@ -9,7 +9,7 @@ CHANGELOG
 2.2.0-alpha1 (2015-05-22)
 -------------------------
 
-* The library no longer uses Guzzle and instead used curl directly.
+* The library no longer uses Guzzle and instead uses curl directly.
 * Support for `timeout` and `connectTimout` were added to the `$options` array
   passed to the `GeoIp2\WebService\Client` constructor. Pull request by Will
   Bradley. GitHub #36.
