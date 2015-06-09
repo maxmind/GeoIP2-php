@@ -8,7 +8,9 @@ build
 composer.lock
 composer.phar
 phpunit.xml
+geoip2.phar
 geoip2-php.sublime-*
+t.php
 vendor/
 *.sw?
 *.old
