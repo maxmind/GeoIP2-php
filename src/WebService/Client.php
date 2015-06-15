@@ -44,8 +44,6 @@ use MaxMind\WebService\Client as WsClient;
  */
 class Client implements ProviderInterface
 {
-    private $userId;
-    private $licenseKey;
     private $locales;
     private $client;
     private static $basePath = '/geoip/v2.1';

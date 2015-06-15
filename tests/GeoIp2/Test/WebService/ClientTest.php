@@ -27,7 +27,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         );
 
 
-    private function getResponse($ip)
+    private function getResponse($ipAddress)
     {
         $responses = array(
             '1.2.3.4' => $this->response(
@@ -129,7 +129,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
                 )
             ),
         );
-        return $responses[$ip];
+        return $responses[$ipAddress];
     }
 
     public function testCountry()
