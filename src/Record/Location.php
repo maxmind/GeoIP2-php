@@ -10,7 +10,7 @@ namespace GeoIp2\Record;
  * @property int $averageIncome the average income in US dollars associated with
  * the requested IP address. This attribute is only available from the Insights
  * end point.
- * 
+ *
  * @property int $accuracyRadius The radius in kilometers around the
  * specified location where the IP address is likely to be. This attribute
  * is only available from the Insights end point.
@@ -26,7 +26,7 @@ namespace GeoIp2\Record;
  * @property int $populationDensity The estimated population per square
  * kilometer associated with the IP address. This attribute is only available
  * from the Insights end point.
- * 
+ *
  * @property int $metroCode The metro code of the location if the location
  * is in the US. MaxMind returns the same metro codes as the
  * {@link
