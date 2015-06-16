@@ -9,7 +9,6 @@ php:
   - nightly
 
 before_install:
-  - composer self-update
   - composer install --dev -n --prefer-source
   - if [ "5.5" == $TRAVIS_PHP_VERSION ]; then pyrus install pear/PHP_CodeSniffer; fi
   - phpenv rehash
