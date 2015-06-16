@@ -28,10 +28,12 @@ class InsightsTest extends \PHPUnit_Framework_TestCase
                 'names' => array('en' => 'United States of America'),
             ),
             'location' => array(
+                'average_income' => 24626,
                 'accuracy_radius' => 1500,
                 'latitude' => 44.98,
                 'longitude' => 93.2636,
                 'metro_code' => 765,
+                'population_density' => 1341,
                 'postal_code' => '55401',
                 'postal_confidence' => 33,
                 'time_zone' => 'America/Chicago',
@@ -99,6 +101,18 @@ class InsightsTest extends \PHPUnit_Framework_TestCase
             'GeoIp2\Record\Location',
             $model->location,
             '$model->location'
+        );
+
+        $this->assertSame(
+            24626,
+            $model->location->averageIncome,
+            '$model->location->averageIncome is 24626'
+        );
+
+        $this->assertSame(
+            1341,
+            $model->location->populationDensity,
+            '$model->location->populationDensity is 1341'
         );
 
         $this->assertInstanceOf(

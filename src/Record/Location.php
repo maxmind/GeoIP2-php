@@ -7,6 +7,10 @@ namespace GeoIp2\Record;
  *
  * This record is returned by all the end points except the Country end point.
  *
+ * @property int $averageIncome the average income in US dollars associated with
+ * the requested IP address. This attribute is only available from the Insights
+ * end point.
+ * 
  * @property int $accuracyRadius The radius in kilometers around the
  * specified location where the IP address is likely to be. This attribute
  * is only available from the Insights end point.
@@ -19,6 +23,10 @@ namespace GeoIp2\Record;
  * floating point number. This attribute is returned by all end points
  * except the Country end point.
  *
+ * @property int $populationDensity The estimated population per square
+ * kilometer associated with the IP address. This attribute is only available
+ * from the Insights end point.
+ * 
  * @property int $metroCode The metro code of the location if the location
  * is in the US. MaxMind returns the same metro codes as the
  * {@link
@@ -37,10 +45,12 @@ class Location extends AbstractRecord
      * @ignore
      */
     protected $validAttributes = array(
+        'averageIncome',
         'accuracyRadius',
         'latitude',
         'longitude',
         'metroCode',
+        'populationDensity',
         'postalCode',
         'postalConfidence',
         'timeZone'
