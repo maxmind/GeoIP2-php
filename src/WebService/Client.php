@@ -48,7 +48,6 @@ class Client implements ProviderInterface
     private $client;
     private static $basePath = '/geoip/v2.1';
 
-    // XXX - don't merge until release script automatically updates this
     const VERSION = 'v2.2.0-alpha';
 
     /**
@@ -62,10 +61,6 @@ class Client implements ProviderInterface
      *      * `host` - The host to use when querying the web service.
      *      * `timeout` - Timeout in seconds.
      *      * `connectTimeout` - Initial connection timeout in seconds.
-     * @param object $guzzleClient Optional Guzzle client to use (to facilitate
-     * unit testing).
-     * @param string $timeout Total transaction timeout in seconds
-     * @param string $connectTimeout Initial connection timeout in seconds
      */
     public function __construct(
         $userId,

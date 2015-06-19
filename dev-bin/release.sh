@@ -2,12 +2,16 @@
 
 set -e
 
-TAG=$1
+VERSION=$(perl -MFile::Slurp::Tiny=read_file -MDateTime <<EOF
+use v5.16;
+my \$log = read_file(q{CHANGELOG.md});
+\$log =~ /\n(\d+\.\d+\.\d+) \((\d{4}-\d{2}-\d{2})\)\n/;
+die 'Release time is not today!' unless DateTime->now->ymd eq \$2;
+say \$1;
+EOF
+)
 
-if [ -z $TAG ]; then
-    echo "Please specify a tag"
-    exit 1
-fi
+TAG="v$VERSION"
 
 if [ -f geoip2.phar ]; then
     rm geoip2.phar
@@ -24,6 +28,8 @@ fi
 
 php composer.phar self-update
 php composer.phar update --no-dev
+
+perl -pi -e "s/(?<=const VERSION = ').+?(?=';)/$TAG/g" src/WebService/Client.php
 
 if [ ! -f box.phar ]; then
     wget -O box.phar "https://github.com/box-project/box2/releases/download/2.5.0/box-2.5.0.phar"
