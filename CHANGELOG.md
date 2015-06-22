@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+2.3.0-beta1 (2015-06-16)
+------------------------
+
+* Support for demographics fields `averageIncome` and `populationDensity` in
+  the `Location` record, returned by the Insights endpoint.
+
 2.2.0-beta1 (2015-06-09)
 ------------------------
 
