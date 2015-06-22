@@ -7,7 +7,7 @@ namespace GeoIp2\Record;
  *
  * This record is returned by all the end points except the Country end point.
  *
- * @property int $averageIncome the average income in US dollars associated with
+ * @property int $averageIncome The average income in US dollars associated with
  * the requested IP address. This attribute is only available from the Insights
  * end point.
  *
