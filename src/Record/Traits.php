@@ -31,13 +31,14 @@ namespace GeoIp2\Record;
  * address locally assigned to it. This attribute is returned by all end
  * points.
  *
- * @property boolean $isAnonymousProxy This is true if the IP is an
- * anonymous proxy. See {@link http://dev.maxmind.com/faq/geoip#anonproxy}
- * for further details. This attribute is returned by all end points.
+ * @property boolean $isAnonymousProxy *Deprecated.* Please see our {@link
+ * https://www.maxmind.com/en/geoip2-anonymous-ip-database GeoIP2
+ * Anonymous IP database} to determine whether the IP address is used by an
+ * anonymizing service.
  *
- * @property boolean $isSatelliteProvider This is true if the IP belongs
- * to a satellite Internet provider.  This attribute is returned by all
- * end points.
+ * @property boolean $isSatelliteProvider *Deprecated.* Please see our {@link
+ * https://www.maxmind.com/en/geoip2-anonymous-ip-database GeoIP2
+ * Anonymous IP database}.
  *
  * @property string $isp The name of the ISP associated with the IP address.
  * This attribute is only available from the City and Insights web service end

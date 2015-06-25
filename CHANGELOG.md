@@ -1,6 +1,14 @@
 CHANGELOG
 =========
 
+2.3.0 (2015-06-XX)
+------------------
+
+* The `isAnonymousProxy` and `isSatelliteProvider` properties on
+  `GeoIP2\Record\Traits` have been deprecated. Please use our [GeoIP2
+  Anonymous IP database](https://www.maxmind.com/en/geoip2-anonymous-ip-database)
+  to determine whether an IP address is used by an anonymizing service.
+
 2.3.0-beta1 (2015-06-16)
 ------------------------
 
