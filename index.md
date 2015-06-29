@@ -2,7 +2,7 @@
 layout: default
 title: MaxMind GeoIP2 PHP API
 language: php
-version: v2.2.0-beta1
+version: v2.3.0
 ---
 
 # GeoIP2 PHP API #
@@ -308,12 +308,9 @@ to the client API, please see
 ## Requirements  ##
 
 This code requires PHP 5.3 or greater. Older versions of PHP are not
-supported.
+supported. This library works and is tested with HHVM.
 
-This library works and is tested with HHVM.
-
-This library also relies on the [Guzzle3 HTTP client](https://github.com/guzzle/guzzle3)
-and the [MaxMind DB Reader](https://github.com/maxmind/MaxMind-DB-Reader-php).
+This library also relies on the [MaxMind DB Reader](https://github.com/maxmind/MaxMind-DB-Reader-php).
 
 If you are using PHP 5.3 with an autoloader besides Composer, you must load
 `JsonSerializable.php` in the `compat` directory.
