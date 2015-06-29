@@ -113,6 +113,8 @@ git push
 
 popd
 
+git add src/WebService/Client.php
+git commit -m 'update version number'
 git tag -a $TAG
 git push
 git push --tags
