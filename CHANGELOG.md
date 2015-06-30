@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+2.3.1 (2015-06-30)
+------------------
+
+* Updated `maxmind/web-service-common` to version with fixes for PHP 5.3 and
+  5.4.
+
 2.3.0 (2015-06-29)
 ------------------
 
