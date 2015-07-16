@@ -36,9 +36,10 @@ namespace GeoIp2\Record;
  * Anonymous IP database} to determine whether the IP address is used by an
  * anonymizing service.
  *
- * @property boolean $isSatelliteProvider *Deprecated.* Please see our {@link
- * https://www.maxmind.com/en/geoip2-anonymous-ip-database GeoIP2
- * Anonymous IP database}.
+ * @property boolean $isSatelliteProvider *Deprecated.* Due to the increased
+ * coverage by mobile carriers, very few satellite providers now serve
+ * multiple countries. As a result, the output does not provide sufficiently
+ * relevant data for us to maintain it.
  *
  * @property string $isp The name of the ISP associated with the IP address.
  * This attribute is only available from the City and Insights web service end
