@@ -22,6 +22,9 @@ namespace GeoIp2\Model;
  * @property \GeoIp2\Record\Location $location Location data for the
  * requested IP address.
  *
+ * @property \GeoIp2\Record\Postal $postal Postal data for the
+ * requested IP address.
+ *
  * @property \GeoIp2\Record\MaxMind $maxmind Data related to your MaxMind
  * account.
  *
