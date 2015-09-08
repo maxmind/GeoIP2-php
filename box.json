@@ -29,7 +29,15 @@
             "in": "vendor"
             }
     ],
-    "directories": ["compat", "src/"],
+    "finder-bin": [
+        {
+            "name": [
+                "*.php"
+            ],
+            "in": "src"
+            }
+    ],
+    "directories": ["compat"],
     "git-version": "git-version",
     "shebang": false,
     "stub": true
