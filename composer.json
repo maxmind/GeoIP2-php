@@ -22,8 +22,7 @@
     },
     "autoload": {
         "psr-4": {
-            "GeoIp2\\": "src",
-            "": "compat/"
+            "GeoIp2\\": "src"
         }
     }
 }
