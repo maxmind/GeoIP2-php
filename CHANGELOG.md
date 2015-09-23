@@ -1,6 +1,18 @@
 CHANGELOG
 =========
 
+2.3.2 (2015-09-XX)
+------------------
+
+* `JsonSerializable` compatibility interface was moved to `GeoIp2\Compat`
+  rather than the global namespace to prevent autoloading issues. Reported by
+  Tomas Buteler. GitHub #54.
+* Missing documentation for the `$postal` property was added to the
+  `GeoIp2\Model\City` class. Fix by Roy Sindre Norangshol. GitHub #51.
+* In the Phar distribution, source files for this module no longer have their
+  documentation stripped, allowing IDE introspection to work properly.
+  Reported by Dominic Black. GitHub #52.
+
 2.3.1 (2015-06-30)
 ------------------
 

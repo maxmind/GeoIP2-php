@@ -2,10 +2,12 @@
 
 namespace GeoIp2\Model;
 
+use GeoIp2\Compat\JsonSerializable;
+
 /**
  * @ignore
  */
-abstract class AbstractModel implements \JsonSerializable
+abstract class AbstractModel implements JsonSerializable
 {
     protected $raw;
 

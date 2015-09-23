@@ -2,7 +2,9 @@
 
 namespace GeoIp2\Record;
 
-abstract class AbstractRecord implements \JsonSerializable
+use GeoIp2\Compat\JsonSerializable;
+
+abstract class AbstractRecord implements JsonSerializable
 {
     private $record;
 
