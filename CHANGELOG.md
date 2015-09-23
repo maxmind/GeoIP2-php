@@ -1,7 +1,7 @@
 CHANGELOG
 =========
 
-2.3.2 (2015-09-XX)
+2.3.2 (2015-09-23)
 ------------------
 
 * `JsonSerializable` compatibility interface was moved to `GeoIp2\Compat`
