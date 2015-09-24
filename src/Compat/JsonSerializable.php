@@ -12,7 +12,7 @@ namespace GeoIp2\Compat;
   * @ignore
   */
 if (interface_exists('JsonSerializable')) {
-    interface JSONSerializable extends \JSONSerializable
+    interface JsonSerializable extends \JsonSerializable
     {
     }
 } else {
