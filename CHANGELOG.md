@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+2.3.3 (2015-09-24)
+------------------
+
+* Corrected case on `JsonSerializable` interface. Reported by Axel Etcheverry.
+  Fixes #56.
+
 2.3.2 (2015-09-23)
 ------------------
 
