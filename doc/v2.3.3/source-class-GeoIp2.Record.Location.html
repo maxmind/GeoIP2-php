@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="robots" content="noindex">
+
+	<title>File Record/Location.php | GeoIP2 PHP API v2.3.3</title>
+
+	<link rel="stylesheet" href="resources/style.css?1648332946">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Namespaces</h3>
+			<ul>
+				<li class="active"><a href="namespace-GeoIp2.html">GeoIp2<span></span></a>
+						<ul>
+				<li><a href="namespace-GeoIp2.Compat.html">Compat</a>
+						</li>
+				<li><a href="namespace-GeoIp2.Database.html">Database</a>
+						</li>
+				<li><a href="namespace-GeoIp2.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-GeoIp2.Model.html">Model</a>
+						</li>
+				<li class="active"><a href="namespace-GeoIp2.Record.html">Record</a>
+						</li>
+				<li><a href="namespace-GeoIp2.WebService.html">WebService</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-PHP.html">PHP</a>
+						</li>
+			</ul>
+		</div>
+
+		<hr>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-GeoIp2.Record.AbstractPlaceRecord.html">AbstractPlaceRecord</a></li>
+				<li><a href="class-GeoIp2.Record.AbstractRecord.html">AbstractRecord</a></li>
+				<li><a href="class-GeoIp2.Record.City.html">City</a></li>
+				<li><a href="class-GeoIp2.Record.Continent.html">Continent</a></li>
+				<li><a href="class-GeoIp2.Record.Country.html">Country</a></li>
+				<li class="active"><a href="class-GeoIp2.Record.Location.html">Location</a></li>
+				<li><a href="class-GeoIp2.Record.MaxMind.html">MaxMind</a></li>
+				<li><a href="class-GeoIp2.Record.Postal.html">Postal</a></li>
+				<li><a href="class-GeoIp2.Record.RepresentedCountry.html">RepresentedCountry</a></li>
+				<li><a href="class-GeoIp2.Record.Subdivision.html">Subdivision</a></li>
+				<li><a href="class-GeoIp2.Record.Traits.html">Traits</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-GeoIp2.Record.html" title="Summary of GeoIp2\Record"><span>Namespace</span></a>
+			</li>
+			<li>
+				<a href="class-GeoIp2.Record.Location.html" title="Summary of GeoIp2\Record\Location"><span>Class</span></a>
+			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<pre><code><span id="1" class="l"><a class="l" href="#1"> 1: </a><span class="xlang">&lt;?php</span>
+</span><span id="2" class="l"><a class="l" href="#2"> 2: </a>
+</span><span id="3" class="l"><a class="l" href="#3"> 3: </a><span class="php-keyword1">namespace</span> GeoIp2\Record;
+</span><span id="4" class="l"><a class="l" href="#4"> 4: </a>
+</span><span id="5" class="l"><a class="l" href="#5"> 5: </a><span class="php-comment">/**
+</span></span><span id="6" class="l"><a class="l" href="#6"> 6: </a><span class="php-comment"> * Contains data for the location record associated with an IP address
+</span></span><span id="7" class="l"><a class="l" href="#7"> 7: </a><span class="php-comment"> *
+</span></span><span id="8" class="l"><a class="l" href="#8"> 8: </a><span class="php-comment"> * This record is returned by all the end points except the Country end point.
+</span></span><span id="9" class="l"><a class="l" href="#9"> 9: </a><span class="php-comment"> *
+</span></span><span id="10" class="l"><a class="l" href="#10">10: </a><span class="php-comment"> * @property int $averageIncome The average income in US dollars associated with
+</span></span><span id="11" class="l"><a class="l" href="#11">11: </a><span class="php-comment"> * the requested IP address. This attribute is only available from the Insights
+</span></span><span id="12" class="l"><a class="l" href="#12">12: </a><span class="php-comment"> * end point.
+</span></span><span id="13" class="l"><a class="l" href="#13">13: </a><span class="php-comment"> *
+</span></span><span id="14" class="l"><a class="l" href="#14">14: </a><span class="php-comment"> * @property int $accuracyRadius The radius in kilometers around the
+</span></span><span id="15" class="l"><a class="l" href="#15">15: </a><span class="php-comment"> * specified location where the IP address is likely to be. This attribute
+</span></span><span id="16" class="l"><a class="l" href="#16">16: </a><span class="php-comment"> * is only available from the Insights end point.
+</span></span><span id="17" class="l"><a class="l" href="#17">17: </a><span class="php-comment"> *
+</span></span><span id="18" class="l"><a class="l" href="#18">18: </a><span class="php-comment"> * @property float $latitude The latitude of the location as a floating
+</span></span><span id="19" class="l"><a class="l" href="#19">19: </a><span class="php-comment"> * point number. This attribute is returned by all end points except the
+</span></span><span id="20" class="l"><a class="l" href="#20">20: </a><span class="php-comment"> * Country end point.
+</span></span><span id="21" class="l"><a class="l" href="#21">21: </a><span class="php-comment"> *
+</span></span><span id="22" class="l"><a class="l" href="#22">22: </a><span class="php-comment"> * @property float $longitude The longitude of the location as a
+</span></span><span id="23" class="l"><a class="l" href="#23">23: </a><span class="php-comment"> * floating point number. This attribute is returned by all end points
+</span></span><span id="24" class="l"><a class="l" href="#24">24: </a><span class="php-comment"> * except the Country end point.
+</span></span><span id="25" class="l"><a class="l" href="#25">25: </a><span class="php-comment"> *
+</span></span><span id="26" class="l"><a class="l" href="#26">26: </a><span class="php-comment"> * @property int $populationDensity The estimated population per square
+</span></span><span id="27" class="l"><a class="l" href="#27">27: </a><span class="php-comment"> * kilometer associated with the IP address. This attribute is only available
+</span></span><span id="28" class="l"><a class="l" href="#28">28: </a><span class="php-comment"> * from the Insights end point.
+</span></span><span id="29" class="l"><a class="l" href="#29">29: </a><span class="php-comment"> *
+</span></span><span id="30" class="l"><a class="l" href="#30">30: </a><span class="php-comment"> * @property int $metroCode The metro code of the location if the location
+</span></span><span id="31" class="l"><a class="l" href="#31">31: </a><span class="php-comment"> * is in the US. MaxMind returns the same metro codes as the
+</span></span><span id="32" class="l"><a class="l" href="#32">32: </a><span class="php-comment"> * {@link
+</span></span><span id="33" class="l"><a class="l" href="#33">33: </a><span class="php-comment"> * https://developers.google.com/adwords/api/docs/appendix/cities-DMAregions
+</span></span><span id="34" class="l"><a class="l" href="#34">34: </a><span class="php-comment"> * Google AdWords API}. This attribute is returned by all end points except
+</span></span><span id="35" class="l"><a class="l" href="#35">35: </a><span class="php-comment"> * the Country end point.
+</span></span><span id="36" class="l"><a class="l" href="#36">36: </a><span class="php-comment"> *
+</span></span><span id="37" class="l"><a class="l" href="#37">37: </a><span class="php-comment"> * @property string $timeZone The time zone associated with location, as
+</span></span><span id="38" class="l"><a class="l" href="#38">38: </a><span class="php-comment"> * specified by the {@link http://www.iana.org/time-zones IANA Time Zone
+</span></span><span id="39" class="l"><a class="l" href="#39">39: </a><span class="php-comment"> * Database}, e.g., &quot;America/New_York&quot;. This attribute is returned by all
+</span></span><span id="40" class="l"><a class="l" href="#40">40: </a><span class="php-comment"> * end points except the Country end point.
+</span></span><span id="41" class="l"><a class="l" href="#41">41: </a><span class="php-comment"> */</span>
+</span><span id="42" class="l"><a class="l" href="#42">42: </a><span class="php-keyword1">class</span> <a id="Location" href="#Location">Location</a> <span class="php-keyword1">extends</span> AbstractRecord
+</span><span id="43" class="l"><a class="l" href="#43">43: </a>{
+</span><span id="44" class="l"><a class="l" href="#44">44: </a>    <span class="php-comment">/**
+</span></span><span id="45" class="l"><a class="l" href="#45">45: </a><span class="php-comment">     * @ignore
+</span></span><span id="46" class="l"><a class="l" href="#46">46: </a><span class="php-comment">     */</span>
+</span><span id="47" class="l"><a class="l" href="#47">47: </a>    <span class="php-keyword1">protected</span> <span class="php-var"><a id="$validAttributes" href="#$validAttributes">$validAttributes</a></span> = <span class="php-keyword1">array</span>(
+</span><span id="48" class="l"><a class="l" href="#48">48: </a>        <span class="php-quote">'averageIncome'</span>,
+</span><span id="49" class="l"><a class="l" href="#49">49: </a>        <span class="php-quote">'accuracyRadius'</span>,
+</span><span id="50" class="l"><a class="l" href="#50">50: </a>        <span class="php-quote">'latitude'</span>,
+</span><span id="51" class="l"><a class="l" href="#51">51: </a>        <span class="php-quote">'longitude'</span>,
+</span><span id="52" class="l"><a class="l" href="#52">52: </a>        <span class="php-quote">'metroCode'</span>,
+</span><span id="53" class="l"><a class="l" href="#53">53: </a>        <span class="php-quote">'populationDensity'</span>,
+</span><span id="54" class="l"><a class="l" href="#54">54: </a>        <span class="php-quote">'postalCode'</span>,
+</span><span id="55" class="l"><a class="l" href="#55">55: </a>        <span class="php-quote">'postalConfidence'</span>,
+</span><span id="56" class="l"><a class="l" href="#56">56: </a>        <span class="php-quote">'timeZone'</span>
+</span><span id="57" class="l"><a class="l" href="#57">57: </a>    );
+</span><span id="58" class="l"><a class="l" href="#58">58: </a>}
+</span><span id="59" class="l"><a class="l" href="#59">59: </a></span></code></pre>
+
+	<div id="footer">
+		GeoIP2 PHP API v2.3.3 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js?721046668"></script>
+<script src="elementlist.js?2312650305"></script>
+</body>
+</html>
