@@ -17,7 +17,7 @@ before_install:
 script:
   - mkdir -p build/logs
   - if [ "5.5" == $TRAVIS_PHP_VERSION ]; then php phpcs.phar --standard=PSR2 src/; fi
-  - phpunit -c phpunit.xml.dist
+  - ./vendor/bin/phpunit -c phpunit.xml.dist
 
 after_script:
   - php vendor/bin/coveralls
