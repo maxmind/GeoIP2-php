@@ -9,6 +9,10 @@ php:
   - hhvm
   - nightly
 
+matrix:
+  allow_failures:
+    - php: nightly
+
 before_install:
   - composer install --dev -n --prefer-source
   - if [ "5.5" == $TRAVIS_PHP_VERSION ]; then curl -sOL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar; fi
