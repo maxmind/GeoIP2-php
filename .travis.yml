@@ -1,35 +1,32 @@
+---
+sudo: false
 language: php
-
 php:
-  - 5.3
-  - 5.4
-  - 5.5
-  - 5.6
-  - 7.0
+  - '5.3'
+  - '5.4'
+  - '5.5'
+  - '5.6'
+  - '7.0'
   - hhvm
   - nightly
-
 matrix:
   allow_failures:
     - php: nightly
-
 before_install:
   - composer install --dev -n --prefer-source
   - phpenv rehash
-
 script:
   - mkdir -p build/logs
   - ./vendor/bin/phpcs --standard=PSR2 src/
   - ./vendor/bin/phpunit -c phpunit.xml.dist
-
 after_script:
   - php vendor/bin/coveralls
-
-sudo: false
-
 notifications:
   email:
+    on_failure: always
+    on_success: change
     recipients:
       - dev-ci@maxmind.com
-    on_success: change
-    on_failure: always
+  slack:
+    rooms:
+      secure: "OtowN1lGa5MAhn6gl87aB3kXXeOKLGIb4e9dBud/tPt/1sQDoZVj6m6VWtpsXh6iXL7lWetVbpmeZCydSRumgVMIy7+45uMQPvdoWBFCT+rq67yDb3gyvFknpjBuit0Q91lTDoGTUSgtqk+PSZX5LvDgT4b8WQFBb/dcB35hqis=\n"
