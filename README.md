@@ -239,6 +239,19 @@ print($record->location->longitude . "\n"); // -93.2323
 
 ```
 
+## Values to use for Database or Array Keys ##
+
+**We strongly discourage your from using a value from any `names` accessor as
+a key in a database or array.**
+
+These names may change between releases. Instead we recommend using one of the
+following:
+
+* `GeoIp2\Record\City` - `$city->geonameId`
+* `GeoIp2\Record\Continent` - `$continent->code` or `$continent->geonameId`
+* `GeoIp2\Record\Country` and `GeoIp2\Record\RepresentedCountry` - `$country->isoCode` or `$country->geonameId`
+* `GeoIp2\Record\Subdivision` - `$subdivision->isoCode` or `$subdivision->geonameId`
+
 ### What data is returned? ###
 
 While many of the end points return the same basic records, the attributes
