@@ -241,7 +241,7 @@ print($record->location->longitude . "\n"); // -93.2323
 
 ## Values to use for Database or Array Keys ##
 
-**We strongly discourage your from using a value from any `names` accessor as
+**We strongly discourage you from using a value from any `names` property as
 a key in a database or array.**
 
 These names may change between releases. Instead we recommend using one of the
