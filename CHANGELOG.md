@@ -4,7 +4,7 @@ CHANGELOG
 2.4.0 (2016-XX-XX)
 ------------------
 
-* Added support for the GeoIP Enterprise database.
+* Added support for the GeoIP2 Enterprise database.
 
 2.3.3 (2015-09-24)
 ------------------
