@@ -67,93 +67,93 @@ class CountryTest extends \PHPUnit_Framework_TestCase
     public function testValues()
     {
 
-        $this->assertEquals(
+        $this->assertSame(
             42,
             $this->model->continent->geonameId,
             'continent geoname_id is 42'
         );
 
-        $this->assertEquals(
+        $this->assertSame(
             'NA',
             $this->model->continent->code,
             'continent code is NA'
         );
 
-        $this->assertEquals(
+        $this->assertSame(
             array('en' => 'North America'),
             $this->model->continent->names,
             'continent names'
         );
 
-        $this->assertEquals(
+        $this->assertSame(
             'North America',
             $this->model->continent->name,
             'continent name is North America'
         );
 
-        $this->assertEquals(
+        $this->assertSame(
             1,
             $this->model->country->geonameId,
             'country geoname_id is 1'
         );
 
-        $this->assertEquals(
+        $this->assertSame(
             'US',
             $this->model->country->isoCode,
             'country iso_code is US'
         );
 
-        $this->assertEquals(
+        $this->assertSame(
             array('en' => 'United States of America'),
             $this->model->country->names,
             'country name'
         );
 
-        $this->assertEquals(
+        $this->assertSame(
             $this->model->country->name,
             'United States of America',
             'country name is United States of America'
         );
 
-        $this->assertEquals(
+        $this->assertSame(
             null,
             $this->model->country->confidence,
             'country confidence is undef'
         );
 
-        $this->assertEquals(
+        $this->assertSame(
             2,
             $this->model->registeredCountry->geonameId,
             'registered_country geoname_id is 2'
         );
 
-        $this->assertEquals(
+        $this->assertSame(
             'CA',
             $this->model->registeredCountry->isoCode,
             'registered_country iso_code is CA'
         );
 
-        $this->assertEquals(
+        $this->assertSame(
             array('en' => 'Canada'),
             $this->model->registeredCountry->names,
             'registered_country names'
         );
 
-        $this->assertEquals(
+        $this->assertSame(
             'Canada',
             $this->model->registeredCountry->name,
             'registered_country name is Canada'
         );
 
         foreach (array('isAnonymousProxy', 'isSatelliteProvider') as $meth) {
-            $this->assertEquals(
-                0,
+            $this->assertSame(
+                false,
                 $this->model->traits->$meth,
                 "traits $meth returns 0 by default"
             );
         }
 
-        $this->assertEquals(
+        $this->assertSame(
             $this->raw,
             $this->model->raw,
             'raw method returns raw input'
@@ -162,13 +162,13 @@ class CountryTest extends \PHPUnit_Framework_TestCase
 
     public function testJsonSerialize()
     {
-        $this->assertEquals(
+        $this->assertSame(
             $this->raw,
             $this->model->jsonSerialize(),
             'jsonSerialize returns initial array'
         );
 
-        $this->assertEquals(
+        $this->assertSame(
             $this->raw['country'],
             $this->model->country->jsonSerialize(),
             'jsonSerialize returns initial array for the record'
@@ -178,13 +178,13 @@ class CountryTest extends \PHPUnit_Framework_TestCase
             $this->markTestSkipped('Requires PHP 5.4+.');
         }
 
-        $this->assertEquals(
+        $this->assertSame(
             json_encode($this->raw),
             json_encode($this->model),
             'json_encode can be called on the model object directly'
         );
 
-        $this->assertEquals(
+        $this->assertSame(
             json_encode($this->raw['country']),
             json_encode($this->model->country),
             'json_encode can be called on the record object directly'

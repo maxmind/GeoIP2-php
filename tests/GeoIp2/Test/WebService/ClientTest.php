@@ -138,55 +138,55 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf('GeoIp2\Model\Country', $country);
 
-        $this->assertEquals(
+        $this->assertSame(
             42,
             $country->continent->geonameId,
             'continent geoname_id is 42'
         );
 
-        $this->assertEquals(
+        $this->assertSame(
             'NA',
             $country->continent->code,
             'continent code is NA'
         );
 
-        $this->assertEquals(
+        $this->assertSame(
             array('en' => 'North America'),
             $country->continent->names,
             'continent names'
         );
 
-        $this->assertEquals(
+        $this->assertSame(
             'North America',
             $country->continent->name,
             'continent name is North America'
         );
 
-        $this->assertEquals(
+        $this->assertSame(
             1,
             $country->country->geonameId,
             'country geoname_id is 1'
         );
 
-        $this->assertEquals(
+        $this->assertSame(
             'US',
             $country->country->isoCode,
             'country iso_code is US'
         );
 
-        $this->assertEquals(
+        $this->assertSame(
             array('en' => 'United States of America'),
             $country->country->names,
             'country names'
         );
 
-        $this->assertEquals(
+        $this->assertSame(
             'United States of America',
             $country->country->name,
             'country name is United States of America'
         );
 
-        $this->assertEquals(
+        $this->assertSame(
             11,
             $country->maxmind->queriesRemaining,
             'queriesRemaining is correct'
@@ -201,7 +201,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf('GeoIp2\Model\Insights', $record);
 
-        $this->assertEquals(
+        $this->assertSame(
             42,
             $record->continent->geonameId,
             'continent geoname_id is 42'

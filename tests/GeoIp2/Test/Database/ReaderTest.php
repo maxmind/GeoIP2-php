@@ -12,7 +12,7 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
             $reader = new Reader("maxmind-db/test-data/GeoIP2-$type-Test.mmdb");
             $method = lcfirst($type);
             $record = $reader->$method('81.2.69.160');
-            $this->assertEquals('United Kingdom', $record->country->name);
+            $this->assertSame('United Kingdom', $record->country->name);
         }
         $reader->close();
     }
@@ -28,7 +28,7 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
             $method = lcfirst($type);
 
             $record = $reader->$method('81.2.69.160');
-            $this->assertEquals('Великобритания', $record->country->name);
+            $this->assertSame('Великобритания', $record->country->name);
         }
         $reader->close();
     }
@@ -39,7 +39,7 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
             $reader = new Reader("maxmind-db/test-data/GeoIP2-$type-Test.mmdb");
             $method = lcfirst($type);
             $record = $reader->$method('81.2.69.160');
-            $this->assertEquals('81.2.69.160', $record->traits->ipAddress);
+            $this->assertSame('81.2.69.160', $record->traits->ipAddress);
         }
         $reader->close();
     }
@@ -109,8 +109,8 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
         $ipAddress = '1.0.1.0';
 
         $record = $reader->connectionType($ipAddress);
-        $this->assertEquals('Cable/DSL', $record->connectionType);
-        $this->assertEquals($ipAddress, $record->ipAddress);
+        $this->assertSame('Cable/DSL', $record->connectionType);
+        $this->assertSame($ipAddress, $record->ipAddress);
         $reader->close();
     }
 
@@ -120,8 +120,8 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
 
         $ipAddress = '1.2.0.0';
         $record = $reader->domain($ipAddress);
-        $this->assertEquals('maxmind.com', $record->domain);
-        $this->assertEquals($ipAddress, $record->ipAddress);
+        $this->assertSame('maxmind.com', $record->domain);
+        $this->assertSame($ipAddress, $record->ipAddress);
         $reader->close();
     }
 
@@ -140,7 +140,7 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('residential', $record->traits->connectionType);
         $this->assertSame(true, $record->traits->isLegitimateProxy);
 
-        $this->assertEquals($ipAddress, $record->traits->ipAddress);
+        $this->assertSame($ipAddress, $record->traits->ipAddress);
         $reader->close();
     }
 
@@ -150,23 +150,23 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
 
         $ipAddress = '1.128.0.0';
         $record = $reader->isp($ipAddress);
-        $this->assertEquals(1221, $record->autonomousSystemNumber);
-        $this->assertEquals(
+        $this->assertSame(1221, $record->autonomousSystemNumber);
+        $this->assertSame(
             'Telstra Pty Ltd',
             $record->autonomousSystemOrganization
         );
 
-        $this->assertEquals('Telstra Internet', $record->isp);
-        $this->assertEquals('Telstra Internet', $record->organization);
+        $this->assertSame('Telstra Internet', $record->isp);
+        $this->assertSame('Telstra Internet', $record->organization);
 
-        $this->assertEquals($ipAddress, $record->ipAddress);
+        $this->assertSame($ipAddress, $record->ipAddress);
         $reader->close();
     }
 
     public function testMetadata()
     {
         $reader = new Reader('maxmind-db/test-data/GeoIP2-City-Test.mmdb');
-        $this->assertEquals('GeoIP2-City', $reader->metadata()->databaseType);
+        $this->assertSame('GeoIP2-City', $reader->metadata()->databaseType);
 
         $reader->close();
     }
