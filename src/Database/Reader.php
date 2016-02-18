@@ -151,6 +151,23 @@ class Reader implements ProviderInterface
     }
 
     /**
+     * This method returns a GeoIP2 Enterprise model.
+     *
+     * @param string $ipAddress IPv4 or IPv6 address as a string.
+     *
+     * @return \GeoIp2\Model\Enterprise
+     *
+     * @throws \GeoIp2\Exception\AddressNotFoundException if the address is
+     *         not in the database.
+     * @throws \MaxMind\Db\Reader\InvalidDatabaseException if the database
+     *         is corrupt or invalid
+     */
+    public function enterprise($ipAddress)
+    {
+        return $this->modelFor('Enterprise', 'Enterprise', $ipAddress);
+    }
+
+    /**
      * This method returns a GeoIP2 ISP model.
      *
      * @param string $ipAddress IPv4 or IPv6 address as a string.
