@@ -99,7 +99,7 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(false, $record->isHostingProvider);
         $this->assertSame(false, $record->isPublicProxy);
         $this->assertSame(false, $record->isTorExitNode);
-        $this->assertEquals($ipAddress, $record->ipAddress);
+        $this->assertSame($ipAddress, $record->ipAddress);
         $reader->close();
     }
 
@@ -122,6 +122,25 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
         $record = $reader->domain($ipAddress);
         $this->assertEquals('maxmind.com', $record->domain);
         $this->assertEquals($ipAddress, $record->ipAddress);
+        $reader->close();
+    }
+
+    public function testEnterprise()
+    {
+        $reader = new Reader('maxmind-db/test-data/GeoIP2-Enterprise-Test.mmdb');
+
+        $ipAddress = '74.209.24.0';
+        $record = $reader->enterprise($ipAddress);
+        $this->assertSame(11, $record->city->confidence);
+        $this->assertSame(99, $record->country->confidence);
+        $this->assertSame(6252001, $record->country->geonameId);
+
+        $this->assertSame(27, $record->location->accuracyRadius);
+
+        $this->assertSame('residential', $record->traits->connectionType);
+        $this->assertSame(true, $record->traits->isLegitimateProxy);
+
+        $this->assertEquals($ipAddress, $record->traits->ipAddress);
         $reader->close();
     }
 

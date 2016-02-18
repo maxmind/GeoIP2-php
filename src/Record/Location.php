@@ -13,7 +13,8 @@ namespace GeoIp2\Record;
  *
  * @property int $accuracyRadius The radius in kilometers around the
  * specified location where the IP address is likely to be. This attribute
- * is only available from the Insights end point.
+ * is only available from the Insights end point and the GeoIP2 Enterprise
+ * database.
  *
  * @property float $latitude The latitude of the location as a floating
  * point number. This attribute is returned by all end points except the

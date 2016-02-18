@@ -168,6 +168,40 @@ print($record->ipAddress . "\n"); // '128.101.101.101'
 
 ```
 
+### Enterprise Example ###
+
+```php
+<?php
+require_once 'vendor/autoload.php';
+use GeoIp2\Database\Reader;
+
+// This creates the Reader object, which should be reused across
+// lookups.
+$reader = new Reader('/usr/local/share/GeoIP/GeoIP2-Enterprise.mmdb');
+
+// Use the ->enterprise method to do a lookup in the Enterprise database
+$record = $reader->enterprise('128.101.101.101');
+
+print($record->country->confidence . "\n"); // 99
+print($record->country->isoCode . "\n"); // 'US'
+print($record->country->name . "\n"); // 'United States'
+print($record->country->names['zh-CN'] . "\n"); // '美国'
+
+print($record->mostSpecificSubdivision->confidence . "\n"); // 77
+print($record->mostSpecificSubdivision->name . "\n"); // 'Minnesota'
+print($record->mostSpecificSubdivision->isoCode . "\n"); // 'MN'
+
+print($record->city->confidence . "\n"); // 60
+print($record->city->name . "\n"); // 'Minneapolis'
+
+print($record->postal->code . "\n"); // '55455'
+
+print($record->location->accuracy_radius . "\n"); // 50
+print($record->location->latitude . "\n"); // 44.9733
+print($record->location->longitude . "\n"); // -93.2323
+
+```
+
 ### ISP Example ###
 
 ```php
@@ -249,7 +283,8 @@ following:
 
 * `GeoIp2\Record\City` - `$city->geonameId`
 * `GeoIp2\Record\Continent` - `$continent->code` or `$continent->geonameId`
-* `GeoIp2\Record\Country` and `GeoIp2\Record\RepresentedCountry` - `$country->isoCode` or `$country->geonameId`
+* `GeoIp2\Record\Country` and `GeoIp2\Record\RepresentedCountry` -
+  `$country->isoCode` or `$country->geonameId`
 * `GeoIp2\Record\Subdivision` - `$subdivision->isoCode` or `$subdivision->geonameId`
 
 ### What data is returned? ###
@@ -323,8 +358,11 @@ If you are using PHP 5.3 with an autoloader besides Composer, you must load
 
 ## Contributing ##
 
-Patches and pull requests are encouraged. All code should follow the
-PSR-2 style guidelines. Please include unit tests whenever possible. You may obtain the test data for the maxmind-db folder by running `git submodule update --init --recursive` or adding `--recursive` to your initial clone, or from https://github.com/maxmind/MaxMind-DB
+Patches and pull requests are encouraged. All code should follow the PSR-2
+style guidelines. Please include unit tests whenever possible. You may obtain
+the test data for the maxmind-db folder by running `git submodule update
+--init --recursive` or adding `--recursive` to your initial clone, or from
+https://github.com/maxmind/MaxMind-DB
 
 ## Versioning ##
 
@@ -332,7 +370,7 @@ The GeoIP2 PHP API uses [Semantic Versioning](http://semver.org/).
 
 ## Copyright and License ##
 
-This software is Copyright (c) 2014 by MaxMind, Inc.
+This software is Copyright (c) 2016 by MaxMind, Inc.
 
 This is free software, licensed under the Apache License, Version 2.0.
 
