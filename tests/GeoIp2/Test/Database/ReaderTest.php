@@ -137,7 +137,7 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame(27, $record->location->accuracyRadius);
 
-        $this->assertSame('residential', $record->traits->connectionType);
+        $this->assertSame('Cable/DSL', $record->traits->connectionType);
         $this->assertSame(true, $record->traits->isLegitimateProxy);
 
         $this->assertSame($ipAddress, $record->traits->ipAddress);
