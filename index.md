@@ -9,10 +9,10 @@ version: v2.3.3
 
 ## Description ##
 
-This package provides an API for the GeoIP2 [web services]
-(http://dev.maxmind.com/geoip/geoip2/web-services) and [databases]
-(http://dev.maxmind.com/geoip/geoip2/downloadable). The API also works with
-the free [GeoLite2 databases](http://dev.maxmind.com/geoip/geoip2/geolite2/).
+This package provides an API for the GeoIP2
+[web services](http://dev.maxmind.com/geoip/geoip2/web-services) and
+[databases](http://dev.maxmind.com/geoip/geoip2/downloadable). The API also
+works with the free [GeoLite2 databases](http://dev.maxmind.com/geoip/geoip2/geolite2/).
 
 ## Install via Composer ##
 
