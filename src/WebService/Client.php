@@ -225,7 +225,6 @@ class Client implements ProviderInterface
                 $ex->getUri(),
                 $ex
             );
-
         } catch (\MaxMind\Exception\WebServiceException $ex) {
             throw new GeoIp2Exception(
                 $ex->getMessage(),
