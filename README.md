@@ -65,6 +65,12 @@ follow the instructions included with that API.
 
 The extension has no effect on web-service lookups.
 
+## IP Geolocation Usage ##
+
+IP geolocation is inherently imprecise. Locations are often near the center of
+the population. Any location provided by a GeoIP2 database or web service
+should not be used to identify a particular address or household.
+
 ## Database Reader ##
 
 ### Usage ###
