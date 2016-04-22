@@ -13,14 +13,14 @@ use MaxMind\Exception\InvalidInputException;
 use MaxMind\WebService\Client as WsClient;
 
 /**
- * This class provides a client API for all the GeoIP2 Precision web service
- * end points. The end points are Country, City, and Insights. Each end point
- * returns a different set of data about an IP address, with Country returning
- * the least data and Insights the most.
+ * This class provides a client API for all the GeoIP2 Precision web services.
+ * The services are Country, City, and Insights. Each service returns a
+ * different set of data about an IP address, with Country returning the
+ * least data and Insights the most.
  *
- * Each web service end point is represented by a different model class, and
- * these model classes in turn contain multiple Record classes. The record
- * classes have attributes which contain data about the IP address.
+ * Each web service is represented by a different model class, and these model
+ * classes in turn contain multiple Record classes. The record classes have
+ * attributes which contain data about the IP address.
  *
  * If the web service does not return a particular piece of data for an IP
  * address, the associated attribute is not populated.
@@ -36,7 +36,7 @@ use MaxMind\WebService\Client as WsClient;
  * point, passing it the IP address you want to look up.
  *
  * If the request succeeds, the method call will return a model class for
- * the end point you called. This model in turn contains multiple record
+ * the service you called. This model in turn contains multiple record
  * classes, each of which represents part of the data returned by the web
  * service.
  *
@@ -91,7 +91,7 @@ class Client implements ProviderInterface
     }
 
     /**
-     * This method calls the GeoIP2 Precision: City endpoint.
+     * This method calls the GeoIP2 Precision: City service.
      *
      * @param string $ipAddress IPv4 or IPv6 address as a string. If no
      * address is provided, the address that the web service is called
@@ -123,7 +123,7 @@ class Client implements ProviderInterface
     }
 
     /**
-     * This method calls the GeoIP2 Precision: Country endpoint.
+     * This method calls the GeoIP2 Precision: Country service.
      *
      * @param string $ipAddress IPv4 or IPv6 address as a string. If no
      * address is provided, the address that the web service is called
@@ -155,7 +155,7 @@ class Client implements ProviderInterface
     }
 
     /**
-     * This method calls the GeoIP2 Precision: Insights endpoint.
+     * This method calls the GeoIP2 Precision: Insights service.
      *
      * @param string $ipAddress IPv4 or IPv6 address as a string. If no
      * address is provided, the address that the web service is called

@@ -5,10 +5,10 @@ namespace GeoIp2\Record;
 /**
  * Contains data about your account.
  *
- * This record is returned by all the end points.
+ * This record is returned by all location services and databases.
  *
- * @property int $queriesRemaining The number of remaining queries you have
- * for the end point you are calling.
+ * @property int|null $queriesRemaining The number of remaining queries you
+ * have for the service you are calling.
  */
 class MaxMind extends AbstractRecord
 {
