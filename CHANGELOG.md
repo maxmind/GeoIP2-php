@@ -5,6 +5,8 @@ CHANGELOG
 ------------------
 
 * Corrected type annotations in documentation. GitHub #66.
+* Updated documentation to reflect that the accuracy radius is now included
+  in City.
 
 2.4.0 (2016-04-15)
 ------------------
