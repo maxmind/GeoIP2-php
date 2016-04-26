@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+2.4.1 (2016-XX-XX)
+------------------
+
+* Corrected type annotations in documentation. GitHub #66.
+
 2.4.0 (2016-04-15)
 ------------------
 
@@ -10,7 +15,7 @@ CHANGELOG
 ------------------
 
 * Corrected case on `JsonSerializable` interface. Reported by Axel Etcheverry.
-  Fixes #56.
+  GitHub #56.
 
 2.3.2 (2015-09-23)
 ------------------
