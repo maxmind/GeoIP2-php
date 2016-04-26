@@ -19,7 +19,7 @@ use MaxMind\WebService\Client as WsClient;
  * least data and Insights the most.
  *
  * Each web service is represented by a different model class, and these model
- * classes in turn contain multiple Record classes. The record classes have
+ * classes in turn contain multiple record classes. The record classes have
  * attributes which contain data about the IP address.
  *
  * If the web service does not return a particular piece of data for an IP
