@@ -1,46 +1,49 @@
 <?php
 
-namespace GeoIp2\Test\WebService;
+namespace GeoIp2\Test\Database;
 
 use GeoIp2\Database\Reader;
 
 class ReaderTest extends \PHPUnit_Framework_TestCase
 {
-    public function testDefaultLocale()
+    public function databaseTypes()
     {
-        foreach (array('City', 'Country') as $type) {
-            $reader = new Reader("maxmind-db/test-data/GeoIP2-$type-Test.mmdb");
-            $method = lcfirst($type);
-            $record = $reader->$method('81.2.69.160');
-            $this->assertSame('United Kingdom', $record->country->name);
-        }
+        return array(array('City', 'city'), array('Country', 'country'));
+    }
+
+    /**
+     * @dataProvider databaseTypes
+     */
+    public function testDefaultLocale($type, $method)
+    {
+        $reader = new Reader("maxmind-db/test-data/GeoIP2-$type-Test.mmdb");
+        $record = $reader->$method('81.2.69.160');
+        $this->assertSame('United Kingdom', $record->country->name);
         $reader->close();
     }
 
-    public function testLocaleList()
+    /**
+     * @dataProvider databaseTypes
+     */
+    public function testLocaleList($type, $method)
     {
-
-        foreach (array('City', 'Country') as $type) {
-            $reader = new Reader(
-                "maxmind-db/test-data/GeoIP2-$type-Test.mmdb",
-                array('xx', 'ru', 'pt-BR', 'es', 'en')
-            );
-            $method = lcfirst($type);
-
-            $record = $reader->$method('81.2.69.160');
-            $this->assertSame('Великобритания', $record->country->name);
-        }
+        $reader = new Reader(
+            "maxmind-db/test-data/GeoIP2-$type-Test.mmdb",
+            array('xx', 'ru', 'pt-BR', 'es', 'en')
+        );
+        $record = $reader->$method('81.2.69.160');
+        $this->assertSame('Великобритания', $record->country->name);
         $reader->close();
     }
 
-    public function testHasIpAddress()
+    /**
+     * @dataProvider databaseTypes
+     */
+    public function testHasIpAddress($type, $method)
     {
-        foreach (array('City', 'Country') as $type) {
-            $reader = new Reader("maxmind-db/test-data/GeoIP2-$type-Test.mmdb");
-            $method = lcfirst($type);
-            $record = $reader->$method('81.2.69.160');
-            $this->assertSame('81.2.69.160', $record->traits->ipAddress);
-        }
+        $reader = new Reader("maxmind-db/test-data/GeoIP2-$type-Test.mmdb");
+        $record = $reader->$method('81.2.69.160');
+        $this->assertSame('81.2.69.160', $record->traits->ipAddress);
         $reader->close();
     }
 
