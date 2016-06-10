@@ -61,6 +61,9 @@ class Client implements ProviderInterface
      *      * `host` - The host to use when querying the web service.
      *      * `timeout` - Timeout in seconds.
      *      * `connectTimeout` - Initial connection timeout in seconds.
+     *      * `proxy` - The HTTP proxy to use. May include a schema, port,
+     *        username, and password, e.g.,
+     *        `http://username:password@127.0.0.1:10`.
      */
     public function __construct(
         $userId,
