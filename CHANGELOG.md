@@ -1,12 +1,13 @@
 CHANGELOG
 =========
 
-2.4.1 (2016-XX-XX)
+2.4.1 (2016-06-10)
 ------------------
 
 * Corrected type annotations in documentation. GitHub #66.
 * Updated documentation to reflect that the accuracy radius is now included
   in City.
+* Upgraded web service client, which supports setting a proxy. GitHub #59.
 
 2.4.0 (2016-04-15)
 ------------------

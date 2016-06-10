@@ -465,6 +465,8 @@ class ClientTest extends \PHPUnit_Framework_TestCase
                             ? $options['connectTimeout'] : null,
                         'timeout' => isset($options['timeout'])
                             ? $options['timeout'] : null,
+                        'proxy' => isset($options['proxy'])
+                            ? $options['proxy'] : null,
                         'caBundle' => $caBundle,
                     )
                 )
