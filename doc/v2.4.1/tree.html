@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Tree | GeoIP2 PHP API v2.4.1</title>
+
+	<link rel="stylesheet" href="resources/style.css?1648332946">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Namespaces</h3>
+			<ul>
+				<li><a href="namespace-GeoIp2.html">GeoIp2<span></span></a>
+						<ul>
+				<li><a href="namespace-GeoIp2.Compat.html">Compat</a>
+						</li>
+				<li><a href="namespace-GeoIp2.Database.html">Database</a>
+						</li>
+				<li><a href="namespace-GeoIp2.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-GeoIp2.Model.html">Model</a>
+						</li>
+				<li><a href="namespace-GeoIp2.Record.html">Record</a>
+						</li>
+				<li><a href="namespace-GeoIp2.WebService.html">WebService</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-PHP.html">PHP</a>
+						</li>
+			</ul>
+		</div>
+
+		<hr>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-GeoIp2.Compat.JsonSerializable.html" class="invalid">GeoIp2\Compat\JsonSerializable</a></li>
+				<li><a href="class-GeoIp2.Database.Reader.html">GeoIp2\Database\Reader</a></li>
+				<li><a href="class-GeoIp2.Model.AnonymousIp.html">GeoIp2\Model\AnonymousIp</a></li>
+				<li><a href="class-GeoIp2.Model.City.html">GeoIp2\Model\City</a></li>
+				<li><a href="class-GeoIp2.Model.ConnectionType.html">GeoIp2\Model\ConnectionType</a></li>
+				<li><a href="class-GeoIp2.Model.Country.html">GeoIp2\Model\Country</a></li>
+				<li><a href="class-GeoIp2.Model.Domain.html">GeoIp2\Model\Domain</a></li>
+				<li><a href="class-GeoIp2.Model.Enterprise.html">GeoIp2\Model\Enterprise</a></li>
+				<li><a href="class-GeoIp2.Model.Insights.html">GeoIp2\Model\Insights</a></li>
+				<li><a href="class-GeoIp2.Model.Isp.html">GeoIp2\Model\Isp</a></li>
+				<li><a href="class-GeoIp2.Record.AbstractPlaceRecord.html">GeoIp2\Record\AbstractPlaceRecord</a></li>
+				<li><a href="class-GeoIp2.Record.AbstractRecord.html">GeoIp2\Record\AbstractRecord</a></li>
+				<li><a href="class-GeoIp2.Record.City.html">GeoIp2\Record\City</a></li>
+				<li><a href="class-GeoIp2.Record.Continent.html">GeoIp2\Record\Continent</a></li>
+				<li><a href="class-GeoIp2.Record.Country.html">GeoIp2\Record\Country</a></li>
+				<li><a href="class-GeoIp2.Record.Location.html">GeoIp2\Record\Location</a></li>
+				<li><a href="class-GeoIp2.Record.MaxMind.html">GeoIp2\Record\MaxMind</a></li>
+				<li><a href="class-GeoIp2.Record.Postal.html">GeoIp2\Record\Postal</a></li>
+				<li><a href="class-GeoIp2.Record.RepresentedCountry.html">GeoIp2\Record\RepresentedCountry</a></li>
+				<li><a href="class-GeoIp2.Record.Subdivision.html">GeoIp2\Record\Subdivision</a></li>
+				<li><a href="class-GeoIp2.Record.Traits.html">GeoIp2\Record\Traits</a></li>
+				<li><a href="class-GeoIp2.WebService.Client.html">GeoIp2\WebService\Client</a></li>
+			</ul>
+
+			<h3>Interfaces</h3>
+			<ul>
+				<li><a href="class-GeoIp2.ProviderInterface.html">GeoIp2\ProviderInterface</a></li>
+			</ul>
+
+
+			<h3>Exceptions</h3>
+			<ul>
+				<li><a href="class-BadFunctionCallException.html">BadFunctionCallException</a></li>
+				<li><a href="class-BadMethodCallException.html">BadMethodCallException</a></li>
+				<li><a href="class-Exception.html">Exception</a></li>
+				<li><a href="class-GeoIp2.Exception.AddressNotFoundException.html">GeoIp2\Exception\AddressNotFoundException</a></li>
+				<li><a href="class-GeoIp2.Exception.AuthenticationException.html">GeoIp2\Exception\AuthenticationException</a></li>
+				<li><a href="class-GeoIp2.Exception.GeoIp2Exception.html">GeoIp2\Exception\GeoIp2Exception</a></li>
+				<li><a href="class-GeoIp2.Exception.HttpException.html">GeoIp2\Exception\HttpException</a></li>
+				<li><a href="class-GeoIp2.Exception.InvalidRequestException.html">GeoIp2\Exception\InvalidRequestException</a></li>
+				<li><a href="class-GeoIp2.Exception.OutOfQueriesException.html">GeoIp2\Exception\OutOfQueriesException</a></li>
+				<li><a href="class-InvalidArgumentException.html">InvalidArgumentException</a></li>
+				<li><a href="class-LogicException.html">LogicException</a></li>
+			</ul>
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+<span>Namespace</span>			</li>
+			<li>
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li class="active">
+<span>Tree</span>			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content">
+	<h1>Tree</h1>
+
+		<h3>Classes</h3>
+<div class="tree">
+	<ul>
+
+			<li><div class="notlast"><a href="class-GeoIp2.Compat.JsonSerializable.html"><span class="invalid">GeoIp2\Compat\JsonSerializable</span></a>
+			
+			
+			</div>
+
+				</li>
+
+			<li><div class="notlast"><a href="class-GeoIp2.Database.Reader.html"><span>GeoIp2\Database\Reader</span></a>
+			 implements 
+				<a href="class-GeoIp2.ProviderInterface.html"><span>GeoIp2\ProviderInterface</span></a>
+			
+			
+			</div>
+
+				</li>
+
+			<li><div class="notlast"><span>GeoIp2\Model\AbstractModel</span>			 implements 
+				<a href="class-GeoIp2.Compat.JsonSerializable.html"><span class="invalid">GeoIp2\Compat\JsonSerializable</span></a>
+			
+			
+			</div>
+
+				<ul>
+
+			<li><div class="notlast"><a href="class-GeoIp2.Model.AnonymousIp.html"><span>GeoIp2\Model\AnonymousIp</span></a>
+			
+			
+			</div>
+
+				</li>
+
+			<li><div class="notlast"><a href="class-GeoIp2.Model.ConnectionType.html"><span>GeoIp2\Model\ConnectionType</span></a>
+			
+			
+			</div>
+
+				</li>
+
+			<li><div class="notlast"><a href="class-GeoIp2.Model.Country.html"><span>GeoIp2\Model\Country</span></a>
+			
+			
+			</div>
+
+				<ul>
+
+			<li class="last"><div class="last"><a href="class-GeoIp2.Model.City.html"><span>GeoIp2\Model\City</span></a>
+			
+			
+			</div>
+
+				<ul>
+
+			<li><div class="notlast"><a href="class-GeoIp2.Model.Enterprise.html"><span>GeoIp2\Model\Enterprise</span></a>
+			
+			
+			</div>
+
+				</li>
+
+			<li class="last"><div class="last"><a href="class-GeoIp2.Model.Insights.html"><span>GeoIp2\Model\Insights</span></a>
+			
+			
+			</div>
+
+				</ul></li></ul></li>
+
+			<li><div class="notlast"><a href="class-GeoIp2.Model.Domain.html"><span>GeoIp2\Model\Domain</span></a>
+			
+			
+			</div>
+
+				</li>
+
+			<li class="last"><div class="last"><a href="class-GeoIp2.Model.Isp.html"><span>GeoIp2\Model\Isp</span></a>
+			
+			
+			</div>
+
+				</ul></li>
+
+			<li><div class="notlast"><a href="class-GeoIp2.Record.AbstractRecord.html"><span>GeoIp2\Record\AbstractRecord</span></a>
+			 implements 
+				<a href="class-GeoIp2.Compat.JsonSerializable.html"><span class="invalid">GeoIp2\Compat\JsonSerializable</span></a>
+			
+			
+			</div>
+
+				<ul>
+
+			<li><div class="notlast"><a href="class-GeoIp2.Record.AbstractPlaceRecord.html"><span>GeoIp2\Record\AbstractPlaceRecord</span></a>
+			
+			
+			</div>
+
+				<ul>
+
+			<li><div class="notlast"><a href="class-GeoIp2.Record.City.html"><span>GeoIp2\Record\City</span></a>
+			
+			
+			</div>
+
+				</li>
+
+			<li><div class="notlast"><a href="class-GeoIp2.Record.Continent.html"><span>GeoIp2\Record\Continent</span></a>
+			
+			
+			</div>
+
+				</li>
+
+			<li><div class="notlast"><a href="class-GeoIp2.Record.Country.html"><span>GeoIp2\Record\Country</span></a>
+			
+			
+			</div>
+
+				<ul>
+
+			<li class="last"><div class="last"><a href="class-GeoIp2.Record.RepresentedCountry.html"><span>GeoIp2\Record\RepresentedCountry</span></a>
+			
+			
+			</div>
+
+				</ul></li>
+
+			<li class="last"><div class="last"><a href="class-GeoIp2.Record.Subdivision.html"><span>GeoIp2\Record\Subdivision</span></a>
+			
+			
+			</div>
+
+				</ul></li>
+
+			<li><div class="notlast"><a href="class-GeoIp2.Record.Location.html"><span>GeoIp2\Record\Location</span></a>
+			
+			
+			</div>
+
+				</li>
+
+			<li><div class="notlast"><a href="class-GeoIp2.Record.MaxMind.html"><span>GeoIp2\Record\MaxMind</span></a>
+			
+			
+			</div>
+
+				</li>
+
+			<li><div class="notlast"><a href="class-GeoIp2.Record.Postal.html"><span>GeoIp2\Record\Postal</span></a>
+			
+			
+			</div>
+
+				</li>
+
+			<li class="last"><div class="last"><a href="class-GeoIp2.Record.Traits.html"><span>GeoIp2\Record\Traits</span></a>
+			
+			
+			</div>
+
+				</ul></li>
+
+			<li class="last"><div class="last"><a href="class-GeoIp2.WebService.Client.html"><span>GeoIp2\WebService\Client</span></a>
+			 implements 
+				<a href="class-GeoIp2.ProviderInterface.html"><span>GeoIp2\ProviderInterface</span></a>
+			
+			
+			</div>
+
+		</li>
+		
+	</ul>
+</div>
+
+		<h3>Interfaces</h3>
+<div class="tree">
+	<ul>
+
+			<li class="last"><div class="last"><a href="class-GeoIp2.ProviderInterface.html"><span>GeoIp2\ProviderInterface</span></a>
+			
+			
+			</div>
+
+		</li>
+		
+	</ul>
+</div>
+
+
+		<h3>Exceptions</h3>
+<div class="tree">
+	<ul>
+
+			<li class="last"><div class="last"><a href="class-Exception.html"><span>Exception</span></a>
+			
+			
+			</div>
+
+				<ul>
+
+			<li><div class="notlast"><a href="class-GeoIp2.Exception.GeoIp2Exception.html"><span>GeoIp2\Exception\GeoIp2Exception</span></a>
+			
+			
+			</div>
+
+				<ul>
+
+			<li><div class="notlast"><a href="class-GeoIp2.Exception.AddressNotFoundException.html"><span>GeoIp2\Exception\AddressNotFoundException</span></a>
+			
+			
+			</div>
+
+				</li>
+
+			<li><div class="notlast"><a href="class-GeoIp2.Exception.AuthenticationException.html"><span>GeoIp2\Exception\AuthenticationException</span></a>
+			
+			
+			</div>
+
+				</li>
+
+			<li><div class="notlast"><a href="class-GeoIp2.Exception.HttpException.html"><span>GeoIp2\Exception\HttpException</span></a>
+			
+			
+			</div>
+
+				<ul>
+
+			<li class="last"><div class="last"><a href="class-GeoIp2.Exception.InvalidRequestException.html"><span>GeoIp2\Exception\InvalidRequestException</span></a>
+			
+			
+			</div>
+
+				</ul></li>
+
+			<li class="last"><div class="last"><a href="class-GeoIp2.Exception.OutOfQueriesException.html"><span>GeoIp2\Exception\OutOfQueriesException</span></a>
+			
+			
+			</div>
+
+				</ul></li>
+
+			<li class="last"><div class="last"><a href="class-LogicException.html"><span>LogicException</span></a>
+			
+			
+			</div>
+
+				<ul>
+
+			<li><div class="notlast"><a href="class-BadFunctionCallException.html"><span>BadFunctionCallException</span></a>
+			
+			
+			</div>
+
+				<ul>
+
+			<li class="last"><div class="last"><a href="class-BadMethodCallException.html"><span>BadMethodCallException</span></a>
+			
+			
+			</div>
+
+				</ul></li>
+
+			<li class="last"><div class="last"><a href="class-InvalidArgumentException.html"><span>InvalidArgumentException</span></a>
+			
+			
+			</div>
+
+		</li>
+		</ul></li></ul></li>
+	</ul>
+</div>
+</div>
+
+	<div id="footer">
+		GeoIP2 PHP API v2.4.1 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js?721046668"></script>
+<script src="elementlist.js?625629729"></script>
+</body>
+</html>
