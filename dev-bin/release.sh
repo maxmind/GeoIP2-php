@@ -97,7 +97,9 @@ EOF
 cat ../README.md >> $PAGE
 
 git add doc/
-git commit -m "Updated for $TAG" -a
+if [ -n "$(git status --porcelain)" ]; then
+    git commit -m "Updated for $TAG" -a
+fi
 
 read -e -p "Push to origin? " SHOULD_PUSH
 
@@ -114,7 +116,9 @@ git push
 popd
 
 git add src/WebService/Client.php
-git commit -m 'update version number'
-git tag -a $TAG
+if [ -n "$(git status --porcelain)" ]; then
+    git commit -m 'update version number'
+fi
+git tag -a "$TAG"
 git push
 git push --tags
