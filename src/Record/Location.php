@@ -12,8 +12,11 @@ namespace GeoIp2\Record;
  * associated with the requested IP address. This attribute is only available
  * from the Insights service.
  *
- * @property int|null $accuracyRadius The radius in kilometers around the
- * specified location where the IP address is likely to be.
+ * @property int|null $accuracyRadius The approximate accuracy radius in
+ * kilometers around the latitude and longitude for the IP address. This is
+ * the radius where we have a 67% confidence that the device using the IP
+ * address resides within the circle centered at the latitude and longitude
+ * with the provided radius.
  *
  * @property float|null $latitude The approximate latitude of the location
  * associated with the IP address. This value is not precise and should not be
