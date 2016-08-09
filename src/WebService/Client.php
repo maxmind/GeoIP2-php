@@ -238,6 +238,5 @@ class Client implements ProviderInterface
 
         $class = "GeoIp2\\Model\\" . $class;
         return new $class($body, $this->locales);
-
     }
 }

@@ -5,20 +5,20 @@ namespace GeoIp2\Model;
 /**
  * This class provides the GeoIP2 Connection-Type model.
  *
- * @property integer|null $autonomousSystemNumber The autonomous system number
+ * @property-read integer|null $autonomousSystemNumber The autonomous system number
  *     associated with the IP address.
  *
- * @property string|null $autonomousSystemOrganization The organization
+ * @property-read string|null $autonomousSystemOrganization The organization
  *     associated with the registered autonomous system number for the IP
  *     address.
  *
- * @property string|null $isp The name of the ISP associated with the IP
+ * @property-read string|null $isp The name of the ISP associated with the IP
  *     address.
  *
- * @property string|null $organization The name of the organization associated
+ * @property-read string|null $organization The name of the organization associated
  *     with the IP address.
  *
- * @property string $ipAddress The IP address that the data in the model is
+ * @property-read string $ipAddress The IP address that the data in the model is
  *     for.
  *
  */

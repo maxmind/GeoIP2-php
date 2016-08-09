@@ -7,7 +7,7 @@ namespace GeoIp2\Record;
  *
  * This record is returned by all location services and databases.
  *
- * @property int|null $queriesRemaining The number of remaining queries you
+ * @property-read int|null $queriesRemaining The number of remaining queries you
  * have for the service you are calling.
  */
 class MaxMind extends AbstractRecord

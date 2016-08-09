@@ -2,6 +2,7 @@
 
 namespace GeoIp2\Test\WebService;
 
+use Composer\CaBundle\CaBundle;
 use GeoIp2\WebService\Client;
 use MaxMind\WebService\Client as WsClient;
 
@@ -313,7 +314,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
      */
     public function test406Exception()
     {
-        $this->makeRequest('Country','1.2.3.12');
+        $this->makeRequest('Country', '1.2.3.12');
     }
 
     /**
@@ -445,9 +446,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
             'Accept: application/json',
         );
 
-        $reflectionClass = new \ReflectionClass('MaxMind\\WebService\\Client');
-        $file = $reflectionClass->getFileName();
-        $caBundle = dirname($file) . '/cacert.pem';
+        $caBundle = CaBundle::getSystemCaRootBundlePath();
 
         $curlVersion = curl_version();
         $factory->expects($this->exactly($callsToRequest))
@@ -483,5 +482,4 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         );
         return $client->$method($ipAddress);
     }
-
 }
