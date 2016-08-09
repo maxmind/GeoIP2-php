@@ -8,12 +8,12 @@ namespace GeoIp2\Record;
  * This record is returned by all location databases and services besides
  * Country.
  *
- * @property string|null $code The postal code of the location. Postal codes
+ * @property-read string|null $code The postal code of the location. Postal codes
  * are not available for all countries. In some countries, this will only
  * contain part of the postal code. This attribute is returned by all location
  * databases and services besides Country.
  *
- * @property int|null $confidence A value from 0-100 indicating MaxMind's
+ * @property-read int|null $confidence A value from 0-100 indicating MaxMind's
  * confidence that the postal code is correct. This attribute is only
  * available from the Insights service and the GeoIP2 Enterprise
  * database.

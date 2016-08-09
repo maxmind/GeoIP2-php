@@ -8,61 +8,61 @@ namespace GeoIp2\Record;
  *
  * This record is returned by all location services and databases.
  *
- * @property int|null $autonomousSystemNumber The {@link
+ * @property-read int|null $autonomousSystemNumber The {@link
  * http://en.wikipedia.org/wiki/Autonomous_system_(Internet) autonomous
  * system number} associated with the IP address. This attribute is only
  * available from the City and Insights web service and the GeoIP2
  * Enterprise database.
  *
- * @property string|null $autonomousSystemOrganization The organization
+ * @property-read string|null $autonomousSystemOrganization The organization
  * associated with the registered {@link
  * http://en.wikipedia.org/wiki/Autonomous_system_(Internet) autonomous
  * system number} for the IP address. This attribute is only available from
  * the City and Insights web service and the GeoIP2 Enterprise
  * database.
  *
- * @property string|null $connectionType The connection type may take the
+ * @property-read string|null $connectionType The connection type may take the
  * following  values: "Dialup", "Cable/DSL", "Corporate", "Cellular".
  * Additional values may be added in the future. This attribute is only
  * available in the GeoIP2 Enterprise database.
  *
- * @property string|null $domain The second level domain associated with the
+ * @property-read string|null $domain The second level domain associated with the
  * IP address. This will be something like "example.com" or "example.co.uk",
  * not "foo.example.com". This attribute is only available from the
  * City and Insights web service and the GeoIP2 Enterprise
  * database.
  *
- * @property string $ipAddress The IP address that the data in the model
+ * @property-read string $ipAddress The IP address that the data in the model
  * is for. If you performed a "me" lookup against the web service, this
  * will be the externally routable IP address for the system the code is
  * running on. If the system is behind a NAT, this may differ from the IP
  * address locally assigned to it. This attribute is returned by all end
  * points.
  *
- * @property boolean $isAnonymousProxy *Deprecated.* Please see our {@link
+ * @property-read boolean $isAnonymousProxy *Deprecated.* Please see our {@link
  * https://www.maxmind.com/en/geoip2-anonymous-ip-database GeoIP2
  * Anonymous IP database} to determine whether the IP address is used by an
  * anonymizing service.
  *
- * @property boolean $isLegitimateProxy This attribute is true if MaxMind
+ * @property-read boolean $isLegitimateProxy This attribute is true if MaxMind
  * believes this IP address to be a legitimate proxy, such as an internal
  * VPN used by a corporation. This attribute is only available in the GeoIP2
  * Enterprise database.
  *
- * @property boolean $isSatelliteProvider *Deprecated.* Due to the
+ * @property-read boolean $isSatelliteProvider *Deprecated.* Due to the
  * increased coverage by mobile carriers, very few satellite providers now
  * serve multiple countries. As a result, the output does not provide
  * sufficiently relevant data for us to maintain it.
  *
- * @property string|null $isp The name of the ISP associated with the IP
+ * @property-read string|null $isp The name of the ISP associated with the IP
  * address. This attribute is only available from the City and Insights web
  * services and the GeoIP2 Enterprise database.
  *
- * @property string|null $organization The name of the organization associated
+ * @property-read string|null $organization The name of the organization associated
  * with the IP address. This attribute is only available from the City and
  * Insights web services and the GeoIP2 Enterprise database.
  *
- * @property string|null $userType <p>The user type associated with the IP
+ * @property-read string|null $userType <p>The user type associated with the IP
  *  address. This can be one of the following values:</p>
  *  <ul>
  *    <li>business

@@ -9,27 +9,27 @@ namespace GeoIp2\Model;
  * fields in each record may be populated. See
  * http://dev.maxmind.com/geoip/geoip2/web-services more details.
  *
- * @property \GeoIp2\Record\Continent $continent Continent data for the
+ * @property-read \GeoIp2\Record\Continent $continent Continent data for the
  * requested IP address.
  *
- * @property \GeoIp2\Record\Country $country Country data for the requested
+ * @property-read \GeoIp2\Record\Country $country Country data for the requested
  * IP address. This object represents the country where MaxMind believes the
  * end user is located.
  *
- * @property \GeoIp2\Record\MaxMind $maxmind Data related to your MaxMind
+ * @property-read \GeoIp2\Record\MaxMind $maxmind Data related to your MaxMind
  * account.
  *
- * @property \GeoIp2\Record\Country $registeredCountry Registered country
+ * @property-read \GeoIp2\Record\Country $registeredCountry Registered country
  * data for the requested IP address. This record represents the country
  * where the ISP has registered a given IP block and may differ from the
  * user's country.
  *
- * @property \GeoIp2\Record\RepresentedCountry $representedCountry
+ * @property-read \GeoIp2\Record\RepresentedCountry $representedCountry
  * Represented country data for the requested IP address. The represented
  * country is used for things like military bases. It is only present when
  * the represented country differs from the country.
  *
- * @property \GeoIp2\Record\Traits $traits Data for the traits of the
+ * @property-read \GeoIp2\Record\Traits $traits Data for the traits of the
  * requested IP address.
  */
 class Country extends AbstractModel
