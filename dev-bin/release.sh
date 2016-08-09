@@ -67,20 +67,19 @@ fi
 # sporadically deleted upstream and compatibility is often broken on patch
 # releases.
 if [ ! -f apigen.phar ]; then
-    wget -O apigen.phar "https://github.com/apigen/apigen/releases/download/v4.0.0-RC3/apigen-4.0.0-RC3.phar"
+    wget -O apigen.phar "http://apigen.org/apigen.phar"
+else
+    php apigen.phar self-update
 fi
 
-
-cat <<EOF > apigen.neon
-destination: doc/$TAG
-
-source:
-    - ../src
-
-title: "GeoIP2 PHP API $TAG"
-EOF
-
-php apigen.phar generate
+php apigen.phar generate \
+    -s ../src \
+    -s ../../MaxMind-DB-Reader-php/src \
+    -d "doc/$TAG" \
+    --title "GeoIP2 PHP API $TAG" \
+    --template-theme bootstrap \
+    --exclude "Compat" \
+    --php
 
 
 PAGE=index.md
