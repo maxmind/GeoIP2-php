@@ -1,10 +1,13 @@
 CHANGELOG
 =========
 
-2.4.2 (2016-XX-XX)
+2.4.2 (2016-08-17)
 ------------------
 
 * Updated documentation to clarify what the accuracy radius refers to.
+* Upgraded `maxmind/web-service-common` to 0.3.0. This version uses
+  `composer/ca-bundle` rather than our own CA bundle. Fixes #75.
+* Improved PHP documentation generation.
 
 2.4.1 (2016-06-10)
 ------------------
