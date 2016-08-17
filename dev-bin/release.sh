@@ -66,11 +66,7 @@ fi
 # We no longer have apigen as a dependency in Composer as releases are
 # sporadically deleted upstream and compatibility is often broken on patch
 # releases.
-if [ ! -f apigen.phar ]; then
-    wget -O apigen.phar "http://apigen.org/apigen.phar"
-else
-    php apigen.phar self-update
-fi
+wget -O apigen.phar "http://apigen.org/apigen.phar"
 
 php apigen.phar generate \
     -s ../src \
