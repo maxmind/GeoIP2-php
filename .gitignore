@@ -1,6 +1,5 @@
 _site/
 bin/
-apigen.neon
 apigen.phar
 composer.lock
 composer.phar
