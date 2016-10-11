@@ -229,6 +229,11 @@ class InsightsTest extends \PHPUnit_Framework_TestCase
             '$model->mostSpecificSubdivision'
         );
 
+        $this->assertTrue(
+            isset($model->mostSpecificSubdivision),
+            'mostSpecificSubdivision is set'
+        );
+
         $this->assertInstanceOf(
             'GeoIp2\Record\Traits',
             $model->traits,
@@ -269,6 +274,16 @@ class InsightsTest extends \PHPUnit_Framework_TestCase
             $raw,
             $model->raw,
             'raw method returns raw input'
+        );
+    }
+
+    public function testMostSpecificSubdivisionWithNoSubdivisions()
+    {
+        $model = new Insights(array(), array('en'));
+
+        $this->assertTrue(
+            isset($model->mostSpecificSubdivision),
+            'mostSpecificSubdivision is set even on an empty response'
         );
     }
 }
