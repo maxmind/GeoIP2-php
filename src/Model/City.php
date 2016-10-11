@@ -113,6 +113,20 @@ class City extends Country
         }
     }
 
+    /**
+     * @ignore
+     */
+    public function __isset($attr)
+    {
+        if ($attr == 'mostSpecificSubdivision') {
+            // We always return a mostSpecificSubdivision, even if it is the
+            // empty subdivision
+            return true;
+        } else {
+            return parent::__isset($attr);
+        }
+    }
+
     private function mostSpecificSubdivision()
     {
         return empty($this->subdivisions) ?
