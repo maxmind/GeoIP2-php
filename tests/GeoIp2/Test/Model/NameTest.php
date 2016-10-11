@@ -39,6 +39,16 @@ class NameTest extends \PHPUnit_Framework_TestCase
             'continent name is in Chinese (no Russian available)'
         );
 
+        $this->assertTrue(
+            isset($model->continent->name),
+            'continent name is set'
+        );
+
+        $this->assertFalse(
+            empty($model->continent->name),
+            'continent name is not empty'
+        );
+
         $this->assertSame(
             'объединяет государства',
             $model->country->name,
@@ -54,6 +64,16 @@ class NameTest extends \PHPUnit_Framework_TestCase
             null,
             $model->continent->name,
             'continent name is undef (no Russian or Japanese available)'
+        );
+
+        $this->assertFalse(
+            isset($model->continent->name),
+            'continent name is not set'
+        );
+
+        $this->assertTrue(
+            empty($model->continent->name),
+            'continent name is empty'
         );
 
         $this->assertSame(

@@ -27,12 +27,31 @@ abstract class AbstractPlaceRecord extends AbstractRecord
         }
     }
 
+    /**
+     * @ignore
+     */
+    public function __isset($attr)
+    {
+        if ($attr == 'name') {
+            return $this->firstSetNameLocale() == null ? false : true;
+        } else {
+            return parent::__isset($attr);
+        }
+    }
+
     private function name()
+    {
+        $locale = $this->firstSetNameLocale();
+        return $locale === null ? null : $this->names[$locale];
+    }
+
+    private function firstSetNameLocale()
     {
         foreach ($this->locales as $locale) {
             if (isset($this->names[$locale])) {
-                return $this->names[$locale];
+                return $locale;
             }
         }
+        return null;
     }
 }
