@@ -1,7 +1,7 @@
 CHANGELOG
 =========
 
-2.4.3
+2.4.3 (2016-10-11)
 ------------------
 
 * `isset()` on `name` attribute now returns the correct value. Fixes #79.
