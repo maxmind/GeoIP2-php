@@ -1,45 +1,58 @@
 #!/bin/bash
 
-set -e
+set -eu -o pipefail
 
-VERSION=$(perl -MFile::Slurp::Tiny=read_file -MDateTime <<EOF
-use v5.16;
-my \$log = read_file(q{CHANGELOG.md});
-\$log =~ /\n(\d+\.\d+\.\d+) \((\d{4}-\d{2}-\d{2})\)\n/;
-die 'Release time is not today!' unless DateTime->now->ymd eq \$2;
-say \$1;
-EOF
-)
+phar='geoip2.phar'
 
-TAG="v$VERSION"
+changelog=$(cat CHANGELOG.md)
 
-if [ -f geoip2.phar ]; then
-    rm geoip2.phar
+regex='
+([0-9]+\.[0-9]+\.[0-9]+) \(([0-9]{4}-[0-9]{2}-[0-9]{2})\)
+-*
+
+((.|
+)*)
+'
+
+if [[ ! $changelog =~ $regex ]]; then
+      echo "Could not find date line in change log!"
+      exit 1
 fi
+
+version="${BASH_REMATCH[1]}"
+date="${BASH_REMATCH[2]}"
+notes="$(echo "${BASH_REMATCH[3]}" | sed -n -e '/^[0-9]\+\.[0-9]\+\.[0-9]\+/,$!p')"
+
+if [[ "$date" -ne  $(date +"%Y-%m-%d") ]]; then
+    echo "$date is not today!"
+    exit 1
+fi
+
+tag="v$version"
+
+rm -f "$phar"
 
 if [ -n "$(git status --porcelain)" ]; then
     echo ". is not clean." >&2
     exit 1
 fi
 
-if [ -d vendor ]; then
-    rm -fr vendor
-fi
+rm -fr vendor
 
 php composer.phar self-update
 php composer.phar update --no-dev
 
-perl -pi -e "s/(?<=const VERSION = ').+?(?=';)/$TAG/g" src/WebService/Client.php
+perl -pi -e "s/(?<=const VERSION = ').+?(?=';)/$tag/g" src/WebService/Client.php
 
 if [ ! -f box.phar ]; then
-    wget -O box.phar "https://github.com/box-project/box2/releases/download/2.5.0/box-2.5.0.phar"
+    wget -O box.phar "https://github.com/box-project/box2/releases/download/2.6.1/box-2.6.1.phar"
 fi
 
 php box.phar build
 
-PHAR_TEST=$(./dev-bin/phar-test.php)
-if [[ -n $PHAR_TEST ]]; then
-    echo "Phar test outputed non-empty string: $PHAR_TEST"
+phar_test=$(./dev-bin/phar-test.php)
+if [[ -n $phar_test ]]; then
+    echo "Phar test outputed non-empty string: $phar_test"
     exit 1
 fi
 
@@ -71,49 +84,51 @@ wget -O apigen.phar "http://apigen.org/apigen.phar"
 php apigen.phar generate \
     -s ../src \
     -s ../../MaxMind-DB-Reader-php/src \
-    -d "doc/$TAG" \
-    --title "GeoIP2 PHP API $TAG" \
+    -d "doc/$tag" \
+    --title "GeoIP2 PHP API $tag" \
     --template-theme bootstrap \
     --exclude "Compat" \
     --php
 
 
-PAGE=index.md
-cat <<EOF > $PAGE
+page=index.md
+cat <<EOF > $page
 ---
 layout: default
 title: MaxMind GeoIP2 PHP API
 language: php
-version: $TAG
+version: $tag
 ---
 
 EOF
 
-cat ../README.md >> $PAGE
+cat ../README.md >> $page
 
 git add doc/
-if [ -n "$(git status --porcelain)" ]; then
-    git commit -m "Updated for $TAG" -a
-fi
 
-read -e -p "Push to origin? " SHOULD_PUSH
+echo "Release notes for $tag:"
+echo "$notes"
 
-if [ "$SHOULD_PUSH" != "y" ]; then
+read -e -p "Commit changes and push to origin? " should_push
+
+if [ "$should_push" != "y" ]; then
     echo "Aborting"
     exit 1
 fi
 
-# If we don't push directly to github, the page doesn't get built for some
-# reason.
-git push git@github.com:maxmind/GeoIP2-php.git
+git commit -m "Updated for $tag" -a
 git push
 
 popd
 
-git add src/WebService/Client.php
-if [ -n "$(git status --porcelain)" ]; then
-    git commit -m 'update version number'
-fi
-git tag -a "$TAG"
+git commit -m "Update for $tag" -a
+
 git push
+
+message="$version
+
+$notes"
+
+hub release create -a "$phar" -m "$message" "$tag"
+
 git push --tags
