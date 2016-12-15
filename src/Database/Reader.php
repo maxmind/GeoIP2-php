@@ -223,7 +223,7 @@ class Reader implements ProviderInterface
                 "The address $ipAddress is not in the database."
             );
         }
-        return $record;
+        return (array)$record;
     }
 
     /**
