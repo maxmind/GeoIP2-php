@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class MaxMind\Db\Reader | GeoIP2 PHP API v2.4.5</title>
+
+	<link rel="stylesheet" href="resources/bootstrap.min.css?973e37a8502921d56bc02bb55321f45b072b6f71">
+	<link rel="stylesheet" href="resources/style.css?49f43d3208c5d7e33fa16d36107a345bf11cc00d">
+
+</head>
+
+<body>
+	<nav id="navigation" class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a href="index.html" class="navbar-brand">GeoIP2 PHP API v2.4.5</a>
+			</div>
+			<div class="collapse navbar-collapse">
+
+                <form id="search" class="navbar-form navbar-left" role="search">
+                    <input type="hidden" name="cx" value="">
+                    <input type="hidden" name="ie" value="UTF-8">
+                    <div class="form-group">
+                        <input type="text" name="q" class="search-query form-control" placeholder="Search">
+					</div>
+				</form>
+
+				<ul class="nav navbar-nav">
+					<li>
+						<a href="namespace-MaxMind.Db.html" title="Summary of MaxMind\Db"><span>Namespace</span></a>
+					</li>
+					<li class="active">
+<span>Class</span>					</li>
+
+
+
+
+
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div id="left">
+	<div id="menu">
+
+		<div id="groups">
+				<h3>Namespaces</h3>
+			<ul>
+					<li>
+						<a href="namespace-GeoIp2.html">
+							GeoIp2<span></span>
+						</a>
+							<ul>
+					<li>
+						<a href="namespace-GeoIp2.Database.html">
+							Database						</a>
+							</li>
+					<li>
+						<a href="namespace-GeoIp2.Exception.html">
+							Exception						</a>
+							</li>
+					<li>
+						<a href="namespace-GeoIp2.Model.html">
+							Model						</a>
+							</li>
+					<li>
+						<a href="namespace-GeoIp2.Record.html">
+							Record						</a>
+							</li>
+					<li>
+						<a href="namespace-GeoIp2.WebService.html">
+							WebService						</a>
+							</li>
+								</ul></li>
+					<li class="active">
+						<a href="namespace-MaxMind.html">
+							MaxMind<span></span>
+						</a>
+							<ul>
+					<li class="active">
+						<a href="namespace-MaxMind.Db.html">
+							Db<span></span>
+						</a>
+							<ul>
+					<li>
+						<a href="namespace-MaxMind.Db.Reader.html">
+							Reader						</a>
+							</li>
+								</ul></li></ul></li>
+					<li>
+						<a href="namespace-PHP.html">
+							PHP						</a>
+							</li>
+			</ul>
+		</div>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li class="active"><a href="class-MaxMind.Db.Reader.html">Reader</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+	<div id="rightInner">
+<div id="content" class="class">
+	<h1>Class Reader</h1>
+
+
+	<div class="description">
+	<p>Instances of this class provide a reader for the MaxMind DB format. IP
+addresses can be looked up using the</p>
+
+<pre>get</pre>
+
+<p>method.</p>
+	</div>
+
+
+
+
+
+
+
+
+
+	<div class="alert alert-info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-MaxMind.html">MaxMind</a>\<a href="namespace-MaxMind.Db.html">Db</a><br>
+		
+
+			<b>Located at</b> <a href="source-class-MaxMind.Db.Reader.html#10-299" title="Go to source code">MaxMind/Db/Reader.php</a>
+		<br>
+	</div>
+
+
+
+		<div class="panel panel-default">
+			<div class="panel-heading"><h2>Methods summary</h2></div>
+			<table class="summary table table-bordered table-striped methods" id="methods">
+		<tr data-order="__construct" id="___construct">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#___construct">#</a>
+			<code><a href="source-class-MaxMind.Db.Reader.html#27-72" title="Go to source code">__construct</a>( <span>string <var>$database</var></span> )</code>
+
+			<div class="description short">
+				<p>Constructs a Reader for the MaxMind DB format. The file passed to it must
+be a valid MaxMind DB file such as a GeoIp2 database file.</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Constructs a Reader for the MaxMind DB format. The file passed to it must
+be a valid MaxMind DB file such as a GeoIp2 database file.</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$database</var></dt>
+						<dd>the MaxMind DB file to use.</dd>
+					</dl></div>
+
+
+					<h4>Throws</h4>
+					<div class="list">
+						<code><a href="class-InvalidArgumentException.html">InvalidArgumentException</a></code><br>for invalid database path or unknown arguments<br>
+						<code><a href="class-MaxMind.Db.Reader.InvalidDatabaseException.html">MaxMind\Db\Reader\InvalidDatabaseException</a></code><br><p>if the database is invalid or there is an error reading
+            from it.</p>
+					</div>
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="get" id="_get">
+
+			<td class="attributes"><code>
+				 public 
+				array
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_get">#</a>
+			<code><a href="source-class-MaxMind.Db.Reader.html#74-117" title="Go to source code">get</a>( <span>string <var>$ipAddress</var></span> )</code>
+
+			<div class="description short">
+				<p>Looks up the</p>
+
+<pre>address</pre>
+
+<p>in the MaxMind DB.</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Looks up the</p>
+
+<pre>address</pre>
+
+<p>in the MaxMind DB.</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$ipAddress</var></dt>
+						<dd>the IP address to look up.</dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						array<br>the record for the IP address.
+					</div>
+
+					<h4>Throws</h4>
+					<div class="list">
+						<code><a href="class-BadMethodCallException.html">BadMethodCallException</a></code><br>if this method is called on a closed database.<br>
+						<code><a href="class-InvalidArgumentException.html">InvalidArgumentException</a></code><br>if something other than a single IP address is passed to the method.<br>
+						<code><a href="class-MaxMind.Db.Reader.InvalidDatabaseException.html">MaxMind\Db\Reader\InvalidDatabaseException</a></code><br><p>if the database is invalid or there is an error reading
+            from it.</p>
+					</div>
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="metadata" id="_metadata">
+
+			<td class="attributes"><code>
+				 public 
+				<code><a href="class-MaxMind.Db.Reader.Metadata.html">MaxMind\Db\Reader\Metadata</a></code>
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_metadata">#</a>
+			<code><a href="source-class-MaxMind.Db.Reader.html#260-282" title="Go to source code">metadata</a>( )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+
+					<h4>Returns</h4>
+					<div class="list">
+						<code><a href="class-MaxMind.Db.Reader.Metadata.html">MaxMind\Db\Reader\Metadata</a></code><br>object for the database.
+					</div>
+
+					<h4>Throws</h4>
+					<div class="list">
+						<code><a href="class-InvalidArgumentException.html">InvalidArgumentException</a></code><br>if arguments are passed to the method.<br>
+						<code><a href="class-BadMethodCallException.html">BadMethodCallException</a></code><br>if the database has been closed.
+					</div>
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="close" id="_close">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_close">#</a>
+			<code><a href="source-class-MaxMind.Db.Reader.html#284-298" title="Go to source code">close</a>( )</code>
+
+			<div class="description short">
+				<p>Closes the MaxMind DB and returns resources to the system.</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Closes the MaxMind DB and returns resources to the system.</p>
+
+
+
+
+					<h4>Throws</h4>
+					<div class="list">
+						<code><a href="class-Exception.html">Exception</a></code><br>if an I/O error occurs.
+					</div>
+
+
+
+			</div>
+			</div></td>
+		</tr>
+			</table>
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+</div>
+	</div>
+
+	<div id="footer">
+		GeoIP2 PHP API v2.4.5 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>
