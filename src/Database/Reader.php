@@ -5,6 +5,7 @@ namespace GeoIp2\Database;
 use GeoIp2\Exception\AddressNotFoundException;
 use GeoIp2\ProviderInterface;
 use MaxMind\Db\Reader as DbReader;
+use MaxMind\Db\Reader\InvalidDatabaseException;
 
 /**
  * Instances of this class provide a reader for the GeoIP2 database format.
@@ -221,6 +222,19 @@ class Reader implements ProviderInterface
         if ($record === null) {
             throw new AddressNotFoundException(
                 "The address $ipAddress is not in the database."
+            );
+        }
+        if (!is_array($record)) {
+            // This can happen on corrupt databases. Generally,
+            // MaxMind\Db\Reader will throw a
+            // MaxMind\Db\Reader\InvalidDatabaseException, but occasionally
+            // the lookup may result in a record that looks valid but is not
+            // an array. This mostly happens when the user is ignoring all
+            // exceptions and the more frequent InvalidDatabaseException
+            // exceptions go unnoticed.
+            throw new InvalidDatabaseException(
+                "Expected an array when looking up $ipAddress but received: "
+                . gettype($record)
             );
         }
         return $record;
