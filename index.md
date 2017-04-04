@@ -210,7 +210,7 @@ print($record->city->name . "\n"); // 'Minneapolis'
 
 print($record->postal->code . "\n"); // '55455'
 
-print($record->location->accuracy_radius . "\n"); // 50
+print($record->location->accuracyRadius . "\n"); // 50
 print($record->location->latitude . "\n"); // 44.9733
 print($record->location->longitude . "\n"); // -93.2323
 
