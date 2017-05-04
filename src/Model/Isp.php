@@ -3,7 +3,7 @@
 namespace GeoIp2\Model;
 
 /**
- * This class provides the GeoIP2 Connection-Type model.
+ * This class provides the GeoIP2 ISP model.
  *
  * @property-read integer|null $autonomousSystemNumber The autonomous system number
  *     associated with the IP address.
