@@ -106,6 +106,22 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
         $reader->close();
     }
 
+    public function testAsn()
+    {
+        $reader = new Reader('maxmind-db/test-data/GeoLite2-ASN-Test.mmdb');
+
+        $ipAddress = '1.128.0.0';
+        $record = $reader->asn($ipAddress);
+        $this->assertSame(1221, $record->autonomousSystemNumber);
+        $this->assertSame(
+            'Telstra Pty Ltd',
+            $record->autonomousSystemOrganization
+        );
+
+        $this->assertSame($ipAddress, $record->ipAddress);
+        $reader->close();
+    }
+
     public function testConnectionType()
     {
         $reader = new Reader('maxmind-db/test-data/GeoIP2-Connection-Type-Test.mmdb');
