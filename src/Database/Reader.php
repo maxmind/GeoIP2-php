@@ -110,7 +110,7 @@ class Reader implements ProviderInterface
     }
 
     /**
-     * This method returns a GeoIP2 ASN model.
+     * This method returns a GeoLite2 ASN model.
      *
      * @param string $ipAddress IPv4 or IPv6 address as a string.
      *
@@ -129,6 +129,7 @@ class Reader implements ProviderInterface
             $ipAddress
         );
     }
+
     /**
      * This method returns a GeoIP2 Connection Type model.
      *

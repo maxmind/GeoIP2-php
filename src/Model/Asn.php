@@ -3,7 +3,7 @@
 namespace GeoIp2\Model;
 
 /**
- * This class provides the GeoIP2 ASN model.
+ * This class provides the GeoLite2 ASN model.
  *
  * @property-read integer|null $autonomousSystemNumber The autonomous system number
  *     associated with the IP address.
