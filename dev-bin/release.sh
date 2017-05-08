@@ -23,7 +23,7 @@ version="${BASH_REMATCH[1]}"
 date="${BASH_REMATCH[2]}"
 notes="$(echo "${BASH_REMATCH[3]}" | sed -n -e '/^[0-9]\+\.[0-9]\+\.[0-9]\+/,$!p')"
 
-if [[ "$date" -ne  $(date +"%Y-%m-%d") ]]; then
+if [[ "$date" !=  $(date +"%Y-%m-%d") ]]; then
     echo "$date is not today!"
     exit 1
 fi
@@ -45,7 +45,7 @@ php composer.phar update --no-dev
 perl -pi -e "s/(?<=const VERSION = ').+?(?=';)/$tag/g" src/WebService/Client.php
 
 if [ ! -f box.phar ]; then
-    wget -O box.phar "https://github.com/box-project/box2/releases/download/2.6.1/box-2.6.1.phar"
+    wget -O box.phar "https://github.com/box-project/box2/releases/download/2.7.5/box-2.7.5.phar"
 fi
 
 php box.phar build
@@ -76,12 +76,7 @@ if [ -n "$(git status --porcelain)" ]; then
     exit 1
 fi
 
-# We no longer have apigen as a dependency in Composer as releases are
-# sporadically deleted upstream and compatibility is often broken on patch
-# releases.
-wget -O apigen.phar "http://apigen.org/apigen.phar"
-
-php apigen.phar generate \
+../vendor/bin/apigen generate \
     -s ../src \
     -s ../../MaxMind-DB-Reader-php/src \
     -d "doc/$tag" \
