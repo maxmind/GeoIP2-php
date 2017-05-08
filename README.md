@@ -52,8 +52,12 @@ dependencies for GeoIP2. Our latest phar archive is available on
 
 ### Install Dependencies ###
 
-Please note that if you will be making web service requests, then you must
-have the PHP [cURL extension](http://php.net/manual/en/book.curl.php)
+In order to use the phar archive, you must have the PHP
+[Phar extension](http://php.net/manual/en/book.phar.php) installed and
+enabled.
+
+If you will be making web service requests, you must have the PHP
+[cURL extension](http://php.net/manual/en/book.curl.php)
 installed to use this archive. For Debian based distributions, this can
 typically be found in the the `php-curl` package. For other operating
 systems, please consult the relevant documentation. After installing the
