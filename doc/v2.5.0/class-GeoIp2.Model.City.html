@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class GeoIp2\Model\City | GeoIP2 PHP API v2.5.0</title>
+
+	<link rel="stylesheet" href="resources/bootstrap.min.css?973e37a8502921d56bc02bb55321f45b072b6f71">
+	<link rel="stylesheet" href="resources/style.css?70c1d062672daa3f906b72e4f5d03d4bc5c4174d">
+
+</head>
+
+<body>
+	<nav id="navigation" class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a href="index.html" class="navbar-brand">GeoIP2 PHP API v2.5.0</a>
+			</div>
+			<div class="collapse navbar-collapse">
+
+                <form id="search" class="navbar-form navbar-left" role="search">
+                    <input type="hidden" name="cx" value="">
+                    <input type="hidden" name="ie" value="UTF-8">
+                    <div class="form-group">
+                        <input type="text" name="q" class="search-query form-control" placeholder="Search">
+					</div>
+				</form>
+
+				<ul class="nav navbar-nav">
+					<li>
+						<a href="namespace-GeoIp2.Model.html" title="Summary of GeoIp2\Model"><span>Namespace</span></a>
+					</li>
+					<li class="active">
+<span>Class</span>					</li>
+
+
+
+
+
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div id="left">
+	<div id="menu">
+
+		<div id="groups">
+				<h3>Namespaces</h3>
+			<ul>
+					<li class="active">
+						<a href="namespace-GeoIp2.html">
+							GeoIp2<span></span>
+						</a>
+							<ul>
+					<li>
+						<a href="namespace-GeoIp2.Database.html">
+							Database						</a>
+							</li>
+					<li>
+						<a href="namespace-GeoIp2.Exception.html">
+							Exception						</a>
+							</li>
+					<li class="active">
+						<a href="namespace-GeoIp2.Model.html">
+							Model						</a>
+							</li>
+					<li>
+						<a href="namespace-GeoIp2.Record.html">
+							Record						</a>
+							</li>
+					<li>
+						<a href="namespace-GeoIp2.WebService.html">
+							WebService						</a>
+							</li>
+								</ul></li>
+					<li>
+						<a href="namespace-MaxMind.html">
+							MaxMind<span></span>
+						</a>
+							<ul>
+					<li>
+						<a href="namespace-MaxMind.Db.html">
+							Db<span></span>
+						</a>
+							<ul>
+					<li>
+						<a href="namespace-MaxMind.Db.Reader.html">
+							Reader						</a>
+							</li>
+								</ul></li></ul></li>
+					<li>
+						<a href="namespace-PHP.html">
+							PHP						</a>
+							</li>
+			</ul>
+		</div>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-GeoIp2.Model.AnonymousIp.html">AnonymousIp</a></li>
+				<li><a href="class-GeoIp2.Model.Asn.html">Asn</a></li>
+				<li class="active"><a href="class-GeoIp2.Model.City.html">City</a></li>
+				<li><a href="class-GeoIp2.Model.ConnectionType.html">ConnectionType</a></li>
+				<li><a href="class-GeoIp2.Model.Country.html">Country</a></li>
+				<li><a href="class-GeoIp2.Model.Domain.html">Domain</a></li>
+				<li><a href="class-GeoIp2.Model.Enterprise.html">Enterprise</a></li>
+				<li><a href="class-GeoIp2.Model.Insights.html">Insights</a></li>
+				<li><a href="class-GeoIp2.Model.Isp.html">Isp</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+	<div id="rightInner">
+<div id="content" class="class">
+	<h1>Class City</h1>
+
+
+	<div class="description">
+	<p>Model class for the data returned by GeoIP2 City web service and database.</p>
+
+<p>The only difference between the City and Insights model classes is which
+fields in each record may be populated. See
+http://dev.maxmind.com/geoip/geoip2/web-services more details.</p>
+	</div>
+
+	<dl class="tree well">
+		<dd style="padding-left:0px">
+GeoIp2\Model\AbstractModel
+			 implements 
+<span>GeoIp2\Compat\JsonSerializable</span>
+			
+			
+		</dd>
+		<dd style="padding-left:30px">
+			<img src="resources/inherit.png" alt="Extended by">
+			<a href="class-GeoIp2.Model.Country.html"><span>GeoIp2\Model\Country</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:60px">
+			<img src="resources/inherit.png" alt="Extended by">
+<b><span>GeoIp2\Model\City</span></b>			
+			
+			
+		</dd>
+	</dl>
+
+
+	<div>
+		<h3>Direct known subclasses</h3>
+		<p class="elementList">
+			<code><a href="class-GeoIp2.Model.Enterprise.html">GeoIp2\Model\Enterprise</a></code>, 
+			<code><a href="class-GeoIp2.Model.Insights.html">GeoIp2\Model\Insights</a></code>
+		</p>
+	</div>
+
+
+
+
+
+
+	<div class="alert alert-info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-GeoIp2.html">GeoIp2</a>\<a href="namespace-GeoIp2.Model.html">Model</a><br>
+		
+
+			<b>Located at</b> <a href="source-class-GeoIp2.Model.City.html#5-136" title="Go to source code">Model/City.php</a>
+		<br>
+	</div>
+
+
+
+		<div class="panel panel-default">
+			<div class="panel-heading"><h2>Methods summary</h2></div>
+		</div>
+
+		<div class="panel panel-default">
+	        <div class="panel-heading"><h3>Methods inherited from GeoIp2\Model\AbstractModel</h3></div>
+			<p class="elementList">
+				<code>__construct()</code>, 
+				<code>__get()</code>, 
+				<code>__isset()</code>, 
+				<code>get()</code>, 
+				<code>jsonSerialize()</code>
+			</p>
+		</div>
+
+
+
+
+
+
+
+
+
+
+		<div class="panel panel-default">
+            <div class="panel-heading"><h2>Properties summary</h2></div>
+		</div>
+
+		<div class="panel panel-default">
+            <div class="panel-heading"><h3>Properties inherited from <a href="class-GeoIp2.Model.Country.html#properties">GeoIp2\Model\Country</a></h3></div>
+			<p class="elementList">
+				<code><a href="class-GeoIp2.Model.Country.html#$continent"><var>$continent</var></a></code>, 
+				<code><a href="class-GeoIp2.Model.Country.html#$country"><var>$country</var></a></code>, 
+				<code><a href="class-GeoIp2.Model.Country.html#$locales"><var>$locales</var></a></code>, 
+				<code><a href="class-GeoIp2.Model.Country.html#$maxmind"><var>$maxmind</var></a></code>, 
+				<code><a href="class-GeoIp2.Model.Country.html#$registeredCountry"><var>$registeredCountry</var></a></code>, 
+				<code><a href="class-GeoIp2.Model.Country.html#$representedCountry"><var>$representedCountry</var></a></code>, 
+				<code><a href="class-GeoIp2.Model.Country.html#$traits"><var>$traits</var></a></code>
+			</p>
+		</div>
+		<div class="panel panel-default">
+            <div class="panel-heading"><h3>Properties inherited from GeoIp2\Model\AbstractModel</h3></div>
+			<p class="elementList">
+				<code><var>$raw</var></code>
+			</p>
+		</div>
+
+
+		<div class="panel panel-default">
+            <div class="panel-heading"><h3>Magic properties</h3></div>
+			<table class="summary table table-bordered table-striped properties" id="magicProperties">
+		<tr data-order="city" id="m$city">
+			<td class="attributes"><code>
+				public  read-only
+				<code><a href="class-GeoIp2.Record.City.html">GeoIp2\Record\City</a></code>
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-GeoIp2.Model.City.html#12-13" title="Go to source code"><var>$city</var></a>
+
+				<div class="description short">
+					<p>City data for the requested IP address.</p>
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+		</tr>
+		<tr data-order="continent" id="m$continent">
+			<td class="attributes"><code>
+				public  read-only
+				<code><a href="class-GeoIp2.Record.Continent.html">GeoIp2\Record\Continent</a></code>
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-GeoIp2.Model.City.html#15-16" title="Go to source code"><var>$continent</var></a>
+
+				<div class="description short">
+					<p>Continent data for the requested IP address.</p>
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+		</tr>
+		<tr data-order="country" id="m$country">
+			<td class="attributes"><code>
+				public  read-only
+				<code><a href="class-GeoIp2.Record.Country.html">GeoIp2\Record\Country</a></code>
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-GeoIp2.Model.City.html#18-20" title="Go to source code"><var>$country</var></a>
+
+				<div class="description short">
+					<p>Country data for the requested IP address. This object represents the country where MaxMind believes the end user is located.</p>
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+		</tr>
+		<tr data-order="location" id="m$location">
+			<td class="attributes"><code>
+				public  read-only
+				<code><a href="class-GeoIp2.Record.Location.html">GeoIp2\Record\Location</a></code>
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-GeoIp2.Model.City.html#22-23" title="Go to source code"><var>$location</var></a>
+
+				<div class="description short">
+					<p>Location data for the requested IP address.</p>
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+		</tr>
+		<tr data-order="postal" id="m$postal">
+			<td class="attributes"><code>
+				public  read-only
+				<code><a href="class-GeoIp2.Record.Postal.html">GeoIp2\Record\Postal</a></code>
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-GeoIp2.Model.City.html#25-26" title="Go to source code"><var>$postal</var></a>
+
+				<div class="description short">
+					<p>Postal data for the requested IP address.</p>
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+		</tr>
+		<tr data-order="maxmind" id="m$maxmind">
+			<td class="attributes"><code>
+				public  read-only
+				<code><a href="class-GeoIp2.Record.MaxMind.html">GeoIp2\Record\MaxMind</a></code>
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-GeoIp2.Model.City.html#28-29" title="Go to source code"><var>$maxmind</var></a>
+
+				<div class="description short">
+					<p>Data related to your MaxMind account.</p>
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+		</tr>
+		<tr data-order="registeredCountry" id="m$registeredCountry">
+			<td class="attributes"><code>
+				public  read-only
+				<code><a href="class-GeoIp2.Record.Country.html">GeoIp2\Record\Country</a></code>
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-GeoIp2.Model.City.html#31-34" title="Go to source code"><var>$registeredCountry</var></a>
+
+				<div class="description short">
+					<p>Registered country data for the requested IP address. This record represents the country where the ISP has registered a given IP block and may differ from the user's country.</p>
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+		</tr>
+		<tr data-order="representedCountry" id="m$representedCountry">
+			<td class="attributes"><code>
+				public  read-only
+				<code><a href="class-GeoIp2.Record.RepresentedCountry.html">GeoIp2\Record\RepresentedCountry</a></code>
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-GeoIp2.Model.City.html#36-39" title="Go to source code"><var>$representedCountry</var></a>
+
+				<div class="description short">
+					<p>Represented country data for the requested IP address. The represented country is used for things like military bases. It is only present when the represented country differs from the country.</p>
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+		</tr>
+		<tr data-order="subdivisions" id="m$subdivisions">
+			<td class="attributes"><code>
+				public  read-only
+				array
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-GeoIp2.Model.City.html#41-47" title="Go to source code"><var>$subdivisions</var></a>
+
+				<div class="description short">
+					<p>An array of <code><a href="class-GeoIp2.Record.Subdivision.html">GeoIp2\Record\Subdivision</a></code> objects representing the country subdivisions for the requested IP address. The number and type of subdivisions varies by country, but a subdivision is typically a state, province, county, etc. Subdivisions are ordered from most general (largest) to most specific (smallest). If the response did not contain any subdivisions, this method returns an empty array.</p>
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+		</tr>
+		<tr data-order="mostSpecificSubdivision" id="m$mostSpecificSubdivision">
+			<td class="attributes"><code>
+				public  read-only
+				<code><a href="class-GeoIp2.Record.Subdivision.html">GeoIp2\Record\Subdivision</a></code>
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-GeoIp2.Model.City.html#49-52" title="Go to source code"><var>$mostSpecificSubdivision</var></a>
+
+				<div class="description short">
+					<p>An  object representing the most specific subdivision returned. If the response did not contain any subdivisions, this method returns an empty <code><a href="class-GeoIp2.Record.Subdivision.html">GeoIp2\Record\Subdivision</a></code> object.</p>
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+		</tr>
+		<tr data-order="traits" id="m$traits">
+			<td class="attributes"><code>
+				public  read-only
+				<code><a href="class-GeoIp2.Record.Traits.html">GeoIp2\Record\Traits</a></code>
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-GeoIp2.Model.City.html#54-55" title="Go to source code"><var>$traits</var></a>
+
+				<div class="description short">
+					<p>Data for the traits of the requested IP address.</p>
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+		</tr>
+			</table>
+		</div>
+
+
+
+</div>
+	</div>
+
+	<div id="footer">
+		GeoIP2 PHP API v2.5.0 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>

@@ -2,7 +2,7 @@
 layout: default
 title: MaxMind GeoIP2 PHP API
 language: php
-version: v2.4.5
+version: v2.5.0
 ---
 
 # GeoIP2 PHP API #
@@ -53,9 +53,30 @@ require 'vendor/autoload.php';
 ## Install via Phar ##
 
 Although we strongly recommend using Composer, we also provide a
-[phar archive](http://php.net/manual/en/book.phar.php) containing all of the
+[phar archive](http://php.net/manual/en/book.phar.php) containing most of the
 dependencies for GeoIP2. Our latest phar archive is available on
 [our releases page](https://github.com/maxmind/GeoIP2-php/releases).
+
+### Install Dependencies ###
+
+In order to use the phar archive, you must have the PHP
+[Phar extension](http://php.net/manual/en/book.phar.php) installed and
+enabled.
+
+If you will be making web service requests, you must have the PHP
+[cURL extension](http://php.net/manual/en/book.curl.php)
+installed to use this archive. For Debian based distributions, this can
+typically be found in the the `php-curl` package. For other operating
+systems, please consult the relevant documentation. After installing the
+extension you may need to restart your web server.
+
+If you are missing this extension, you will see errors like the following:
+
+```
+PHP Fatal error:  Uncaught Error: Call to undefined function MaxMind\WebService\curl_version()
+```
+
+### Require Package ###
 
 To use the archive, just require it from your script:
 
