@@ -376,8 +376,8 @@ to the client API, please see
 
 ## Requirements  ##
 
-This code requires PHP 5.3 or greater. Older versions of PHP are not
-supported. This library works and is tested with HHVM.
+This code is tested on PHP 5.4 and greater. PHP 5.3 may work, but older
+versions of PHP are not supported. This library works and is tested with HHVM.
 
 This library also relies on the [MaxMind DB Reader](https://github.com/maxmind/MaxMind-DB-Reader-php).
 
