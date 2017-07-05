@@ -8,29 +8,27 @@ use MaxMind\WebService\Client as WsClient;
 
 class ClientTest extends \PHPUnit_Framework_TestCase
 {
-
-    private $country
-        = array(
-            'continent' => array(
+    private $country = [
+            'continent' => [
                 'code' => 'NA',
                 'geoname_id' => 42,
-                'names' => array('en' => 'North America'),
-            ),
-            'country' => array(
+                'names' => ['en' => 'North America'],
+            ],
+            'country' => [
                 'geoname_id' => 1,
                 'iso_code' => 'US',
-                'names' => array('en' => 'United States of America'),
-            ),
-            'maxmind' => array('queries_remaining' => 11),
-            'traits' => array(
+                'names' => ['en' => 'United States of America'],
+            ],
+            'maxmind' => ['queries_remaining' => 11],
+            'traits' => [
                 'ip_address' => '1.2.3.4',
-            ),
-        );
+            ],
+    ];
 
 
     private function getResponse($ipAddress)
     {
-        $responses = array(
+        $responses = [
             '1.2.3.4' => $this->response(
                 'country',
                 200,
@@ -46,10 +44,10 @@ class ClientTest extends \PHPUnit_Framework_TestCase
             '1.2.3.6' => $this->response(
                 'error',
                 400,
-                array(
+                [
                     'code' => 'IP_ADDRESS_INVALID',
                     'error' => 'The value "1.2.3" is not a valid ip address'
-                )
+                ]
             ),
             '1.2.3.7' => $this->response(
                 'error',
@@ -58,7 +56,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
             '1.2.3.8' => $this->response(
                 'error',
                 400,
-                array('weird' => 42)
+                ['weird' => 42]
             ),
             '1.2.3.9' => $this->response(
                 'error',
@@ -84,52 +82,52 @@ class ClientTest extends \PHPUnit_Framework_TestCase
             '1.2.3.13' => $this->response(
                 'error',
                 404,
-                array(
+                [
                     'code' => 'IP_ADDRESS_NOT_FOUND',
                     'error' => 'The address "1.2.3.13" is not in our database.'
-                )
+                ]
             ),
             '1.2.3.14' => $this->response(
                 'error',
                 400,
-                array(
+                [
                     'code' => 'IP_ADDRESS_RESERVED',
                     'error' => 'The address "1.2.3.14" is a private address.'
-                )
+                ]
             ),
             '1.2.3.15' => $this->response(
                 'error',
                 401,
-                array(
+                [
                     'code' => 'AUTHORIZATION_INVALID',
                     'error' => 'A user ID and license key are required to use this service'
-                )
+                ]
             ),
             '1.2.3.16' => $this->response(
                 'error',
                 401,
-                array(
+                [
                     'code' => 'LICENSE_KEY_REQUIRED',
                     'error' => 'A license key is required to use this service'
-                )
+                ]
             ),
             '1.2.3.17' => $this->response(
                 'error',
                 401,
-                array(
+                [
                     'code' => 'USER_ID_REQUIRED',
                     'error' => 'A user ID is required to use this service'
-                )
+                ]
             ),
             '1.2.3.18' => $this->response(
                 'error',
                 402,
-                array(
+                [
                     'code' => 'OUT_OF_QUERIES',
                     'error' => 'The license key you have provided is out of queries.'
-                )
+                ]
             ),
-        );
+        ];
         return $responses[$ipAddress];
     }
 
@@ -152,7 +150,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertSame(
-            array('en' => 'North America'),
+            ['en' => 'North America'],
             $country->continent->names,
             'continent names'
         );
@@ -176,7 +174,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertSame(
-            array('en' => 'United States of America'),
+            ['en' => 'United States of America'],
             $country->country->names,
             'country names'
         );
@@ -192,7 +190,6 @@ class ClientTest extends \PHPUnit_Framework_TestCase
             $country->maxmind->queriesRemaining,
             'queriesRemaining is correct'
         );
-
     }
 
 
@@ -273,7 +270,6 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     public function testWeirdErrorBodyIPException()
     {
         $this->makeRequest('Country', '1.2.3.8');
-
     }
 
     /**
@@ -284,7 +280,6 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     public function testInvalidErrorBodyIPException()
     {
         $this->makeRequest('Country', '1.2.3.9');
-
     }
 
     /**
@@ -376,12 +371,12 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $this->makeRequest(
             'Country',
             '1.2.3.4',
-            array('en'),
-            array(
+            ['en'],
+            [
                 'host' => 'api.maxmind.com',
                 'timeout' => 27,
                 'connectTimeout' => 72,
-            )
+            ]
         );
     }
 
@@ -393,7 +388,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $bad = null,
         $contentType = null
     ) {
-        $headers = array();
+        $headers = [];
         if ($contentType) {
             $headers['Content-Type'] = $contentType;
         } elseif ($status == 200 || ($status >= 400 && $status < 500)) {
@@ -409,14 +404,14 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
         $headers['Content-Length'] = strlen($body);
 
-        return array($status, $headers,  $body, );
+        return [$status, $headers,  $body, ];
     }
 
     private function makeRequest(
         $service,
         $ipAddress,
-        $locales = array('en'),
-        $options = array(),
+        $locales = ['en'],
+        $options = [],
         $callsToRequest = 1
     ) {
         $userId = 42;
@@ -433,18 +428,18 @@ class ClientTest extends \PHPUnit_Framework_TestCase
             : null;
         $stub->expects($this->exactly($callsToRequest))
             ->method('get')
-            ->willReturn(array($statusCode, $contentType, $responseBody));
+            ->willReturn([$statusCode, $contentType, $responseBody]);
         $factory = $this->getMockBuilder(
             'MaxMind\\WebService\\Http\\RequestFactory'
         )->getMock();
         $host = isset($options['host']) ? $options['host'] : 'geoip.maxmind.com';
         $url = 'https://' . $host . '/geoip/v2.1/' . strtolower($service)
             . '/' . $ipAddress;
-        $headers = array(
+        $headers = [
             'Authorization: Basic '
             . base64_encode($userId . ':' . $licenseKey),
             'Accept: application/json',
-        );
+        ];
 
         $caBundle = CaBundle::getSystemCaRootBundlePath();
 
@@ -454,7 +449,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
             ->with(
                 $this->equalTo($url),
                 $this->equalTo(
-                    array(
+                    [ 
                         'headers' => $headers,
                         'userAgent' => 'GeoIP2-API/' . \GeoIp2\WebService\Client::VERSION
                             . ' MaxMind-WS-API/' . WsClient::VERSION
@@ -467,7 +462,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
                         'proxy' => isset($options['proxy'])
                             ? $options['proxy'] : null,
                         'caBundle' => $caBundle,
-                    )
+                    ]
                 )
             )->willReturn($stub);
         $options['httpRequestFactory'] = $factory;

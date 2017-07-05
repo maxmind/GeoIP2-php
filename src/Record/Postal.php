@@ -23,5 +23,5 @@ class Postal extends AbstractRecord
     /**
      * @ignore
      */
-    protected $validAttributes = array('code', 'confidence');
+    protected $validAttributes = ['code', 'confidence'];
 }

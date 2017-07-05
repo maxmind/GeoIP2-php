@@ -36,10 +36,10 @@ class Subdivision extends AbstractPlaceRecord
     /**
      * @ignore
      */
-    protected $validAttributes = array(
+    protected $validAttributes = [
         'confidence',
         'geonameId',
         'isoCode',
         'names'
-    );
+    ];
 }

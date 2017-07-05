@@ -30,11 +30,11 @@ namespace GeoIp2\Record;
  */
 class RepresentedCountry extends Country
 {
-    protected $validAttributes = array(
+    protected $validAttributes = [
         'confidence',
         'geonameId',
         'isoCode',
         'names',
         'type'
-    );
+    ];
 }

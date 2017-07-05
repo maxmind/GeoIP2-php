@@ -10,24 +10,24 @@ class InsightsTest extends \PHPUnit_Framework_TestCase
     public function testFull()
     {
 
-        $raw = array(
-            'city' => array(
+        $raw = [
+            'city' => [
                 'confidence' => 76,
                 'geoname_id' => 9876,
-                'names' => array('en' => 'Minneapolis'),
-            ),
-            'continent' => array(
+                'names' => ['en' => 'Minneapolis'],
+            ],
+            'continent' => [
                 'code' => 'NA',
                 'geoname_id' => 42,
-                'names' => array('en' => 'North America'),
-            ),
-            'country' => array(
+                'names' => ['en' => 'North America'],
+            ],
+            'country' => [
                 'confidence' => 99,
                 'geoname_id' => 1,
                 'iso_code' => 'US',
-                'names' => array('en' => 'United States of America'),
-            ),
-            'location' => array(
+                'names' => ['en' => 'United States of America'],
+            ],
+            'location' => [
                 'average_income' => 24626,
                 'accuracy_radius' => 1500,
                 'latitude' => 44.98,
@@ -37,29 +37,29 @@ class InsightsTest extends \PHPUnit_Framework_TestCase
                 'postal_code' => '55401',
                 'postal_confidence' => 33,
                 'time_zone' => 'America/Chicago',
-            ),
-            'maxmind' => array(
+            ],
+            'maxmind' => [
                 'queries_remaining' => 22,
-            ),
-            'registered_country' => array(
+            ],
+            'registered_country' => [
                 'geoname_id' => 2,
                 'iso_code' => 'CA',
-                'names' => array('en' => 'Canada'),
-            ),
-            'represented_country' => array(
+                'names' => ['en' => 'Canada'],
+            ],
+            'represented_country' => [
                 'geoname_id' => 3,
                 'iso_code' => 'GB',
-                'names' => array('en' => 'United Kingdom'),
-            ),
-            'subdivisions' => array(
-                array(
+                'names' => ['en' => 'United Kingdom'],
+            ],
+            'subdivisions' => [
+                [
                     'confidence' => 88,
                     'geoname_id' => 574635,
                     'iso_code' => 'MN',
-                    'names' => array('en' => 'Minnesota'),
-                )
-            ),
-            'traits' => array(
+                    'names' => ['en' => 'Minnesota'],
+                ]
+            ],
+            'traits' => [
                 'autonomous_system_number' => 1234,
                 'autonomous_system_organization' => 'AS Organization',
                 'domain' => 'example.com',
@@ -68,10 +68,10 @@ class InsightsTest extends \PHPUnit_Framework_TestCase
                 'isp' => 'Comcast',
                 'organization' => 'Blorg',
                 'user_type' => 'college',
-            ),
-        );
+            ],
+        ];
 
-        $model = new Insights($raw, array('en'));
+        $model = new Insights($raw, ['en']);
 
         $this->assertInstanceOf(
             'GeoIp2\Model\Insights',
@@ -171,9 +171,9 @@ class InsightsTest extends \PHPUnit_Framework_TestCase
 
     public function testEmptyObjects()
     {
-        $raw = array('traits' => array('ip_address' => '5.6.7.8'));
+        $raw = ['traits' => ['ip_address' => '5.6.7.8']];
 
-        $model = new Insights($raw, array('en'));
+        $model = new Insights($raw, ['en']);
 
         $this->assertInstanceOf(
             'GeoIp2\Model\Insights',
@@ -250,19 +250,19 @@ class InsightsTest extends \PHPUnit_Framework_TestCase
 
     public function testUnknown()
     {
-        $raw = array(
-            'new_top_level' => array('foo' => 42),
-            'city' => array(
+        $raw = [
+            'new_top_level' => ['foo' => 42],
+            'city' => [
                 'confidence' => 76,
                 'geoname_id_id' => 9876,
-                'names' => array('en' => 'Minneapolis'),
+                'names' => ['en' => 'Minneapolis'],
                 'population' => 50,
-            ),
-            'traits' => array('ip_address' => '5.6.7.8')
-        );
+            ],
+            'traits' => ['ip_address' => '5.6.7.8']
+        ];
 
         // checking whether there are exceptions with unknown keys
-        $model = new Insights($raw, array('en'));
+        $model = new Insights($raw, ['en']);
 
         $this->assertInstanceOf(
             'GeoIp2\Model\Insights',
@@ -279,7 +279,7 @@ class InsightsTest extends \PHPUnit_Framework_TestCase
 
     public function testMostSpecificSubdivisionWithNoSubdivisions()
     {
-        $model = new Insights(array(), array('en'));
+        $model = new Insights([], ['en']);
 
         $this->assertTrue(
             isset($model->mostSpecificSubdivision),

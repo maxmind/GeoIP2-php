@@ -45,7 +45,7 @@ class Location extends AbstractRecord
     /**
      * @ignore
      */
-    protected $validAttributes = array(
+    protected $validAttributes = [
         'averageIncome',
         'accuracyRadius',
         'latitude',
@@ -55,5 +55,5 @@ class Location extends AbstractRecord
         'postalCode',
         'postalConfidence',
         'timeZone'
-    );
+    ];
 }

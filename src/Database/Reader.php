@@ -48,7 +48,7 @@ class Reader implements ProviderInterface
      */
     public function __construct(
         $filename,
-        $locales = array('en')
+        $locales = ['en']
     ) {
         $this->dbReader = new DbReader($filename);
         $this->locales = $locales;

@@ -71,12 +71,12 @@ class City extends Country
     /**
      * @ignore
      */
-    protected $subdivisions = array();
+    protected $subdivisions = [];
 
     /**
      * @ignore
      */
-    public function __construct($raw, $locales = array('en'))
+    public function __construct($raw, $locales = ['en'])
     {
         parent::__construct($raw, $locales);
 
@@ -130,7 +130,7 @@ class City extends Country
     private function mostSpecificSubdivision()
     {
         return empty($this->subdivisions) ?
-            new \GeoIp2\Record\Subdivision(array(), $this->locales) :
+            new \GeoIp2\Record\Subdivision([], $this->locales) :
             end($this->subdivisions);
     }
 }

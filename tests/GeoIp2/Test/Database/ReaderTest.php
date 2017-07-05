@@ -8,7 +8,7 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
 {
     public function databaseTypes()
     {
-        return array(array('City', 'city'), array('Country', 'country'));
+        return [['City', 'city'], ['Country', 'country']];
     }
 
     /**
@@ -29,7 +29,7 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
     {
         $reader = new Reader(
             "maxmind-db/test-data/GeoIP2-$type-Test.mmdb",
-            array('xx', 'ru', 'pt-BR', 'es', 'en')
+            ['xx', 'ru', 'pt-BR', 'es', 'en']
         );
         $record = $reader->$method('81.2.69.160');
         $this->assertSame('Великобритания', $record->country->name);

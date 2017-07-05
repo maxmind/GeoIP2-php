@@ -91,7 +91,7 @@ class Traits extends AbstractRecord
     /**
      * @ignore
      */
-    protected $validAttributes = array(
+    protected $validAttributes = [
         'autonomousSystemNumber',
         'autonomousSystemOrganization',
         'connectionType',
@@ -103,5 +103,5 @@ class Traits extends AbstractRecord
         'ipAddress',
         'organization',
         'userType'
-    );
+    ];
 }

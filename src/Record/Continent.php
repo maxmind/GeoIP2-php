@@ -27,9 +27,9 @@ class Continent extends AbstractPlaceRecord
     /**
      * @ignore
      */
-    protected $validAttributes = array(
+    protected $validAttributes = [
         'code',
         'geonameId',
         'names'
-    );
+    ];
 }

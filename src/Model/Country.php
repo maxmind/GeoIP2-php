@@ -45,7 +45,7 @@ class Country extends AbstractModel
     /**
      * @ignore
      */
-    public function __construct($raw, $locales = array('en'))
+    public function __construct($raw, $locales = ['en'])
     {
         parent::__construct($raw);
 

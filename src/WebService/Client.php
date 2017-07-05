@@ -68,15 +68,15 @@ class Client implements ProviderInterface
     public function __construct(
         $userId,
         $licenseKey,
-        $locales = array('en'),
-        $options = array()
+        $locales = ['en'],
+        $options = []
     ) {
         $this->locales = $locales;
 
         // This is for backwards compatibility. Do not remove except for a
         // major version bump.
         if (is_string($options)) {
-            $options = array( 'host' => $options );
+            $options = ['host' => $options];
         }
 
         if (!isset($options['host'])) {
@@ -191,7 +191,7 @@ class Client implements ProviderInterface
 
     private function responseFor($endpoint, $class, $ipAddress)
     {
-        $path = implode('/', array(self::$basePath, $endpoint, $ipAddress));
+        $path = implode('/', [self::$basePath, $endpoint, $ipAddress]);
 
         try {
             $body = $this->client->get('GeoIP2 ' . $class, $path);

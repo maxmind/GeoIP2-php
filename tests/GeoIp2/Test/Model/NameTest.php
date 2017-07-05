@@ -6,32 +6,32 @@ use GeoIp2\Model\Country;
 
 class NameTest extends \PHPUnit_Framework_TestCase
 {
-    public $raw = array(
-        'continent' => array(
+    public $raw = [
+        'continent' => [
             'code' => 'NA',
             'geoname_id' => 42,
-            'names' => array(
+            'names' => [
                 'en' => 'North America',
                 'zh-CN' => '北美洲',
-            ),
-        ),
-        'country' => array(
+            ],
+        ],
+        'country' => [
             'geoname_id' => 1,
             'iso_code' => 'US',
-            'names' => array(
+            'names' => [
                 'en' => 'United States of America',
                 'ru' => 'объединяет государства',
                 'zh-CN' => '美国',
-            ),
-        ),
-        'traits' => array(
+            ],
+        ],
+        'traits' => [
             'ip_address' => '1.2.3.4',
-        ),
-    );
+        ],
+    ];
 
     public function testFallback()
     {
-        $model = new Country($this->raw, array('ru', 'zh-CN', 'en'));
+        $model = new Country($this->raw, ['ru', 'zh-CN', 'en']);
 
         $this->assertSame(
             '北美洲',
@@ -58,7 +58,7 @@ class NameTest extends \PHPUnit_Framework_TestCase
 
     public function testTwoFallbacks()
     {
-        $model = new Country($this->raw, array('ru', 'ja'));
+        $model = new Country($this->raw, ['ru', 'ja']);
 
         $this->assertSame(
             null,
@@ -85,7 +85,7 @@ class NameTest extends \PHPUnit_Framework_TestCase
 
     public function testNoFallbacks()
     {
-        $model = new Country($this->raw, array('ja'));
+        $model = new Country($this->raw, ['ja']);
 
         $this->assertSame(
             null,
