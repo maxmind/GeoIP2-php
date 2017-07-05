@@ -4,6 +4,7 @@ CHANGELOG
 2.5.0 (2017-05-08)
 ------------------
 
+* Support for PHP 5.3 was dropped.
 * Added support for GeoLite2 ASN database.
 
 2.4.5 (2017-01-31)

@@ -15,7 +15,7 @@
     "require": {
         "maxmind-db/reader": "~1.0",
         "maxmind/web-service-common": "~0.3",
-        "php": ">=5.3.1"
+        "php": ">=5.4"
     },
     "require-dev": {
         "phpunit/phpunit": "4.2.*",
