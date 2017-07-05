@@ -4,12 +4,13 @@ namespace GeoIp2\Test\Model;
 
 use GeoIp2\Model\Insights;
 
+/**
+ * @coversNothing
+ */
 class InsightsTest extends \PHPUnit_Framework_TestCase
 {
-
     public function testFull()
     {
-
         $raw = [
             'city' => [
                 'confidence' => 76,
@@ -57,7 +58,7 @@ class InsightsTest extends \PHPUnit_Framework_TestCase
                     'geoname_id' => 574635,
                     'iso_code' => 'MN',
                     'names' => ['en' => 'Minnesota'],
-                ]
+                ],
             ],
             'traits' => [
                 'autonomous_system_number' => 1234,
@@ -247,7 +248,6 @@ class InsightsTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-
     public function testUnknown()
     {
         $raw = [
@@ -258,7 +258,7 @@ class InsightsTest extends \PHPUnit_Framework_TestCase
                 'names' => ['en' => 'Minneapolis'],
                 'population' => 50,
             ],
-            'traits' => ['ip_address' => '5.6.7.8']
+            'traits' => ['ip_address' => '5.6.7.8'],
         ];
 
         // checking whether there are exceptions with unknown keys

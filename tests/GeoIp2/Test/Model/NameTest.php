@@ -4,6 +4,9 @@ namespace GeoIp2\Test\Model;
 
 use GeoIp2\Model\Country;
 
+/**
+ * @coversNothing
+ */
 class NameTest extends \PHPUnit_Framework_TestCase
 {
     public $raw = [
@@ -44,8 +47,8 @@ class NameTest extends \PHPUnit_Framework_TestCase
             'continent name is set'
         );
 
-        $this->assertFalse(
-            empty($model->continent->name),
+        $this->assertNotEmpty(
+            $model->continent->name,
             'continent name is not empty'
         );
 
@@ -71,8 +74,8 @@ class NameTest extends \PHPUnit_Framework_TestCase
             'continent name is not set'
         );
 
-        $this->assertTrue(
-            empty($model->continent->name),
+        $this->assertEmpty(
+            $model->continent->name,
             'continent name is empty'
         );
 

@@ -8,6 +8,8 @@ abstract class AbstractRecord implements \JsonSerializable
 
     /**
      * @ignore
+     *
+     * @param mixed $record
      */
     public function __construct($record)
     {
@@ -16,6 +18,8 @@ abstract class AbstractRecord implements \JsonSerializable
 
     /**
      * @ignore
+     *
+     * @param mixed $attr
      */
     public function __get($attr)
     {
@@ -27,12 +31,11 @@ abstract class AbstractRecord implements \JsonSerializable
         } elseif ($this->validAttribute($attr)) {
             if (preg_match('/^is_/', $key)) {
                 return false;
-            } else {
-                return null;
             }
-        } else {
-            throw new \RuntimeException("Unknown attribute: $attr");
+
+            return null;
         }
+        throw new \RuntimeException("Unknown attribute: $attr");
     }
 
     public function __isset($attr)
@@ -48,7 +51,7 @@ abstract class AbstractRecord implements \JsonSerializable
 
     private function validAttribute($attr)
     {
-        return in_array($attr, $this->validAttributes);
+        return in_array($attr, $this->validAttributes, true);
     }
 
     public function jsonSerialize()

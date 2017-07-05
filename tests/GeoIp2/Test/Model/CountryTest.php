@@ -4,9 +4,11 @@ namespace GeoIp2\Test\Model;
 
 use GeoIp2\Model\Country;
 
+/**
+ * @coversNothing
+ */
 class CountryTest extends \PHPUnit_Framework_TestCase
 {
-
     private $raw = [
         'continent' => [
             'code' => 'NA',
@@ -66,7 +68,6 @@ class CountryTest extends \PHPUnit_Framework_TestCase
 
     public function testValues()
     {
-
         $this->assertSame(
             42,
             $this->model->continent->geonameId,
@@ -207,7 +208,7 @@ class CountryTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException RuntimeException
+     * @expectedException \RuntimeException
      * @expectedExceptionMessage Unknown attribute
      */
     public function testUnknownRecord()
@@ -216,7 +217,7 @@ class CountryTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException RuntimeException
+     * @expectedException \RuntimeException
      * @expectedExceptionMessage Unknown attribute
      */
     public function testUnknownTrait()

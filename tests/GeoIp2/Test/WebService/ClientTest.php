@@ -3,9 +3,11 @@
 namespace GeoIp2\Test\WebService;
 
 use Composer\CaBundle\CaBundle;
-use GeoIp2\WebService\Client;
 use MaxMind\WebService\Client as WsClient;
 
+/**
+ * @coversNothing
+ */
 class ClientTest extends \PHPUnit_Framework_TestCase
 {
     private $country = [
@@ -24,7 +26,6 @@ class ClientTest extends \PHPUnit_Framework_TestCase
                 'ip_address' => '1.2.3.4',
             ],
     ];
-
 
     private function getResponse($ipAddress)
     {
@@ -46,7 +47,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
                 400,
                 [
                     'code' => 'IP_ADDRESS_INVALID',
-                    'error' => 'The value "1.2.3" is not a valid ip address'
+                    'error' => 'The value "1.2.3" is not a valid ip address',
                 ]
             ),
             '1.2.3.7' => $this->response(
@@ -84,7 +85,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
                 404,
                 [
                     'code' => 'IP_ADDRESS_NOT_FOUND',
-                    'error' => 'The address "1.2.3.13" is not in our database.'
+                    'error' => 'The address "1.2.3.13" is not in our database.',
                 ]
             ),
             '1.2.3.14' => $this->response(
@@ -92,7 +93,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
                 400,
                 [
                     'code' => 'IP_ADDRESS_RESERVED',
-                    'error' => 'The address "1.2.3.14" is a private address.'
+                    'error' => 'The address "1.2.3.14" is a private address.',
                 ]
             ),
             '1.2.3.15' => $this->response(
@@ -100,7 +101,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
                 401,
                 [
                     'code' => 'AUTHORIZATION_INVALID',
-                    'error' => 'A user ID and license key are required to use this service'
+                    'error' => 'A user ID and license key are required to use this service',
                 ]
             ),
             '1.2.3.16' => $this->response(
@@ -108,7 +109,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
                 401,
                 [
                     'code' => 'LICENSE_KEY_REQUIRED',
-                    'error' => 'A license key is required to use this service'
+                    'error' => 'A license key is required to use this service',
                 ]
             ),
             '1.2.3.17' => $this->response(
@@ -116,7 +117,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
                 401,
                 [
                     'code' => 'USER_ID_REQUIRED',
-                    'error' => 'A user ID is required to use this service'
+                    'error' => 'A user ID is required to use this service',
                 ]
             ),
             '1.2.3.18' => $this->response(
@@ -124,10 +125,11 @@ class ClientTest extends \PHPUnit_Framework_TestCase
                 402,
                 [
                     'code' => 'OUT_OF_QUERIES',
-                    'error' => 'The license key you have provided is out of queries.'
+                    'error' => 'The license key you have provided is out of queries.',
                 ]
             ),
         ];
+
         return $responses[$ipAddress];
     }
 
@@ -192,7 +194,6 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-
     public function testInsights()
     {
         $record = $this->makeRequest('Insights', '1.2.3.4');
@@ -225,7 +226,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException GeoIp2\Exception\GeoIp2Exception
+     * @expectedException \GeoIp2\Exception\GeoIp2Exception
      * @expectedExceptionMessage Received a 200 response for GeoIP2 Country but did not receive a HTTP body.
      */
     public function testNoBodyException()
@@ -234,7 +235,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException GeoIp2\Exception\GeoIp2Exception
+     * @expectedException \GeoIp2\Exception\GeoIp2Exception
      * @expectedExceptionMessage Received a 200 response for GeoIP2 Country but could not decode the response as JSON:
      */
     public function testBadBodyException()
@@ -242,9 +243,8 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $this->makeRequest('Country', '2.2.3.5');
     }
 
-
     /**
-     * @expectedException GeoIp2\Exception\InvalidRequestException
+     * @expectedException \GeoIp2\Exception\InvalidRequestException
      * @expectedExceptionCode 400
      * @expectedExceptionMessage The value "1.2.3" is not a valid ip address
      */
@@ -254,7 +254,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException GeoIp2\Exception\HttpException
+     * @expectedException \GeoIp2\Exception\HttpException
      * @expectedExceptionCode 400
      * @expectedExceptionMessage with no body
      */
@@ -264,7 +264,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException GeoIp2\Exception\GeoIp2Exception
+     * @expectedException \GeoIp2\Exception\GeoIp2Exception
      * @expectedExceptionMessage Error response contains JSON but it does not specify code or error keys: {"weird":42}
      */
     public function testWeirdErrorBodyIPException()
@@ -273,7 +273,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException GeoIp2\Exception\HttpException
+     * @expectedException \GeoIp2\Exception\HttpException
      * @expectedExceptionCode 400
      * @expectedExceptionMessage Received a 400 error for GeoIP2 Country but could not decode the response as JSON: Syntax error. Body: { invalid: }
      */
@@ -283,7 +283,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException GeoIp2\Exception\HttpException
+     * @expectedException \GeoIp2\Exception\HttpException
      * @expectedExceptionCode 500
      * @expectedExceptionMessage Received a server error (500)
      */
@@ -293,7 +293,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException GeoIp2\Exception\HttpException
+     * @expectedException \GeoIp2\Exception\HttpException
      * @expectedExceptionCode 300
      * @expectedExceptionMessage Received an unexpected HTTP status (300) for GeoIP2 Country
      */
@@ -303,7 +303,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException GeoIp2\Exception\HttpException
+     * @expectedException \GeoIp2\Exception\HttpException
      * @expectedExceptionCode 406
      * @expectedExceptionMessage Received a 406 error for GeoIP2 Country with the following body: Cannot satisfy your Accept-Charset requirements
      */
@@ -313,7 +313,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException GeoIp2\Exception\AddressNotFoundException
+     * @expectedException \GeoIp2\Exception\AddressNotFoundException
      * @expectedExceptionMessage The address "1.2.3.13" is not in our database.
      */
     public function testAddressNotFoundException()
@@ -322,7 +322,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException GeoIp2\Exception\AddressNotFoundException
+     * @expectedException \GeoIp2\Exception\AddressNotFoundException
      * @expectedExceptionMessage The address "1.2.3.14" is a private address.
      */
     public function testAddressReservedException()
@@ -331,7 +331,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException GeoIp2\Exception\AuthenticationException
+     * @expectedException \GeoIp2\Exception\AuthenticationException
      * @expectedExceptionMessage A user ID and license key are required to use this service
      */
     public function testAuthorizationException()
@@ -340,7 +340,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException GeoIp2\Exception\AuthenticationException
+     * @expectedException \GeoIp2\Exception\AuthenticationException
      * @expectedExceptionMessage A license key is required to use this service
      */
     public function testMissingLicenseKeyException()
@@ -349,7 +349,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException GeoIp2\Exception\AuthenticationException
+     * @expectedException \GeoIp2\Exception\AuthenticationException
      * @expectedExceptionMessage A user ID is required to use this service
      */
     public function testMissingUserIdException()
@@ -358,7 +358,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException GeoIp2\Exception\OutOfQueriesException
+     * @expectedException \GeoIp2\Exception\OutOfQueriesException
      * @expectedExceptionMessage The license key you have provided is out of queries.
      */
     public function testOutOfQueriesException()
@@ -380,7 +380,6 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-
     private function response(
         $endpoint,
         $status,
@@ -391,7 +390,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $headers = [];
         if ($contentType) {
             $headers['Content-Type'] = $contentType;
-        } elseif ($status == 200 || ($status >= 400 && $status < 500)) {
+        } elseif ($status === 200 || ($status >= 400 && $status < 500)) {
             $headers['Content-Type'] = 'application/vnd.maxmind.com-'
                 . $endpoint . '+json; charset=UTF-8; version=1.0;';
         }
@@ -404,7 +403,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
         $headers['Content-Length'] = strlen($body);
 
-        return [$status, $headers,  $body, ];
+        return [$status, $headers,  $body];
     }
 
     private function makeRequest(
@@ -449,7 +448,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
             ->with(
                 $this->equalTo($url),
                 $this->equalTo(
-                    [ 
+                    [
                         'headers' => $headers,
                         'userAgent' => 'GeoIP2-API/' . \GeoIp2\WebService\Client::VERSION
                             . ' MaxMind-WS-API/' . WsClient::VERSION
@@ -475,6 +474,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
             $locales,
             $options
         );
+
         return $client->$method($ipAddress);
     }
 }
