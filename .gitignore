@@ -1,6 +1,7 @@
 _site
 .gh-pages
 .idea
+.php_cs.cache
 GeoLite2-City.mmdb
 apigen.phar
 box.phar

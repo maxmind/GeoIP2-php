@@ -82,7 +82,6 @@ fi
     -d "doc/$tag" \
     --title "GeoIP2 PHP API $tag" \
     --template-theme bootstrap \
-    --exclude "Compat" \
     --php
 
 

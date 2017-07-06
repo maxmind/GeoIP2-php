@@ -4,35 +4,37 @@ namespace GeoIp2\Test\Model;
 
 use GeoIp2\Model\Country;
 
+/**
+ * @coversNothing
+ */
 class CountryTest extends \PHPUnit_Framework_TestCase
 {
-
-    private $raw = array(
-        'continent' => array(
+    private $raw = [
+        'continent' => [
             'code' => 'NA',
             'geoname_id' => 42,
-            'names' => array('en' => 'North America'),
-        ),
-        'country' => array(
+            'names' => ['en' => 'North America'],
+        ],
+        'country' => [
             'geoname_id' => 1,
             'iso_code' => 'US',
-            'names' => array('en' => 'United States of America'),
-        ),
-        'registered_country' => array(
+            'names' => ['en' => 'United States of America'],
+        ],
+        'registered_country' => [
             'geoname_id' => 2,
             'iso_code' => 'CA',
-            'names' => array('en' => 'Canada'),
-        ),
-        'traits' => array(
+            'names' => ['en' => 'Canada'],
+        ],
+        'traits' => [
             'ip_address' => '1.2.3.4',
-        ),
-    );
+        ],
+    ];
 
     private $model;
 
     public function setUp()
     {
-        $this->model = new Country($this->raw, array('en'));
+        $this->model = new Country($this->raw, ['en']);
     }
 
     public function testObjects()
@@ -66,7 +68,6 @@ class CountryTest extends \PHPUnit_Framework_TestCase
 
     public function testValues()
     {
-
         $this->assertSame(
             42,
             $this->model->continent->geonameId,
@@ -80,7 +81,7 @@ class CountryTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertSame(
-            array('en' => 'North America'),
+            ['en' => 'North America'],
             $this->model->continent->names,
             'continent names'
         );
@@ -104,7 +105,7 @@ class CountryTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertSame(
-            array('en' => 'United States of America'),
+            ['en' => 'United States of America'],
             $this->model->country->names,
             'country name'
         );
@@ -134,7 +135,7 @@ class CountryTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertSame(
-            array('en' => 'Canada'),
+            ['en' => 'Canada'],
             $this->model->registeredCountry->names,
             'registered_country names'
         );
@@ -145,7 +146,7 @@ class CountryTest extends \PHPUnit_Framework_TestCase
             'registered_country name is Canada'
         );
 
-        foreach (array('isAnonymousProxy', 'isSatelliteProvider') as $meth) {
+        foreach (['isAnonymousProxy', 'isSatelliteProvider'] as $meth) {
             $this->assertSame(
                 false,
                 $this->model->traits->$meth,
@@ -207,7 +208,7 @@ class CountryTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException RuntimeException
+     * @expectedException \RuntimeException
      * @expectedExceptionMessage Unknown attribute
      */
     public function testUnknownRecord()
@@ -216,7 +217,7 @@ class CountryTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException RuntimeException
+     * @expectedException \RuntimeException
      * @expectedExceptionMessage Unknown attribute
      */
     public function testUnknownTrait()

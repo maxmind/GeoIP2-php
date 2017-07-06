@@ -4,15 +4,21 @@ namespace GeoIp2\Test\Database;
 
 use GeoIp2\Database\Reader;
 
+/**
+ * @coversNothing
+ */
 class ReaderTest extends \PHPUnit_Framework_TestCase
 {
     public function databaseTypes()
     {
-        return array(array('City', 'city'), array('Country', 'country'));
+        return [['City', 'city'], ['Country', 'country']];
     }
 
     /**
      * @dataProvider databaseTypes
+     *
+     * @param mixed $type
+     * @param mixed $method
      */
     public function testDefaultLocale($type, $method)
     {
@@ -24,12 +30,15 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider databaseTypes
+     *
+     * @param mixed $type
+     * @param mixed $method
      */
     public function testLocaleList($type, $method)
     {
         $reader = new Reader(
             "maxmind-db/test-data/GeoIP2-$type-Test.mmdb",
-            array('xx', 'ru', 'pt-BR', 'es', 'en')
+            ['xx', 'ru', 'pt-BR', 'es', 'en']
         );
         $record = $reader->$method('81.2.69.160');
         $this->assertSame('Великобритания', $record->country->name);
@@ -38,6 +47,9 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider databaseTypes
+     *
+     * @param mixed $type
+     * @param mixed $method
      */
     public function testHasIpAddress($type, $method)
     {
@@ -48,7 +60,7 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException GeoIp2\Exception\AddressNotFoundException
+     * @expectedException \GeoIp2\Exception\AddressNotFoundException
      * @expectedExceptionMessage The address 10.10.10.10 is not in the database.
      */
     public function testUnknownAddress()
@@ -59,7 +71,7 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException BadMethodCallException
+     * @expectedException \BadMethodCallException
      * @expectedExceptionMessage The country method cannot be used to open a GeoIP2-City database
      */
     public function testIncorrectDatabase()
@@ -70,7 +82,7 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException BadMethodCallException
+     * @expectedException \BadMethodCallException
      * @expectedExceptionMessage The domain method cannot be used to open a GeoIP2-City database
      */
     public function testIncorrectDatabaseFlat()
@@ -81,7 +93,7 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException InvalidArgumentException
+     * @expectedException \InvalidArgumentException
      * @expectedExceptionMessage is not a valid IP address
      */
     public function testInvalidAddress()

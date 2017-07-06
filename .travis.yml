@@ -18,8 +18,9 @@ before_install:
   - phpenv rehash
 script:
   - mkdir -p build/logs
-  - ./vendor/bin/phpcs --standard=PSR2 src/
-  - ./vendor/bin/phpunit -c phpunit.xml.dist
+  - if [[ $TRAVIS_PHP_VERSION = '7.1' ]]; then vendor/bin/php-cs-fixer fix --verbose --diff --dry-run --config=.php_cs; fi
+  - if [[ $TRAVIS_PHP_VERSION = '7.1' ]]; then vendor/bin/phpcs --standard=PSR2 src/; fi
+  - vendor/bin/phpunit -c phpunit.xml.dist
 after_script:
   - php vendor/bin/coveralls
 notifications:
