@@ -65,7 +65,12 @@ class InsightsTest extends \PHPUnit_Framework_TestCase
                 'autonomous_system_organization' => 'AS Organization',
                 'domain' => 'example.com',
                 'ip_address' => '1.2.3.4',
+                'is_anonymous' => true,
+                'is_anonymous_vpn' => true,
+                'is_hosting_provider' => true,
+                'is_public_proxy' => true,
                 'is_satellite_provider' => true,
+                'is_tor_exit_node' => true,
                 'isp' => 'Comcast',
                 'organization' => 'Blorg',
                 'user_type' => 'college',
@@ -145,14 +150,32 @@ class InsightsTest extends \PHPUnit_Framework_TestCase
             '$model->traits'
         );
 
-        $this->assertSame(
-            true,
+        $this->assertTrue(
+            $model->traits->isAnonymous,
+            '$model->traits->isAnonymous is true'
+        );
+
+        $this->assertTrue(
+            $model->traits->isHostingProvider,
+            '$model->traits->isHostingProvider is true'
+        );
+
+        $this->assertTrue(
+            $model->traits->isPublicProxy,
+            '$model->traits->isPublicProxy is true'
+        );
+
+        $this->assertTrue(
             $model->traits->isSatelliteProvider,
             '$model->traits->isSatelliteProvider is true'
         );
 
-        $this->assertSame(
-            false,
+        $this->assertTrue(
+            $model->traits->isTorExitNode,
+            '$model->traits->isTorExitNode is true'
+        );
+
+        $this->assertFalse(
             $model->traits->isAnonymousProxy,
             '$model->traits->isAnonymousProxy is false'
         );
