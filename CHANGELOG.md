@@ -1,7 +1,7 @@
 CHANGELOG
 =========
 
-2.7.0 (2017-XX-XX)
+2.7.0 (2017-10-27)
 ------------------
 
 * The following new anonymizer properties were added to `GeoIp2\Record\Traits`
