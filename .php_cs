@@ -9,6 +9,7 @@ return PhpCsFixer\Config::create()
         'combine_consecutive_unsets' => true,
         'concat_space' => [ 'spacing' => 'one'],
         'heredoc_to_nowdoc' => true,
+        'increment_style' => false,
         'list_syntax' => ['syntax' => 'long'],
         'no_extra_consecutive_blank_lines' => ['break', 'continue', 'extra', 'return', 'throw', 'use', 'parenthesis_brace_block', 'square_brace_block', 'curly_brace_block'],
         'no_short_echo_tag' => true,
