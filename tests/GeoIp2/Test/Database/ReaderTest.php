@@ -109,11 +109,11 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
         $ipAddress = '1.2.0.1';
 
         $record = $reader->anonymousIp($ipAddress);
-        $this->assertSame(true, $record->isAnonymous);
-        $this->assertSame(true, $record->isAnonymousVpn);
-        $this->assertSame(false, $record->isHostingProvider);
-        $this->assertSame(false, $record->isPublicProxy);
-        $this->assertSame(false, $record->isTorExitNode);
+        $this->assertTrue($record->isAnonymous);
+        $this->assertTrue($record->isAnonymousVpn);
+        $this->assertFalse($record->isHostingProvider);
+        $this->assertFalse($record->isPublicProxy);
+        $this->assertFalse($record->isTorExitNode);
         $this->assertSame($ipAddress, $record->ipAddress);
         $reader->close();
     }
@@ -169,7 +169,7 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(27, $record->location->accuracyRadius);
 
         $this->assertSame('Cable/DSL', $record->traits->connectionType);
-        $this->assertSame(true, $record->traits->isLegitimateProxy);
+        $this->assertTrue($record->traits->isLegitimateProxy);
 
         $this->assertSame($ipAddress, $record->traits->ipAddress);
         $reader->close();

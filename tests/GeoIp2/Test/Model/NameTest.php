@@ -63,8 +63,7 @@ class NameTest extends \PHPUnit_Framework_TestCase
     {
         $model = new Country($this->raw, ['ru', 'ja']);
 
-        $this->assertSame(
-            null,
+        $this->assertNull(
             $model->continent->name,
             'continent name is undef (no Russian or Japanese available)'
         );
@@ -90,14 +89,12 @@ class NameTest extends \PHPUnit_Framework_TestCase
     {
         $model = new Country($this->raw, ['ja']);
 
-        $this->assertSame(
-            null,
+        $this->assertNull(
             $model->continent->name,
             'continent name is undef (no Japanese available) '
         );
 
-        $this->assertSame(
-            null,
+        $this->assertNull(
             $model->country->name,
             'country name is undef (no Japanese available) '
         );

@@ -116,8 +116,7 @@ class CountryTest extends \PHPUnit_Framework_TestCase
             'country name is United States of America'
         );
 
-        $this->assertSame(
-            null,
+        $this->assertNull(
             $this->model->country->confidence,
             'country confidence is undef'
         );
@@ -147,8 +146,7 @@ class CountryTest extends \PHPUnit_Framework_TestCase
         );
 
         foreach (['isAnonymousProxy', 'isSatelliteProvider'] as $meth) {
-            $this->assertSame(
-                false,
+            $this->assertFalse(
                 $this->model->traits->$meth,
                 "traits $meth returns 0 by default"
             );
