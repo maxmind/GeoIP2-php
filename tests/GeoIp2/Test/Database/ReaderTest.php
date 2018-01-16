@@ -60,6 +60,27 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @dataProvider databaseTypes
+     *
+     * @param mixed $type
+     * @param mixed $method
+     */
+    public function testIsInEuropeanUnion($type, $method)
+    {
+        $reader = new Reader("maxmind-db/test-data/GeoIP2-$type-Test.mmdb");
+        $record = $reader->$method('81.2.69.160');
+        $this->assertTrue(
+            $record->country->isInEuropeanUnion,
+            'country is_in_european_union is true'
+        );
+        $this->assertFalse(
+            $record->registeredCountry->isInEuropeanUnion,
+            'registered_country is_in_european_union is false'
+        );
+        $reader->close();
+    }
+
+    /**
      * @expectedException \GeoIp2\Exception\AddressNotFoundException
      * @expectedExceptionMessage The address 10.10.10.10 is not in the database.
      */
@@ -165,8 +186,11 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(11, $record->city->confidence);
         $this->assertSame(99, $record->country->confidence);
         $this->assertSame(6252001, $record->country->geonameId);
+        $this->assertFalse($record->country->isInEuropeanUnion);
 
         $this->assertSame(27, $record->location->accuracyRadius);
+
+        $this->assertFalse($record->registeredCountry->isInEuropeanUnion);
 
         $this->assertSame('Cable/DSL', $record->traits->connectionType);
         $this->assertTrue($record->traits->isLegitimateProxy);
