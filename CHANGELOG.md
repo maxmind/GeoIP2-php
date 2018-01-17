@@ -1,6 +1,13 @@
 CHANGELOG
 =========
 
+2.8.0
+------------------
+
+- The `isInEuropeanUnion` property was added to `GeoIp2\Record\Country`
+  and `GeoIp2\Record\RepresentedCountry`. This property is `true` if the
+  country is a member state of the European Union.
+
 2.7.0 (2017-10-27)
 ------------------
 

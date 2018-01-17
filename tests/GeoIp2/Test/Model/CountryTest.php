@@ -22,8 +22,9 @@ class CountryTest extends \PHPUnit_Framework_TestCase
         ],
         'registered_country' => [
             'geoname_id' => 2,
-            'iso_code' => 'CA',
-            'names' => ['en' => 'Canada'],
+            'is_in_european_union' => true,
+            'iso_code' => 'DE',
+            'names' => ['en' => 'Germany'],
         ],
         'traits' => [
             'ip_address' => '1.2.3.4',
@@ -98,6 +99,11 @@ class CountryTest extends \PHPUnit_Framework_TestCase
             'country geoname_id is 1'
         );
 
+        $this->assertFalse(
+            $this->model->country->isInEuropeanUnion,
+            'country is_in_european_union is false'
+        );
+
         $this->assertSame(
             'US',
             $this->model->country->isoCode,
@@ -127,22 +133,27 @@ class CountryTest extends \PHPUnit_Framework_TestCase
             'registered_country geoname_id is 2'
         );
 
-        $this->assertSame(
-            'CA',
-            $this->model->registeredCountry->isoCode,
-            'registered_country iso_code is CA'
+        $this->assertTrue(
+            $this->model->registeredCountry->isInEuropeanUnion,
+            'registered_country is_in_european_union is true'
         );
 
         $this->assertSame(
-            ['en' => 'Canada'],
+            'DE',
+            $this->model->registeredCountry->isoCode,
+            'registered_country iso_code is Germany'
+        );
+
+        $this->assertSame(
+            ['en' => 'Germany'],
             $this->model->registeredCountry->names,
             'registered_country names'
         );
 
         $this->assertSame(
-            'Canada',
+            'Germany',
             $this->model->registeredCountry->name,
-            'registered_country name is Canada'
+            'registered_country name is Germany'
         );
 
         foreach (['isAnonymousProxy', 'isSatelliteProvider'] as $meth) {

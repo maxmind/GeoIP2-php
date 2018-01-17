@@ -169,6 +169,11 @@ class ClientTest extends \PHPUnit_Framework_TestCase
             'country geoname_id is 1'
         );
 
+        $this->assertFalse(
+            $country->country->isInEuropeanUnion,
+            'country is_in_european_union is false'
+        );
+
         $this->assertSame(
             'US',
             $country->country->isoCode,
@@ -191,6 +196,11 @@ class ClientTest extends \PHPUnit_Framework_TestCase
             11,
             $country->maxmind->queriesRemaining,
             'queriesRemaining is correct'
+        );
+
+        $this->assertFalse(
+            $country->registeredCountry->isInEuropeanUnion,
+            'registered_country is_in_european_union is false'
         );
     }
 
