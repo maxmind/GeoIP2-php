@@ -76,7 +76,15 @@ if [ -n "$(git status --porcelain)" ]; then
     exit 1
 fi
 
-../vendor/bin/apigen generate \
+# We no longer have apigen as a dependency in Composer as it pulls in old
+# versions of other libraries, breaking PHP 7.2.
+#
+# Note that the Phar is no longer being updated. We will likely need to go
+# back to a Composer dep or use another generator at some point in the
+# future.
+wget -O apigen.phar "http://apigen.org/apigen.phar"
+
+php apigen.phar generate \
     -s ../src \
     -s ../../MaxMind-DB-Reader-php/src \
     -d "doc/$tag" \

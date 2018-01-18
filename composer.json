@@ -20,8 +20,7 @@
     "require-dev": {
         "friendsofphp/php-cs-fixer": "2.*",
         "phpunit/phpunit": "4.*",
-        "squizlabs/php_codesniffer": "3.*",
-        "apigen/apigen": "*"
+        "squizlabs/php_codesniffer": "3.*"
     },
     "autoload": {
         "psr-4": {
