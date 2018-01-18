@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="generator" content="ApiGen 2.8.0">
+	<meta name="robots" content="noindex">
+
+	<title>File MaxMind/Db/Reader/Metadata.php | GeoIP2 PHP API v2.8.0</title>
+
+	<link rel="stylesheet" href="resources/style.css?3901564645">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Namespaces</h3>
+			<ul>
+				<li><a href="namespace-GeoIp2.html">GeoIp2<span></span></a>
+						<ul>
+				<li><a href="namespace-GeoIp2.Database.html">Database</a>
+						</li>
+				<li><a href="namespace-GeoIp2.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-GeoIp2.Model.html">Model</a>
+						</li>
+				<li><a href="namespace-GeoIp2.Record.html">Record</a>
+						</li>
+				<li><a href="namespace-GeoIp2.WebService.html">WebService</a>
+						</li>
+							</ul></li>
+				<li class="active"><a href="namespace-MaxMind.html">MaxMind<span></span></a>
+						<ul>
+				<li class="active"><a href="namespace-MaxMind.Db.html">Db<span></span></a>
+						<ul>
+				<li class="active"><a href="namespace-MaxMind.Db.Reader.html">Reader</a>
+						</li>
+							</ul></li></ul></li>
+				<li><a href="namespace-PHP.html">PHP</a>
+						</li>
+			</ul>
+		</div>
+
+		<hr>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-MaxMind.Db.Reader.Decoder.html">Decoder</a></li>
+				<li class="active"><a href="class-MaxMind.Db.Reader.Metadata.html">Metadata</a></li>
+				<li><a href="class-MaxMind.Db.Reader.Util.html">Util</a></li>
+			</ul>
+
+
+
+			<h3>Exceptions</h3>
+			<ul>
+				<li><a href="class-MaxMind.Db.Reader.InvalidDatabaseException.html">InvalidDatabaseException</a></li>
+			</ul>
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text">
+		<input type="submit" value="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-MaxMind.Db.Reader.html" title="Summary of MaxMind\Db\Reader"><span>Namespace</span></a>
+			</li>
+			<li>
+				<a href="class-MaxMind.Db.Reader.Metadata.html" title="Summary of MaxMind\Db\Reader\Metadata"><span>Class</span></a>
+			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<pre><code><span id="1" class="l"><a class="l" href="#1"> 1: </a><span class="xlang">&lt;?php</span>
+</span><span id="2" class="l"><a class="l" href="#2"> 2: </a>
+</span><span id="3" class="l"><a class="l" href="#3"> 3: </a><span class="php-keyword1">namespace</span> MaxMind\Db\Reader;
+</span><span id="4" class="l"><a class="l" href="#4"> 4: </a>
+</span><span id="5" class="l"><a class="l" href="#5"> 5: </a><span class="php-comment">/**
+</span></span><span id="6" class="l"><a class="l" href="#6"> 6: </a><span class="php-comment"> * This class provides the metadata for the MaxMind DB file.
+</span></span><span id="7" class="l"><a class="l" href="#7"> 7: </a><span class="php-comment"> *
+</span></span><span id="8" class="l"><a class="l" href="#8"> 8: </a><span class="php-comment"> * @property int nodeCount This is an unsigned 32-bit integer indicating
+</span></span><span id="9" class="l"><a class="l" href="#9"> 9: </a><span class="php-comment"> * the number of nodes in the search tree.
+</span></span><span id="10" class="l"><a class="l" href="#10">10: </a><span class="php-comment"> * @property int recordSize This is an unsigned 16-bit integer. It
+</span></span><span id="11" class="l"><a class="l" href="#11">11: </a><span class="php-comment"> * indicates the number of bits in a record in the search tree. Note that each
+</span></span><span id="12" class="l"><a class="l" href="#12">12: </a><span class="php-comment"> * node consists of two records.
+</span></span><span id="13" class="l"><a class="l" href="#13">13: </a><span class="php-comment"> * @property int ipVersion This is an unsigned 16-bit integer which is
+</span></span><span id="14" class="l"><a class="l" href="#14">14: </a><span class="php-comment"> * always 4 or 6. It indicates whether the database contains IPv4 or IPv6
+</span></span><span id="15" class="l"><a class="l" href="#15">15: </a><span class="php-comment"> * address data.
+</span></span><span id="16" class="l"><a class="l" href="#16">16: </a><span class="php-comment"> * @property string databaseType This is a string that indicates the structure
+</span></span><span id="17" class="l"><a class="l" href="#17">17: </a><span class="php-comment"> * of each data record associated with an IP address. The actual definition of
+</span></span><span id="18" class="l"><a class="l" href="#18">18: </a><span class="php-comment"> * these structures is left up to the database creator.
+</span></span><span id="19" class="l"><a class="l" href="#19">19: </a><span class="php-comment"> * @property array languages An array of strings, each of which is a language
+</span></span><span id="20" class="l"><a class="l" href="#20">20: </a><span class="php-comment"> * code. A given record may contain data items that have been localized to
+</span></span><span id="21" class="l"><a class="l" href="#21">21: </a><span class="php-comment"> * some or all of these languages. This may be undefined.
+</span></span><span id="22" class="l"><a class="l" href="#22">22: </a><span class="php-comment"> * @property int binaryFormatMajorVersion This is an unsigned 16-bit
+</span></span><span id="23" class="l"><a class="l" href="#23">23: </a><span class="php-comment"> * integer indicating the major version number for the database's binary
+</span></span><span id="24" class="l"><a class="l" href="#24">24: </a><span class="php-comment"> * format.
+</span></span><span id="25" class="l"><a class="l" href="#25">25: </a><span class="php-comment"> * @property int binaryFormatMinorVersion This is an unsigned 16-bit
+</span></span><span id="26" class="l"><a class="l" href="#26">26: </a><span class="php-comment"> * integer indicating the minor version number for the database's binary format.
+</span></span><span id="27" class="l"><a class="l" href="#27">27: </a><span class="php-comment"> * @property int buildEpoch This is an unsigned 64-bit integer that
+</span></span><span id="28" class="l"><a class="l" href="#28">28: </a><span class="php-comment"> * contains the database build timestamp as a Unix epoch value.
+</span></span><span id="29" class="l"><a class="l" href="#29">29: </a><span class="php-comment"> * @property array description This key will always point to a map
+</span></span><span id="30" class="l"><a class="l" href="#30">30: </a><span class="php-comment"> * (associative array). The keys of that map will be language codes, and the
+</span></span><span id="31" class="l"><a class="l" href="#31">31: </a><span class="php-comment"> * values will be a description in that language as a UTF-8 string. May be
+</span></span><span id="32" class="l"><a class="l" href="#32">32: </a><span class="php-comment"> * undefined for some databases.
+</span></span><span id="33" class="l"><a class="l" href="#33">33: </a><span class="php-comment"> */</span>
+</span><span id="34" class="l"><a class="l" href="#34">34: </a><span class="php-keyword1">class</span> <a id="Metadata" href="#Metadata">Metadata</a>
+</span><span id="35" class="l"><a class="l" href="#35">35: </a>{
+</span><span id="36" class="l"><a class="l" href="#36">36: </a>    <span class="php-keyword1">private</span> <span class="php-var"><a id="$binaryFormatMajorVersion" href="#$binaryFormatMajorVersion">$binaryFormatMajorVersion</a></span>;
+</span><span id="37" class="l"><a class="l" href="#37">37: </a>    <span class="php-keyword1">private</span> <span class="php-var"><a id="$binaryFormatMinorVersion" href="#$binaryFormatMinorVersion">$binaryFormatMinorVersion</a></span>;
+</span><span id="38" class="l"><a class="l" href="#38">38: </a>    <span class="php-keyword1">private</span> <span class="php-var"><a id="$buildEpoch" href="#$buildEpoch">$buildEpoch</a></span>;
+</span><span id="39" class="l"><a class="l" href="#39">39: </a>    <span class="php-keyword1">private</span> <span class="php-var"><a id="$databaseType" href="#$databaseType">$databaseType</a></span>;
+</span><span id="40" class="l"><a class="l" href="#40">40: </a>    <span class="php-keyword1">private</span> <span class="php-var"><a id="$description" href="#$description">$description</a></span>;
+</span><span id="41" class="l"><a class="l" href="#41">41: </a>    <span class="php-keyword1">private</span> <span class="php-var"><a id="$ipVersion" href="#$ipVersion">$ipVersion</a></span>;
+</span><span id="42" class="l"><a class="l" href="#42">42: </a>    <span class="php-keyword1">private</span> <span class="php-var"><a id="$languages" href="#$languages">$languages</a></span>;
+</span><span id="43" class="l"><a class="l" href="#43">43: </a>    <span class="php-keyword1">private</span> <span class="php-var"><a id="$nodeByteSize" href="#$nodeByteSize">$nodeByteSize</a></span>;
+</span><span id="44" class="l"><a class="l" href="#44">44: </a>    <span class="php-keyword1">private</span> <span class="php-var"><a id="$nodeCount" href="#$nodeCount">$nodeCount</a></span>;
+</span><span id="45" class="l"><a class="l" href="#45">45: </a>    <span class="php-keyword1">private</span> <span class="php-var"><a id="$recordSize" href="#$recordSize">$recordSize</a></span>;
+</span><span id="46" class="l"><a class="l" href="#46">46: </a>    <span class="php-keyword1">private</span> <span class="php-var"><a id="$searchTreeSize" href="#$searchTreeSize">$searchTreeSize</a></span>;
+</span><span id="47" class="l"><a class="l" href="#47">47: </a>
+</span><span id="48" class="l"><a class="l" href="#48">48: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="___construct" href="#___construct">__construct</a>(<span class="php-var">$metadata</span>)
+</span><span id="49" class="l"><a class="l" href="#49">49: </a>    {
+</span><span id="50" class="l"><a class="l" href="#50">50: </a>        <span class="php-var">$this</span>-&gt;binaryFormatMajorVersion =
+</span><span id="51" class="l"><a class="l" href="#51">51: </a>            <span class="php-var">$metadata</span>[<span class="php-quote">'binary_format_major_version'</span>];
+</span><span id="52" class="l"><a class="l" href="#52">52: </a>        <span class="php-var">$this</span>-&gt;binaryFormatMinorVersion =
+</span><span id="53" class="l"><a class="l" href="#53">53: </a>            <span class="php-var">$metadata</span>[<span class="php-quote">'binary_format_minor_version'</span>];
+</span><span id="54" class="l"><a class="l" href="#54">54: </a>        <span class="php-var">$this</span>-&gt;buildEpoch = <span class="php-var">$metadata</span>[<span class="php-quote">'build_epoch'</span>];
+</span><span id="55" class="l"><a class="l" href="#55">55: </a>        <span class="php-var">$this</span>-&gt;databaseType = <span class="php-var">$metadata</span>[<span class="php-quote">'database_type'</span>];
+</span><span id="56" class="l"><a class="l" href="#56">56: </a>        <span class="php-var">$this</span>-&gt;languages = <span class="php-var">$metadata</span>[<span class="php-quote">'languages'</span>];
+</span><span id="57" class="l"><a class="l" href="#57">57: </a>        <span class="php-var">$this</span>-&gt;description = <span class="php-var">$metadata</span>[<span class="php-quote">'description'</span>];
+</span><span id="58" class="l"><a class="l" href="#58">58: </a>        <span class="php-var">$this</span>-&gt;ipVersion = <span class="php-var">$metadata</span>[<span class="php-quote">'ip_version'</span>];
+</span><span id="59" class="l"><a class="l" href="#59">59: </a>        <span class="php-var">$this</span>-&gt;nodeCount = <span class="php-var">$metadata</span>[<span class="php-quote">'node_count'</span>];
+</span><span id="60" class="l"><a class="l" href="#60">60: </a>        <span class="php-var">$this</span>-&gt;recordSize = <span class="php-var">$metadata</span>[<span class="php-quote">'record_size'</span>];
+</span><span id="61" class="l"><a class="l" href="#61">61: </a>        <span class="php-var">$this</span>-&gt;nodeByteSize = <span class="php-var">$this</span>-&gt;recordSize / <span class="php-num">4</span>;
+</span><span id="62" class="l"><a class="l" href="#62">62: </a>        <span class="php-var">$this</span>-&gt;searchTreeSize = <span class="php-var">$this</span>-&gt;nodeCount * <span class="php-var">$this</span>-&gt;nodeByteSize;
+</span><span id="63" class="l"><a class="l" href="#63">63: </a>    }
+</span><span id="64" class="l"><a class="l" href="#64">64: </a>
+</span><span id="65" class="l"><a class="l" href="#65">65: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="___get" href="#___get">__get</a>(<span class="php-var">$var</span>)
+</span><span id="66" class="l"><a class="l" href="#66">66: </a>    {
+</span><span id="67" class="l"><a class="l" href="#67">67: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;<span class="php-var">$var</span>;
+</span><span id="68" class="l"><a class="l" href="#68">68: </a>    }
+</span><span id="69" class="l"><a class="l" href="#69">69: </a>}
+</span><span id="70" class="l"><a class="l" href="#70">70: </a></span></code></pre>
+
+	<div id="footer">
+		GeoIP2 PHP API v2.8.0 API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js?3305629347"></script>
+<script src="elementlist.js?2083327343"></script>
+</body>
+</html>

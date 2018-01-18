@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="generator" content="ApiGen 2.8.0">
+	<meta name="robots" content="noindex">
+
+	<title>File Model/Enterprise.php | GeoIP2 PHP API v2.8.0</title>
+
+	<link rel="stylesheet" href="resources/style.css?3901564645">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Namespaces</h3>
+			<ul>
+				<li class="active"><a href="namespace-GeoIp2.html">GeoIp2<span></span></a>
+						<ul>
+				<li><a href="namespace-GeoIp2.Database.html">Database</a>
+						</li>
+				<li><a href="namespace-GeoIp2.Exception.html">Exception</a>
+						</li>
+				<li class="active"><a href="namespace-GeoIp2.Model.html">Model</a>
+						</li>
+				<li><a href="namespace-GeoIp2.Record.html">Record</a>
+						</li>
+				<li><a href="namespace-GeoIp2.WebService.html">WebService</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-MaxMind.html">MaxMind<span></span></a>
+						<ul>
+				<li><a href="namespace-MaxMind.Db.html">Db<span></span></a>
+						<ul>
+				<li><a href="namespace-MaxMind.Db.Reader.html">Reader</a>
+						</li>
+							</ul></li></ul></li>
+				<li><a href="namespace-PHP.html">PHP</a>
+						</li>
+			</ul>
+		</div>
+
+		<hr>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-GeoIp2.Model.AnonymousIp.html">AnonymousIp</a></li>
+				<li><a href="class-GeoIp2.Model.Asn.html">Asn</a></li>
+				<li><a href="class-GeoIp2.Model.City.html">City</a></li>
+				<li><a href="class-GeoIp2.Model.ConnectionType.html">ConnectionType</a></li>
+				<li><a href="class-GeoIp2.Model.Country.html">Country</a></li>
+				<li><a href="class-GeoIp2.Model.Domain.html">Domain</a></li>
+				<li class="active"><a href="class-GeoIp2.Model.Enterprise.html">Enterprise</a></li>
+				<li><a href="class-GeoIp2.Model.Insights.html">Insights</a></li>
+				<li><a href="class-GeoIp2.Model.Isp.html">Isp</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text">
+		<input type="submit" value="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-GeoIp2.Model.html" title="Summary of GeoIp2\Model"><span>Namespace</span></a>
+			</li>
+			<li>
+				<a href="class-GeoIp2.Model.Enterprise.html" title="Summary of GeoIp2\Model\Enterprise"><span>Class</span></a>
+			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<pre><code><span id="1" class="l"><a class="l" href="#1"> 1: </a><span class="xlang">&lt;?php</span>
+</span><span id="2" class="l"><a class="l" href="#2"> 2: </a>
+</span><span id="3" class="l"><a class="l" href="#3"> 3: </a><span class="php-keyword1">namespace</span> GeoIp2\Model;
+</span><span id="4" class="l"><a class="l" href="#4"> 4: </a>
+</span><span id="5" class="l"><a class="l" href="#5"> 5: </a><span class="php-comment">/**
+</span></span><span id="6" class="l"><a class="l" href="#6"> 6: </a><span class="php-comment"> * Model class for the data returned by GeoIP2 Enterprise database lookups.
+</span></span><span id="7" class="l"><a class="l" href="#7"> 7: </a><span class="php-comment"> *
+</span></span><span id="8" class="l"><a class="l" href="#8"> 8: </a><span class="php-comment"> * The only difference between the City and Enterprise model classes is which
+</span></span><span id="9" class="l"><a class="l" href="#9"> 9: </a><span class="php-comment"> * fields in each record may be populated. See
+</span></span><span id="10" class="l"><a class="l" href="#10">10: </a><span class="php-comment"> * http://dev.maxmind.com/geoip/geoip2/web-services more details.
+</span></span><span id="11" class="l"><a class="l" href="#11">11: </a><span class="php-comment"> *
+</span></span><span id="12" class="l"><a class="l" href="#12">12: </a><span class="php-comment"> * @property-read \GeoIp2\Record\City $city City data for the requested IP
+</span></span><span id="13" class="l"><a class="l" href="#13">13: </a><span class="php-comment"> * address.
+</span></span><span id="14" class="l"><a class="l" href="#14">14: </a><span class="php-comment"> * @property-read \GeoIp2\Record\Continent $continent Continent data for the
+</span></span><span id="15" class="l"><a class="l" href="#15">15: </a><span class="php-comment"> * requested IP address.
+</span></span><span id="16" class="l"><a class="l" href="#16">16: </a><span class="php-comment"> * @property-read \GeoIp2\Record\Country $country Country data for the requested
+</span></span><span id="17" class="l"><a class="l" href="#17">17: </a><span class="php-comment"> * IP address. This object represents the country where MaxMind believes the
+</span></span><span id="18" class="l"><a class="l" href="#18">18: </a><span class="php-comment"> * end user is located.
+</span></span><span id="19" class="l"><a class="l" href="#19">19: </a><span class="php-comment"> * @property-read \GeoIp2\Record\Location $location Location data for the
+</span></span><span id="20" class="l"><a class="l" href="#20">20: </a><span class="php-comment"> * requested IP address.
+</span></span><span id="21" class="l"><a class="l" href="#21">21: </a><span class="php-comment"> * @property-read \GeoIp2\Record\MaxMind $maxmind Data related to your MaxMind
+</span></span><span id="22" class="l"><a class="l" href="#22">22: </a><span class="php-comment"> * account.
+</span></span><span id="23" class="l"><a class="l" href="#23">23: </a><span class="php-comment"> * @property-read \GeoIp2\Record\Country $registeredCountry Registered country
+</span></span><span id="24" class="l"><a class="l" href="#24">24: </a><span class="php-comment"> * data for the requested IP address. This record represents the country
+</span></span><span id="25" class="l"><a class="l" href="#25">25: </a><span class="php-comment"> * where the ISP has registered a given IP block and may differ from the
+</span></span><span id="26" class="l"><a class="l" href="#26">26: </a><span class="php-comment"> * user's country.
+</span></span><span id="27" class="l"><a class="l" href="#27">27: </a><span class="php-comment"> * @property-read \GeoIp2\Record\RepresentedCountry $representedCountry
+</span></span><span id="28" class="l"><a class="l" href="#28">28: </a><span class="php-comment"> * Represented country data for the requested IP address. The represented
+</span></span><span id="29" class="l"><a class="l" href="#29">29: </a><span class="php-comment"> * country is used for things like military bases. It is only present when
+</span></span><span id="30" class="l"><a class="l" href="#30">30: </a><span class="php-comment"> * the represented country differs from the country.
+</span></span><span id="31" class="l"><a class="l" href="#31">31: </a><span class="php-comment"> * @property-read array $subdivisions An array of {@link \GeoIp2\Record\Subdivision}
+</span></span><span id="32" class="l"><a class="l" href="#32">32: </a><span class="php-comment"> * objects representing the country subdivisions for the requested IP
+</span></span><span id="33" class="l"><a class="l" href="#33">33: </a><span class="php-comment"> * address. The number and type of subdivisions varies by country, but a
+</span></span><span id="34" class="l"><a class="l" href="#34">34: </a><span class="php-comment"> * subdivision is typically a state, province, county, etc. Subdivisions
+</span></span><span id="35" class="l"><a class="l" href="#35">35: </a><span class="php-comment"> * are ordered from most general (largest) to most specific (smallest).
+</span></span><span id="36" class="l"><a class="l" href="#36">36: </a><span class="php-comment"> * If the response did not contain any subdivisions, this method returns
+</span></span><span id="37" class="l"><a class="l" href="#37">37: </a><span class="php-comment"> * an empty array.
+</span></span><span id="38" class="l"><a class="l" href="#38">38: </a><span class="php-comment"> * @property-read \GeoIp2\Record\Subdivision $mostSpecificSubdivision An  object
+</span></span><span id="39" class="l"><a class="l" href="#39">39: </a><span class="php-comment"> * representing the most specific subdivision returned. If the response
+</span></span><span id="40" class="l"><a class="l" href="#40">40: </a><span class="php-comment"> * did not contain any subdivisions, this method returns an empty
+</span></span><span id="41" class="l"><a class="l" href="#41">41: </a><span class="php-comment"> * {@link \GeoIp2\Record\Subdivision} object.
+</span></span><span id="42" class="l"><a class="l" href="#42">42: </a><span class="php-comment"> * @property-read \GeoIp2\Record\Traits $traits Data for the traits of the
+</span></span><span id="43" class="l"><a class="l" href="#43">43: </a><span class="php-comment"> * requested IP address.
+</span></span><span id="44" class="l"><a class="l" href="#44">44: </a><span class="php-comment"> */</span>
+</span><span id="45" class="l"><a class="l" href="#45">45: </a><span class="php-keyword1">class</span> <a id="Enterprise" href="#Enterprise">Enterprise</a> <span class="php-keyword1">extends</span> City
+</span><span id="46" class="l"><a class="l" href="#46">46: </a>{
+</span><span id="47" class="l"><a class="l" href="#47">47: </a>}
+</span><span id="48" class="l"><a class="l" href="#48">48: </a></span></code></pre>
+
+	<div id="footer">
+		GeoIP2 PHP API v2.8.0 API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js?3305629347"></script>
+<script src="elementlist.js?2083327343"></script>
+</body>
+</html>
