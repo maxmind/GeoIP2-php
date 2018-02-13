@@ -257,7 +257,7 @@ print($record->ipAddress . "\n"); // '128.101.101.101'
 ### Usage ###
 
 To use this API, you must create a new `\GeoIp2\WebService\Client`
-object with your `$userId` and `$licenseKey`, then you call the method
+object with your `$accountId` and `$licenseKey`, then you call the method
 corresponding to a specific end point, passing it the IP address you want to
 look up.
 
@@ -277,7 +277,7 @@ require_once 'vendor/autoload.php';
 use GeoIp2\WebService\Client;
 
 // This creates a Client object that can be reused across requests.
-// Replace "42" with your user ID and "license_key" with your license
+// Replace "42" with your account ID and "license_key" with your license
 // key.
 $client = new Client(42, 'abcdef123456');
 

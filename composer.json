@@ -14,7 +14,7 @@
     ],
     "require": {
         "maxmind-db/reader": "~1.0",
-        "maxmind/web-service-common": "~0.4",
+        "maxmind/web-service-common": "~0.5",
         "php": ">=5.4"
     },
     "require-dev": {

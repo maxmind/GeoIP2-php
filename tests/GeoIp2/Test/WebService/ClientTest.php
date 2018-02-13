@@ -128,6 +128,14 @@ class ClientTest extends \PHPUnit_Framework_TestCase
                     'error' => 'The license key you have provided is out of queries.',
                 ]
             ),
+            '1.2.3.19' => $this->response(
+                'error',
+                401,
+                [
+                    'code' => 'ACCOUNT_ID_REQUIRED',
+                    'error' => 'A account ID is required to use this service',
+                ]
+            ),
         ];
 
         return $responses[$ipAddress];
@@ -368,6 +376,15 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @expectedException \GeoIp2\Exception\AuthenticationException
+     * @expectedExceptionMessage A account ID is required to use this service
+     */
+    public function testMissingAccountIdException()
+    {
+        $this->makeRequest('Country', '1.2.3.19');
+    }
+
+    /**
      * @expectedException \GeoIp2\Exception\OutOfQueriesException
      * @expectedExceptionMessage The license key you have provided is out of queries.
      */
@@ -423,7 +440,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $options = [],
         $callsToRequest = 1
     ) {
-        $userId = 42;
+        $accountId = 42;
         $licenseKey = 'abcdef123456';
 
         list($statusCode, $headers, $responseBody)
@@ -446,7 +463,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
             . '/' . $ipAddress;
         $headers = [
             'Authorization: Basic '
-            . base64_encode($userId . ':' . $licenseKey),
+            . base64_encode($accountId . ':' . $licenseKey),
             'Accept: application/json',
         ];
 
@@ -479,7 +496,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $method = strtolower($service);
 
         $client = new \GeoIp2\WebService\Client(
-            $userId,
+            $accountId,
             $licenseKey,
             $locales,
             $options
