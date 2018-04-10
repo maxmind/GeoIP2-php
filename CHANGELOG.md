@@ -1,8 +1,8 @@
 CHANGELOG
 =========
 
-2.9.0
------------------
+2.9.0 (2018-04-10)
+------------------
 
 * Refer to account IDs using the terminology "account" rather than "user".
 
