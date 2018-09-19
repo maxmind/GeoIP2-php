@@ -424,11 +424,11 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
         if ($bad) {
             $body = '{ invalid: }';
-        } elseif (is_array($body)) {
+        } elseif (\is_array($body)) {
             $body = json_encode($body);
         }
 
-        $headers['Content-Length'] = strlen($body);
+        $headers['Content-Length'] = \strlen($body);
 
         return [$status, $headers,  $body];
     }

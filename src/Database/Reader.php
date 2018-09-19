@@ -245,7 +245,7 @@ class Reader implements ProviderInterface
                 "The address $ipAddress is not in the database."
             );
         }
-        if (!is_array($record)) {
+        if (!\is_array($record)) {
             // This can happen on corrupt databases. Generally,
             // MaxMind\Db\Reader will throw a
             // MaxMind\Db\Reader\InvalidDatabaseException, but occasionally
@@ -255,7 +255,7 @@ class Reader implements ProviderInterface
             // exceptions go unnoticed.
             throw new InvalidDatabaseException(
                 "Expected an array when looking up $ipAddress but received: "
-                . gettype($record)
+                . \gettype($record)
             );
         }
 
