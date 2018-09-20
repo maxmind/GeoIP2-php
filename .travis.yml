@@ -17,13 +17,18 @@ matrix:
 before_install:
   - composer install --dev -n --prefer-source
   - phpenv rehash
+  - "if [[ $TRAVIS_PHP_VERSION == '7.2' ]]; then sudo apt install -y nodejs; npm install -g snyk; fi"
+install:
+  - "if [[ $TRAVIS_PHP_VERSION == '7.2' ]]; then snyk test --org=maxmind; fi"
 script:
   - mkdir -p build/logs
-  - if [[ $TRAVIS_PHP_VERSION = '7.2' ]]; then vendor/bin/php-cs-fixer fix --verbose --diff --dry-run --config=.php_cs; fi
-  - if [[ $TRAVIS_PHP_VERSION = '7.2' ]]; then vendor/bin/phpcs --standard=PSR2 src/; fi
+  - "if [[ $TRAVIS_PHP_VERSION = '7.2' ]]; then vendor/bin/php-cs-fixer fix --verbose --diff --dry-run --config=.php_cs; fi"
+  - "if [[ $TRAVIS_PHP_VERSION = '7.2' ]]; then vendor/bin/phpcs --standard=PSR2 src/; fi"
   - vendor/bin/phpunit -c phpunit.xml.dist
 after_script:
   - php vendor/bin/coveralls
+after_success:
+  - "if [[ $TRAVIS_BRANCH == 'master' && $TRAVIS_PULL_REQUEST == 'false' && $TRAVIS_PHP_VERSION == '7.2' ]]; then snyk monitor --org=maxmind --project-name=maxmind/GeoIP2-php; fi"
 notifications:
   email:
     on_failure: always
@@ -33,3 +38,6 @@ notifications:
   slack:
     rooms:
       secure: "OtowN1lGa5MAhn6gl87aB3kXXeOKLGIb4e9dBud/tPt/1sQDoZVj6m6VWtpsXh6iXL7lWetVbpmeZCydSRumgVMIy7+45uMQPvdoWBFCT+rq67yDb3gyvFknpjBuit0Q91lTDoGTUSgtqk+PSZX5LvDgT4b8WQFBb/dcB35hqis=\n"
+env:
+  global:
+    secure: "Ptt+TYu7h430sdv9WjIlKS6kWdwQQYapv8OYuZZ2sUrcynuHkMw3OMp+p3Y86KAMCd2ZwlOyeLA1V2QrifkiC9i1KmEqiH6eZcrzdt+YgrBK6S1BRjbrhabPBs6iT3ey6NxU+hEgl/+pb2R1VlKi1B5Fw7rJ1S6/34VhvgEpwDc="
