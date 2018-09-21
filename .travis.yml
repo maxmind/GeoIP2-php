@@ -2,33 +2,36 @@
 sudo: false
 language: php
 dist: trusty
-php:
-  - '5.4'
-  - '5.5'
-  - '5.6'
-  - '7.0'
-  - '7.1'
-  - '7.2'
-  - hhvm
-  - nightly
 matrix:
+  include:
+    - php: '5.4'
+    - php: '5.5'
+    - php: '5.6'
+    - php: '7.0'
+    - php: '7.1'
+    - php: '7.2'
+      env:
+        - RUN_LINTER=1
+        - RUN_SNYK=1
+    - php: hhvm
+    - php: nightly
   allow_failures:
     - php: nightly
 before_install:
   - composer install --dev -n --prefer-source
   - phpenv rehash
-  - "if [[ $TRAVIS_PHP_VERSION == '7.2' ]]; then sudo apt install -y nodejs; npm install -g snyk; fi"
+  - "if [[ $RUN_SNYK ]]; then sudo apt-get install -y nodejs; npm install -g snyk; fi"
 install:
-  - "if [[ $TRAVIS_PHP_VERSION == '7.2' ]]; then snyk test --org=maxmind; fi"
+  - "if [[ $RUN_SNYK ]]; then snyk test --org=maxmind; fi"
 script:
   - mkdir -p build/logs
-  - "if [[ $TRAVIS_PHP_VERSION = '7.2' ]]; then vendor/bin/php-cs-fixer fix --verbose --diff --dry-run --config=.php_cs; fi"
-  - "if [[ $TRAVIS_PHP_VERSION = '7.2' ]]; then vendor/bin/phpcs --standard=PSR2 src/; fi"
+  - "if [[ $RUN_LINTER ]]; then vendor/bin/php-cs-fixer fix --verbose --diff --dry-run --config=.php_cs; fi"
+  - "if [[ $RUN_LINTER ]]; then vendor/bin/phpcs --standard=PSR2 src/; fi"
   - vendor/bin/phpunit -c phpunit.xml.dist
 after_script:
   - php vendor/bin/coveralls
 after_success:
-  - "if [[ $TRAVIS_BRANCH == 'master' && $TRAVIS_PULL_REQUEST == 'false' && $TRAVIS_PHP_VERSION == '7.2' ]]; then snyk monitor --org=maxmind --project-name=maxmind/GeoIP2-php; fi"
+  - "if [[ $RUN_SNYK && $TRAVIS_BRANCH == 'master' && $TRAVIS_PULL_REQUEST == 'false' ]]; then snyk monitor --org=maxmind --project-name=maxmind/GeoIP2-php; fi"
 notifications:
   email:
     on_failure: always
