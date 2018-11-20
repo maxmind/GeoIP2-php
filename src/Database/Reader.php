@@ -261,8 +261,8 @@ class Reader implements ProviderInterface
     }
 
     /**
-     * @throws \InvalidArgumentException if arguments are passed to the method
-     * @throws \BadMethodCallException   if the database has been closed
+     * @throws \InvalidArgumentException                   if arguments are passed to the method
+     * @throws \BadMethodCallException                     if the database has been closed
      * @throws \MaxMind\Db\Reader\InvalidDatabaseException if the database
      *                                                     is corrupt or invalid
      *
