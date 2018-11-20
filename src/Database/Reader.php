@@ -35,6 +35,7 @@ class Reader implements ProviderInterface
 {
     private $dbReader;
     private $locales;
+    private $filename;
 
     /**
      * Constructor.
@@ -42,15 +43,12 @@ class Reader implements ProviderInterface
      * @param string $filename the path to the GeoIP2 database file
      * @param array  $locales  list of locale codes to use in name property
      *                         from most preferred to least preferred
-     *
-     * @throws \MaxMind\Db\Reader\InvalidDatabaseException if the database
-     *                                                     is corrupt or invalid
      */
     public function __construct(
         $filename,
         $locales = ['en']
     ) {
-        $this->dbReader = new DbReader($filename);
+        $this->filename = $filename;
         $this->locales = $locales;
     }
 
@@ -239,7 +237,7 @@ class Reader implements ProviderInterface
                 . $this->metadata()->databaseType . ' database'
             );
         }
-        $record = $this->dbReader->get($ipAddress);
+        $record = $this->getReader()->get($ipAddress);
         if ($record === null) {
             throw new AddressNotFoundException(
                 "The address $ipAddress is not in the database."
@@ -265,12 +263,14 @@ class Reader implements ProviderInterface
     /**
      * @throws \InvalidArgumentException if arguments are passed to the method
      * @throws \BadMethodCallException   if the database has been closed
+     * @throws \MaxMind\Db\Reader\InvalidDatabaseException if the database
+     *                                                     is corrupt or invalid
      *
      * @return \MaxMind\Db\Reader\Metadata object for the database
      */
     public function metadata()
     {
-        return $this->dbReader->metadata();
+        return $this->getReader()->metadata();
     }
 
     /**
@@ -278,6 +278,25 @@ class Reader implements ProviderInterface
      */
     public function close()
     {
-        $this->dbReader->close();
+        if ($this->dbReader) {
+            $this->dbReader->close();
+        }
+    }
+
+    /**
+     * Read the GeoIP2 database only if really necessary.
+     *
+     * @throws \MaxMind\Db\Reader\InvalidDatabaseException if the database
+     *                                                     is corrupt or invalid
+     *
+     * @return \MaxMind\Db\Reader
+     */
+    private function getReader()
+    {
+        if (!$this->dbReader) {
+            $this->dbReader = new DbReader($this->filename);
+        }
+
+        return $this->dbReader;
     }
 }
