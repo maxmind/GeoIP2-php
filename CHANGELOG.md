@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+2.9.1
+------------------
+
+* Updated documentation of anonymizer properties - `isAnonymousVpn`
+  and `isHostingProvider` - to be more descriptive.
+
 2.9.0 (2018-04-10)
 ------------------
 

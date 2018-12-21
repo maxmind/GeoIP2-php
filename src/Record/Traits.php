@@ -39,12 +39,14 @@ namespace GeoIp2\Record;
  * {@link * https://www.maxmind.com/en/geoip2-anonymous-ip-database GeoIP2
  * Anonymous IP database} to determine whether the IP address is used by an
  * anonymizing service.
- * @property-read bool $isAnonymousVpn This is true if the IP address belongs to
- * an anonymous VPN system. This property is only available from GeoIP2
- * Precision Insights.
+ * @property-read bool $isAnonymousVpn This is true if the IP address is
+ * registered to an anonymous VPN provider. If a VPN provider does not register
+ * subnets under names associated with them, we will likely only flag their IP
+ * ranges using the isHostingProvider property. This property is only available
+ * from GeoIP2 Precision Insights.
  * @property-read bool $isHostingProvider This is true if the IP address belongs
- * to a hosting provider. This property is only available from GeoIP2
- * Precision Insights.
+ * to a hosting or VPN provider (see description of isAnonymousVpn property).
+ * This property is only available from GeoIP2 Precision Insights.
  * @property-read bool $isLegitimateProxy This attribute is true if MaxMind
  * believes this IP address to be a legitimate proxy, such as an internal
  * VPN used by a corporation. This attribute is only available in the GeoIP2
