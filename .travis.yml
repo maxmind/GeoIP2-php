@@ -13,7 +13,6 @@ matrix:
       env:
         - RUN_LINTER=1
         - RUN_SNYK=1
-    - php: hhvm
     - php: nightly
   allow_failures:
     - php: nightly
