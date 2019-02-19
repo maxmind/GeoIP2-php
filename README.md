@@ -127,13 +127,13 @@ $reader = new Reader('/usr/local/share/GeoIP/GeoIP2-City.mmdb');
 $record = $reader->city('128.101.101.101');
 
 print($record->country->isoCode . "\n"); // 'US'
-print($record->country->name . "\n"); // 'United States'
+print($record->country->names['en'] . "\n"); // 'United States'
 print($record->country->names['zh-CN'] . "\n"); // '美国'
 
-print($record->mostSpecificSubdivision->name . "\n"); // 'Minnesota'
+print($record->mostSpecificSubdivision->names['en'] . "\n"); // 'Minnesota'
 print($record->mostSpecificSubdivision->isoCode . "\n"); // 'MN'
 
-print($record->city->name . "\n"); // 'Minneapolis'
+print($record->city->names['en'] . "\n"); // 'Minneapolis'
 
 print($record->postal->code . "\n"); // '55455'
 
@@ -212,15 +212,15 @@ $record = $reader->enterprise('128.101.101.101');
 
 print($record->country->confidence . "\n"); // 99
 print($record->country->isoCode . "\n"); // 'US'
-print($record->country->name . "\n"); // 'United States'
+print($record->country->names['en'] . "\n"); // 'United States'
 print($record->country->names['zh-CN'] . "\n"); // '美国'
 
 print($record->mostSpecificSubdivision->confidence . "\n"); // 77
-print($record->mostSpecificSubdivision->name . "\n"); // 'Minnesota'
+print($record->mostSpecificSubdivision->names['en']. "\n"); // 'Minnesota'
 print($record->mostSpecificSubdivision->isoCode . "\n"); // 'MN'
 
 print($record->city->confidence . "\n"); // 60
-print($record->city->name . "\n"); // 'Minneapolis'
+print($record->city->names['en'] . "\n"); // 'Minneapolis'
 
 print($record->postal->code . "\n"); // '55455'
 
@@ -286,13 +286,13 @@ $client = new Client(42, 'abcdef123456');
 $record = $client->city('128.101.101.101');
 
 print($record->country->isoCode . "\n"); // 'US'
-print($record->country->name . "\n"); // 'United States'
+print($record->country->names['en']. "\n"); // 'United States'
 print($record->country->names['zh-CN'] . "\n"); // '美国'
 
-print($record->mostSpecificSubdivision->name . "\n"); // 'Minnesota'
+print($record->mostSpecificSubdivision->names['en'] . "\n"); // 'Minnesota'
 print($record->mostSpecificSubdivision->isoCode . "\n"); // 'MN'
 
-print($record->city->name . "\n"); // 'Minneapolis'
+print($record->city->names['en'] . "\n"); // 'Minneapolis'
 
 print($record->postal->code . "\n"); // '55455'
 
