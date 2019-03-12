@@ -8,12 +8,12 @@ namespace GeoIp2\Record;
  * This record is returned by all location services and databases.
  *
  * @property-read int|null $autonomousSystemNumber The
- * {@link * http://en.wikipedia.org/wiki/Autonomous_system_(Internet) autonomous
+ * {@link * https://en.wikipedia.org/wiki/Autonomous_system_(Internet) autonomous
  * system number} associated with the IP address. This attribute is only
  * available from the City and Insights web service and the GeoIP2
  * Enterprise database.
  * @property-read string|null $autonomousSystemOrganization The organization
- * associated with the registered {@link * http://en.wikipedia.org/wiki/Autonomous_system_(Internet) autonomous
+ * associated with the registered {@link * https://en.wikipedia.org/wiki/Autonomous_system_(Internet) autonomous
  * system number} for the IP address. This attribute is only available from
  * the City and Insights web service and the GeoIP2 Enterprise
  * database.

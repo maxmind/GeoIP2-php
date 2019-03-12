@@ -30,7 +30,7 @@ namespace GeoIp2\Record;
  * {@link * https://developers.google.com/adwords/api/docs/appendix/cities-DMAregions
  * Google AdWords API}.
  * @property-read string|null $timeZone The time zone associated with location, as
- * specified by the {@link http://www.iana.org/time-zones IANA Time Zone
+ * specified by the {@link https://www.iana.org/time-zones IANA Time Zone
  * Database}, e.g., "America/New_York".
  */
 class Location extends AbstractRecord
