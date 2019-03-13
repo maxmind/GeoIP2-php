@@ -28,7 +28,7 @@ namespace GeoIp2\Model;
  * Represented country data for the requested IP address. The represented
  * country is used for things like military bases. It is only present when
  * the represented country differs from the country.
- * @property-read array $subdivisions An array of {@link \GeoIp2\Record\Subdivision}
+ * @property-read array $subdivisions An array of \GeoIp2\Record\Subdivision
  * objects representing the country subdivisions for the requested IP
  * address. The number and type of subdivisions varies by country, but a
  * subdivision is typically a state, province, county, etc. Subdivisions
@@ -38,7 +38,7 @@ namespace GeoIp2\Model;
  * @property-read \GeoIp2\Record\Subdivision $mostSpecificSubdivision An object
  * representing the most specific subdivision returned. If the response
  * did not contain any subdivisions, this method returns an empty
- * {@link \GeoIp2\Record\Subdivision} object.
+ * \GeoIp2\Record\Subdivision object.
  * @property-read \GeoIp2\Record\Traits $traits Data for the traits of the
  * requested IP address.
  */
