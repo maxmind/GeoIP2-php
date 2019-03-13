@@ -35,7 +35,7 @@ namespace GeoIp2\Model;
  * are ordered from most general (largest) to most specific (smallest).
  * If the response did not contain any subdivisions, this method returns
  * an empty array.
- * @property-read \GeoIp2\Record\Subdivision $mostSpecificSubdivision An  object
+ * @property-read \GeoIp2\Record\Subdivision $mostSpecificSubdivision An object
  * representing the most specific subdivision returned. If the response
  * did not contain any subdivisions, this method returns an empty
  * {@link \GeoIp2\Record\Subdivision} object.
