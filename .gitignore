@@ -3,11 +3,11 @@ _site
 .idea
 .php_cs.cache
 GeoLite2-City.mmdb
-apigen.phar
 box.phar
 build
 composer.lock
 composer.phar
+/phpDocumentor.phar
 phpunit.xml
 geoip2.phar
 geoip2-php.sublime-*
