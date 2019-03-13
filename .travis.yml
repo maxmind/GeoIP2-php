@@ -10,6 +10,7 @@ matrix:
     - php: '7.0'
     - php: '7.1'
     - php: '7.2'
+    - php: '7.3'
       env:
         - RUN_LINTER=1
         - RUN_SNYK=1

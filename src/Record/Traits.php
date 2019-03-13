@@ -7,16 +7,16 @@ namespace GeoIp2\Record;
  *
  * This record is returned by all location services and databases.
  *
- * @property-read int|null $autonomousSystemNumber The
- * {@link * http://en.wikipedia.org/wiki/Autonomous_system_(Internet) autonomous
- * system number} associated with the IP address. This attribute is only
- * available from the City and Insights web service and the GeoIP2
+ * @property-read int|null $autonomousSystemNumber The autonomous system number
+ * associated with the IP address. See
+ * https://en.wikipedia.org/wiki/Autonomous_system_(Internet%29. This attribute
+ * is only available from the City and Insights web service and the GeoIP2
  * Enterprise database.
  * @property-read string|null $autonomousSystemOrganization The organization
- * associated with the registered {@link * http://en.wikipedia.org/wiki/Autonomous_system_(Internet) autonomous
- * system number} for the IP address. This attribute is only available from
- * the City and Insights web service and the GeoIP2 Enterprise
- * database.
+ * associated with the registered autonomous system number for the IP address.
+ * See https://en.wikipedia.org/wiki/Autonomous_system_(Internet%29. This
+ * attribute is only available from the City and Insights web service and the
+ * GeoIP2 Enterprise database.
  * @property-read string|null $connectionType The connection type may take the
  * following  values: "Dialup", "Cable/DSL", "Corporate", "Cellular".
  * Additional values may be added in the future. This attribute is only
@@ -35,10 +35,10 @@ namespace GeoIp2\Record;
  * @property-read bool $isAnonymous This is true if the IP address belongs to
  * any sort of anonymous network. This property is only available from GeoIP2
  * Precision Insights.
- * @property-read bool $isAnonymousProxy *Deprecated.* Please see our
- * {@link * https://www.maxmind.com/en/geoip2-anonymous-ip-database GeoIP2
- * Anonymous IP database} to determine whether the IP address is used by an
- * anonymizing service.
+ * @property-read bool $isAnonymousProxy *Deprecated.* Please see our GeoIP2
+ * Anonymous IP database
+ * (https://www.maxmind.com/en/geoip2-anonymous-ip-database) to determine
+ * whether the IP address is used by an anonymizing service.
  * @property-read bool $isAnonymousVpn This is true if the IP address is
  * registered to an anonymous VPN provider. If a VPN provider does not register
  * subnets under names associated with them, we will likely only flag their IP
