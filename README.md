@@ -1,6 +1,6 @@
-# GeoIP2 PHP API #
+# GeoIP2 PHP API [![Build Status](https://travis-ci.org/maxmind/GeoIP2-php.svg?branch=master)](https://travis-ci.org/maxmind/GeoIP2-php) [![Latest Stable Version](https://poser.pugx.org/geoip2/geoip2/v/stable)](https://packagist.org/packages/geoip2/geoip2)
 
-## Description ##
+## Description
 
 This package provides an API for the GeoIP2
 [web services](https://dev.maxmind.com/geoip/geoip2/web-services) and
@@ -8,11 +8,11 @@ This package provides an API for the GeoIP2
 works with the free
 [GeoLite2 databases](https://dev.maxmind.com/geoip/geoip2/geolite2/).
 
-## Install via Composer ##
+## Install via Composer
 
 We recommend installing this package with [Composer](https://getcomposer.org/).
 
-### Download Composer ###
+### Download Composer
 
 To download Composer, run in the root directory of your project:
 
@@ -22,7 +22,7 @@ curl -sS https://getcomposer.org/installer | php
 
 You should now have the file `composer.phar` in your project directory.
 
-### Install Dependencies ###
+### Install Dependencies
 
 Run in your project root:
 
@@ -34,7 +34,7 @@ You should now have the files `composer.json` and `composer.lock` as well as
 the directory `vendor` in your project directory. If you use a version control
 system, `composer.json` should be added to it.
 
-### Require Autoloader ###
+### Require Autoloader
 
 After installing the dependencies, you need to require the Composer autoloader
 from your code:
@@ -43,14 +43,14 @@ from your code:
 require 'vendor/autoload.php';
 ```
 
-## Install via Phar ##
+## Install via Phar
 
 Although we strongly recommend using Composer, we also provide a
 [phar archive](https://php.net/manual/en/book.phar.php) containing most of the
 dependencies for GeoIP2. Our latest phar archive is available on
 [our releases page](https://github.com/maxmind/GeoIP2-php/releases).
 
-### Install Dependencies ###
+### Install Dependencies
 
 In order to use the phar archive, you must have the PHP
 [Phar extension](https://php.net/manual/en/book.phar.php) installed and
@@ -69,7 +69,7 @@ If you are missing this extension, you will see errors like the following:
 PHP Fatal error:  Uncaught Error: Call to undefined function MaxMind\WebService\curl_version()
 ```
 
-### Require Package ###
+### Require Package
 
 To use the archive, just require it from your script:
 
@@ -77,7 +77,7 @@ To use the archive, just require it from your script:
 require 'geoip2.phar';
 ```
 
-## Optional C Extension ##
+## Optional C Extension
 
 The [MaxMind DB API](https://github.com/maxmind/MaxMind-DB-Reader-php)
 includes an optional C extension that you may install to dramatically increase
@@ -86,15 +86,15 @@ follow the instructions included with that API.
 
 The extension has no effect on web-service lookups.
 
-## IP Geolocation Usage ##
+## IP Geolocation Usage
 
 IP geolocation is inherently imprecise. Locations are often near the center of
 the population. Any location provided by a GeoIP2 database or web service
 should not be used to identify a particular address or household.
 
-## Database Reader ##
+## Database Reader
 
-### Usage ###
+### Usage
 
 To use this API, you must create a new `\GeoIp2\Database\Reader` object with
 the path to the database file as the first argument to the constructor. You
@@ -111,7 +111,7 @@ is thrown. If the database is invalid or corrupt, a
 
 See the API documentation for more details.
 
-### City Example ###
+### City Example
 
 ```php
 <?php
@@ -142,7 +142,7 @@ print($record->location->longitude . "\n"); // -93.2323
 
 ```
 
-### Anonymous IP Example ###
+### Anonymous IP Example
 
 ```php
 <?php
@@ -160,7 +160,7 @@ print($record->ipAddress . "\n"); // '128.101.101.101'
 
 ```
 
-### Connection-Type Example ###
+### Connection-Type Example
 
 ```php
 <?php
@@ -178,7 +178,7 @@ print($record->ipAddress . "\n"); // '128.101.101.101'
 
 ```
 
-### Domain Example ###
+### Domain Example
 
 ```php
 <?php
@@ -196,7 +196,7 @@ print($record->ipAddress . "\n"); // '128.101.101.101'
 
 ```
 
-### Enterprise Example ###
+### Enterprise Example
 
 ```php
 <?php
@@ -230,7 +230,7 @@ print($record->location->longitude . "\n"); // -93.2323
 
 ```
 
-### ISP Example ###
+### ISP Example
 
 ```php
 <?php
@@ -252,9 +252,9 @@ print($record->ipAddress . "\n"); // '128.101.101.101'
 
 ```
 
-## Web Service Client ##
+## Web Service Client
 
-### Usage ###
+### Usage
 
 To use this API, you must create a new `\GeoIp2\WebService\Client`
 object with your `$accountId` and `$licenseKey`, then you call the method
@@ -269,7 +269,7 @@ If there is an error, a structured exception is thrown.
 
 See the API documentation for more details.
 
-### Example ###
+### Example
 
 ```php
 <?php
@@ -301,7 +301,7 @@ print($record->location->longitude . "\n"); // -93.2323
 
 ```
 
-## Values to use for Database or Array Keys ##
+## Values to use for Database or Array Keys
 
 **We strongly discourage you from using a value from any `names` property as
 a key in a database or array.**
@@ -315,7 +315,7 @@ following:
   `$country->isoCode` or `$country->geonameId`
 * `GeoIp2\Record\Subdivision` - `$subdivision->isoCode` or `$subdivision->geonameId`
 
-### What data is returned? ###
+### What data is returned?
 
 While many of the end points return the same basic records, the attributes
 which can be populated vary between end points. In addition, while an end
@@ -332,7 +332,7 @@ for details on what data each end point may return.
 The only piece of data which is always returned is the `ipAddress`
 attribute in the `GeoIp2\Record\Traits` record.
 
-## Integration with GeoNames ##
+## Integration with GeoNames
 
 [GeoNames](https://www.geonames.org/) offers web services and downloadable
 databases with data on geographical features around the world, including
@@ -347,7 +347,7 @@ Some of the data that MaxMind provides is also sourced from GeoNames. We
 source things like place names, ISO codes, and other similar data from
 the GeoNames premium data set.
 
-## Reporting data problems ##
+## Reporting data problems
 
 If the problem you find is that an IP address is incorrectly mapped,
 please
@@ -365,7 +365,7 @@ If you are a paying MaxMind customer and you're not sure where to submit
 a correction, please
 [contact MaxMind support](https://www.maxmind.com/en/support) for help.
 
-## Other Support ##
+## Other Support
 
 Please report all issues with this code using the
 [GitHub issue tracker](https://github.com/maxmind/GeoIP2-php/issues).
@@ -374,13 +374,13 @@ If you are having an issue with a MaxMind service that is not specific
 to the client API, please see
 [our support page](https://www.maxmind.com/en/support).
 
-## Requirements  ##
+## Requirements
 
 This library requires PHP 5.4 or greater.
 
 This library also relies on the [MaxMind DB Reader](https://github.com/maxmind/MaxMind-DB-Reader-php).
 
-## Contributing ##
+## Contributing
 
 Patches and pull requests are encouraged. All code should follow the PSR-2
 style guidelines. Please include unit tests whenever possible. You may obtain
@@ -388,11 +388,11 @@ the test data for the maxmind-db folder by running `git submodule update
 --init --recursive` or adding `--recursive` to your initial clone, or from
 https://github.com/maxmind/MaxMind-DB
 
-## Versioning ##
+## Versioning
 
 The GeoIP2 PHP API uses [Semantic Versioning](https://semver.org/).
 
-## Copyright and License ##
+## Copyright and License
 
 This software is Copyright (c) 2013-2019 by MaxMind, Inc.
 
