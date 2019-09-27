@@ -66,6 +66,9 @@ namespace GeoIp2\Record;
  * @property-read string|null $organization The name of the organization associated
  * with the IP address. This attribute is only available from the City and
  * Insights web services and the GeoIP2 Enterprise database.
+ * @property-read int|null $userCount <p>The estimated number of users sharing
+ * the IP/network during the past 24 hours. For IPv4, the count is for the
+ * individual IP. For IPv6, the count is for the /64 network.</p>
  * @property-read string|null $userType <p>The user type associated with the IP
  *  address. This can be one of the following values:</p>
  *  <ul>
@@ -111,6 +114,7 @@ class Traits extends AbstractRecord
         'isSatelliteProvider',
         'isTorExitNode',
         'organization',
+        'userCount',
         'userType',
     ];
 }
