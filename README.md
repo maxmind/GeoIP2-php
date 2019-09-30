@@ -386,7 +386,7 @@ to the client API, please see
 
 ## Requirements  ##
 
-This library requires PHP 5.4 or greater.
+This library requires PHP 5.6 or greater.
 
 This library also relies on the [MaxMind DB Reader](https://github.com/maxmind/MaxMind-DB-Reader-php).
 

@@ -4,6 +4,7 @@ CHANGELOG
 2.10.0
 ------------------
 
+* PHP 5.6 or greater is now required.
 * The `network` property was added to `GeoIp2\Record\Traits`,
   `GeoIp2\Model\AnonymousIp`, `GeoIp2\Model\Asn`,
   `GeoIp2\Model\ConnectionType`, `Geoip2\Model\Domain`,
