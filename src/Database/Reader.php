@@ -34,6 +34,7 @@ use MaxMind\Db\Reader\InvalidDatabaseException;
 class Reader implements ProviderInterface
 {
     private $dbReader;
+    private $dbType;
     private $locales;
 
     /**
@@ -51,6 +52,7 @@ class Reader implements ProviderInterface
         $locales = ['en']
     ) {
         $this->dbReader = new DbReader($filename);
+        $this->dbType = $this->dbReader->metadata()->databaseType;
         $this->locales = $locales;
     }
 
@@ -235,11 +237,10 @@ class Reader implements ProviderInterface
 
     private function getRecord($class, $type, $ipAddress)
     {
-        if (strpos($this->metadata()->databaseType, $type) === false) {
+        if (strpos($this->dbType, $type) === false) {
             $method = lcfirst($class);
             throw new \BadMethodCallException(
-                "The $method method cannot be used to open a "
-                . $this->metadata()->databaseType . ' database'
+                "The $method method cannot be used to open a {$this->dbType} database"
             );
         }
         list($record, $prefixLen) = $this->dbReader->getWithPrefixLen($ipAddress);
