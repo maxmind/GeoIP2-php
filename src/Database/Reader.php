@@ -212,9 +212,11 @@ class Reader implements ProviderInterface
 
     private function modelFor($class, $type, $ipAddress)
     {
-        $record = $this->getRecord($class, $type, $ipAddress);
+        list($record, $prefixLen) = $this->getRecord($class, $type, $ipAddress);
 
         $record['traits']['ip_address'] = $ipAddress;
+        $record['traits']['prefix_len'] = $prefixLen;
+
         $class = 'GeoIp2\\Model\\' . $class;
 
         return new $class($record, $this->locales);
@@ -222,9 +224,10 @@ class Reader implements ProviderInterface
 
     private function flatModelFor($class, $type, $ipAddress)
     {
-        $record = $this->getRecord($class, $type, $ipAddress);
+        list($record, $prefixLen) = $this->getRecord($class, $type, $ipAddress);
 
         $record['ip_address'] = $ipAddress;
+        $record['prefix_len'] = $prefixLen;
         $class = 'GeoIp2\\Model\\' . $class;
 
         return new $class($record);
@@ -239,7 +242,7 @@ class Reader implements ProviderInterface
                 . $this->metadata()->databaseType . ' database'
             );
         }
-        $record = $this->dbReader->get($ipAddress);
+        list($record, $prefixLen) = $this->dbReader->getWithPrefixLen($ipAddress);
         if ($record === null) {
             throw new AddressNotFoundException(
                 "The address $ipAddress is not in the database."
@@ -259,7 +262,7 @@ class Reader implements ProviderInterface
             );
         }
 
-        return $record;
+        return [$record, $prefixLen];
     }
 
     /**

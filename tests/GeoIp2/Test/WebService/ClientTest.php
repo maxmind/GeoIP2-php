@@ -24,6 +24,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
             'maxmind' => ['queries_remaining' => 11],
             'traits' => [
                 'ip_address' => '1.2.3.4',
+                'network' => '1.2.3.0/24',
             ],
     ];
 
@@ -225,6 +226,12 @@ class ClientTest extends \PHPUnit_Framework_TestCase
             $country->registeredCountry->isInEuropeanUnion,
             'registered_country is_in_european_union is false'
         );
+
+        $this->assertSame(
+            '1.2.3.0/24',
+            $country->traits->network,
+            'network'
+        );
     }
 
     public function testInsights()
@@ -240,6 +247,12 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertSame(
+            '1.2.3.0/24',
+            $record->traits->network,
+            'network'
+        );
+
+        $this->assertSame(
             2,
             $record->traits->userCount,
             'user_count is 2'
@@ -251,6 +264,12 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $city = $this->makeRequest('City', '1.2.3.4');
 
         $this->assertInstanceOf('GeoIp2\Model\City', $city);
+
+        $this->assertSame(
+            '1.2.3.0/24',
+            $city->traits->network,
+            'network'
+        );
     }
 
     public function testMe()

@@ -140,6 +140,8 @@ print($record->postal->code . "\n"); // '55455'
 print($record->location->latitude . "\n"); // 44.9733
 print($record->location->longitude . "\n"); // -93.2323
 
+print($record->traits->network . "\n"); // '128.101.101.101/32'
+
 ```
 
 ### Anonymous IP Example ###
@@ -157,6 +159,7 @@ $record = $reader->anonymousIp('128.101.101.101');
 
 if ($record->isAnonymous) { print "anon\n"; }
 print($record->ipAddress . "\n"); // '128.101.101.101'
+print($record->network . "\n"); // '128.101.101.101/32'
 
 ```
 
@@ -175,6 +178,7 @@ $record = $reader->connectionType('128.101.101.101');
 
 print($record->connectionType . "\n"); // 'Corporate'
 print($record->ipAddress . "\n"); // '128.101.101.101'
+print($record->network . "\n"); // '128.101.101.101/32'
 
 ```
 
@@ -193,6 +197,7 @@ $record = $reader->domain('128.101.101.101');
 
 print($record->domain . "\n"); // 'umn.edu'
 print($record->ipAddress . "\n"); // '128.101.101.101'
+print($record->network . "\n"); // '128.101.101.101/32'
 
 ```
 
@@ -228,6 +233,8 @@ print($record->location->accuracyRadius . "\n"); // 50
 print($record->location->latitude . "\n"); // 44.9733
 print($record->location->longitude . "\n"); // -93.2323
 
+print($record->traits->network . "\n"); // '128.101.101.101/32'
+
 ```
 
 ### ISP Example ###
@@ -249,6 +256,7 @@ print($record->isp . "\n"); // 'University of Minnesota'
 print($record->organization . "\n"); // 'University of Minnesota'
 
 print($record->ipAddress . "\n"); // '128.101.101.101'
+print($record->network . "\n"); // '128.101.101.101/32'
 
 ```
 
@@ -298,6 +306,8 @@ print($record->postal->code . "\n"); // '55455'
 
 print($record->location->latitude . "\n"); // 44.9733
 print($record->location->longitude . "\n"); // -93.2323
+
+print($record->traits->network . "\n"); // '128.101.101.101/32'
 
 ```
 
