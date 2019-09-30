@@ -73,6 +73,7 @@ class InsightsTest extends \PHPUnit_Framework_TestCase
                 'is_tor_exit_node' => true,
                 'isp' => 'Comcast',
                 'organization' => 'Blorg',
+                'user_count' => 2,
                 'user_type' => 'college',
             ],
         ];
@@ -190,6 +191,12 @@ class InsightsTest extends \PHPUnit_Framework_TestCase
             $raw,
             $model->raw,
             'raw method returns raw input'
+        );
+
+        $this->assertSame(
+            2,
+            $model->traits->userCount,
+            'userCount is correct'
         );
     }
 

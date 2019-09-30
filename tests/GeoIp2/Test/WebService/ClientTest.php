@@ -27,8 +27,23 @@ class ClientTest extends \PHPUnit_Framework_TestCase
             ],
     ];
 
-    private function getResponse($ipAddress)
+    private function getResponse($service, $ipAddress)
     {
+        if ($service === 'Insights') {
+            $insights = unserialize(serialize($this->country));
+            $insights['traits']['user_count'] = 2;
+
+            $responses = [
+                '1.2.3.4' => $this->response(
+                    'insights',
+                    200,
+                    $insights
+                ),
+            ];
+
+            return $responses[$ipAddress];
+        }
+
         $responses = [
             '1.2.3.4' => $this->response(
                 'country',
@@ -222,6 +237,12 @@ class ClientTest extends \PHPUnit_Framework_TestCase
             42,
             $record->continent->geonameId,
             'continent geoname_id is 42'
+        );
+
+        $this->assertSame(
+            2,
+            $record->traits->userCount,
+            'user_count is 2'
         );
     }
 
@@ -444,7 +465,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $licenseKey = 'abcdef123456';
 
         list($statusCode, $headers, $responseBody)
-            = $this->getResponse($ipAddress);
+            = $this->getResponse($service, $ipAddress);
 
         $stub = $this->getMockForAbstractClass(
             'MaxMind\\WebService\\Http\\Request'
