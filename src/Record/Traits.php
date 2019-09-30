@@ -66,9 +66,10 @@ namespace GeoIp2\Record;
  * @property-read string|null $organization The name of the organization associated
  * with the IP address. This attribute is only available from the City and
  * Insights web services and the GeoIP2 Enterprise database.
- * @property-read int|null $userCount <p>The estimated number of users sharing
+ * @property-read int|null $userCount The estimated number of users sharing
  * the IP/network during the past 24 hours. For IPv4, the count is for the
- * individual IP. For IPv6, the count is for the /64 network.</p>
+ * individual IP. For IPv6, the count is for the /64 network. This property is
+ * only available from GeoIP2 Precision Insights.
  * @property-read string|null $userType <p>The user type associated with the IP
  *  address. This can be one of the following values:</p>
  *  <ul>
