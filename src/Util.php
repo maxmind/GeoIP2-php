@@ -16,21 +16,21 @@ class Util
      */
     public static function cidr($ipAddress, $prefixLen)
     {
-        $ipBytes = array_merge(unpack('C*', inet_pton($ipAddress)));
-        $networkBytes = array_fill(0, \count($ipBytes), 0);
+        $ipBytes = inet_pton($ipAddress);
+        $networkBytes = str_repeat("\0", \strlen($ipBytes));
 
         $curPrefix = $prefixLen;
-        for ($i = 0; $i < \count($ipBytes) && $curPrefix > 0; $i++) {
+        for ($i = 0; $i < \strlen($ipBytes) && $curPrefix > 0; $i++) {
             $b = $ipBytes[$i];
             if ($curPrefix < 8) {
                 $shiftN = 8 - $curPrefix;
-                $b = (0xFF & ($b >> $shiftN) << $shiftN);
+                $b = \chr(0xFF & (\ord($b) >> $shiftN) << $shiftN);
             }
             $networkBytes[$i] = $b;
             $curPrefix -= 8;
         }
 
-        $network = inet_ntop(pack('C*', ...$networkBytes));
+        $network = inet_ntop($networkBytes);
 
         return "$network/$prefixLen";
     }
