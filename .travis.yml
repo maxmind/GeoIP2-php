@@ -2,10 +2,9 @@
 sudo: false
 language: php
 dist: trusty
+
 matrix:
   include:
-    - php: '5.4'
-    - php: '5.5'
     - php: '5.6'
     - php: '7.0'
     - php: '7.1'
@@ -14,22 +13,32 @@ matrix:
       env:
         - RUN_LINTER=1
         - RUN_SNYK=1
-    - php: nightly
+    - php: '7.4snapshot'
+    - php: 'master'
+    - php: 'nightly'
+  fast_finish: true
   allow_failures:
-    - php: nightly
+    - php: '7.4snapshot'
+    - php: 'master'
+    - php: 'nightly'
+
 before_install:
   - composer install --dev -n --prefer-source
   - phpenv rehash
   - "if [[ $RUN_SNYK && $SNYK_TOKEN ]]; then sudo apt-get install -y nodejs; npm install -g snyk; fi"
+
 install:
   - "if [[ $RUN_SNYK && $SNYK_TOKEN ]]; then snyk test --org=maxmind; fi"
+
 script:
   - mkdir -p build/logs
   - "if [[ $RUN_LINTER ]]; then vendor/bin/php-cs-fixer fix --verbose --diff --dry-run --config=.php_cs; fi"
   - "if [[ $RUN_LINTER ]]; then vendor/bin/phpcs --standard=PSR2 src/; fi"
   - vendor/bin/phpunit -c phpunit.xml.dist
+
 after_script:
   - php vendor/bin/coveralls
+
 after_success:
   - "if [[ $RUN_SNYK && $SNYK_TOKEN && $TRAVIS_BRANCH == 'master' && $TRAVIS_PULL_REQUEST == 'false' ]]; then snyk monitor --org=maxmind --project-name=maxmind/GeoIP2-php; fi"
 notifications:
