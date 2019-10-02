@@ -2,6 +2,8 @@
 
 namespace GeoIp2\Record;
 
+use GeoIp2\Util;
+
 /**
  * Contains data for the traits record associated with an IP address.
  *
@@ -63,6 +65,9 @@ namespace GeoIp2\Record;
  * @property-read string|null $isp The name of the ISP associated with the IP
  * address. This attribute is only available from the City and Insights web
  * services and the GeoIP2 Enterprise database.
+ * @property-read string $network The network in CIDR notation associated with
+ * the record. In particular, this is the largest network where all of the
+ * fields besides $ipAddress have the same value.
  * @property-read string|null $organization The name of the organization associated
  * with the IP address. This attribute is only available from the City and
  * Insights web services and the GeoIP2 Enterprise database.
@@ -114,8 +119,18 @@ class Traits extends AbstractRecord
         'isPublicProxy',
         'isSatelliteProvider',
         'isTorExitNode',
+        'network',
         'organization',
         'userCount',
         'userType',
     ];
+
+    public function __construct($record)
+    {
+        if (!isset($record['network']) && isset($record['ip_address']) && isset($record['prefix_len'])) {
+            $record['network'] = Util::cidr($record['ip_address'], $record['prefix_len']);
+        }
+
+        parent::__construct($record);
+    }
 }

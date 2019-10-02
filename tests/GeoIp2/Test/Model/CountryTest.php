@@ -28,6 +28,7 @@ class CountryTest extends \PHPUnit_Framework_TestCase
         ],
         'traits' => [
             'ip_address' => '1.2.3.4',
+            'prefix_len' => 24,
         ],
     ];
 
@@ -209,6 +210,10 @@ class CountryTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(
             isset($this->model->traits->ipAddress),
             'ip_address is set'
+        );
+        $this->assertTrue(
+            isset($this->model->traits->network),
+            'network is set'
         );
         $this->assertFalse(
             isset($this->model->traits->unknown),

@@ -1,9 +1,16 @@
 CHANGELOG
 =========
 
-2.9.1
+2.10.0
 ------------------
 
+* PHP 5.6 or greater is now required.
+* The `network` property was added to `GeoIp2\Record\Traits`,
+  `GeoIp2\Model\AnonymousIp`, `GeoIp2\Model\Asn`,
+  `GeoIp2\Model\ConnectionType`, `Geoip2\Model\Domain`,
+  and `GeoIp2\Model\Isp`. This is a string in CIDR format representing the
+  largest network where all of the properties besides `ipAddress` have the
+  same value.
 * Updated documentation of anonymizer properties - `isAnonymousVpn`
   and `isHostingProvider` - to be more descriptive.
 

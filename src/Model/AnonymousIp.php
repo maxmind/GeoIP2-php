@@ -2,6 +2,8 @@
 
 namespace GeoIp2\Model;
 
+use GeoIp2\Util;
+
 /**
  * This class provides the GeoIP2 Anonymous IP model.
  *
@@ -19,6 +21,9 @@ namespace GeoIp2\Model;
  *     exit node.
  * @property-read string $ipAddress The IP address that the data in the model is
  *     for.
+ * @property-read string $network The network in CIDR notation associated with
+ *      the record. In particular, this is the largest network where all of the
+ *      fields besides $ipAddress have the same value.
  */
 class AnonymousIp extends AbstractModel
 {
@@ -28,6 +33,7 @@ class AnonymousIp extends AbstractModel
     protected $isPublicProxy;
     protected $isTorExitNode;
     protected $ipAddress;
+    protected $network;
 
     /**
      * @ignore
@@ -43,6 +49,8 @@ class AnonymousIp extends AbstractModel
         $this->isHostingProvider = $this->get('is_hosting_provider');
         $this->isPublicProxy = $this->get('is_public_proxy');
         $this->isTorExitNode = $this->get('is_tor_exit_node');
-        $this->ipAddress = $this->get('ip_address');
+        $ipAddress = $this->get('ip_address');
+        $this->ipAddress = $ipAddress;
+        $this->network = Util::cidr($ipAddress, $this->get('prefix_len'));
     }
 }
