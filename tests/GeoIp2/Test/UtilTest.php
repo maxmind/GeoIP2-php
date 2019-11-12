@@ -3,11 +3,12 @@
 namespace GeoIp2\Test;
 
 use GeoIp2\Util;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @coversNothing
  */
-class UtilTest extends \PHPUnit_Framework_TestCase
+class UtilTest extends TestCase
 {
     public function testCidr()
     {

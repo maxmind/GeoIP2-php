@@ -3,11 +3,12 @@
 namespace GeoIp2\Test\Model;
 
 use GeoIp2\Model\Insights;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @coversNothing
  */
-class InsightsTest extends \PHPUnit_Framework_TestCase
+class InsightsTest extends TestCase
 {
     public function testFull()
     {

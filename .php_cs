@@ -24,6 +24,7 @@ return PhpCsFixer\Config::create()
         'phpdoc_no_alias_tag' => false,
         'phpdoc_order' => true,
         'semicolon_after_instruction' => true,
+        'single_line_throw' => false,
         'strict_comparison' => true,
         'strict_param' => true,
         'yoda_style' => false,

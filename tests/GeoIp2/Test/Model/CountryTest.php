@@ -3,11 +3,12 @@
 namespace GeoIp2\Test\Model;
 
 use GeoIp2\Model\Country;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @coversNothing
  */
-class CountryTest extends \PHPUnit_Framework_TestCase
+class CountryTest extends TestCase
 {
     private $raw = [
         'continent' => [
@@ -34,7 +35,7 @@ class CountryTest extends \PHPUnit_Framework_TestCase
 
     private $model;
 
-    public function setUp()
+    protected function setUp()
     {
         $this->model = new Country($this->raw, ['en']);
     }
