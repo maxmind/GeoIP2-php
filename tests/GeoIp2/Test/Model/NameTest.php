@@ -3,11 +3,12 @@
 namespace GeoIp2\Test\Model;
 
 use GeoIp2\Model\Country;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @coversNothing
  */
-class NameTest extends \PHPUnit_Framework_TestCase
+class NameTest extends TestCase
 {
     public $raw = [
         'continent' => [

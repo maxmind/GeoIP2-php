@@ -23,7 +23,7 @@ matrix:
     - php: 'nightly'
 
 before_install:
-  - composer install --dev -n --prefer-source
+  - composer install -n --prefer-source
   - phpenv rehash
   - "if [[ $RUN_SNYK && $SNYK_TOKEN ]]; then sudo apt-get install -y nodejs; npm install -g snyk; fi"
 

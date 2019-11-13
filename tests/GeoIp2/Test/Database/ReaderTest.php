@@ -3,11 +3,12 @@
 namespace GeoIp2\Test\Database;
 
 use GeoIp2\Database\Reader;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @coversNothing
  */
-class ReaderTest extends \PHPUnit_Framework_TestCase
+class ReaderTest extends TestCase
 {
     public function databaseTypes()
     {

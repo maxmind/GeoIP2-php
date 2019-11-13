@@ -4,11 +4,12 @@ namespace GeoIp2\Test\WebService;
 
 use Composer\CaBundle\CaBundle;
 use MaxMind\WebService\Client as WsClient;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @coversNothing
  */
-class ClientTest extends \PHPUnit_Framework_TestCase
+class ClientTest extends TestCase
 {
     private $country = [
             'continent' => [
