@@ -74,6 +74,7 @@ class InsightsTest extends TestCase
                 'is_tor_exit_node' => true,
                 'isp' => 'Comcast',
                 'organization' => 'Blorg',
+                'static_ip_score' => 1.3,
                 'user_count' => 2,
                 'user_type' => 'college',
             ],
@@ -180,6 +181,12 @@ class InsightsTest extends TestCase
         $this->assertFalse(
             $model->traits->isAnonymousProxy,
             '$model->traits->isAnonymousProxy is false'
+        );
+
+        $this->assertSame(
+            1.3,
+            $model->traits->staticIpScore,
+            'staticIPScore is correct'
         );
 
         $this->assertSame(
