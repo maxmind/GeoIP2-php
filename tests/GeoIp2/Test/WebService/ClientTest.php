@@ -257,7 +257,7 @@ class ClientTest extends TestCase
         $this->assertSame(
             1.3,
             $record->traits->staticIpScore,
-            'staticIPScore is 2'
+            'staticIPScore is 1.3'
         );
 
         $this->assertSame(
