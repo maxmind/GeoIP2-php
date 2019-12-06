@@ -33,6 +33,7 @@ class ClientTest extends TestCase
     {
         if ($service === 'Insights') {
             $insights = unserialize(serialize($this->country));
+            $insights['traits']['static_ip_score'] = 1.3;
             $insights['traits']['user_count'] = 2;
 
             $responses = [
@@ -251,6 +252,12 @@ class ClientTest extends TestCase
             '1.2.3.0/24',
             $record->traits->network,
             'network'
+        );
+
+        $this->assertSame(
+            1.3,
+            $record->traits->staticIpScore,
+            'staticIPScore is 1.3'
         );
 
         $this->assertSame(

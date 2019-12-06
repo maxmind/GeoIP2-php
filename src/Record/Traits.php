@@ -71,6 +71,9 @@ use GeoIp2\Util;
  * @property-read string|null $organization The name of the organization associated
  * with the IP address. This attribute is only available from the City and
  * Insights web services and the GeoIP2 Enterprise database.
+ * @property-read float|null $staticIPScore An indicator of how static or
+ * dynamic an IP address is. This property is only available from GeoIP2
+ * Precision Insights.
  * @property-read int|null $userCount The estimated number of users sharing
  * the IP/network during the past 24 hours. For IPv4, the count is for the
  * individual IP. For IPv6, the count is for the /64 network. This property is
@@ -121,6 +124,7 @@ class Traits extends AbstractRecord
         'isTorExitNode',
         'network',
         'organization',
+        'staticIpScore',
         'userCount',
         'userType',
     ];

@@ -13,6 +13,13 @@ CHANGELOG
   same value.
 * Updated documentation of anonymizer properties - `isAnonymousVpn`
   and `isHostingProvider` - to be more descriptive.
+* The `userCount` property was added to `GeoIp2\Record\Traits`. This is an
+  integer which indicates the estimated number of users sharing the
+  IP/network during the past 24 hours. This output is available from GeoIP2
+  Precision Insights.
+* The `staticIpScore` property was added to `GeoIp2\Record\Traits`. This is
+  a float which indicates how static or dynamic an IP address is. This
+  output is available from GeoIP2 Precision Insights.
 
 2.9.0 (2018-04-10)
 ------------------
