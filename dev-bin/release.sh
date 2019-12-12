@@ -84,7 +84,7 @@ cachedir="/tmp/phpdoc-$$-$RANDOM"
 rm -rf "$cachedir"
 
 php phpDocumentor.phar \
-    -d src,../MaxMind-DB-Reader-php/src \
+    -d ../src,../../MaxMind-DB-Reader-php/src \
     --visibility public \
     --cache-folder "$cachedir" \
     --title "GeoIP2 PHP API $tag" \
