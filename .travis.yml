@@ -13,12 +13,11 @@ matrix:
       env:
         - RUN_LINTER=1
         - RUN_SNYK=1
-    - php: '7.4snapshot'
+    - php: '7.4'
     - php: 'master'
     - php: 'nightly'
   fast_finish: true
   allow_failures:
-    - php: '7.4snapshot'
     - php: 'master'
     - php: 'nightly'
 
