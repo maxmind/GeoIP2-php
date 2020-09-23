@@ -70,6 +70,7 @@ class InsightsTest extends TestCase
                 'is_anonymous_vpn' => true,
                 'is_hosting_provider' => true,
                 'is_public_proxy' => true,
+                'is_residential_proxy' => true,
                 'is_satellite_provider' => true,
                 'is_tor_exit_node' => true,
                 'isp' => 'Comcast',
@@ -166,6 +167,11 @@ class InsightsTest extends TestCase
         $this->assertTrue(
             $model->traits->isPublicProxy,
             '$model->traits->isPublicProxy is true'
+        );
+
+        $this->assertTrue(
+            $model->traits->isResidentialProxy,
+            '$model->traits->isResidentialProxy is true'
         );
 
         $this->assertTrue(

@@ -136,9 +136,27 @@ class ReaderTest extends TestCase
         $this->assertTrue($record->isAnonymousVpn);
         $this->assertFalse($record->isHostingProvider);
         $this->assertFalse($record->isPublicProxy);
+        $this->assertFalse($record->isResidentialProxy);
         $this->assertFalse($record->isTorExitNode);
         $this->assertSame($ipAddress, $record->ipAddress);
         $this->assertSame('1.2.0.0/16', $record->network);
+        $reader->close();
+    }
+
+    public function testAnonymousIpAllTrue()
+    {
+        $reader = new Reader('maxmind-db/test-data/GeoIP2-Anonymous-IP-Test.mmdb');
+        $ipAddress = '81.2.69.1';
+
+        $record = $reader->anonymousIp($ipAddress);
+        $this->assertTrue($record->isAnonymous);
+        $this->assertTrue($record->isAnonymousVpn);
+        $this->assertTrue($record->isHostingProvider);
+        $this->assertTrue($record->isPublicProxy);
+        $this->assertTrue($record->isResidentialProxy);
+        $this->assertTrue($record->isTorExitNode);
+        $this->assertSame($ipAddress, $record->ipAddress);
+        $this->assertSame('81.2.69.0/24', $record->network);
         $reader->close();
     }
 

@@ -17,6 +17,8 @@ use GeoIp2\Util;
  *     to a hosting or VPN provider (see description of isAnonymousVpn property).
  * @property-read bool $isPublicProxy This is true if the IP address belongs to
  *     a public proxy.
+ * @property-read bool $isResidentialProxy This is true if the IP address is
+ *     on a suspected anonymizing network and belongs to a residential ISP.
  * @property-read bool $isTorExitNode This is true if the IP address is a Tor
  *     exit node.
  * @property-read string $ipAddress The IP address that the data in the model is
@@ -31,6 +33,7 @@ class AnonymousIp extends AbstractModel
     protected $isAnonymousVpn;
     protected $isHostingProvider;
     protected $isPublicProxy;
+    protected $isResidentialProxy;
     protected $isTorExitNode;
     protected $ipAddress;
     protected $network;
@@ -48,6 +51,7 @@ class AnonymousIp extends AbstractModel
         $this->isAnonymousVpn = $this->get('is_anonymous_vpn');
         $this->isHostingProvider = $this->get('is_hosting_provider');
         $this->isPublicProxy = $this->get('is_public_proxy');
+        $this->isResidentialProxy = $this->get('is_residential_proxy');
         $this->isTorExitNode = $this->get('is_tor_exit_node');
         $ipAddress = $this->get('ip_address');
         $this->ipAddress = $ipAddress;
