@@ -37,7 +37,7 @@ class CountryTest extends TestCase
 
     private $model;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->model = new Country($this->raw, ['en']);
     }
@@ -224,21 +224,19 @@ class CountryTest extends TestCase
         );
     }
 
-    /**
-     * @expectedException \RuntimeException
-     * @expectedExceptionMessage Unknown attribute
-     */
     public function testUnknownRecord()
     {
+        $this->expectException(\RuntimeException::class);
+        $this->expectExceptionMessage('Unknown attribute');
+
         $this->model->unknownRecord;
     }
 
-    /**
-     * @expectedException \RuntimeException
-     * @expectedExceptionMessage Unknown attribute
-     */
     public function testUnknownTrait()
     {
+        $this->expectException(\RuntimeException::class);
+        $this->expectExceptionMessage('Unknown attribute');
+
         $this->model->traits->unknown;
     }
 }
