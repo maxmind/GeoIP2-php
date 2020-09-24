@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace GeoIp2\Test\Database;
 
 use GeoIp2\Database\Reader;

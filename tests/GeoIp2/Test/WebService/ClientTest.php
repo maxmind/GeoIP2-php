@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace GeoIp2\Test\WebService;
 
 use Composer\CaBundle\CaBundle;
@@ -476,7 +478,9 @@ class ClientTest extends TestCase
             $body = json_encode($body);
         }
 
-        $headers['Content-Length'] = \strlen($body);
+        if ($body !== null) {
+            $headers['Content-Length'] = \strlen($body);
+        }
 
         return [$status, $headers,  $body];
     }

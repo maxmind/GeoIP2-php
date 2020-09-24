@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace GeoIp2\WebService;
 
 use GeoIp2\Exception\AddressNotFoundException;
