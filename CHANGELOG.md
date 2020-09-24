@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+2.11.0
+-------------------
+
+* Added the `isResidentialProxy` property to `GeoIp2\Model\AnonymousIP` and
+  `GeoIp2\Record\Traits`.
+
 2.10.0 (2019-12-12)
 -------------------
 
