@@ -135,7 +135,7 @@ class Traits extends AbstractRecord
         'userType',
     ];
 
-    public function __construct($record)
+    public function __construct(?array $record)
     {
         if (!isset($record['network']) && isset($record['ip_address']) && isset($record['prefix_len'])) {
             $record['network'] = Util::cidr($record['ip_address'], $record['prefix_len']);

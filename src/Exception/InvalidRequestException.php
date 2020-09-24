@@ -16,10 +16,10 @@ class InvalidRequestException extends HttpException
     public $error;
 
     public function __construct(
-        $message,
-        $error,
-        $httpStatus,
-        $uri,
+        string $message,
+        string $error,
+        int $httpStatus,
+        string $uri,
         \Exception $previous = null
     ) {
         $this->error = $error;

@@ -29,10 +29,8 @@ class Asn extends AbstractModel
 
     /**
      * @ignore
-     *
-     * @param mixed $raw
      */
-    public function __construct($raw)
+    public function __construct(array $raw)
     {
         parent::__construct($raw);
         $this->autonomousSystemNumber = $this->get('autonomous_system_number');

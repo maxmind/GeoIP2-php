@@ -50,11 +50,8 @@ class City extends Country
 
     /**
      * @ignore
-     *
-     * @param mixed $raw
-     * @param mixed $locales
      */
-    public function __construct($raw, $locales = ['en'])
+    public function __construct(array $raw, array $locales = ['en'])
     {
         parent::__construct($raw, $locales);
 
@@ -65,7 +62,7 @@ class City extends Country
         $this->createSubdivisions($raw, $locales);
     }
 
-    private function createSubdivisions($raw, $locales)
+    private function createSubdivisions(array $raw, array $locales): void
     {
         if (!isset($raw['subdivisions'])) {
             return;
@@ -81,10 +78,8 @@ class City extends Country
 
     /**
      * @ignore
-     *
-     * @param mixed $attr
      */
-    public function __get($attr)
+    public function __get(string $attr)
     {
         if ($attr === 'mostSpecificSubdivision') {
             return $this->$attr();
@@ -95,10 +90,8 @@ class City extends Country
 
     /**
      * @ignore
-     *
-     * @param mixed $attr
      */
-    public function __isset($attr)
+    public function __isset(string $attr): bool
     {
         if ($attr === 'mostSpecificSubdivision') {
             // We always return a mostSpecificSubdivision, even if it is the
@@ -109,7 +102,7 @@ class City extends Country
         return parent::__isset($attr);
     }
 
-    private function mostSpecificSubdivision()
+    private function mostSpecificSubdivision(): \GeoIp2\Record\Subdivision
     {
         return empty($this->subdivisions) ?
             new \GeoIp2\Record\Subdivision([], $this->locales) :
