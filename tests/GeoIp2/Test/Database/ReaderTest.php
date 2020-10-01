@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace GeoIp2\Test\Database;
 
 use GeoIp2\Database\Reader;
@@ -82,45 +84,41 @@ class ReaderTest extends TestCase
         $reader->close();
     }
 
-    /**
-     * @expectedException \GeoIp2\Exception\AddressNotFoundException
-     * @expectedExceptionMessage The address 10.10.10.10 is not in the database.
-     */
     public function testUnknownAddress()
     {
+        $this->expectException(\GeoIp2\Exception\AddressNotFoundException::class);
+        $this->expectExceptionMessage('The address 10.10.10.10 is not in the database.');
+
         $reader = new Reader('maxmind-db/test-data/GeoIP2-City-Test.mmdb');
         $reader->city('10.10.10.10');
         $reader->close();
     }
 
-    /**
-     * @expectedException \BadMethodCallException
-     * @expectedExceptionMessage The country method cannot be used to open a GeoIP2-City database
-     */
     public function testIncorrectDatabase()
     {
+        $this->expectException(\BadMethodCallException::class);
+        $this->expectExceptionMessage('The country method cannot be used to open a GeoIP2-City database');
+
         $reader = new Reader('maxmind-db/test-data/GeoIP2-City-Test.mmdb');
         $reader->country('10.10.10.10');
         $reader->close();
     }
 
-    /**
-     * @expectedException \BadMethodCallException
-     * @expectedExceptionMessage The domain method cannot be used to open a GeoIP2-City database
-     */
     public function testIncorrectDatabaseFlat()
     {
+        $this->expectException(\BadMethodCallException::class);
+        $this->expectExceptionMessage('The domain method cannot be used to open a GeoIP2-City database');
+
         $reader = new Reader('maxmind-db/test-data/GeoIP2-City-Test.mmdb');
         $reader->domain('10.10.10.10');
         $reader->close();
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage is not a valid IP address
-     */
     public function testInvalidAddress()
     {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('is not a valid IP address');
+
         $reader = new Reader('maxmind-db/test-data/GeoIP2-City-Test.mmdb');
         $reader->city('invalid');
         $reader->close();

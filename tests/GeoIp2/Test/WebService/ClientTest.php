@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace GeoIp2\Test\WebService;
 
 use Composer\CaBundle\CaBundle;
@@ -291,153 +293,137 @@ class ClientTest extends TestCase
         );
     }
 
-    /**
-     * @expectedException \GeoIp2\Exception\GeoIp2Exception
-     * @expectedExceptionMessage Received a 200 response for GeoIP2 Country but did not receive a HTTP body.
-     */
     public function testNoBodyException()
     {
+        $this->expectException(\GeoIp2\Exception\GeoIp2Exception::class);
+        $this->expectExceptionMessage('Received a 200 response for GeoIP2 Country but did not receive a HTTP body.');
+
         $this->makeRequest('Country', '1.2.3.5');
     }
 
-    /**
-     * @expectedException \GeoIp2\Exception\GeoIp2Exception
-     * @expectedExceptionMessage Received a 200 response for GeoIP2 Country but could not decode the response as JSON:
-     */
     public function testBadBodyException()
     {
+        $this->expectException(\GeoIp2\Exception\GeoIp2Exception::class);
+        $this->expectExceptionMessage('Received a 200 response for GeoIP2 Country but could not decode the response as JSON:');
+
         $this->makeRequest('Country', '2.2.3.5');
     }
 
-    /**
-     * @expectedException \GeoIp2\Exception\InvalidRequestException
-     * @expectedExceptionCode 400
-     * @expectedExceptionMessage The value "1.2.3" is not a valid ip address
-     */
     public function testInvalidIPException()
     {
+        $this->expectException(\GeoIp2\Exception\InvalidRequestException::class);
+        $this->expectExceptionCode(400);
+        $this->expectExceptionMessage('The value "1.2.3" is not a valid ip address');
+
         $this->makeRequest('Country', '1.2.3.6');
     }
 
-    /**
-     * @expectedException \GeoIp2\Exception\HttpException
-     * @expectedExceptionCode 400
-     * @expectedExceptionMessage with no body
-     */
     public function testNoErrorBodyIPException()
     {
+        $this->expectException(\GeoIp2\Exception\HttpException::class);
+        $this->expectExceptionCode(400);
+        $this->expectExceptionMessage('with no body');
+
         $this->makeRequest('Country', '1.2.3.7');
     }
 
-    /**
-     * @expectedException \GeoIp2\Exception\GeoIp2Exception
-     * @expectedExceptionMessage Error response contains JSON but it does not specify code or error keys: {"weird":42}
-     */
     public function testWeirdErrorBodyIPException()
     {
+        $this->expectException(\GeoIp2\Exception\GeoIp2Exception::class);
+        $this->expectExceptionMessage('Error response contains JSON but it does not specify code or error keys: {"weird":42}');
+
         $this->makeRequest('Country', '1.2.3.8');
     }
 
-    /**
-     * @expectedException \GeoIp2\Exception\HttpException
-     * @expectedExceptionCode 400
-     * @expectedExceptionMessage Received a 400 error for GeoIP2 Country but could not decode the response as JSON: Syntax error. Body: { invalid: }
-     */
     public function testInvalidErrorBodyIPException()
     {
+        $this->expectException(\GeoIp2\Exception\HttpException::class);
+        $this->expectExceptionCode(400);
+        $this->expectExceptionMessage('Received a 400 error for GeoIP2 Country but could not decode the response as JSON: Syntax error. Body: { invalid: }');
+
         $this->makeRequest('Country', '1.2.3.9');
     }
 
-    /**
-     * @expectedException \GeoIp2\Exception\HttpException
-     * @expectedExceptionCode 500
-     * @expectedExceptionMessage Received a server error (500)
-     */
     public function test500PException()
     {
+        $this->expectException(\GeoIp2\Exception\HttpException::class);
+        $this->expectExceptionCode(500);
+        $this->expectExceptionMessage('Received a server error (500)');
+
         $this->makeRequest('Country', '1.2.3.10');
     }
 
-    /**
-     * @expectedException \GeoIp2\Exception\HttpException
-     * @expectedExceptionCode 300
-     * @expectedExceptionMessage Received an unexpected HTTP status (300) for GeoIP2 Country
-     */
     public function test3xxException()
     {
+        $this->expectException(\GeoIp2\Exception\HttpException::class);
+        $this->expectExceptionCode(300);
+        $this->expectExceptionMessage('Received an unexpected HTTP status (300) for GeoIP2 Country');
+
         $this->makeRequest('Country', '1.2.3.11');
     }
 
-    /**
-     * @expectedException \GeoIp2\Exception\HttpException
-     * @expectedExceptionCode 406
-     * @expectedExceptionMessage Received a 406 error for GeoIP2 Country with the following body: Cannot satisfy your Accept-Charset requirements
-     */
     public function test406Exception()
     {
+        $this->expectException(\GeoIp2\Exception\HttpException::class);
+        $this->expectExceptionCode(406);
+        $this->expectExceptionMessage('Received a 406 error for GeoIP2 Country with the following body: Cannot satisfy your Accept-Charset requirements');
+
         $this->makeRequest('Country', '1.2.3.12');
     }
 
-    /**
-     * @expectedException \GeoIp2\Exception\AddressNotFoundException
-     * @expectedExceptionMessage The address "1.2.3.13" is not in our database.
-     */
     public function testAddressNotFoundException()
     {
+        $this->expectException(\GeoIp2\Exception\AddressNotFoundException::class);
+        $this->expectExceptionMessage('The address "1.2.3.13" is not in our database.');
+
         $this->makeRequest('Country', '1.2.3.13');
     }
 
-    /**
-     * @expectedException \GeoIp2\Exception\AddressNotFoundException
-     * @expectedExceptionMessage The address "1.2.3.14" is a private address.
-     */
     public function testAddressReservedException()
     {
+        $this->expectException(\GeoIp2\Exception\AddressNotFoundException::class);
+        $this->expectExceptionMessage('The address "1.2.3.14" is a private address.');
+
         $this->makeRequest('Country', '1.2.3.14');
     }
 
-    /**
-     * @expectedException \GeoIp2\Exception\AuthenticationException
-     * @expectedExceptionMessage A user ID and license key are required to use this service
-     */
     public function testAuthorizationException()
     {
+        $this->expectException(\GeoIp2\Exception\AuthenticationException::class);
+        $this->expectExceptionMessage('A user ID and license key are required to use this service');
+
         $this->makeRequest('Country', '1.2.3.15');
     }
 
-    /**
-     * @expectedException \GeoIp2\Exception\AuthenticationException
-     * @expectedExceptionMessage A license key is required to use this service
-     */
     public function testMissingLicenseKeyException()
     {
+        $this->expectException(\GeoIp2\Exception\AuthenticationException::class);
+        $this->expectExceptionMessage('A license key is required to use this service');
+
         $this->makeRequest('Country', '1.2.3.16');
     }
 
-    /**
-     * @expectedException \GeoIp2\Exception\AuthenticationException
-     * @expectedExceptionMessage A user ID is required to use this service
-     */
     public function testMissingUserIdException()
     {
+        $this->expectException(\GeoIp2\Exception\AuthenticationException::class);
+        $this->expectExceptionMessage('A user ID is required to use this service');
+
         $this->makeRequest('Country', '1.2.3.17');
     }
 
-    /**
-     * @expectedException \GeoIp2\Exception\AuthenticationException
-     * @expectedExceptionMessage A account ID is required to use this service
-     */
     public function testMissingAccountIdException()
     {
+        $this->expectException(\GeoIp2\Exception\AuthenticationException::class);
+        $this->expectExceptionMessage('A account ID is required to use this service');
+
         $this->makeRequest('Country', '1.2.3.19');
     }
 
-    /**
-     * @expectedException \GeoIp2\Exception\OutOfQueriesException
-     * @expectedExceptionMessage The license key you have provided is out of queries.
-     */
     public function testOutOfQueriesException()
     {
+        $this->expectException(\GeoIp2\Exception\OutOfQueriesException::class);
+        $this->expectExceptionMessage('The license key you have provided is out of queries.');
+
         $this->makeRequest('Country', '1.2.3.18');
     }
 
@@ -476,7 +462,9 @@ class ClientTest extends TestCase
             $body = json_encode($body);
         }
 
-        $headers['Content-Length'] = \strlen($body);
+        if ($body !== null) {
+            $headers['Content-Length'] = \strlen($body);
+        }
 
         return [$status, $headers,  $body];
     }
@@ -494,8 +482,8 @@ class ClientTest extends TestCase
         list($statusCode, $headers, $responseBody)
             = $this->getResponse($service, $ipAddress);
 
-        $stub = $this->getMockForAbstractClass(
-            'MaxMind\\WebService\\Http\\Request'
+        $stub = $this->createMock(
+            \MaxMind\WebService\Http\Request::class
         );
         $contentType = isset($headers['Content-Type'])
             ? $headers['Content-Type']

@@ -4,8 +4,10 @@ CHANGELOG
 2.11.0
 -------------------
 
+* IMPORTANT: PHP 7.2 or greater is now required.
 * Added the `isResidentialProxy` property to `GeoIp2\Model\AnonymousIP` and
   `GeoIp2\Record\Traits`.
+* Additional type hints have been added.
 
 2.10.0 (2019-12-12)
 -------------------
