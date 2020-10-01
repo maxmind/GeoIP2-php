@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>GeoIP2 PHP API v2.11.0</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit--><script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">GeoIP2 PHP API v2.11.0</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">                    <li class="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">                            <li><a href="../namespaces/GeoIp2.html">\GeoIp2</a></li>                            <li><a href="../namespaces/MaxMind.html">\MaxMind</a></li>                        </ul>
+                    </li>                    <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">                                    <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">66</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">                                    <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">                                    <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">    <section class="row-fluid">
+        <div class="span2 sidebar">    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">                    <a class="accordion-toggle" data-toggle="collapse" data-target="#namespace-1296435109"></a>                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-1296435109" class="accordion-body collapsein">
+                <div class="accordion-inner">    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">                    <a class="accordion-togglecollapsed" data-toggle="collapse" data-target="#namespace-1499021267"></a>                <a href="../namespaces/GeoIp2.html" style="margin-left: 30px; padding-left: 0">GeoIp2</a>
+            </div>
+            <div id="namespace-1499021267" class="accordion-body collapse">
+                <div class="accordion-inner">    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">                    <a class="accordion-togglecollapsed" data-toggle="collapse" data-target="#namespace-132533266"></a>                <a href="../namespaces/GeoIp2.Database.html" style="margin-left: 30px; padding-left: 0">Database</a>
+            </div>
+            <div id="namespace-132533266" class="accordion-body collapse">
+                <div class="accordion-inner">
+                    <ul>                            <li class="class"><a href="../classes/GeoIp2.Database.Reader.html">Reader</a></li>                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">                    <a class="accordion-togglecollapsed" data-toggle="collapse" data-target="#namespace-47224979"></a>                <a href="../namespaces/GeoIp2.Exception.html" style="margin-left: 30px; padding-left: 0">Exception</a>
+            </div>
+            <div id="namespace-47224979" class="accordion-body collapse">
+                <div class="accordion-inner">
+                    <ul>                            <li class="class"><a href="../classes/GeoIp2.Exception.AddressNotFoundException.html">AddressNotFoundException</a></li>                            <li class="class"><a href="../classes/GeoIp2.Exception.AuthenticationException.html">AuthenticationException</a></li>                            <li class="class"><a href="../classes/GeoIp2.Exception.GeoIp2Exception.html">GeoIp2Exception</a></li>                            <li class="class"><a href="../classes/GeoIp2.Exception.HttpException.html">HttpException</a></li>                            <li class="class"><a href="../classes/GeoIp2.Exception.InvalidRequestException.html">InvalidRequestException</a></li>                            <li class="class"><a href="../classes/GeoIp2.Exception.OutOfQueriesException.html">OutOfQueriesException</a></li>                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">                    <a class="accordion-togglecollapsed" data-toggle="collapse" data-target="#namespace-2035723147"></a>                <a href="../namespaces/GeoIp2.Model.html" style="margin-left: 30px; padding-left: 0">Model</a>
+            </div>
+            <div id="namespace-2035723147" class="accordion-body collapse">
+                <div class="accordion-inner">
+                    <ul>                            <li class="class"><a href="../classes/GeoIp2.Model.AbstractModel.html">AbstractModel</a></li>                            <li class="class"><a href="../classes/GeoIp2.Model.AnonymousIp.html">AnonymousIp</a></li>                            <li class="class"><a href="../classes/GeoIp2.Model.Asn.html">Asn</a></li>                            <li class="class"><a href="../classes/GeoIp2.Model.City.html">City</a></li>                            <li class="class"><a href="../classes/GeoIp2.Model.ConnectionType.html">ConnectionType</a></li>                            <li class="class"><a href="../classes/GeoIp2.Model.Country.html">Country</a></li>                            <li class="class"><a href="../classes/GeoIp2.Model.Domain.html">Domain</a></li>                            <li class="class"><a href="../classes/GeoIp2.Model.Enterprise.html">Enterprise</a></li>                            <li class="class"><a href="../classes/GeoIp2.Model.Insights.html">Insights</a></li>                            <li class="class"><a href="../classes/GeoIp2.Model.Isp.html">Isp</a></li>                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">                    <a class="accordion-togglecollapsed" data-toggle="collapse" data-target="#namespace-76728560"></a>                <a href="../namespaces/GeoIp2.Record.html" style="margin-left: 30px; padding-left: 0">Record</a>
+            </div>
+            <div id="namespace-76728560" class="accordion-body collapse">
+                <div class="accordion-inner">
+                    <ul>                            <li class="class"><a href="../classes/GeoIp2.Record.City.html">City</a></li>                            <li class="class"><a href="../classes/GeoIp2.Record.Continent.html">Continent</a></li>                            <li class="class"><a href="../classes/GeoIp2.Record.Country.html">Country</a></li>                            <li class="class"><a href="../classes/GeoIp2.Record.Location.html">Location</a></li>                            <li class="class"><a href="../classes/GeoIp2.Record.MaxMind.html">MaxMind</a></li>                            <li class="class"><a href="../classes/GeoIp2.Record.Postal.html">Postal</a></li>                            <li class="class"><a href="../classes/GeoIp2.Record.RepresentedCountry.html">RepresentedCountry</a></li>                            <li class="class"><a href="../classes/GeoIp2.Record.Subdivision.html">Subdivision</a></li>                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">                    <a class="accordion-togglecollapsed" data-toggle="collapse" data-target="#namespace-847707886"></a>                <a href="../namespaces/GeoIp2.WebService.html" style="margin-left: 30px; padding-left: 0">WebService</a>
+            </div>
+            <div id="namespace-847707886" class="accordion-body collapse">
+                <div class="accordion-inner">
+                    <ul>                            <li class="class"><a href="../classes/GeoIp2.WebService.Client.html">Client</a></li>                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+                    <ul>                            <li class="interface"><a href="../classes/GeoIp2.ProviderInterface.html">ProviderInterface</a></li>                            <li class="class"><a href="../classes/GeoIp2.Util.html">Util</a></li>                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">                    <a class="accordion-togglecollapsed" data-toggle="collapse" data-target="#namespace-1634299870"></a>                <a href="../namespaces/MaxMind.html" style="margin-left: 30px; padding-left: 0">MaxMind</a>
+            </div>
+            <div id="namespace-1634299870" class="accordion-body collapse">
+                <div class="accordion-inner">    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">                    <a class="accordion-togglecollapsed" data-toggle="collapse" data-target="#namespace-655174367"></a>                <a href="../namespaces/MaxMind.Db.html" style="margin-left: 30px; padding-left: 0">Db</a>
+            </div>
+            <div id="namespace-655174367" class="accordion-body collapse">
+                <div class="accordion-inner">    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">                    <a class="accordion-togglecollapsed" data-toggle="collapse" data-target="#namespace-125851500"></a>                <a href="../namespaces/MaxMind.Db.Reader.html" style="margin-left: 30px; padding-left: 0">Reader</a>
+            </div>
+            <div id="namespace-125851500" class="accordion-body collapse">
+                <div class="accordion-inner">
+                    <ul>                            <li class="class"><a href="../classes/MaxMind.Db.Reader.InvalidDatabaseException.html">InvalidDatabaseException</a></li>                            <li class="class"><a href="../classes/MaxMind.Db.Reader.Metadata.html">Metadata</a></li>                            <li class="class"><a href="../classes/MaxMind.Db.Reader.Util.html">Util</a></li>                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+                    <ul>                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+                    <ul>                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+                    <ul>                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav><a href="../namespaces/GeoIp2.Model.html">\GeoIp2\Model</a> <i class="icon-level-up"></i>                    </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\GeoIp2\Model</small>City</h1>
+                    <p><em>Model class for the data returned by GeoIP2 City web service and database.</em></p><p>The only difference between the City and Insights model classes is which
+fields in each record may be populated. See
+<a href="https://dev.maxmind.com/geoip/geoip2/web-services">https://dev.maxmind.com/geoip/geoip2/web-services</a> for more details.</p>                    
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">                                    <a href="../classes/GeoIp2.Model.AbstractModel.html#method_jsonSerialize" class="">jsonSerialize()</a><br />                            </section>
+                            <section class="span4">                                    <a href="../classes/GeoIp2.Model.City.html#property_city" class="">$city</a><br />                                    <a href="../classes/GeoIp2.Model.City.html#property_location" class="">$location</a><br />                                    <a href="../classes/GeoIp2.Model.City.html#property_postal" class="">$postal</a><br />                                    <a href="../classes/GeoIp2.Model.City.html#property_subdivisions" class="">$subdivisions</a><br />                                    <a href="../classes/GeoIp2.Model.City.html#property_mostSpecificSubdivision" class="">$mostSpecificSubdivision</a><br />                                    <a href="../classes/GeoIp2.Model.Country.html#property_continent" class="">$continent</a><br />                                    <a href="../classes/GeoIp2.Model.Country.html#property_country" class="">$country</a><br />                                    <a href="../classes/GeoIp2.Model.Country.html#property_maxmind" class="">$maxmind</a><br />                                    <a href="../classes/GeoIp2.Model.Country.html#property_registeredCountry" class="">$registeredCountry</a><br />                                    <a href="../classes/GeoIp2.Model.Country.html#property_representedCountry" class="">$representedCountry</a><br />                                    <a href="../classes/GeoIp2.Model.Country.html#property_traits" class="">$traits</a><br />                            </section>
+                            <section class="span4">                                    <em>No constants found</em>                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">                                    <em>No protected methods found</em>                            </section>
+                            <section class="span4">                                    <em>No protected properties found</em>                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">                                    <em>No private methods found</em>                            </section>
+                            <section class="span4">                                    <em>No private properties found</em>                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/GeoIP2-php.src.Model.City.html"><div class="path-wrapper">GeoIP2-php/src/Model/City.php</div></a></dd>                        <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">Default</div></dd>                        <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                        <div class="namespace-wrapper"><a href="../classes/GeoIp2.Model.AbstractModel.html">\GeoIp2\Model\AbstractModel</a></div>
+                                        <div class="namespace-wrapper"><a href="../classes/GeoIp2.Model.Country.html">\GeoIp2\Model\Country</a></div>                                <div class="namespace-wrapper">\GeoIp2\Model\City</div>
+                            </dd>                    </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">                        <tr><td colspan="2"><em>None found</em></td></tr>                    </table>
+                </aside>
+            </div>            <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_city" name="property_city" class="anchor"></a>
+            <article class="property">
+                <h3 class="public">$city</h3>
+                <pre class="signature">$city :\GeoIp2\Record\City</pre>
+                <p><em></em></p><p>City data for the requested IP
+address.</p>                <h4>Type</h4>\GeoIp2\Record\City            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>            <dl>            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">                    <tr><td colspan="2"><em>None found</em></td></tr>            </table>
+        </aside>
+    </div>    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_location" name="property_location" class="anchor"></a>
+            <article class="property">
+                <h3 class="public">$location</h3>
+                <pre class="signature">$location :\GeoIp2\Record\Location</pre>
+                <p><em></em></p><p>Location data for the
+requested IP address.</p>                <h4>Type</h4>\GeoIp2\Record\Location            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>            <dl>            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">                    <tr><td colspan="2"><em>None found</em></td></tr>            </table>
+        </aside>
+    </div>    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_postal" name="property_postal" class="anchor"></a>
+            <article class="property">
+                <h3 class="public">$postal</h3>
+                <pre class="signature">$postal :\GeoIp2\Record\Postal</pre>
+                <p><em></em></p><p>Postal data for the
+requested IP address.</p>                <h4>Type</h4>\GeoIp2\Record\Postal            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>            <dl>            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">                    <tr><td colspan="2"><em>None found</em></td></tr>            </table>
+        </aside>
+    </div>    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_subdivisions" name="property_subdivisions" class="anchor"></a>
+            <article class="property">
+                <h3 class="public">$subdivisions</h3>
+                <pre class="signature">$subdivisions :array</pre>
+                <p><em></em></p><p>An array \GeoIp2\Record\Subdivision
+objects representing the country subdivisions for the requested IP
+address. The number and type of subdivisions varies by country, but a
+subdivision is typically a state, province, county, etc. Subdivisions
+are ordered from most general (largest) to most specific (smallest).
+If the response did not contain any subdivisions, this method returns
+an empty array.</p>                <h4>Type</h4>array            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>            <dl>            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">                    <tr><td colspan="2"><em>None found</em></td></tr>            </table>
+        </aside>
+    </div>    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_mostSpecificSubdivision" name="property_mostSpecificSubdivision" class="anchor"></a>
+            <article class="property">
+                <h3 class="public">$mostSpecificSubdivision</h3>
+                <pre class="signature">$mostSpecificSubdivision :\GeoIp2\Record\Subdivision</pre>
+                <p><em></em></p><p>An object
+representing the most specific subdivision returned. If the response
+did not contain any subdivisions, this method returns an empty
+\GeoIp2\Record\Subdivision object.</p>                <h4>Type</h4>\GeoIp2\Record\Subdivision            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>            <dl>            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">                    <tr><td colspan="2"><em>None found</em></td></tr>            </table>
+        </aside>
+    </div>    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_continent" name="property_continent" class="anchor"></a>
+            <article class="property">
+                <h3 class="public">$continent</h3>
+                <pre class="signature">$continent :\GeoIp2\Record\Continent</pre>
+                <p><em></em></p><p>Continent data for the
+requested IP address.</p>                <h4>Type</h4>\GeoIp2\Record\Continent            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>            <dl>                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/GeoIp2.Model.Country.html"><div class="path-wrapper">\GeoIp2\Model\Country</div></a></dd>            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">                    <tr><td colspan="2"><em>None found</em></td></tr>            </table>
+        </aside>
+    </div>    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_country" name="property_country" class="anchor"></a>
+            <article class="property">
+                <h3 class="public">$country</h3>
+                <pre class="signature">$country :\GeoIp2\Record\Country</pre>
+                <p><em></em></p><p>Country data for the requested
+IP address. This object represents the country where MaxMind believes the
+end user is located.</p>                <h4>Type</h4>\GeoIp2\Record\Country            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>            <dl>                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/GeoIp2.Model.Country.html"><div class="path-wrapper">\GeoIp2\Model\Country</div></a></dd>            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">                    <tr><td colspan="2"><em>None found</em></td></tr>            </table>
+        </aside>
+    </div>    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_maxmind" name="property_maxmind" class="anchor"></a>
+            <article class="property">
+                <h3 class="public">$maxmind</h3>
+                <pre class="signature">$maxmind :\GeoIp2\Record\MaxMind</pre>
+                <p><em></em></p><p>Data related to your MaxMind
+account.</p>                <h4>Type</h4>\GeoIp2\Record\MaxMind            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>            <dl>                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/GeoIp2.Model.Country.html"><div class="path-wrapper">\GeoIp2\Model\Country</div></a></dd>            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">                    <tr><td colspan="2"><em>None found</em></td></tr>            </table>
+        </aside>
+    </div>    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_registeredCountry" name="property_registeredCountry" class="anchor"></a>
+            <article class="property">
+                <h3 class="public">$registeredCountry</h3>
+                <pre class="signature">$registeredCountry :\GeoIp2\Record\Country</pre>
+                <p><em></em></p><p>Registered country
+data for the requested IP address. This record represents the country
+where the ISP has registered a given IP block and may differ from the
+user's country.</p>                <h4>Type</h4>\GeoIp2\Record\Country            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>            <dl>                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/GeoIp2.Model.Country.html"><div class="path-wrapper">\GeoIp2\Model\Country</div></a></dd>            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">                    <tr><td colspan="2"><em>None found</em></td></tr>            </table>
+        </aside>
+    </div>    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_representedCountry" name="property_representedCountry" class="anchor"></a>
+            <article class="property">
+                <h3 class="public">$representedCountry</h3>
+                <pre class="signature">$representedCountry :\GeoIp2\Record\RepresentedCountry</pre>
+                <p><em></em></p><p>Represented country data for the requested IP address. The represented
+country is used for things like military bases. It is only present when
+the represented country differs from the country.</p>                <h4>Type</h4>\GeoIp2\Record\RepresentedCountry            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>            <dl>                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/GeoIp2.Model.Country.html"><div class="path-wrapper">\GeoIp2\Model\Country</div></a></dd>            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">                    <tr><td colspan="2"><em>None found</em></td></tr>            </table>
+        </aside>
+    </div>    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_traits" name="property_traits" class="anchor"></a>
+            <article class="property">
+                <h3 class="public">$traits</h3>
+                <pre class="signature">$traits :\GeoIp2\Record\Traits</pre>
+                <p><em></em></p><p>Data for the traits of the
+requested IP address.</p>                <h4>Type</h4>\GeoIp2\Record\Traits            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>            <dl>                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/GeoIp2.Model.Country.html"><div class="path-wrapper">\GeoIp2\Model\Country</div></a></dd>            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">                    <tr><td colspan="2"><em>None found</em></td></tr>            </table>
+        </aside>
+    </div>            <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_jsonSerialize" name="method_jsonSerialize" class="anchor"></a>
+            <article class="method">
+                <h3 class="public">jsonSerialize()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">jsonSerialize()</pre>
+                <p><em></em></p>            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>            <dl>                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/GeoIp2.Model.AbstractModel.html"><div class="path-wrapper">\GeoIp2\Model\AbstractModel</div></a></dd>            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">                    <tr><td colspan="2"><em>None found</em></td></tr>            </table>
+        </aside>
+    </div>        </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">City.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/GeoIP2-php/src/Model/City.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">                            <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>                                        <li><a href="../namespaces/GeoIp2.html">\GeoIp2</a></li>                                        <li><a href="../namespaces/MaxMind.html">\MaxMind</a></li>                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">                            <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">                            <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    onOctober 1st, 2020 at 18:45.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

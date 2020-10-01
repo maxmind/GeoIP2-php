@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title> &raquo; Compilation errors</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">GeoIP2 PHP API v2.11.0</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">                    <li class="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">                            <li><a href="../namespaces/GeoIp2.html">\GeoIp2</a></li>                            <li><a href="../namespaces/MaxMind.html">\MaxMind</a></li>                        </ul>
+                    </li>                    <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">                                    <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">66</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">                                    <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">                                    <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">    <section class="row-fluid">
+        <div class="span2 sidebar">
+
+            <ul class="side-nav nav nav-list">
+                <li class="nav-header">Navigation</li>                        <li><a href="#GeoIP2-php/src/ProviderInterface.php"><i class="icon-file"></i>GeoIP2-php/src/ProviderInterface.php</a></li>                        <li><a href="#GeoIP2-php/src/Model/Isp.php"><i class="icon-file"></i>GeoIP2-php/src/Model/Isp.php</a></li>                        <li><a href="#GeoIP2-php/src/Model/ConnectionType.php"><i class="icon-file"></i>GeoIP2-php/src/Model/ConnectionType.php</a></li>                        <li><a href="#GeoIP2-php/src/Model/City.php"><i class="icon-file"></i>GeoIP2-php/src/Model/City.php</a></li>                        <li><a href="#GeoIP2-php/src/Model/AnonymousIp.php"><i class="icon-file"></i>GeoIP2-php/src/Model/AnonymousIp.php</a></li>                        <li><a href="#GeoIP2-php/src/Model/AbstractModel.php"><i class="icon-file"></i>GeoIP2-php/src/Model/AbstractModel.php</a></li>                        <li><a href="#GeoIP2-php/src/Model/Asn.php"><i class="icon-file"></i>GeoIP2-php/src/Model/Asn.php</a></li>                        <li><a href="#GeoIP2-php/src/Model/Insights.php"><i class="icon-file"></i>GeoIP2-php/src/Model/Insights.php</a></li>                        <li><a href="#GeoIP2-php/src/Model/Domain.php"><i class="icon-file"></i>GeoIP2-php/src/Model/Domain.php</a></li>                        <li><a href="#GeoIP2-php/src/Model/Country.php"><i class="icon-file"></i>GeoIP2-php/src/Model/Country.php</a></li>                        <li><a href="#GeoIP2-php/src/Model/Enterprise.php"><i class="icon-file"></i>GeoIP2-php/src/Model/Enterprise.php</a></li>                        <li><a href="#GeoIP2-php/src/Util.php"><i class="icon-file"></i>GeoIP2-php/src/Util.php</a></li>                        <li><a href="#GeoIP2-php/src/Record/City.php"><i class="icon-file"></i>GeoIP2-php/src/Record/City.php</a></li>                        <li><a href="#GeoIP2-php/src/Record/Traits.php"><i class="icon-file"></i>GeoIP2-php/src/Record/Traits.php</a></li>                        <li><a href="#GeoIP2-php/src/Record/Location.php"><i class="icon-file"></i>GeoIP2-php/src/Record/Location.php</a></li>                        <li><a href="#GeoIP2-php/src/Record/AbstractRecord.php"><i class="icon-file"></i>GeoIP2-php/src/Record/AbstractRecord.php</a></li>                        <li><a href="#GeoIP2-php/src/Record/Postal.php"><i class="icon-file"></i>GeoIP2-php/src/Record/Postal.php</a></li>                        <li><a href="#GeoIP2-php/src/Record/Continent.php"><i class="icon-file"></i>GeoIP2-php/src/Record/Continent.php</a></li>                        <li><a href="#GeoIP2-php/src/Record/MaxMind.php"><i class="icon-file"></i>GeoIP2-php/src/Record/MaxMind.php</a></li>                        <li><a href="#GeoIP2-php/src/Record/Country.php"><i class="icon-file"></i>GeoIP2-php/src/Record/Country.php</a></li>                        <li><a href="#GeoIP2-php/src/Record/AbstractPlaceRecord.php"><i class="icon-file"></i>GeoIP2-php/src/Record/AbstractPlaceRecord.php</a></li>                        <li><a href="#GeoIP2-php/src/Record/Subdivision.php"><i class="icon-file"></i>GeoIP2-php/src/Record/Subdivision.php</a></li>                        <li><a href="#GeoIP2-php/src/Record/RepresentedCountry.php"><i class="icon-file"></i>GeoIP2-php/src/Record/RepresentedCountry.php</a></li>                        <li><a href="#GeoIP2-php/src/WebService/Client.php"><i class="icon-file"></i>GeoIP2-php/src/WebService/Client.php</a></li>                        <li><a href="#GeoIP2-php/src/Exception/InvalidRequestException.php"><i class="icon-file"></i>GeoIP2-php/src/Exception/InvalidRequestException.php</a></li>                        <li><a href="#GeoIP2-php/src/Exception/AddressNotFoundException.php"><i class="icon-file"></i>GeoIP2-php/src/Exception/AddressNotFoundException.php</a></li>                        <li><a href="#GeoIP2-php/src/Exception/OutOfQueriesException.php"><i class="icon-file"></i>GeoIP2-php/src/Exception/OutOfQueriesException.php</a></li>                        <li><a href="#GeoIP2-php/src/Exception/HttpException.php"><i class="icon-file"></i>GeoIP2-php/src/Exception/HttpException.php</a></li>                        <li><a href="#GeoIP2-php/src/Exception/AuthenticationException.php"><i class="icon-file"></i>GeoIP2-php/src/Exception/AuthenticationException.php</a></li>                        <li><a href="#GeoIP2-php/src/Exception/GeoIp2Exception.php"><i class="icon-file"></i>GeoIP2-php/src/Exception/GeoIp2Exception.php</a></li>                        <li><a href="#GeoIP2-php/src/Database/Reader.php"><i class="icon-file"></i>GeoIP2-php/src/Database/Reader.php</a></li>                        <li><a href="#MaxMind-DB-Reader-php/src/MaxMind/Db/Reader/InvalidDatabaseException.php"><i class="icon-file"></i>MaxMind-DB-Reader-php/src/MaxMind/Db/Reader/InvalidDatabaseException.php</a></li>                        <li><a href="#MaxMind-DB-Reader-php/src/MaxMind/Db/Reader/Util.php"><i class="icon-file"></i>MaxMind-DB-Reader-php/src/MaxMind/Db/Reader/Util.php</a></li>                        <li><a href="#MaxMind-DB-Reader-php/src/MaxMind/Db/Reader/Metadata.php"><i class="icon-file"></i>MaxMind-DB-Reader-php/src/MaxMind/Db/Reader/Metadata.php</a></li>                        <li><a href="#MaxMind-DB-Reader-php/src/MaxMind/Db/Reader/Decoder.php"><i class="icon-file"></i>MaxMind-DB-Reader-php/src/MaxMind/Db/Reader/Decoder.php</a></li>                        <li><a href="#MaxMind-DB-Reader-php/src/MaxMind/Db/Reader.php"><i class="icon-file"></i>MaxMind-DB-Reader-php/src/MaxMind/Db/Reader.php</a></li>            </ul>
+        </div>
+
+        <div class="span10 offset2">
+            <ul class="breadcrumb">
+                <li><a href="../"><i class="icon-remove-sign"></i></a><span class="divider">\</span></li>
+                <li>Compilation Errors</li>
+            </ul>                <div class="package-contents">                        <a name="GeoIP2-php/src/ProviderInterface.php" id="GeoIP2-php/src/ProviderInterface.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>GeoIP2-php/src/ProviderInterface.php
+                            <small style="float: right;padding-right: 10px;">4</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>                                    <tr>
+                                        <td>error</td>
+                                        <td>7</td>
+                                        <td>No summary for interface \GeoIp2\ProviderInterface</td>
+                                    </tr>                                    <tr>
+                                        <td>error</td>
+                                        <td>14</td>
+                                        <td>No summary for method country()</td>
+                                    </tr>                                    <tr>
+                                        <td>error</td>
+                                        <td>21</td>
+                                        <td>No summary for method city()</td>
+                                    </tr>                            </tbody>
+                            </table>
+                        </div>                </div>                <div class="package-contents">                        <a name="GeoIP2-php/src/Model/Isp.php" id="GeoIP2-php/src/Model/Isp.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>GeoIP2-php/src/Model/Isp.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>                            </tbody>
+                            </table>
+                        </div>                </div>                <div class="package-contents">                        <a name="GeoIP2-php/src/Model/ConnectionType.php" id="GeoIP2-php/src/Model/ConnectionType.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>GeoIP2-php/src/Model/ConnectionType.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>                            </tbody>
+                            </table>
+                        </div>                </div>                <div class="package-contents">                        <a name="GeoIP2-php/src/Model/City.php" id="GeoIP2-php/src/Model/City.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>GeoIP2-php/src/Model/City.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>                            </tbody>
+                            </table>
+                        </div>                </div>                <div class="package-contents">                        <a name="GeoIP2-php/src/Model/AnonymousIp.php" id="GeoIP2-php/src/Model/AnonymousIp.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>GeoIP2-php/src/Model/AnonymousIp.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>                            </tbody>
+                            </table>
+                        </div>                </div>                <div class="package-contents">                        <a name="GeoIP2-php/src/Model/AbstractModel.php" id="GeoIP2-php/src/Model/AbstractModel.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>GeoIP2-php/src/Model/AbstractModel.php
+                            <small style="float: right;padding-right: 10px;">3</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>                                    <tr>
+                                        <td>error</td>
+                                        <td>10</td>
+                                        <td>No summary for class \GeoIp2\Model\AbstractModel</td>
+                                    </tr>                                    <tr>
+                                        <td>error</td>
+                                        <td>57</td>
+                                        <td>No summary for method jsonSerialize()</td>
+                                    </tr>                            </tbody>
+                            </table>
+                        </div>                </div>                <div class="package-contents">                        <a name="GeoIP2-php/src/Model/Asn.php" id="GeoIP2-php/src/Model/Asn.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>GeoIP2-php/src/Model/Asn.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>                            </tbody>
+                            </table>
+                        </div>                </div>                <div class="package-contents">                        <a name="GeoIP2-php/src/Model/Insights.php" id="GeoIP2-php/src/Model/Insights.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>GeoIP2-php/src/Model/Insights.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>                            </tbody>
+                            </table>
+                        </div>                </div>                <div class="package-contents">                        <a name="GeoIP2-php/src/Model/Domain.php" id="GeoIP2-php/src/Model/Domain.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>GeoIP2-php/src/Model/Domain.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>                            </tbody>
+                            </table>
+                        </div>                </div>                <div class="package-contents">                        <a name="GeoIP2-php/src/Model/Country.php" id="GeoIP2-php/src/Model/Country.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>GeoIP2-php/src/Model/Country.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>                            </tbody>
+                            </table>
+                        </div>                </div>                <div class="package-contents">                        <a name="GeoIP2-php/src/Model/Enterprise.php" id="GeoIP2-php/src/Model/Enterprise.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>GeoIP2-php/src/Model/Enterprise.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>                            </tbody>
+                            </table>
+                        </div>                </div>                <div class="package-contents">                        <a name="GeoIP2-php/src/Util.php" id="GeoIP2-php/src/Util.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>GeoIP2-php/src/Util.php
+                            <small style="float: right;padding-right: 10px;">2</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>                                    <tr>
+                                        <td>error</td>
+                                        <td>7</td>
+                                        <td>No summary for class \GeoIp2\Util</td>
+                                    </tr>                            </tbody>
+                            </table>
+                        </div>                </div>                <div class="package-contents">                        <a name="GeoIP2-php/src/Record/City.php" id="GeoIP2-php/src/Record/City.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>GeoIP2-php/src/Record/City.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>                            </tbody>
+                            </table>
+                        </div>                </div>                <div class="package-contents">                        <a name="GeoIP2-php/src/Record/Traits.php" id="GeoIP2-php/src/Record/Traits.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>GeoIP2-php/src/Record/Traits.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>                            </tbody>
+                            </table>
+                        </div>                </div>                <div class="package-contents">                        <a name="GeoIP2-php/src/Record/Location.php" id="GeoIP2-php/src/Record/Location.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>GeoIP2-php/src/Record/Location.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>                            </tbody>
+                            </table>
+                        </div>                </div>                <div class="package-contents">                        <a name="GeoIP2-php/src/Record/AbstractRecord.php" id="GeoIP2-php/src/Record/AbstractRecord.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>GeoIP2-php/src/Record/AbstractRecord.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>                            </tbody>
+                            </table>
+                        </div>                </div>                <div class="package-contents">                        <a name="GeoIP2-php/src/Record/Postal.php" id="GeoIP2-php/src/Record/Postal.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>GeoIP2-php/src/Record/Postal.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>                            </tbody>
+                            </table>
+                        </div>                </div>                <div class="package-contents">                        <a name="GeoIP2-php/src/Record/Continent.php" id="GeoIP2-php/src/Record/Continent.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>GeoIP2-php/src/Record/Continent.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>                            </tbody>
+                            </table>
+                        </div>                </div>                <div class="package-contents">                        <a name="GeoIP2-php/src/Record/MaxMind.php" id="GeoIP2-php/src/Record/MaxMind.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>GeoIP2-php/src/Record/MaxMind.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>                            </tbody>
+                            </table>
+                        </div>                </div>                <div class="package-contents">                        <a name="GeoIP2-php/src/Record/Country.php" id="GeoIP2-php/src/Record/Country.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>GeoIP2-php/src/Record/Country.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>                            </tbody>
+                            </table>
+                        </div>                </div>                <div class="package-contents">                        <a name="GeoIP2-php/src/Record/AbstractPlaceRecord.php" id="GeoIP2-php/src/Record/AbstractPlaceRecord.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>GeoIP2-php/src/Record/AbstractPlaceRecord.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>                            </tbody>
+                            </table>
+                        </div>                </div>                <div class="package-contents">                        <a name="GeoIP2-php/src/Record/Subdivision.php" id="GeoIP2-php/src/Record/Subdivision.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>GeoIP2-php/src/Record/Subdivision.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>                            </tbody>
+                            </table>
+                        </div>                </div>                <div class="package-contents">                        <a name="GeoIP2-php/src/Record/RepresentedCountry.php" id="GeoIP2-php/src/Record/RepresentedCountry.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>GeoIP2-php/src/Record/RepresentedCountry.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>                            </tbody>
+                            </table>
+                        </div>                </div>                <div class="package-contents">                        <a name="GeoIP2-php/src/WebService/Client.php" id="GeoIP2-php/src/WebService/Client.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>GeoIP2-php/src/WebService/Client.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>                            </tbody>
+                            </table>
+                        </div>                </div>                <div class="package-contents">                        <a name="GeoIP2-php/src/Exception/InvalidRequestException.php" id="GeoIP2-php/src/Exception/InvalidRequestException.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>GeoIP2-php/src/Exception/InvalidRequestException.php
+                            <small style="float: right;padding-right: 10px;">7</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>                                    <tr>
+                                        <td>error</td>
+                                        <td>18</td>
+                                        <td>Argument $message is missing from the Docblock of __construct</td>
+                                    </tr>                                    <tr>
+                                        <td>error</td>
+                                        <td>18</td>
+                                        <td>Argument $error is missing from the Docblock of __construct</td>
+                                    </tr>                                    <tr>
+                                        <td>error</td>
+                                        <td>18</td>
+                                        <td>Argument $httpStatus is missing from the Docblock of __construct</td>
+                                    </tr>                                    <tr>
+                                        <td>error</td>
+                                        <td>18</td>
+                                        <td>Argument $uri is missing from the Docblock of __construct</td>
+                                    </tr>                                    <tr>
+                                        <td>error</td>
+                                        <td>18</td>
+                                        <td>Argument $previous is missing from the Docblock of __construct</td>
+                                    </tr>                                    <tr>
+                                        <td>error</td>
+                                        <td>18</td>
+                                        <td>No summary for method __construct()</td>
+                                    </tr>                            </tbody>
+                            </table>
+                        </div>                </div>                <div class="package-contents">                        <a name="GeoIP2-php/src/Exception/AddressNotFoundException.php" id="GeoIP2-php/src/Exception/AddressNotFoundException.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>GeoIP2-php/src/Exception/AddressNotFoundException.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>                            </tbody>
+                            </table>
+                        </div>                </div>                <div class="package-contents">                        <a name="GeoIP2-php/src/Exception/OutOfQueriesException.php" id="GeoIP2-php/src/Exception/OutOfQueriesException.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>GeoIP2-php/src/Exception/OutOfQueriesException.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>                            </tbody>
+                            </table>
+                        </div>                </div>                <div class="package-contents">                        <a name="GeoIP2-php/src/Exception/HttpException.php" id="GeoIP2-php/src/Exception/HttpException.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>GeoIP2-php/src/Exception/HttpException.php
+                            <small style="float: right;padding-right: 10px;">6</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>                                    <tr>
+                                        <td>error</td>
+                                        <td>17</td>
+                                        <td>Argument $message is missing from the Docblock of __construct</td>
+                                    </tr>                                    <tr>
+                                        <td>error</td>
+                                        <td>17</td>
+                                        <td>Argument $httpStatus is missing from the Docblock of __construct</td>
+                                    </tr>                                    <tr>
+                                        <td>error</td>
+                                        <td>17</td>
+                                        <td>Argument $uri is missing from the Docblock of __construct</td>
+                                    </tr>                                    <tr>
+                                        <td>error</td>
+                                        <td>17</td>
+                                        <td>Argument $previous is missing from the Docblock of __construct</td>
+                                    </tr>                                    <tr>
+                                        <td>error</td>
+                                        <td>17</td>
+                                        <td>No summary for method __construct()</td>
+                                    </tr>                            </tbody>
+                            </table>
+                        </div>                </div>                <div class="package-contents">                        <a name="GeoIP2-php/src/Exception/AuthenticationException.php" id="GeoIP2-php/src/Exception/AuthenticationException.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>GeoIP2-php/src/Exception/AuthenticationException.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>                            </tbody>
+                            </table>
+                        </div>                </div>                <div class="package-contents">                        <a name="GeoIP2-php/src/Exception/GeoIp2Exception.php" id="GeoIP2-php/src/Exception/GeoIp2Exception.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>GeoIP2-php/src/Exception/GeoIp2Exception.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>                            </tbody>
+                            </table>
+                        </div>                </div>                <div class="package-contents">                        <a name="GeoIP2-php/src/Database/Reader.php" id="GeoIP2-php/src/Database/Reader.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>GeoIP2-php/src/Database/Reader.php
+                            <small style="float: right;padding-right: 10px;">2</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>                                    <tr>
+                                        <td>error</td>
+                                        <td>261</td>
+                                        <td>No summary for method metadata()</td>
+                                    </tr>                            </tbody>
+                            </table>
+                        </div>                </div>                <div class="package-contents">                        <a name="MaxMind-DB-Reader-php/src/MaxMind/Db/Reader/InvalidDatabaseException.php" id="MaxMind-DB-Reader-php/src/MaxMind/Db/Reader/InvalidDatabaseException.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>MaxMind-DB-Reader-php/src/MaxMind/Db/Reader/InvalidDatabaseException.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>                            </tbody>
+                            </table>
+                        </div>                </div>                <div class="package-contents">                        <a name="MaxMind-DB-Reader-php/src/MaxMind/Db/Reader/Util.php" id="MaxMind-DB-Reader-php/src/MaxMind/Db/Reader/Util.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>MaxMind-DB-Reader-php/src/MaxMind/Db/Reader/Util.php
+                            <small style="float: right;padding-right: 10px;">9</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>                                    <tr>
+                                        <td>error</td>
+                                        <td>7</td>
+                                        <td>No summary for class \MaxMind\Db\Reader\Util</td>
+                                    </tr>                                    <tr>
+                                        <td>error</td>
+                                        <td>12</td>
+                                        <td>Argument $offset is missing from the Docblock of read</td>
+                                    </tr>                                    <tr>
+                                        <td>error</td>
+                                        <td>12</td>
+                                        <td>Name of argument $offset does not match with the DocBlock&#039;s name $stream in read()</td>
+                                    </tr>                                    <tr>
+                                        <td>error</td>
+                                        <td>12</td>
+                                        <td>The type hint of the argument is incorrect for the type definition of the @param tag with argument $offset in read()</td>
+                                    </tr>                                    <tr>
+                                        <td>error</td>
+                                        <td>12</td>
+                                        <td>Argument $numberOfBytes is missing from the Docblock of read</td>
+                                    </tr>                                    <tr>
+                                        <td>error</td>
+                                        <td>12</td>
+                                        <td>Name of argument $numberOfBytes does not match with the DocBlock&#039;s name $stream in read()</td>
+                                    </tr>                                    <tr>
+                                        <td>error</td>
+                                        <td>12</td>
+                                        <td>The type hint of the argument is incorrect for the type definition of the @param tag with argument $numberOfBytes in read()</td>
+                                    </tr>                                    <tr>
+                                        <td>error</td>
+                                        <td>12</td>
+                                        <td>No summary for method read()</td>
+                                    </tr>                            </tbody>
+                            </table>
+                        </div>                </div>                <div class="package-contents">                        <a name="MaxMind-DB-Reader-php/src/MaxMind/Db/Reader/Metadata.php" id="MaxMind-DB-Reader-php/src/MaxMind/Db/Reader/Metadata.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>MaxMind-DB-Reader-php/src/MaxMind/Db/Reader/Metadata.php
+                            <small style="float: right;padding-right: 10px;">5</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>                                    <tr>
+                                        <td>error</td>
+                                        <td>90</td>
+                                        <td>Argument $metadata is missing from the Docblock of __construct</td>
+                                    </tr>                                    <tr>
+                                        <td>error</td>
+                                        <td>90</td>
+                                        <td>No summary for method __construct()</td>
+                                    </tr>                                    <tr>
+                                        <td>error</td>
+                                        <td>70</td>
+                                        <td>No summary for property $nodeByteSize</td>
+                                    </tr>                                    <tr>
+                                        <td>error</td>
+                                        <td>88</td>
+                                        <td>No summary for property $searchTreeSize</td>
+                                    </tr>                            </tbody>
+                            </table>
+                        </div>                </div>                <div class="package-contents">                        <a name="MaxMind-DB-Reader-php/src/MaxMind/Db/Reader/Decoder.php" id="MaxMind-DB-Reader-php/src/MaxMind/Db/Reader/Decoder.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>MaxMind-DB-Reader-php/src/MaxMind/Db/Reader/Decoder.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>                            </tbody>
+                            </table>
+                        </div>                </div>                <div class="package-contents">                        <a name="MaxMind-DB-Reader-php/src/MaxMind/Db/Reader.php" id="MaxMind-DB-Reader-php/src/MaxMind/Db/Reader.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>MaxMind-DB-Reader-php/src/MaxMind/Db/Reader.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>                            </tbody>
+                            </table>
+                        </div>                </div>        </div>
+    </section>
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">                            <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>                                        <li><a href="../namespaces/GeoIp2.html">\GeoIp2</a></li>                                        <li><a href="../namespaces/MaxMind.html">\MaxMind</a></li>                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">                            <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">                            <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    onOctober 1st, 2020 at 18:45.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>
