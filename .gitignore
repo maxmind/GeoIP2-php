@@ -3,6 +3,7 @@ bin/
 apigen.phar
 composer.lock
 composer.phar
+phpDocumentor.phar
 phpunit.xml
 vendor/
 *.sw?
