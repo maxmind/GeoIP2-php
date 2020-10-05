@@ -1,0 +1,25 @@
+name: PHP Lints
+
+on: [push, pull_request]
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    name: "PHP Lints"
+    steps:
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 7.4
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: composer install --no-progress --prefer-dist --optimize-autoloader
+
+      - name: Lint with php-cs-fixer
+        run: vendor/bin/php-cs-fixer fix --verbose --diff --dry-run --config=.php_cs
+
+      - name: Lint with phpcs
+        run: vendor/bin/phpcs --standard=PSR2 src/
