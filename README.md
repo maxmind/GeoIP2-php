@@ -386,7 +386,7 @@ to the client API, please see
 
 ## Requirements  ##
 
-This library requires PHP 5.6 or greater.
+This library requires PHP 7.2 or greater.
 
 This library also relies on the [MaxMind DB Reader](https://github.com/maxmind/MaxMind-DB-Reader-php).
 
@@ -404,6 +404,6 @@ The GeoIP2 PHP API uses [Semantic Versioning](https://semver.org/).
 
 ## Copyright and License ##
 
-This software is Copyright (c) 2013-2019 by MaxMind, Inc.
+This software is Copyright (c) 2013-2020 by MaxMind, Inc.
 
 This is free software, licensed under the Apache License, Version 2.0.
