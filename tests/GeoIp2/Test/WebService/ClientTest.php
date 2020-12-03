@@ -503,7 +503,12 @@ class ClientTest extends TestCase
             'Accept: application/json',
         ];
 
-        $caBundle = CaBundle::getSystemCaRootBundlePath();
+        $curlVersion = curl_version();
+
+        // On macOS, when the SSL version is "SecureTransport", the system's
+        // keychain will be used.
+        $caBundle = $curlVersion['ssl_version'] === 'SecureTransport' ?
+          null : CaBundle::getSystemCaRootBundlePath();
 
         $curlVersion = curl_version();
         $factory->expects($this->exactly($callsToRequest))
