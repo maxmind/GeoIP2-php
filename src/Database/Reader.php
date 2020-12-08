@@ -258,7 +258,7 @@ class Reader implements ProviderInterface
      *
      * @return \MaxMind\Db\Reader\Metadata object for the database
      */
-    public function metadata(): \MaxMind\Db\Reader\Metadata
+    public function metadata(): DbReader\Metadata
     {
         return $this->dbReader->metadata();
     }
