@@ -69,10 +69,9 @@ class City extends Country
         }
 
         foreach ($raw['subdivisions'] as $sub) {
-            array_push(
-                $this->subdivisions,
+            $this->subdivisions[] =
                 new \GeoIp2\Record\Subdivision($sub, $locales)
-            );
+            ;
         }
     }
 
