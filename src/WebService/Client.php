@@ -59,7 +59,9 @@ class Client implements ProviderInterface
      * @param array  $locales    list of locale codes to use in name property
      *                           from most preferred to least preferred
      * @param array  $options    array of options. Valid options include:
-     *                           * `host` - The host to use when querying the web service.
+     *                           * `host` - The host to use when querying the web service. To
+     *                           query the GeoLite2 web service instead of GeoIP2 Precision,
+     *                           set the host to `geolite.info`.
      *                           * `timeout` - Timeout in seconds.
      *                           * `connectTimeout` - Initial connection timeout in seconds.
      *                           * `proxy` - The HTTP proxy to use. May include a schema, port,
@@ -95,7 +97,7 @@ class Client implements ProviderInterface
     }
 
     /**
-     * This method calls the GeoIP2 Precision: City service.
+     * This method calls the City service.
      *
      * @param string $ipAddress IPv4 or IPv6 address as a string. If no
      *                          address is provided, the address that the web service is called
@@ -124,7 +126,7 @@ class Client implements ProviderInterface
     }
 
     /**
-     * This method calls the GeoIP2 Precision: Country service.
+     * This method calls the Country service.
      *
      * @param string $ipAddress IPv4 or IPv6 address as a string. If no
      *                          address is provided, the address that the web service is called
@@ -153,7 +155,8 @@ class Client implements ProviderInterface
     }
 
     /**
-     * This method calls the GeoIP2 Precision: Insights service.
+     * This method calls the Insights service. Insights is only supported by GeoIP2
+     * Precision. The GeoLite2 web service does not support it.
      *
      * @param string $ipAddress IPv4 or IPv6 address as a string. If no
      *                          address is provided, the address that the web service is called
