@@ -28,6 +28,7 @@ namespace GeoIp2\Model;
  * the represented country differs from the country.
  * @property-read \GeoIp2\Record\Traits $traits Data for the traits of the
  * requested IP address.
+ * @property-read array $raw The raw data from the web service.
  */
 class Country extends AbstractModel
 {
