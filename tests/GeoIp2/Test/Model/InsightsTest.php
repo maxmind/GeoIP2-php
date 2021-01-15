@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
  */
 class InsightsTest extends TestCase
 {
-    public function testFull()
+    public function testFull(): void
     {
         $raw = [
             'city' => [
@@ -216,7 +216,7 @@ class InsightsTest extends TestCase
         );
     }
 
-    public function testEmptyObjects()
+    public function testEmptyObjects(): void
     {
         $raw = ['traits' => ['ip_address' => '5.6.7.8']];
 
@@ -294,7 +294,7 @@ class InsightsTest extends TestCase
         );
     }
 
-    public function testUnknown()
+    public function testUnknown(): void
     {
         $raw = [
             'new_top_level' => ['foo' => 42],
@@ -323,7 +323,7 @@ class InsightsTest extends TestCase
         );
     }
 
-    public function testMostSpecificSubdivisionWithNoSubdivisions()
+    public function testMostSpecificSubdivisionWithNoSubdivisions(): void
     {
         $model = new Insights([], ['en']);
 

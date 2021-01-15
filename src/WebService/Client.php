@@ -10,6 +10,9 @@ use GeoIp2\Exception\GeoIp2Exception;
 use GeoIp2\Exception\HttpException;
 use GeoIp2\Exception\InvalidRequestException;
 use GeoIp2\Exception\OutOfQueriesException;
+use GeoIp2\Model\City;
+use GeoIp2\Model\Country;
+use GeoIp2\Model\Insights;
 use GeoIp2\ProviderInterface;
 use MaxMind\WebService\Client as WsClient;
 
@@ -45,8 +48,17 @@ use MaxMind\WebService\Client as WsClient;
  */
 class Client implements ProviderInterface
 {
+    /**
+     * @var array<string>
+     */
     private $locales;
+    /**
+     * @var WsClient
+     */
     private $client;
+    /**
+     * @var string
+     */
     private static $basePath = '/geoip/v2.1';
 
     const VERSION = 'v2.11.0';
@@ -78,6 +90,7 @@ class Client implements ProviderInterface
 
         // This is for backwards compatibility. Do not remove except for a
         // major version bump.
+        // @phpstan-ignore-next-line
         if (\is_string($options)) {
             $options = ['host' => $options];
         }
@@ -120,8 +133,9 @@ class Client implements ProviderInterface
      *                                                    class to the above exceptions. It will be thrown directly
      *                                                    if a 200 status code is returned but the body is invalid.
      */
-    public function city(string $ipAddress = 'me'): \GeoIp2\Model\City
+    public function city(string $ipAddress = 'me'): City
     {
+        // @phpstan-ignore-next-line
         return $this->responseFor('city', 'City', $ipAddress);
     }
 
@@ -149,7 +163,7 @@ class Client implements ProviderInterface
      *                                                    will be thrown directly if a 200 status code is returned but
      *                                                    the body is invalid.
      */
-    public function country(string $ipAddress = 'me'): \GeoIp2\Model\Country
+    public function country(string $ipAddress = 'me'): Country
     {
         return $this->responseFor('country', 'Country', $ipAddress);
     }
@@ -179,12 +193,13 @@ class Client implements ProviderInterface
      *                                                    class to the above exceptions. It will be thrown directly
      *                                                    if a 200 status code is returned but the body is invalid.
      */
-    public function insights(string $ipAddress = 'me'): \GeoIp2\Model\Insights
+    public function insights(string $ipAddress = 'me'): Insights
     {
+        // @phpstan-ignore-next-line
         return $this->responseFor('insights', 'Insights', $ipAddress);
     }
 
-    private function responseFor(string $endpoint, string $class, string $ipAddress)
+    private function responseFor(string $endpoint, string $class, string $ipAddress): Country
     {
         $path = implode('/', [self::$basePath, $endpoint, $ipAddress]);
 

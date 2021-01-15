@@ -13,6 +13,9 @@ use PHPUnit\Framework\TestCase;
  */
 class ClientTest extends TestCase
 {
+    /**
+     * @var array<string, array<string, mixed>>
+     */
     private $country = [
             'continent' => [
                 'code' => 'NA',
@@ -31,7 +34,7 @@ class ClientTest extends TestCase
             ],
     ];
 
-    private function getResponse($service, $ipAddress)
+    private function getResponse(string $service, string $ipAddress): array
     {
         if ($service === 'Insights') {
             $insights = unserialize(serialize($this->country));
@@ -161,7 +164,7 @@ class ClientTest extends TestCase
         return $responses[$ipAddress];
     }
 
-    public function testCountry()
+    public function testCountry(): void
     {
         $country = $this->makeRequest('Country', '1.2.3.4');
 
@@ -238,7 +241,7 @@ class ClientTest extends TestCase
         );
     }
 
-    public function testInsights()
+    public function testInsights(): void
     {
         $record = $this->makeRequest('Insights', '1.2.3.4');
 
@@ -269,7 +272,7 @@ class ClientTest extends TestCase
         );
     }
 
-    public function testCity()
+    public function testCity(): void
     {
         $city = $this->makeRequest('City', '1.2.3.4');
 
@@ -282,7 +285,7 @@ class ClientTest extends TestCase
         );
     }
 
-    public function testMe()
+    public function testMe(): void
     {
         $city = $this->makeRequest('City', 'me');
 
@@ -293,7 +296,7 @@ class ClientTest extends TestCase
         );
     }
 
-    public function testNoBodyException()
+    public function testNoBodyException(): void
     {
         $this->expectException(\GeoIp2\Exception\GeoIp2Exception::class);
         $this->expectExceptionMessage('Received a 200 response for GeoIP2 Country but did not receive a HTTP body.');
@@ -301,7 +304,7 @@ class ClientTest extends TestCase
         $this->makeRequest('Country', '1.2.3.5');
     }
 
-    public function testBadBodyException()
+    public function testBadBodyException(): void
     {
         $this->expectException(\GeoIp2\Exception\GeoIp2Exception::class);
         $this->expectExceptionMessage('Received a 200 response for GeoIP2 Country but could not decode the response as JSON:');
@@ -309,7 +312,7 @@ class ClientTest extends TestCase
         $this->makeRequest('Country', '2.2.3.5');
     }
 
-    public function testInvalidIPException()
+    public function testInvalidIPException(): void
     {
         $this->expectException(\GeoIp2\Exception\InvalidRequestException::class);
         $this->expectExceptionCode(400);
@@ -318,7 +321,7 @@ class ClientTest extends TestCase
         $this->makeRequest('Country', '1.2.3.6');
     }
 
-    public function testNoErrorBodyIPException()
+    public function testNoErrorBodyIPException(): void
     {
         $this->expectException(\GeoIp2\Exception\HttpException::class);
         $this->expectExceptionCode(400);
@@ -327,7 +330,7 @@ class ClientTest extends TestCase
         $this->makeRequest('Country', '1.2.3.7');
     }
 
-    public function testWeirdErrorBodyIPException()
+    public function testWeirdErrorBodyIPException(): void
     {
         $this->expectException(\GeoIp2\Exception\GeoIp2Exception::class);
         $this->expectExceptionMessage('Error response contains JSON but it does not specify code or error keys: {"weird":42}');
@@ -335,7 +338,7 @@ class ClientTest extends TestCase
         $this->makeRequest('Country', '1.2.3.8');
     }
 
-    public function testInvalidErrorBodyIPException()
+    public function testInvalidErrorBodyIPException(): void
     {
         $this->expectException(\GeoIp2\Exception\HttpException::class);
         $this->expectExceptionCode(400);
@@ -344,7 +347,7 @@ class ClientTest extends TestCase
         $this->makeRequest('Country', '1.2.3.9');
     }
 
-    public function test500PException()
+    public function test500PException(): void
     {
         $this->expectException(\GeoIp2\Exception\HttpException::class);
         $this->expectExceptionCode(500);
@@ -353,7 +356,7 @@ class ClientTest extends TestCase
         $this->makeRequest('Country', '1.2.3.10');
     }
 
-    public function test3xxException()
+    public function test3xxException(): void
     {
         $this->expectException(\GeoIp2\Exception\HttpException::class);
         $this->expectExceptionCode(300);
@@ -362,7 +365,7 @@ class ClientTest extends TestCase
         $this->makeRequest('Country', '1.2.3.11');
     }
 
-    public function test406Exception()
+    public function test406Exception(): void
     {
         $this->expectException(\GeoIp2\Exception\HttpException::class);
         $this->expectExceptionCode(406);
@@ -371,7 +374,7 @@ class ClientTest extends TestCase
         $this->makeRequest('Country', '1.2.3.12');
     }
 
-    public function testAddressNotFoundException()
+    public function testAddressNotFoundException(): void
     {
         $this->expectException(\GeoIp2\Exception\AddressNotFoundException::class);
         $this->expectExceptionMessage('The address "1.2.3.13" is not in our database.');
@@ -379,7 +382,7 @@ class ClientTest extends TestCase
         $this->makeRequest('Country', '1.2.3.13');
     }
 
-    public function testAddressReservedException()
+    public function testAddressReservedException(): void
     {
         $this->expectException(\GeoIp2\Exception\AddressNotFoundException::class);
         $this->expectExceptionMessage('The address "1.2.3.14" is a private address.');
@@ -387,7 +390,7 @@ class ClientTest extends TestCase
         $this->makeRequest('Country', '1.2.3.14');
     }
 
-    public function testAuthorizationException()
+    public function testAuthorizationException(): void
     {
         $this->expectException(\GeoIp2\Exception\AuthenticationException::class);
         $this->expectExceptionMessage('A user ID and license key are required to use this service');
@@ -395,7 +398,7 @@ class ClientTest extends TestCase
         $this->makeRequest('Country', '1.2.3.15');
     }
 
-    public function testMissingLicenseKeyException()
+    public function testMissingLicenseKeyException(): void
     {
         $this->expectException(\GeoIp2\Exception\AuthenticationException::class);
         $this->expectExceptionMessage('A license key is required to use this service');
@@ -403,7 +406,7 @@ class ClientTest extends TestCase
         $this->makeRequest('Country', '1.2.3.16');
     }
 
-    public function testMissingUserIdException()
+    public function testMissingUserIdException(): void
     {
         $this->expectException(\GeoIp2\Exception\AuthenticationException::class);
         $this->expectExceptionMessage('A user ID is required to use this service');
@@ -411,7 +414,7 @@ class ClientTest extends TestCase
         $this->makeRequest('Country', '1.2.3.17');
     }
 
-    public function testMissingAccountIdException()
+    public function testMissingAccountIdException(): void
     {
         $this->expectException(\GeoIp2\Exception\AuthenticationException::class);
         $this->expectExceptionMessage('A account ID is required to use this service');
@@ -419,7 +422,7 @@ class ClientTest extends TestCase
         $this->makeRequest('Country', '1.2.3.19');
     }
 
-    public function testOutOfQueriesException()
+    public function testOutOfQueriesException(): void
     {
         $this->expectException(\GeoIp2\Exception\OutOfQueriesException::class);
         $this->expectExceptionMessage('The license key you have provided is out of queries.');
@@ -427,7 +430,7 @@ class ClientTest extends TestCase
         $this->makeRequest('Country', '1.2.3.18');
     }
 
-    public function testParams()
+    public function testParams(): void
     {
         $this->makeRequest(
             'Country',
@@ -441,13 +444,14 @@ class ClientTest extends TestCase
         );
     }
 
+    // @phpstan-ignore-next-line
     private function response(
-        $endpoint,
-        $status,
+        ?string $endpoint,
+        int $status,
         $body = null,
         $bad = null,
-        $contentType = null
-    ) {
+        ?string $contentType = null
+    ): array {
         $headers = [];
         if ($contentType) {
             $headers['Content-Type'] = $contentType;
@@ -470,12 +474,12 @@ class ClientTest extends TestCase
     }
 
     private function makeRequest(
-        $service,
-        $ipAddress,
-        $locales = ['en'],
-        $options = [],
-        $callsToRequest = 1
-    ) {
+        string $service,
+        string $ipAddress,
+        array $locales = ['en'],
+        array $options = [],
+        int $callsToRequest = 1
+    ): object {
         $accountId = 42;
         $licenseKey = 'abcdef123456';
 

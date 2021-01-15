@@ -12,18 +12,15 @@ use PHPUnit\Framework\TestCase;
  */
 class ReaderTest extends TestCase
 {
-    public function databaseTypes()
+    public function databaseTypes(): array
     {
         return [['City', 'city'], ['Country', 'country']];
     }
 
     /**
      * @dataProvider databaseTypes
-     *
-     * @param mixed $type
-     * @param mixed $method
      */
-    public function testDefaultLocale($type, $method)
+    public function testDefaultLocale(string $type, string $method): void
     {
         $reader = new Reader("maxmind-db/test-data/GeoIP2-$type-Test.mmdb");
         $record = $reader->$method('81.2.69.160');
@@ -33,11 +30,8 @@ class ReaderTest extends TestCase
 
     /**
      * @dataProvider databaseTypes
-     *
-     * @param mixed $type
-     * @param mixed $method
      */
-    public function testLocaleList($type, $method)
+    public function testLocaleList(string $type, string $method): void
     {
         $reader = new Reader(
             "maxmind-db/test-data/GeoIP2-$type-Test.mmdb",
@@ -50,11 +44,8 @@ class ReaderTest extends TestCase
 
     /**
      * @dataProvider databaseTypes
-     *
-     * @param mixed $type
-     * @param mixed $method
      */
-    public function testHasIpAddressAndNetwork($type, $method)
+    public function testHasIpAddressAndNetwork(string $type, string $method): void
     {
         $reader = new Reader("maxmind-db/test-data/GeoIP2-$type-Test.mmdb");
         $record = $reader->$method('81.2.69.163');
@@ -65,11 +56,8 @@ class ReaderTest extends TestCase
 
     /**
      * @dataProvider databaseTypes
-     *
-     * @param mixed $type
-     * @param mixed $method
      */
-    public function testIsInEuropeanUnion($type, $method)
+    public function testIsInEuropeanUnion(string $type, string $method): void
     {
         $reader = new Reader("maxmind-db/test-data/GeoIP2-$type-Test.mmdb");
         $record = $reader->$method('81.2.69.160');
@@ -84,7 +72,7 @@ class ReaderTest extends TestCase
         $reader->close();
     }
 
-    public function testUnknownAddress()
+    public function testUnknownAddress(): void
     {
         $this->expectException(\GeoIp2\Exception\AddressNotFoundException::class);
         $this->expectExceptionMessage('The address 10.10.10.10 is not in the database.');
@@ -94,7 +82,7 @@ class ReaderTest extends TestCase
         $reader->close();
     }
 
-    public function testIncorrectDatabase()
+    public function testIncorrectDatabase(): void
     {
         $this->expectException(\BadMethodCallException::class);
         $this->expectExceptionMessage('The country method cannot be used to open a GeoIP2-City database');
@@ -104,7 +92,7 @@ class ReaderTest extends TestCase
         $reader->close();
     }
 
-    public function testIncorrectDatabaseFlat()
+    public function testIncorrectDatabaseFlat(): void
     {
         $this->expectException(\BadMethodCallException::class);
         $this->expectExceptionMessage('The domain method cannot be used to open a GeoIP2-City database');
@@ -114,7 +102,7 @@ class ReaderTest extends TestCase
         $reader->close();
     }
 
-    public function testInvalidAddress()
+    public function testInvalidAddress(): void
     {
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('is not a valid IP address');
@@ -124,7 +112,7 @@ class ReaderTest extends TestCase
         $reader->close();
     }
 
-    public function testAnonymousIp()
+    public function testAnonymousIp(): void
     {
         $reader = new Reader('maxmind-db/test-data/GeoIP2-Anonymous-IP-Test.mmdb');
         $ipAddress = '1.2.0.1';
@@ -141,7 +129,7 @@ class ReaderTest extends TestCase
         $reader->close();
     }
 
-    public function testAnonymousIpAllTrue()
+    public function testAnonymousIpAllTrue(): void
     {
         $reader = new Reader('maxmind-db/test-data/GeoIP2-Anonymous-IP-Test.mmdb');
         $ipAddress = '81.2.69.1';
@@ -158,7 +146,7 @@ class ReaderTest extends TestCase
         $reader->close();
     }
 
-    public function testAsn()
+    public function testAsn(): void
     {
         $reader = new Reader('maxmind-db/test-data/GeoLite2-ASN-Test.mmdb');
 
@@ -175,7 +163,7 @@ class ReaderTest extends TestCase
         $reader->close();
     }
 
-    public function testConnectionType()
+    public function testConnectionType(): void
     {
         $reader = new Reader('maxmind-db/test-data/GeoIP2-Connection-Type-Test.mmdb');
         $ipAddress = '1.0.1.1';
@@ -187,7 +175,7 @@ class ReaderTest extends TestCase
         $reader->close();
     }
 
-    public function testDomain()
+    public function testDomain(): void
     {
         $reader = new Reader('maxmind-db/test-data/GeoIP2-Domain-Test.mmdb');
 
@@ -199,7 +187,7 @@ class ReaderTest extends TestCase
         $reader->close();
     }
 
-    public function testEnterprise()
+    public function testEnterprise(): void
     {
         $reader = new Reader('maxmind-db/test-data/GeoIP2-Enterprise-Test.mmdb');
 
@@ -223,7 +211,7 @@ class ReaderTest extends TestCase
         $reader->close();
     }
 
-    public function testIsp()
+    public function testIsp(): void
     {
         $reader = new Reader('maxmind-db/test-data/GeoIP2-ISP-Test.mmdb');
 
@@ -244,7 +232,7 @@ class ReaderTest extends TestCase
         $reader->close();
     }
 
-    public function testMetadata()
+    public function testMetadata(): void
     {
         $reader = new Reader('maxmind-db/test-data/GeoIP2-City-Test.mmdb');
         $this->assertSame('GeoIP2-City', $reader->metadata()->databaseType);

@@ -9,6 +9,9 @@ namespace GeoIp2\Model;
  */
 abstract class AbstractModel implements \JsonSerializable
 {
+    /**
+     * @var array<string, mixed>
+     */
     protected $raw;
 
     /**
@@ -21,6 +24,8 @@ abstract class AbstractModel implements \JsonSerializable
 
     /**
      * @ignore
+     *
+     * @return mixed
      */
     protected function get(string $field)
     {
@@ -36,6 +41,8 @@ abstract class AbstractModel implements \JsonSerializable
 
     /**
      * @ignore
+     *
+     * @return mixed
      */
     public function __get(string $attr)
     {

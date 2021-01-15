@@ -33,18 +33,26 @@ class City extends Country
 {
     /**
      * @ignore
+     *
+     * @var \GeoIp2\Record\City
      */
     protected $city;
     /**
      * @ignore
+     *
+     * @var \GeoIp2\Record\Location
      */
     protected $location;
     /**
      * @ignore
+     *
+     * @var \GeoIp2\Record\Postal
      */
     protected $postal;
     /**
      * @ignore
+     *
+     * @var array<\GeoIp2\Record\Subdivision>
      */
     protected $subdivisions = [];
 
@@ -77,6 +85,8 @@ class City extends Country
 
     /**
      * @ignore
+     *
+     * @return mixed
      */
     public function __get(string $attr)
     {
