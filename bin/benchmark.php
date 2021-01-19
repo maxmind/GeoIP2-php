@@ -10,8 +10,9 @@ use GeoIp2\Exception\AddressNotFoundException;
 $reader = new Reader('GeoLite2-City.mmdb');
 $count = 40000;
 $startTime = microtime(true);
-for ($i = 0; $i < $count; $i++) {
+for ($i = 0; $i < $count; ++$i) {
     $ip = long2ip(rand(0, 2 ** 32 - 1));
+
     try {
         $t = $reader->city($ip);
     } catch (AddressNotFoundException $e) {

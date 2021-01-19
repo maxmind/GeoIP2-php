@@ -139,7 +139,7 @@ class Traits extends AbstractRecord
 
     public function __construct(?array $record)
     {
-        if (!isset($record['network']) && isset($record['ip_address']) && isset($record['prefix_len'])) {
+        if (!isset($record['network']) && isset($record['ip_address'], $record['prefix_len'])) {
             $record['network'] = Util::cidr($record['ip_address'], $record['prefix_len']);
         }
 

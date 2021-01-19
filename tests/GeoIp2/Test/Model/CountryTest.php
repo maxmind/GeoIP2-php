@@ -9,6 +9,8 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @coversNothing
+ *
+ * @internal
  */
 class CountryTest extends TestCase
 {
@@ -168,7 +170,7 @@ class CountryTest extends TestCase
 
         foreach (['isAnonymousProxy', 'isSatelliteProvider'] as $meth) {
             $this->assertFalse(
-                $this->model->traits->$meth,
+                $this->model->traits->{$meth},
                 "traits $meth returns 0 by default"
             );
         }

@@ -9,6 +9,8 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @coversNothing
+ *
+ * @internal
  */
 class ReaderTest extends TestCase
 {
@@ -23,7 +25,7 @@ class ReaderTest extends TestCase
     public function testDefaultLocale(string $type, string $method): void
     {
         $reader = new Reader("maxmind-db/test-data/GeoIP2-$type-Test.mmdb");
-        $record = $reader->$method('81.2.69.160');
+        $record = $reader->{$method}('81.2.69.160');
         $this->assertSame('United Kingdom', $record->country->name);
         $reader->close();
     }
@@ -37,7 +39,7 @@ class ReaderTest extends TestCase
             "maxmind-db/test-data/GeoIP2-$type-Test.mmdb",
             ['xx', 'ru', 'pt-BR', 'es', 'en']
         );
-        $record = $reader->$method('81.2.69.160');
+        $record = $reader->{$method}('81.2.69.160');
         $this->assertSame('Великобритания', $record->country->name);
         $reader->close();
     }
@@ -48,7 +50,7 @@ class ReaderTest extends TestCase
     public function testHasIpAddressAndNetwork(string $type, string $method): void
     {
         $reader = new Reader("maxmind-db/test-data/GeoIP2-$type-Test.mmdb");
-        $record = $reader->$method('81.2.69.163');
+        $record = $reader->{$method}('81.2.69.163');
         $this->assertSame('81.2.69.163', $record->traits->ipAddress);
         $this->assertSame('81.2.69.160/27', $record->traits->network);
         $reader->close();
@@ -60,7 +62,7 @@ class ReaderTest extends TestCase
     public function testIsInEuropeanUnion(string $type, string $method): void
     {
         $reader = new Reader("maxmind-db/test-data/GeoIP2-$type-Test.mmdb");
-        $record = $reader->$method('81.2.69.160');
+        $record = $reader->{$method}('81.2.69.160');
         $this->assertTrue(
             $record->country->isInEuropeanUnion,
             'country is_in_european_union is true'

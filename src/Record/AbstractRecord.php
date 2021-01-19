@@ -31,20 +31,22 @@ abstract class AbstractRecord implements \JsonSerializable
 
         if ($this->__isset($attr)) {
             return $this->record[$key];
-        } elseif ($this->validAttribute($attr)) {
+        }
+        if ($this->validAttribute($attr)) {
             if (preg_match('/^is_/', $key)) {
                 return false;
             }
 
             return null;
         }
+
         throw new \RuntimeException("Unknown attribute: $attr");
     }
 
     public function __isset(string $attr): bool
     {
-        return $this->validAttribute($attr) &&
-             isset($this->record[$this->attributeToKey($attr)]);
+        return $this->validAttribute($attr)
+             && isset($this->record[$this->attributeToKey($attr)]);
     }
 
     private function attributeToKey(string $attr): string

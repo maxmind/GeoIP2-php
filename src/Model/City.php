@@ -91,7 +91,7 @@ class City extends Country
     public function __get(string $attr)
     {
         if ($attr === 'mostSpecificSubdivision') {
-            return $this->$attr();
+            return $this->{$attr}();
         }
 
         return parent::__get($attr);
