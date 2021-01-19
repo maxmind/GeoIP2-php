@@ -194,7 +194,7 @@ class CountryTest extends TestCase
             'jsonSerialize returns initial array for the record'
         );
 
-        if (version_compare(PHP_VERSION, '5.4.0', '<')) {
+        if (version_compare(\PHP_VERSION, '5.4.0', '<')) {
             $this->markTestSkipped('Requires PHP 5.4+.');
         }
 

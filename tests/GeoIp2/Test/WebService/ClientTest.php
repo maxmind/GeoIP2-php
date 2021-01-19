@@ -524,7 +524,7 @@ class ClientTest extends TestCase
                         'headers' => $headers,
                         'userAgent' => 'GeoIP2-API/' . \GeoIp2\WebService\Client::VERSION
                             . ' MaxMind-WS-API/' . WsClient::VERSION
-                            . ' PHP/' . PHP_VERSION
+                            . ' PHP/' . \PHP_VERSION
                             . ' curl/' . $curlVersion['version'],
                         'connectTimeout' => isset($options['connectTimeout'])
                             ? $options['connectTimeout'] : null,
