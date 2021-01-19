@@ -22,9 +22,21 @@ use GeoIp2\Util;
  */
 class Asn extends AbstractModel
 {
+    /**
+     * @var int|null
+     */
     protected $autonomousSystemNumber;
+    /**
+     * @var string|null
+     */
     protected $autonomousSystemOrganization;
+    /**
+     * @var string
+     */
     protected $ipAddress;
+    /**
+     * @var string
+     */
     protected $network;
 
     /**

@@ -6,6 +6,9 @@ namespace GeoIp2\Record;
 
 abstract class AbstractRecord implements \JsonSerializable
 {
+    /**
+     * @var array<string, mixed>
+     */
     private $record;
 
     /**
@@ -18,6 +21,8 @@ abstract class AbstractRecord implements \JsonSerializable
 
     /**
      * @ignore
+     *
+     * @return mixed
      */
     public function __get(string $attr)
     {
@@ -49,6 +54,7 @@ abstract class AbstractRecord implements \JsonSerializable
 
     private function validAttribute(string $attr): bool
     {
+        // @phpstan-ignore-next-line
         return \in_array($attr, $this->validAttributes, true);
     }
 

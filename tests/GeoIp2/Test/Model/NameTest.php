@@ -12,6 +12,9 @@ use PHPUnit\Framework\TestCase;
  */
 class NameTest extends TestCase
 {
+    /**
+     * @var array<string, array<string, mixed>>
+     */
     public $raw = [
         'continent' => [
             'code' => 'NA',
@@ -35,7 +38,7 @@ class NameTest extends TestCase
         ],
     ];
 
-    public function testFallback()
+    public function testFallback(): void
     {
         $model = new Country($this->raw, ['ru', 'zh-CN', 'en']);
 
@@ -62,7 +65,7 @@ class NameTest extends TestCase
         );
     }
 
-    public function testTwoFallbacks()
+    public function testTwoFallbacks(): void
     {
         $model = new Country($this->raw, ['ru', 'ja']);
 
@@ -88,7 +91,7 @@ class NameTest extends TestCase
         );
     }
 
-    public function testNoFallbacks()
+    public function testNoFallbacks(): void
     {
         $model = new Country($this->raw, ['ja']);
 

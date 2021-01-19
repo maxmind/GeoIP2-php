@@ -28,15 +28,37 @@ namespace GeoIp2\Model;
  * the represented country differs from the country.
  * @property-read \GeoIp2\Record\Traits $traits Data for the traits of the
  * requested IP address.
+ * @property-read array $raw The raw data from the web service.
  */
 class Country extends AbstractModel
 {
+    /**
+     * @var \GeoIp2\Record\Continent
+     */
     protected $continent;
+    /**
+     * @var \GeoIp2\Record\Country
+     */
     protected $country;
+    /**
+     * @var array<string>
+     */
     protected $locales;
+    /**
+     * @var \GeoIp2\Record\MaxMind
+     */
     protected $maxmind;
+    /**
+     * @var \GeoIp2\Record\Country
+     */
     protected $registeredCountry;
+    /**
+     * @var \GeoIp2\Record\RepresentedCountry
+     */
     protected $representedCountry;
+    /**
+     * @var \GeoIp2\Record\Traits
+     */
     protected $traits;
 
     /**

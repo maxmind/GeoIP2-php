@@ -6,6 +6,9 @@ namespace GeoIp2\Record;
 
 abstract class AbstractPlaceRecord extends AbstractRecord
 {
+    /**
+     * @var array<string>
+     */
     private $locales;
 
     /**
@@ -19,6 +22,8 @@ abstract class AbstractPlaceRecord extends AbstractRecord
 
     /**
      * @ignore
+     *
+     * @return mixed
      */
     public function __get(string $attr)
     {
@@ -45,12 +50,14 @@ abstract class AbstractPlaceRecord extends AbstractRecord
     {
         $locale = $this->firstSetNameLocale();
 
+        // @phpstan-ignore-next-line
         return $locale === null ? null : $this->names[$locale];
     }
 
     private function firstSetNameLocale(): ?string
     {
         foreach ($this->locales as $locale) {
+            // @phpstan-ignore-next-line
             if (isset($this->names[$locale])) {
                 return $locale;
             }

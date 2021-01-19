@@ -23,3 +23,6 @@ jobs:
 
       - name: Lint with phpcs
         run: vendor/bin/phpcs --standard=PSR2 src/
+
+      - name: Lint with phpstan
+        run: vendor/bin/phpstan analyze

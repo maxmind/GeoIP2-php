@@ -12,6 +12,9 @@ use PHPUnit\Framework\TestCase;
  */
 class CountryTest extends TestCase
 {
+    /**
+     * @var array<string, array<string, mixed>>
+     */
     private $raw = [
         'continent' => [
             'code' => 'NA',
@@ -35,6 +38,9 @@ class CountryTest extends TestCase
         ],
     ];
 
+    /**
+     * @var Country|null
+     */
     private $model;
 
     protected function setUp(): void
@@ -42,7 +48,7 @@ class CountryTest extends TestCase
         $this->model = new Country($this->raw, ['en']);
     }
 
-    public function testObjects()
+    public function testObjects(): void
     {
         $this->assertInstanceOf(
             'GeoIp2\Model\Country',
@@ -71,7 +77,7 @@ class CountryTest extends TestCase
         );
     }
 
-    public function testValues()
+    public function testValues(): void
     {
         $this->assertSame(
             42,
@@ -174,7 +180,7 @@ class CountryTest extends TestCase
         );
     }
 
-    public function testJsonSerialize()
+    public function testJsonSerialize(): void
     {
         $this->assertSame(
             $this->raw,
@@ -205,7 +211,7 @@ class CountryTest extends TestCase
         );
     }
 
-    public function testIsSet()
+    public function testIsSet(): void
     {
         $this->assertTrue(isset($this->model->traits), 'traits is set');
         $this->assertFalse(isset($this->model->unknown), 'unknown is not set');
@@ -224,19 +230,21 @@ class CountryTest extends TestCase
         );
     }
 
-    public function testUnknownRecord()
+    public function testUnknownRecord(): void
     {
         $this->expectException(\RuntimeException::class);
         $this->expectExceptionMessage('Unknown attribute');
 
+        // @phpstan-ignore-next-line
         $this->model->unknownRecord;
     }
 
-    public function testUnknownTrait()
+    public function testUnknownTrait(): void
     {
         $this->expectException(\RuntimeException::class);
         $this->expectExceptionMessage('Unknown attribute');
 
+        // @phpstan-ignore-next-line
         $this->model->traits->unknown;
     }
 }

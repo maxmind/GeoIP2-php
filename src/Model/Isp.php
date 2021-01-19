@@ -26,11 +26,29 @@ use GeoIp2\Util;
  */
 class Isp extends AbstractModel
 {
+    /**
+     * @var int|null
+     */
     protected $autonomousSystemNumber;
+    /**
+     * @var string|null
+     */
     protected $autonomousSystemOrganization;
+    /**
+     * @var string|null
+     */
     protected $isp;
+    /**
+     * @var string|null
+     */
     protected $organization;
+    /**
+     * @var string
+     */
     protected $ipAddress;
+    /**
+     * @var string
+     */
     protected $network;
 
     /**
