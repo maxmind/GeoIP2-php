@@ -9,6 +9,8 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @coversNothing
+ *
+ * @internal
  */
 class CountryTest extends TestCase
 {
@@ -168,7 +170,7 @@ class CountryTest extends TestCase
 
         foreach (['isAnonymousProxy', 'isSatelliteProvider'] as $meth) {
             $this->assertFalse(
-                $this->model->traits->$meth,
+                $this->model->traits->{$meth},
                 "traits $meth returns 0 by default"
             );
         }
@@ -194,7 +196,7 @@ class CountryTest extends TestCase
             'jsonSerialize returns initial array for the record'
         );
 
-        if (version_compare(PHP_VERSION, '5.4.0', '<')) {
+        if (version_compare(\PHP_VERSION, '5.4.0', '<')) {
             $this->markTestSkipped('Requires PHP 5.4+.');
         }
 

@@ -218,7 +218,7 @@ class Reader implements ProviderInterface
 
     private function modelFor(string $class, string $type, string $ipAddress): AbstractModel
     {
-        list($record, $prefixLen) = $this->getRecord($class, $type, $ipAddress);
+        [$record, $prefixLen] = $this->getRecord($class, $type, $ipAddress);
 
         $record['traits']['ip_address'] = $ipAddress;
         $record['traits']['prefix_len'] = $prefixLen;
@@ -230,7 +230,7 @@ class Reader implements ProviderInterface
 
     private function flatModelFor(string $class, string $type, string $ipAddress): AbstractModel
     {
-        list($record, $prefixLen) = $this->getRecord($class, $type, $ipAddress);
+        [$record, $prefixLen] = $this->getRecord($class, $type, $ipAddress);
 
         $record['ip_address'] = $ipAddress;
         $record['prefix_len'] = $prefixLen;
@@ -243,11 +243,12 @@ class Reader implements ProviderInterface
     {
         if (strpos($this->dbType, $type) === false) {
             $method = lcfirst($class);
+
             throw new \BadMethodCallException(
                 "The $method method cannot be used to open a {$this->dbType} database"
             );
         }
-        list($record, $prefixLen) = $this->dbReader->getWithPrefixLen($ipAddress);
+        [$record, $prefixLen] = $this->dbReader->getWithPrefixLen($ipAddress);
         if ($record === null) {
             throw new AddressNotFoundException(
                 "The address $ipAddress is not in the database."

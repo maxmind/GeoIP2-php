@@ -9,6 +9,8 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @coversNothing
+ *
+ * @internal
  */
 class InsightsTest extends TestCase
 {

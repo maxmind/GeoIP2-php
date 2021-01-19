@@ -12,4 +12,5 @@ if ($record->country->isoCode === 'GB') {
 }
 
 echo 'Problem with Phar!';
+
 exit(1);

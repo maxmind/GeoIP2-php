@@ -10,6 +10,8 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @coversNothing
+ *
+ * @internal
  */
 class ClientTest extends TestCase
 {
@@ -17,21 +19,21 @@ class ClientTest extends TestCase
      * @var array<string, array<string, mixed>>
      */
     private $country = [
-            'continent' => [
-                'code' => 'NA',
-                'geoname_id' => 42,
-                'names' => ['en' => 'North America'],
-            ],
-            'country' => [
-                'geoname_id' => 1,
-                'iso_code' => 'US',
-                'names' => ['en' => 'United States of America'],
-            ],
-            'maxmind' => ['queries_remaining' => 11],
-            'traits' => [
-                'ip_address' => '1.2.3.4',
-                'network' => '1.2.3.0/24',
-            ],
+        'continent' => [
+            'code' => 'NA',
+            'geoname_id' => 42,
+            'names' => ['en' => 'North America'],
+        ],
+        'country' => [
+            'geoname_id' => 1,
+            'iso_code' => 'US',
+            'names' => ['en' => 'United States of America'],
+        ],
+        'maxmind' => ['queries_remaining' => 11],
+        'traits' => [
+            'ip_address' => '1.2.3.4',
+            'network' => '1.2.3.0/24',
+        ],
     ];
 
     private function getResponse(string $service, string $ipAddress): array
@@ -483,7 +485,7 @@ class ClientTest extends TestCase
         $accountId = 42;
         $licenseKey = 'abcdef123456';
 
-        list($statusCode, $headers, $responseBody)
+        [$statusCode, $headers, $responseBody]
             = $this->getResponse($service, $ipAddress);
 
         $stub = $this->createMock(
@@ -524,7 +526,7 @@ class ClientTest extends TestCase
                         'headers' => $headers,
                         'userAgent' => 'GeoIP2-API/' . \GeoIp2\WebService\Client::VERSION
                             . ' MaxMind-WS-API/' . WsClient::VERSION
-                            . ' PHP/' . PHP_VERSION
+                            . ' PHP/' . \PHP_VERSION
                             . ' curl/' . $curlVersion['version'],
                         'connectTimeout' => isset($options['connectTimeout'])
                             ? $options['connectTimeout'] : null,
@@ -547,6 +549,6 @@ class ClientTest extends TestCase
             $options
         );
 
-        return $client->$method($ipAddress);
+        return $client->{$method}($ipAddress);
     }
 }
