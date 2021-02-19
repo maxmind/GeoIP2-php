@@ -1,0 +1,5 @@
+# Fixes a vulnerability in CentOS: https://stackoverflow.com/questions/20533279/
+<FilesMatch \.php\.txt$>
+    RemoveHandler .php
+    ForceType text/plain
+</FilesMatch>

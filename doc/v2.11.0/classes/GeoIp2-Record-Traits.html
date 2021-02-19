@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>GeoIP2 PHP API v2.11.0</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src').replace( /\\/g, '/');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist, is empty or trying to view from localhost';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">GeoIP2 PHP API v2.11.0</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                        <li><a href="../namespaces/geoip2.html"><abbr title="\GeoIp2">GeoIp2</abbr></a></li>
+                                                        <li><a href="../namespaces/maxmind.html"><abbr title="\MaxMind">MaxMind</abbr></a></li>
+                                                    </ul>
+                    </li>
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">3</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-2050382092"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-2050382092" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1664739634"></a>
+                                <a href="../namespaces/geoip2.html" style="margin-left: 30px; padding-left: 0">GeoIp2</a>
+            </div>
+            <div id="namespace-1664739634" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-862905977"></a>
+                                <a href="../namespaces/geoip2-database.html" style="margin-left: 30px; padding-left: 0">Database</a>
+            </div>
+            <div id="namespace-862905977" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/GeoIp2-Database-Reader.html"><abbr title="\GeoIp2\Database\Reader">Reader</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-490039424"></a>
+                                <a href="../namespaces/geoip2-exception.html" style="margin-left: 30px; padding-left: 0">Exception</a>
+            </div>
+            <div id="namespace-490039424" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/GeoIp2-Exception-AddressNotFoundException.html"><abbr title="\GeoIp2\Exception\AddressNotFoundException">AddressNotFoundException</abbr></a></li>
+                                                    <li class="class"><a href="../classes/GeoIp2-Exception-AuthenticationException.html"><abbr title="\GeoIp2\Exception\AuthenticationException">AuthenticationException</abbr></a></li>
+                                                    <li class="class"><a href="../classes/GeoIp2-Exception-GeoIp2Exception.html"><abbr title="\GeoIp2\Exception\GeoIp2Exception">GeoIp2Exception</abbr></a></li>
+                                                    <li class="class"><a href="../classes/GeoIp2-Exception-HttpException.html"><abbr title="\GeoIp2\Exception\HttpException">HttpException</abbr></a></li>
+                                                    <li class="class"><a href="../classes/GeoIp2-Exception-InvalidRequestException.html"><abbr title="\GeoIp2\Exception\InvalidRequestException">InvalidRequestException</abbr></a></li>
+                                                    <li class="class"><a href="../classes/GeoIp2-Exception-OutOfQueriesException.html"><abbr title="\GeoIp2\Exception\OutOfQueriesException">OutOfQueriesException</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1708404304"></a>
+                                <a href="../namespaces/geoip2-model.html" style="margin-left: 30px; padding-left: 0">Model</a>
+            </div>
+            <div id="namespace-1708404304" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/GeoIp2-Model-AnonymousIp.html"><abbr title="\GeoIp2\Model\AnonymousIp">AnonymousIp</abbr></a></li>
+                                                    <li class="class"><a href="../classes/GeoIp2-Model-Asn.html"><abbr title="\GeoIp2\Model\Asn">Asn</abbr></a></li>
+                                                    <li class="class"><a href="../classes/GeoIp2-Model-City.html"><abbr title="\GeoIp2\Model\City">City</abbr></a></li>
+                                                    <li class="class"><a href="../classes/GeoIp2-Model-ConnectionType.html"><abbr title="\GeoIp2\Model\ConnectionType">ConnectionType</abbr></a></li>
+                                                    <li class="class"><a href="../classes/GeoIp2-Model-Country.html"><abbr title="\GeoIp2\Model\Country">Country</abbr></a></li>
+                                                    <li class="class"><a href="../classes/GeoIp2-Model-Domain.html"><abbr title="\GeoIp2\Model\Domain">Domain</abbr></a></li>
+                                                    <li class="class"><a href="../classes/GeoIp2-Model-Enterprise.html"><abbr title="\GeoIp2\Model\Enterprise">Enterprise</abbr></a></li>
+                                                    <li class="class"><a href="../classes/GeoIp2-Model-Insights.html"><abbr title="\GeoIp2\Model\Insights">Insights</abbr></a></li>
+                                                    <li class="class"><a href="../classes/GeoIp2-Model-Isp.html"><abbr title="\GeoIp2\Model\Isp">Isp</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-449973937"></a>
+                                <a href="../namespaces/geoip2-record.html" style="margin-left: 30px; padding-left: 0">Record</a>
+            </div>
+            <div id="namespace-449973937" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/GeoIp2-Record-AbstractPlaceRecord.html"><abbr title="\GeoIp2\Record\AbstractPlaceRecord">AbstractPlaceRecord</abbr></a></li>
+                                                    <li class="class"><a href="../classes/GeoIp2-Record-AbstractRecord.html"><abbr title="\GeoIp2\Record\AbstractRecord">AbstractRecord</abbr></a></li>
+                                                    <li class="class"><a href="../classes/GeoIp2-Record-City.html"><abbr title="\GeoIp2\Record\City">City</abbr></a></li>
+                                                    <li class="class"><a href="../classes/GeoIp2-Record-Continent.html"><abbr title="\GeoIp2\Record\Continent">Continent</abbr></a></li>
+                                                    <li class="class"><a href="../classes/GeoIp2-Record-Country.html"><abbr title="\GeoIp2\Record\Country">Country</abbr></a></li>
+                                                    <li class="class"><a href="../classes/GeoIp2-Record-Location.html"><abbr title="\GeoIp2\Record\Location">Location</abbr></a></li>
+                                                    <li class="class"><a href="../classes/GeoIp2-Record-MaxMind.html"><abbr title="\GeoIp2\Record\MaxMind">MaxMind</abbr></a></li>
+                                                    <li class="class"><a href="../classes/GeoIp2-Record-Postal.html"><abbr title="\GeoIp2\Record\Postal">Postal</abbr></a></li>
+                                                    <li class="class"><a href="../classes/GeoIp2-Record-RepresentedCountry.html"><abbr title="\GeoIp2\Record\RepresentedCountry">RepresentedCountry</abbr></a></li>
+                                                    <li class="class"><a href="../classes/GeoIp2-Record-Subdivision.html"><abbr title="\GeoIp2\Record\Subdivision">Subdivision</abbr></a></li>
+                                                    <li class="class"><a href="../classes/GeoIp2-Record-Traits.html"><abbr title="\GeoIp2\Record\Traits">Traits</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1008844148"></a>
+                                <a href="../namespaces/geoip2-webservice.html" style="margin-left: 30px; padding-left: 0">WebService</a>
+            </div>
+            <div id="namespace-1008844148" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/GeoIp2-WebService-Client.html"><abbr title="\GeoIp2\WebService\Client">Client</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/GeoIp2-ProviderInterface.html"><abbr title="\GeoIp2\ProviderInterface">ProviderInterface</abbr></a></li>
+                                                                                                    <li class="class"><a href="../classes/GeoIp2-Util.html"><abbr title="\GeoIp2\Util">Util</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1937505542"></a>
+                                <a href="../namespaces/maxmind.html" style="margin-left: 30px; padding-left: 0">MaxMind</a>
+            </div>
+            <div id="namespace-1937505542" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-577731556"></a>
+                                <a href="../namespaces/maxmind-db.html" style="margin-left: 30px; padding-left: 0">Db</a>
+            </div>
+            <div id="namespace-577731556" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1138406661"></a>
+                                <a href="../namespaces/maxmind-db-reader.html" style="margin-left: 30px; padding-left: 0">Reader</a>
+            </div>
+            <div id="namespace-1138406661" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/MaxMind-Db-Reader-Decoder.html"><abbr title="\MaxMind\Db\Reader\Decoder">Decoder</abbr></a></li>
+                                                    <li class="class"><a href="../classes/MaxMind-Db-Reader-InvalidDatabaseException.html"><abbr title="\MaxMind\Db\Reader\InvalidDatabaseException">InvalidDatabaseException</abbr></a></li>
+                                                    <li class="class"><a href="../classes/MaxMind-Db-Reader-Metadata.html"><abbr title="\MaxMind\Db\Reader\Metadata">Metadata</abbr></a></li>
+                                                    <li class="class"><a href="../classes/MaxMind-Db-Reader-Util.html"><abbr title="\MaxMind\Db\Reader\Util">Util</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/MaxMind-Db-Reader.html"><abbr title="\MaxMind\Db\Reader">Reader</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/geoip2-record.html"><abbr title="\GeoIp2\Record">Record</abbr></a> <i class="icon-level-up"></i>
+                                            </nav>
+                    
+                    <h1><small>\GeoIp2\Record</small>Traits</h1>
+                    <p><em>Contains data for the traits record associated with an IP address.</em></p>
+                    <p>This record is returned by all location services and databases.</p>
+
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/GeoIp2-Record-AbstractRecord.html#method___isset" class="">__isset()</a><br />
+                                                                    <a href="../classes/GeoIp2-Record-AbstractRecord.html#method_jsonSerialize" class="">jsonSerialize()</a><br />
+                                                                    <a href="../classes/GeoIp2-Record-Traits.html#method___construct" class="">__construct()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/GeoIp2-Record-Traits.html#property_autonomousSystemNumber" class="">$autonomousSystemNumber</a><br />
+                                                                    <a href="../classes/GeoIp2-Record-Traits.html#property_autonomousSystemOrganization" class="">$autonomousSystemOrganization</a><br />
+                                                                    <a href="../classes/GeoIp2-Record-Traits.html#property_connectionType" class="">$connectionType</a><br />
+                                                                    <a href="../classes/GeoIp2-Record-Traits.html#property_domain" class="">$domain</a><br />
+                                                                    <a href="../classes/GeoIp2-Record-Traits.html#property_ipAddress" class="">$ipAddress</a><br />
+                                                                    <a href="../classes/GeoIp2-Record-Traits.html#property_isAnonymous" class="">$isAnonymous</a><br />
+                                                                    <a href="../classes/GeoIp2-Record-Traits.html#property_isAnonymousProxy" class="">$isAnonymousProxy</a><br />
+                                                                    <a href="../classes/GeoIp2-Record-Traits.html#property_isAnonymousVpn" class="">$isAnonymousVpn</a><br />
+                                                                    <a href="../classes/GeoIp2-Record-Traits.html#property_isHostingProvider" class="">$isHostingProvider</a><br />
+                                                                    <a href="../classes/GeoIp2-Record-Traits.html#property_isLegitimateProxy" class="">$isLegitimateProxy</a><br />
+                                                                    <a href="../classes/GeoIp2-Record-Traits.html#property_isPublicProxy" class="">$isPublicProxy</a><br />
+                                                                    <a href="../classes/GeoIp2-Record-Traits.html#property_isResidentialProxy" class="">$isResidentialProxy</a><br />
+                                                                    <a href="../classes/GeoIp2-Record-Traits.html#property_isSatelliteProvider" class="">$isSatelliteProvider</a><br />
+                                                                    <a href="../classes/GeoIp2-Record-Traits.html#property_isTorExitNode" class="">$isTorExitNode</a><br />
+                                                                    <a href="../classes/GeoIp2-Record-Traits.html#property_isp" class="">$isp</a><br />
+                                                                    <a href="../classes/GeoIp2-Record-Traits.html#property_network" class="">$network</a><br />
+                                                                    <a href="../classes/GeoIp2-Record-Traits.html#property_organization" class="">$organization</a><br />
+                                                                    <a href="../classes/GeoIp2-Record-Traits.html#property_staticIpScore" class="">$staticIpScore</a><br />
+                                                                    <a href="../classes/GeoIp2-Record-Traits.html#property_userCount" class="">$userCount</a><br />
+                                                                    <a href="../classes/GeoIp2-Record-Traits.html#property_userType" class="">$userType</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <em>No protected methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No protected properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/record-traits.html"><div class="path-wrapper">Record/Traits.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">Default</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                                                                                                                                                
+                                        <div class="namespace-wrapper"><a href="../classes/GeoIp2-Record-AbstractRecord.html"><abbr title="\GeoIp2\Record\AbstractRecord">AbstractRecord</abbr></a></div>
+                                                                                                    <div class="namespace-wrapper">\GeoIp2\Record\Traits</div>
+                            </dd>
+
+                        
+                        
+                        
+                                                
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr><td colspan="2"><em>None found</em></td></tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_autonomousSystemNumber" name="property_autonomousSystemNumber" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$autonomousSystemNumber</h3>
+                <pre class="signature">$autonomousSystemNumber : int|null</pre>
+                <p><em></em></p>
+                <p>The autonomous system number
+associated with the IP address. See
+https://en.wikipedia.org/wiki/Autonomous_system_(Internet%29. This attribute
+is only available from the City and Insights web service and the GeoIP2
+Enterprise database.</p>
+
+
+                                <h4>Type</h4>
+                <a href="../int|null"><abbr title="int|null">int|null</abbr></a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_autonomousSystemOrganization" name="property_autonomousSystemOrganization" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$autonomousSystemOrganization</h3>
+                <pre class="signature">$autonomousSystemOrganization : string|null</pre>
+                <p><em></em></p>
+                <p>The organization
+associated with the registered autonomous system number for the IP address.
+See https://en.wikipedia.org/wiki/Autonomous_system_(Internet%29. This
+attribute is only available from the City and Insights web service and the
+GeoIP2 Enterprise database.</p>
+
+
+                                <h4>Type</h4>
+                <a href="../string|null"><abbr title="string|null">string|null</abbr></a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_connectionType" name="property_connectionType" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$connectionType</h3>
+                <pre class="signature">$connectionType : string|null</pre>
+                <p><em></em></p>
+                <p>The connection type may take the
+following  values: &quot;Dialup&quot;, &quot;Cable/DSL&quot;, &quot;Corporate&quot;, &quot;Cellular&quot;.
+Additional values may be added in the future. This attribute is only
+available in the GeoIP2 Enterprise database.</p>
+
+
+                                <h4>Type</h4>
+                <a href="../string|null"><abbr title="string|null">string|null</abbr></a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_domain" name="property_domain" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$domain</h3>
+                <pre class="signature">$domain : string|null</pre>
+                <p><em></em></p>
+                <p>The second level domain associated with the
+IP address. This will be something like &quot;example.com&quot; or &quot;example.co.uk&quot;,
+not &quot;foo.example.com&quot;. This attribute is only available from the
+City and Insights web service and the GeoIP2 Enterprise
+database.</p>
+
+
+                                <h4>Type</h4>
+                <a href="../string|null"><abbr title="string|null">string|null</abbr></a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_ipAddress" name="property_ipAddress" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$ipAddress</h3>
+                <pre class="signature">$ipAddress : string</pre>
+                <p><em></em></p>
+                <p>The IP address that the data in the model
+is for. If you performed a &quot;me&quot; lookup against the web service, this
+will be the externally routable IP address for the system the code is
+running on. If the system is behind a NAT, this may differ from the IP
+address locally assigned to it. This attribute is returned by all end
+points.</p>
+
+
+                                <h4>Type</h4>
+                <a href="../string"><abbr title="string">string</abbr></a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_isAnonymous" name="property_isAnonymous" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$isAnonymous</h3>
+                <pre class="signature">$isAnonymous : bool</pre>
+                <p><em></em></p>
+                <p>This is true if the IP address belongs to
+any sort of anonymous network. This property is only available from GeoIP2
+Precision Insights.</p>
+
+
+                                <h4>Type</h4>
+                <a href="../bool"><abbr title="bool">bool</abbr></a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_isAnonymousProxy" name="property_isAnonymousProxy" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$isAnonymousProxy</h3>
+                <pre class="signature">$isAnonymousProxy : bool</pre>
+                <p><em></em></p>
+                <p><em>Deprecated.</em> Please see our GeoIP2
+Anonymous IP database
+(https://www.maxmind.com/en/geoip2-anonymous-ip-database) to determine
+whether the IP address is used by an anonymizing service.</p>
+
+
+                                <h4>Type</h4>
+                <a href="../bool"><abbr title="bool">bool</abbr></a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_isAnonymousVpn" name="property_isAnonymousVpn" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$isAnonymousVpn</h3>
+                <pre class="signature">$isAnonymousVpn : bool</pre>
+                <p><em></em></p>
+                <p>This is true if the IP address is
+registered to an anonymous VPN provider. If a VPN provider does not register
+subnets under names associated with them, we will likely only flag their IP
+ranges using the isHostingProvider property. This property is only available
+from GeoIP2 Precision Insights.</p>
+
+
+                                <h4>Type</h4>
+                <a href="../bool"><abbr title="bool">bool</abbr></a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_isHostingProvider" name="property_isHostingProvider" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$isHostingProvider</h3>
+                <pre class="signature">$isHostingProvider : bool</pre>
+                <p><em></em></p>
+                <p>This is true if the IP address belongs
+to a hosting or VPN provider (see description of isAnonymousVpn property).
+This property is only available from GeoIP2 Precision Insights.</p>
+
+
+                                <h4>Type</h4>
+                <a href="../bool"><abbr title="bool">bool</abbr></a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_isLegitimateProxy" name="property_isLegitimateProxy" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$isLegitimateProxy</h3>
+                <pre class="signature">$isLegitimateProxy : bool</pre>
+                <p><em></em></p>
+                <p>This attribute is true if MaxMind
+believes this IP address to be a legitimate proxy, such as an internal
+VPN used by a corporation. This attribute is only available in the GeoIP2
+Enterprise database.</p>
+
+
+                                <h4>Type</h4>
+                <a href="../bool"><abbr title="bool">bool</abbr></a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_isPublicProxy" name="property_isPublicProxy" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$isPublicProxy</h3>
+                <pre class="signature">$isPublicProxy : bool</pre>
+                <p><em></em></p>
+                <p>This is true if the IP address belongs to
+a public proxy. This property is only available from GeoIP2 Precision
+Insights.</p>
+
+
+                                <h4>Type</h4>
+                <a href="../bool"><abbr title="bool">bool</abbr></a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_isResidentialProxy" name="property_isResidentialProxy" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$isResidentialProxy</h3>
+                <pre class="signature">$isResidentialProxy : bool</pre>
+                <p><em></em></p>
+                <p>This is true if the IP address is
+on a suspected anonymizing network and belongs to a residential ISP. This
+property is only available from GeoIP2 Precision Insights.</p>
+
+
+                                <h4>Type</h4>
+                <a href="../bool"><abbr title="bool">bool</abbr></a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_isSatelliteProvider" name="property_isSatelliteProvider" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$isSatelliteProvider</h3>
+                <pre class="signature">$isSatelliteProvider : bool</pre>
+                <p><em></em></p>
+                <p><em>Deprecated.</em> Due to the
+increased coverage by mobile carriers, very few satellite providers now
+serve multiple countries. As a result, the output does not provide
+sufficiently relevant data for us to maintain it.</p>
+
+
+                                <h4>Type</h4>
+                <a href="../bool"><abbr title="bool">bool</abbr></a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_isTorExitNode" name="property_isTorExitNode" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$isTorExitNode</h3>
+                <pre class="signature">$isTorExitNode : bool</pre>
+                <p><em></em></p>
+                <p>This is true if the IP address is a Tor
+exit node. This property is only available from GeoIP2 Precision Insights.</p>
+
+
+                                <h4>Type</h4>
+                <a href="../bool"><abbr title="bool">bool</abbr></a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_isp" name="property_isp" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$isp</h3>
+                <pre class="signature">$isp : string|null</pre>
+                <p><em></em></p>
+                <p>The name of the ISP associated with the IP
+address. This attribute is only available from the City and Insights web
+services and the GeoIP2 Enterprise database.</p>
+
+
+                                <h4>Type</h4>
+                <a href="../string|null"><abbr title="string|null">string|null</abbr></a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_network" name="property_network" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$network</h3>
+                <pre class="signature">$network : string</pre>
+                <p><em></em></p>
+                <p>The network in CIDR notation associated with
+the record. In particular, this is the largest network where all of the
+fields besides $ipAddress have the same value.</p>
+
+
+                                <h4>Type</h4>
+                <a href="../string"><abbr title="string">string</abbr></a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_organization" name="property_organization" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$organization</h3>
+                <pre class="signature">$organization : string|null</pre>
+                <p><em></em></p>
+                <p>The name of the organization associated
+with the IP address. This attribute is only available from the City and
+Insights web services and the GeoIP2 Enterprise database.</p>
+
+
+                                <h4>Type</h4>
+                <a href="../string|null"><abbr title="string|null">string|null</abbr></a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_staticIpScore" name="property_staticIpScore" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$staticIpScore</h3>
+                <pre class="signature">$staticIpScore : float|null</pre>
+                <p><em></em></p>
+                <p>An indicator of how static or
+dynamic an IP address is. This property is only available from GeoIP2
+Precision Insights.</p>
+
+
+                                <h4>Type</h4>
+                <a href="../float|null"><abbr title="float|null">float|null</abbr></a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_userCount" name="property_userCount" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$userCount</h3>
+                <pre class="signature">$userCount : int|null</pre>
+                <p><em></em></p>
+                <p>The estimated number of users sharing
+the IP/network during the past 24 hours. For IPv4, the count is for the
+individual IP. For IPv6, the count is for the /64 network. This property is
+only available from GeoIP2 Precision Insights.</p>
+
+
+                                <h4>Type</h4>
+                <a href="../int|null"><abbr title="int|null">int|null</abbr></a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_userType" name="property_userType" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$userType</h3>
+                <pre class="signature">$userType : string|null</pre>
+                <p><em></em></p>
+                <p>The user type associated with the IP
+ address. This can be one of the following values:</p>
+ <ul>
+   <li>business
+   <li>cafe
+   <li>cellular
+   <li>college
+   <li>content_delivery_network
+   <li>dialup
+   <li>government
+   <li>hosting
+   <li>library
+   <li>military
+   <li>residential
+   <li>router
+   <li>school
+   <li>search_engine_spider
+   <li>traveler
+</ul>
+<p>
+  This attribute is only available from the Insights web service and the
+  GeoIP2 Enterprise database.
+</p>
+
+
+                                <h4>Type</h4>
+                <a href="../string|null"><abbr title="string|null">string|null</abbr></a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___isset" name="method___isset" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__isset()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__isset(string  <span class="argument">$attr</span>) : bool</pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$attr </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    bool
+                                            &mdash; 
+                                    
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/GeoIp2-Record-AbstractRecord.html"><div class="path-wrapper">\GeoIp2\Record\AbstractRecord</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_jsonSerialize" name="method_jsonSerialize" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">jsonSerialize()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">jsonSerialize() : ?array</pre>
+                <p><em></em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    ?array
+                                            &mdash; 
+                                    
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/GeoIp2-Record-AbstractRecord.html"><div class="path-wrapper">\GeoIp2\Record\AbstractRecord</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct(?array  <span class="argument">$record</span>) : mixed</pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>?array</td>
+                                <td>$record </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                            &mdash; 
+                                    
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/GeoIp2-Record-Traits.html"><div class="path-wrapper">\GeoIp2\Record\Traits</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">Traits.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/Record/Traits.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                            <li><a href="../namespaces/geoip2.html"><abbr title="\GeoIp2">GeoIp2</abbr></a></li>
+                                                                            <li><a href="../namespaces/maxmind.html"><abbr title="\MaxMind">MaxMind</abbr></a></li>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="https://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on February 19th, 2021 at 23:09.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>
