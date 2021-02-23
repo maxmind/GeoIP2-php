@@ -71,24 +71,37 @@ else
     git pull
 fi
 
+if [ ! -d .maxminddb ]; then
+    echo "Cloning MaxMind-DB for docs"
+    git clone git@github.com:maxmind/MaxMind-DB-Reader-php.git .maxminddb
+else
+    echo "Updating MaxMind-DB for docs"
+    pushd .maxminddb
+    git pull
+    popd
+fi
+
+
 if [ -n "$(git status --porcelain)" ]; then
     echo ".gh-pages is not clean" >&2
     exit 1
 fi
 
 # Using Composer is possible, but they don't recommend it.
-wget -O phpDocumentor.phar https://github.com/phpDocumentor/phpDocumentor2/releases/download/v2.9.0/phpDocumentor.phar
+wget -O phpDocumentor.phar https://github.com/phpDocumentor/phpDocumentor/releases/download/v3.0.0/phpDocumentor.phar
 
 # Use cache dir in /tmp as otherwise cache files get into the output directory.
 cachedir="/tmp/phpdoc-$$-$RANDOM"
 rm -rf "$cachedir"
 
 php phpDocumentor.phar \
-    -d ../src,../../MaxMind-DB-Reader-php/src \
+    -d "$PWD/../src" \
+    -d "$PWD/.maxminddb/src" \
     --visibility public \
     --cache-folder "$cachedir" \
     --title "GeoIP2 PHP API $tag" \
-    -t "doc/$tag"
+    -t "doc/$tag" \
+    --template=clean
 
 rm -rf "$cachedir"
 
