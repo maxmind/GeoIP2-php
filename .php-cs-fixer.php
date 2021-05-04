@@ -1,6 +1,8 @@
 <?php
 
-return PhpCsFixer\Config::create()
+$config = new PhpCsFixer\Config();
+
+return $config
     ->setRiskyAllowed(true)
     ->setRules([
         '@Symfony' => true,
@@ -19,13 +21,10 @@ return PhpCsFixer\Config::create()
         'increment_style' => false,
         'list_syntax' => ['syntax' => 'short'],
         'multiline_whitespace_before_semicolons' => false,
-        'no_extra_consecutive_blank_lines' => ['break', 'continue', 'extra', 'return', 'throw', 'use', 'parenthesis_brace_block', 'square_brace_block', 'curly_brace_block'],
-        'no_short_echo_tag' => true,
         'no_unreachable_default_argument_value' => true,
         'no_useless_else' => true,
         'no_useless_return' => true,
         'ordered_imports' => true,
-        'pre_increment' => false,
         'php_unit_strict' => true,
         'php_unit_test_class_requires_covers' => true,
         'phpdoc_add_missing_param_annotation' => true,
