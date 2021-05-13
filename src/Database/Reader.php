@@ -34,7 +34,7 @@ use MaxMind\Db\Reader\InvalidDatabaseException;
  * corrupt or invalid, a {@link \MaxMind\Db\Reader\InvalidDatabaseException}
  * will be thrown.
  */
-class Reader implements ProviderInterface
+class Reader implements ReaderInterface, ProviderInterface
 {
     /**
      * @var DbReader
