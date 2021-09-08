@@ -125,13 +125,13 @@ class Client implements ProviderInterface
      * @throws \GeoIp2\Exception\InvalidRequestException} if your request was received by the web service but is
      *                                                    invalid for some other reason.  This may indicate an issue
      *                                                    with this API. Please report the error to MaxMind.
-     * @throws \GeoIp2\Exception\HttpException            if an unexpected HTTP error code or message was returned.
-     *                                                    This could indicate a problem with the connection between
-     *                                                    your server and the web service or that the web service
-     *                                                    returned an invalid document or 500 error code
-     * @throws \GeoIp2\Exception\GeoIp2Exception          This serves as the parent
-     *                                                    class to the above exceptions. It will be thrown directly
-     *                                                    if a 200 status code is returned but the body is invalid.
+     * @throws \GeoIp2\Exception\HttpException   if an unexpected HTTP error code or message was returned.
+     *                                           This could indicate a problem with the connection between
+     *                                           your server and the web service or that the web service
+     *                                           returned an invalid document or 500 error code
+     * @throws \GeoIp2\Exception\GeoIp2Exception This serves as the parent
+     *                                           class to the above exceptions. It will be thrown directly
+     *                                           if a 200 status code is returned but the body is invalid.
      */
     public function city(string $ipAddress = 'me'): City
     {
@@ -154,14 +154,14 @@ class Client implements ProviderInterface
      * @throws \GeoIp2\Exception\InvalidRequestException} if your request was received by the web service but is
      *                                                    invalid for some other reason.  This may indicate an
      *                                                    issue with this API. Please report the error to MaxMind.
-     * @throws \GeoIp2\Exception\HttpException            if an unexpected HTTP error
-     *                                                    code or message was returned. This could indicate a problem
-     *                                                    with the connection between your server and the web service
-     *                                                    or that the web service returned an invalid document or 500
-     *                                                    error code.
-     * @throws \GeoIp2\Exception\GeoIp2Exception          This serves as the parent class to the above exceptions. It
-     *                                                    will be thrown directly if a 200 status code is returned but
-     *                                                    the body is invalid.
+     * @throws \GeoIp2\Exception\HttpException   if an unexpected HTTP error
+     *                                           code or message was returned. This could indicate a problem
+     *                                           with the connection between your server and the web service
+     *                                           or that the web service returned an invalid document or 500
+     *                                           error code.
+     * @throws \GeoIp2\Exception\GeoIp2Exception This serves as the parent class to the above exceptions. It
+     *                                           will be thrown directly if a 200 status code is returned but
+     *                                           the body is invalid.
      */
     public function country(string $ipAddress = 'me'): Country
     {
@@ -185,13 +185,13 @@ class Client implements ProviderInterface
      * @throws \GeoIp2\Exception\InvalidRequestException} if your request was received by the web service but is
      *                                                    invalid for some other reason.  This may indicate an
      *                                                    issue with this API. Please report the error to MaxMind.
-     * @throws \GeoIp2\Exception\HttpException            if an unexpected HTTP error code or message was returned.
-     *                                                    This could indicate a problem with the connection between
-     *                                                    your server and the web service or that the web service
-     *                                                    returned an invalid document or 500 error code
-     * @throws \GeoIp2\Exception\GeoIp2Exception          This serves as the parent
-     *                                                    class to the above exceptions. It will be thrown directly
-     *                                                    if a 200 status code is returned but the body is invalid.
+     * @throws \GeoIp2\Exception\HttpException   if an unexpected HTTP error code or message was returned.
+     *                                           This could indicate a problem with the connection between
+     *                                           your server and the web service or that the web service
+     *                                           returned an invalid document or 500 error code
+     * @throws \GeoIp2\Exception\GeoIp2Exception This serves as the parent
+     *                                           class to the above exceptions. It will be thrown directly
+     *                                           if a 200 status code is returned but the body is invalid.
      */
     public function insights(string $ipAddress = 'me'): Insights
     {
