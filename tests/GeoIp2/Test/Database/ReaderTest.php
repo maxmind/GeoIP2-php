@@ -62,14 +62,14 @@ class ReaderTest extends TestCase
     public function testIsInEuropeanUnion(string $type, string $method): void
     {
         $reader = new Reader("maxmind-db/test-data/GeoIP2-$type-Test.mmdb");
-        $record = $reader->{$method}('81.2.69.160');
+        $record = $reader->{$method}('2a02:cfc0::');
         $this->assertTrue(
             $record->country->isInEuropeanUnion,
             'country is_in_european_union is true'
         );
-        $this->assertFalse(
+        $this->assertTrue(
             $record->registeredCountry->isInEuropeanUnion,
-            'registered_country is_in_european_union is false'
+            'registered_country is_in_european_union is true'
         );
         $reader->close();
     }
