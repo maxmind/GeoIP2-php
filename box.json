@@ -3,9 +3,8 @@
     "main": "phar-stub.php",
     "output": "geoip2.phar",
     "compactors": [
-        "Herrera\\Box\\Compactor\\Composer",
-        "Herrera\\Box\\Compactor\\Json",
-        "Herrera\\Box\\Compactor\\Php"
+        "KevinGH\\Box\\Compactor\\Php",
+        "KevinGH\\Box\\Compactor\\Json"
     ],
     "files": [
         "LICENSE"
@@ -38,6 +37,5 @@
             }
     ],
     "git-version": "git-version",
-    "shebang": false,
-    "stub": true
+    "shebang": false
 }
