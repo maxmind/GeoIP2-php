@@ -4,6 +4,13 @@ CHANGELOG
 2.12.0
 -------------------
 
+* Support for mobile country code (MCC) and mobile network codes (MNC) was
+￼ added for the GeoIP2 ISP and Enterprise databases as well as the GeoIP2
+￼ City and Insights web services. `$mobileCountryCode` and
+￼ `$mobileNetworkCode` properties were added to `GeoIp2\Model\Isp`
+￼ for the GeoIP2 ISP database and `GeoIp2\Record\Traits` for the Enterprise
+  database and the GeoIP2 City and Insights web services. We expect this data
+  to be available by late January, 2022.
 * `geoip2.phar` is now generated with Box 3.x.
 
 2.11.0 (2020-10-01)

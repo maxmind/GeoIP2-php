@@ -78,6 +78,8 @@ class InsightsTest extends TestCase
                 'is_satellite_provider' => true,
                 'is_tor_exit_node' => true,
                 'isp' => 'Comcast',
+                'mobile_country_code' => '310',
+                'mobile_network_code' => '004',
                 'organization' => 'Blorg',
                 'static_ip_score' => 1.3,
                 'user_count' => 2,
@@ -191,6 +193,18 @@ class InsightsTest extends TestCase
         $this->assertFalse(
             $model->traits->isAnonymousProxy,
             '$model->traits->isAnonymousProxy is false'
+        );
+
+        $this->assertSame(
+            '310',
+            $model->traits->mobileCountryCode,
+            'mobileCountryCode is correct'
+        );
+
+        $this->assertSame(
+            '004',
+            $model->traits->mobileNetworkCode,
+            'mobileNetworkCode is correct'
         );
 
         $this->assertSame(

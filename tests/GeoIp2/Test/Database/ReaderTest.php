@@ -210,6 +210,10 @@ class ReaderTest extends TestCase
         $this->assertSame($ipAddress, $record->traits->ipAddress);
         $this->assertSame('74.209.16.0/20', $record->traits->network);
 
+        $record = $reader->enterprise('149.101.100.0');
+        $this->assertSame('310', $record->traits->mobileCountryCode);
+        $this->assertSame('004', $record->traits->mobileNetworkCode);
+
         $reader->close();
     }
 
@@ -230,6 +234,10 @@ class ReaderTest extends TestCase
 
         $this->assertSame($ipAddress, $record->ipAddress);
         $this->assertSame('1.128.0.0/11', $record->network);
+
+        $record = $reader->isp('149.101.100.0');
+        $this->assertSame('310', $record->mobileCountryCode);
+        $this->assertSame('004', $record->mobileNetworkCode);
 
         $reader->close();
     }
