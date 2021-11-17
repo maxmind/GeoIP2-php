@@ -62,14 +62,14 @@ class ReaderTest extends TestCase
     public function testIsInEuropeanUnion(string $type, string $method): void
     {
         $reader = new Reader("maxmind-db/test-data/GeoIP2-$type-Test.mmdb");
-        $record = $reader->{$method}('81.2.69.160');
+        $record = $reader->{$method}('2a02:cfc0::');
         $this->assertTrue(
             $record->country->isInEuropeanUnion,
             'country is_in_european_union is true'
         );
-        $this->assertFalse(
+        $this->assertTrue(
             $record->registeredCountry->isInEuropeanUnion,
-            'registered_country is_in_european_union is false'
+            'registered_country is_in_european_union is true'
         );
         $reader->close();
     }
@@ -210,6 +210,10 @@ class ReaderTest extends TestCase
         $this->assertSame($ipAddress, $record->traits->ipAddress);
         $this->assertSame('74.209.16.0/20', $record->traits->network);
 
+        $record = $reader->enterprise('149.101.100.0');
+        $this->assertSame('310', $record->traits->mobileCountryCode);
+        $this->assertSame('004', $record->traits->mobileNetworkCode);
+
         $reader->close();
     }
 
@@ -230,6 +234,10 @@ class ReaderTest extends TestCase
 
         $this->assertSame($ipAddress, $record->ipAddress);
         $this->assertSame('1.128.0.0/11', $record->network);
+
+        $record = $reader->isp('149.101.100.0');
+        $this->assertSame('310', $record->mobileCountryCode);
+        $this->assertSame('004', $record->mobileNetworkCode);
 
         $reader->close();
     }
