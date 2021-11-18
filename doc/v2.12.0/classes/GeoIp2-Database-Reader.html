@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>GeoIP2 PHP API v2.12.0</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src').replace( /\\/g, '/');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist, is empty or trying to view from localhost';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">GeoIP2 PHP API v2.12.0</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                        <li><a href="namespaces/geoip2.html"><abbr title="\GeoIp2">GeoIp2</abbr></a></li>
+                                                        <li><a href="namespaces/maxmind.html"><abbr title="\MaxMind">MaxMind</abbr></a></li>
+                                                    </ul>
+                    </li>
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">3</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-420589831"></a>
+                                <a href="namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-420589831" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1256268516"></a>
+                                <a href="namespaces/geoip2.html" style="margin-left: 30px; padding-left: 0">GeoIp2</a>
+            </div>
+            <div id="namespace-1256268516" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1043953983"></a>
+                                <a href="namespaces/geoip2-database.html" style="margin-left: 30px; padding-left: 0">Database</a>
+            </div>
+            <div id="namespace-1043953983" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/GeoIp2-Database-Reader.html"><abbr title="\GeoIp2\Database\Reader">Reader</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-917199965"></a>
+                                <a href="namespaces/geoip2-exception.html" style="margin-left: 30px; padding-left: 0">Exception</a>
+            </div>
+            <div id="namespace-917199965" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/GeoIp2-Exception-AddressNotFoundException.html"><abbr title="\GeoIp2\Exception\AddressNotFoundException">AddressNotFoundException</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Exception-AuthenticationException.html"><abbr title="\GeoIp2\Exception\AuthenticationException">AuthenticationException</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Exception-GeoIp2Exception.html"><abbr title="\GeoIp2\Exception\GeoIp2Exception">GeoIp2Exception</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Exception-HttpException.html"><abbr title="\GeoIp2\Exception\HttpException">HttpException</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Exception-InvalidRequestException.html"><abbr title="\GeoIp2\Exception\InvalidRequestException">InvalidRequestException</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Exception-OutOfQueriesException.html"><abbr title="\GeoIp2\Exception\OutOfQueriesException">OutOfQueriesException</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-819975189"></a>
+                                <a href="namespaces/geoip2-model.html" style="margin-left: 30px; padding-left: 0">Model</a>
+            </div>
+            <div id="namespace-819975189" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/GeoIp2-Model-AnonymousIp.html"><abbr title="\GeoIp2\Model\AnonymousIp">AnonymousIp</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Model-Asn.html"><abbr title="\GeoIp2\Model\Asn">Asn</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Model-City.html"><abbr title="\GeoIp2\Model\City">City</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Model-ConnectionType.html"><abbr title="\GeoIp2\Model\ConnectionType">ConnectionType</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Model-Country.html"><abbr title="\GeoIp2\Model\Country">Country</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Model-Domain.html"><abbr title="\GeoIp2\Model\Domain">Domain</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Model-Enterprise.html"><abbr title="\GeoIp2\Model\Enterprise">Enterprise</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Model-Insights.html"><abbr title="\GeoIp2\Model\Insights">Insights</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Model-Isp.html"><abbr title="\GeoIp2\Model\Isp">Isp</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-767208802"></a>
+                                <a href="namespaces/geoip2-record.html" style="margin-left: 30px; padding-left: 0">Record</a>
+            </div>
+            <div id="namespace-767208802" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/GeoIp2-Record-AbstractPlaceRecord.html"><abbr title="\GeoIp2\Record\AbstractPlaceRecord">AbstractPlaceRecord</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Record-AbstractRecord.html"><abbr title="\GeoIp2\Record\AbstractRecord">AbstractRecord</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Record-City.html"><abbr title="\GeoIp2\Record\City">City</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Record-Continent.html"><abbr title="\GeoIp2\Record\Continent">Continent</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Record-Country.html"><abbr title="\GeoIp2\Record\Country">Country</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Record-Location.html"><abbr title="\GeoIp2\Record\Location">Location</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Record-MaxMind.html"><abbr title="\GeoIp2\Record\MaxMind">MaxMind</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Record-Postal.html"><abbr title="\GeoIp2\Record\Postal">Postal</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Record-RepresentedCountry.html"><abbr title="\GeoIp2\Record\RepresentedCountry">RepresentedCountry</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Record-Subdivision.html"><abbr title="\GeoIp2\Record\Subdivision">Subdivision</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Record-Traits.html"><abbr title="\GeoIp2\Record\Traits">Traits</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1879807555"></a>
+                                <a href="namespaces/geoip2-webservice.html" style="margin-left: 30px; padding-left: 0">WebService</a>
+            </div>
+            <div id="namespace-1879807555" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/GeoIp2-WebService-Client.html"><abbr title="\GeoIp2\WebService\Client">Client</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="classes/GeoIp2-ProviderInterface.html"><abbr title="\GeoIp2\ProviderInterface">ProviderInterface</abbr></a></li>
+                                                                                                    <li class="class"><a href="classes/GeoIp2-Util.html"><abbr title="\GeoIp2\Util">Util</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-363785246"></a>
+                                <a href="namespaces/maxmind.html" style="margin-left: 30px; padding-left: 0">MaxMind</a>
+            </div>
+            <div id="namespace-363785246" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1463481789"></a>
+                                <a href="namespaces/maxmind-db.html" style="margin-left: 30px; padding-left: 0">Db</a>
+            </div>
+            <div id="namespace-1463481789" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1161777026"></a>
+                                <a href="namespaces/maxmind-db-reader.html" style="margin-left: 30px; padding-left: 0">Reader</a>
+            </div>
+            <div id="namespace-1161777026" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/MaxMind-Db-Reader-Decoder.html"><abbr title="\MaxMind\Db\Reader\Decoder">Decoder</abbr></a></li>
+                                                    <li class="class"><a href="classes/MaxMind-Db-Reader-InvalidDatabaseException.html"><abbr title="\MaxMind\Db\Reader\InvalidDatabaseException">InvalidDatabaseException</abbr></a></li>
+                                                    <li class="class"><a href="classes/MaxMind-Db-Reader-Metadata.html"><abbr title="\MaxMind\Db\Reader\Metadata">Metadata</abbr></a></li>
+                                                    <li class="class"><a href="classes/MaxMind-Db-Reader-Util.html"><abbr title="\MaxMind\Db\Reader\Util">Util</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/MaxMind-Db-Reader.html"><abbr title="\MaxMind\Db\Reader">Reader</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="namespaces/geoip2-database.html"><abbr title="\GeoIp2\Database">Database</abbr></a> <i class="icon-level-up"></i>
+                                            </nav>
+                    
+                    <h1><small>\GeoIp2\Database</small>Reader</h1>
+                    <p><em>Instances of this class provide a reader for the GeoIP2 database format.</em></p>
+                    <p>IP addresses can be looked up using the database specific methods.</p>
+<h2>Usage</h2>
+<p>The basic API for this class is the same for every database. First, you
+create a reader object, specifying a file name. You then call the method
+corresponding to the specific database, passing it the IP address you want
+to look up.</p>
+<p>If the request succeeds, the method call will return a model class for
+the method you called. This model in turn contains multiple record classes,
+each of which represents part of the data returned by the database. If
+the database does not contain the requested information, the attributes
+on the record class will have a <code class="prettyprint">null</code> value.</p>
+<p>If the address is not in the database, an
+{@link} exception will be
+thrown. If an invalid IP address is passed to one of the methods, a
+SPL {@link} will be thrown. If the database is
+corrupt or invalid, a {@link}
+will be thrown.</p>
+
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="classes/GeoIp2-Database-Reader.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="classes/GeoIp2-Database-Reader.html#method_city" class="">city()</a><br />
+                                                                    <a href="classes/GeoIp2-Database-Reader.html#method_country" class="">country()</a><br />
+                                                                    <a href="classes/GeoIp2-Database-Reader.html#method_anonymousIp" class="">anonymousIp()</a><br />
+                                                                    <a href="classes/GeoIp2-Database-Reader.html#method_asn" class="">asn()</a><br />
+                                                                    <a href="classes/GeoIp2-Database-Reader.html#method_connectionType" class="">connectionType()</a><br />
+                                                                    <a href="classes/GeoIp2-Database-Reader.html#method_domain" class="">domain()</a><br />
+                                                                    <a href="classes/GeoIp2-Database-Reader.html#method_enterprise" class="">enterprise()</a><br />
+                                                                    <a href="classes/GeoIp2-Database-Reader.html#method_isp" class="">isp()</a><br />
+                                                                    <a href="classes/GeoIp2-Database-Reader.html#method_metadata" class="">metadata()</a><br />
+                                                                    <a href="classes/GeoIp2-Database-Reader.html#method_close" class="">close()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <em>No protected methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No protected properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="files/database-reader.html"><div class="path-wrapper">Database/Reader.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">Application</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                    <div class="namespace-wrapper">\GeoIp2\Database\Reader</div>
+                            </dd>
+
+                                                                            <dt>Implements</dt>
+                                                        <dd><a href="classes/GeoIp2-ProviderInterface.html"><div class="namespace-wrapper">\GeoIp2\ProviderInterface</div></a></dd>
+                        
+                        
+                        
+                                                
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr><td colspan="2"><em>None found</em></td></tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                        
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct(string  <span class="argument">$filename</span>, array  <span class="argument">$locales = [&#039;en&#039;]</span>) : mixed</pre>
+                <p><em>Constructor.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$filename </td>
+                                <td><p>the path to the GeoIP2 database file</p>
+</td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$locales </td>
+                                <td><p>list of locale codes to use in name property
+from most preferred to least preferred</p>
+</td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\MaxMind\Db\Reader\InvalidDatabaseException</dt>
+                            <dd><p>if the database
+is corrupt or invalid</p>
+</dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                            &mdash; 
+                                    
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="classes/GeoIp2-Database-Reader.html"><div class="path-wrapper">\GeoIp2\Database\Reader</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_city" name="method_city" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">city()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">city(string  <span class="argument">$ipAddress</span>) : \GeoIp2\Model\City</pre>
+                <p><em>This method returns a GeoIP2 City model.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$ipAddress </td>
+                                <td><p>an IPv4 or IPv6 address as a string</p>
+</td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\GeoIp2\Exception\AddressNotFoundException</dt>
+                            <dd><p>if the address is
+not in the database</p>
+</dd>
+                                                    <dt>\MaxMind\Db\Reader\InvalidDatabaseException</dt>
+                            <dd><p>if the database
+is corrupt or invalid</p>
+</dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    \GeoIp2\Model\City
+                                            &mdash; <p>a City model for the requested IP address</p>
+
+                                    
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="classes/GeoIp2-Database-Reader.html"><div class="path-wrapper">\GeoIp2\Database\Reader</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_country" name="method_country" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">country()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">country(string  <span class="argument">$ipAddress</span>) : \GeoIp2\Model\Country</pre>
+                <p><em>This method returns a GeoIP2 Country model.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$ipAddress </td>
+                                <td><p>an IPv4 or IPv6 address as a string</p>
+</td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\GeoIp2\Exception\AddressNotFoundException</dt>
+                            <dd><p>if the address is
+not in the database</p>
+</dd>
+                                                    <dt>\MaxMind\Db\Reader\InvalidDatabaseException</dt>
+                            <dd><p>if the database
+is corrupt or invalid</p>
+</dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    \GeoIp2\Model\Country
+                                            &mdash; <p>a Country model for the requested IP address</p>
+
+                                    
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="classes/GeoIp2-Database-Reader.html"><div class="path-wrapper">\GeoIp2\Database\Reader</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_anonymousIp" name="method_anonymousIp" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">anonymousIp()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">anonymousIp(string  <span class="argument">$ipAddress</span>) : \GeoIp2\Model\AnonymousIp</pre>
+                <p><em>This method returns a GeoIP2 Anonymous IP model.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$ipAddress </td>
+                                <td><p>an IPv4 or IPv6 address as a string</p>
+</td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\GeoIp2\Exception\AddressNotFoundException</dt>
+                            <dd><p>if the address is
+not in the database</p>
+</dd>
+                                                    <dt>\MaxMind\Db\Reader\InvalidDatabaseException</dt>
+                            <dd><p>if the database
+is corrupt or invalid</p>
+</dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    \GeoIp2\Model\AnonymousIp
+                                            &mdash; 
+                                    
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="classes/GeoIp2-Database-Reader.html"><div class="path-wrapper">\GeoIp2\Database\Reader</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_asn" name="method_asn" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">asn()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">asn(string  <span class="argument">$ipAddress</span>) : \GeoIp2\Model\Asn</pre>
+                <p><em>This method returns a GeoLite2 ASN model.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$ipAddress </td>
+                                <td><p>an IPv4 or IPv6 address as a string</p>
+</td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\GeoIp2\Exception\AddressNotFoundException</dt>
+                            <dd><p>if the address is
+not in the database</p>
+</dd>
+                                                    <dt>\MaxMind\Db\Reader\InvalidDatabaseException</dt>
+                            <dd><p>if the database
+is corrupt or invalid</p>
+</dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    \GeoIp2\Model\Asn
+                                            &mdash; 
+                                    
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="classes/GeoIp2-Database-Reader.html"><div class="path-wrapper">\GeoIp2\Database\Reader</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_connectionType" name="method_connectionType" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">connectionType()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">connectionType(string  <span class="argument">$ipAddress</span>) : \GeoIp2\Model\ConnectionType</pre>
+                <p><em>This method returns a GeoIP2 Connection Type model.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$ipAddress </td>
+                                <td><p>an IPv4 or IPv6 address as a string</p>
+</td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\GeoIp2\Exception\AddressNotFoundException</dt>
+                            <dd><p>if the address is
+not in the database</p>
+</dd>
+                                                    <dt>\MaxMind\Db\Reader\InvalidDatabaseException</dt>
+                            <dd><p>if the database
+is corrupt or invalid</p>
+</dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    \GeoIp2\Model\ConnectionType
+                                            &mdash; 
+                                    
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="classes/GeoIp2-Database-Reader.html"><div class="path-wrapper">\GeoIp2\Database\Reader</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_domain" name="method_domain" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">domain()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">domain(string  <span class="argument">$ipAddress</span>) : \GeoIp2\Model\Domain</pre>
+                <p><em>This method returns a GeoIP2 Domain model.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$ipAddress </td>
+                                <td><p>an IPv4 or IPv6 address as a string</p>
+</td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\GeoIp2\Exception\AddressNotFoundException</dt>
+                            <dd><p>if the address is
+not in the database</p>
+</dd>
+                                                    <dt>\MaxMind\Db\Reader\InvalidDatabaseException</dt>
+                            <dd><p>if the database
+is corrupt or invalid</p>
+</dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    \GeoIp2\Model\Domain
+                                            &mdash; 
+                                    
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="classes/GeoIp2-Database-Reader.html"><div class="path-wrapper">\GeoIp2\Database\Reader</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_enterprise" name="method_enterprise" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">enterprise()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">enterprise(string  <span class="argument">$ipAddress</span>) : \GeoIp2\Model\Enterprise</pre>
+                <p><em>This method returns a GeoIP2 Enterprise model.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$ipAddress </td>
+                                <td><p>an IPv4 or IPv6 address as a string</p>
+</td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\GeoIp2\Exception\AddressNotFoundException</dt>
+                            <dd><p>if the address is
+not in the database</p>
+</dd>
+                                                    <dt>\MaxMind\Db\Reader\InvalidDatabaseException</dt>
+                            <dd><p>if the database
+is corrupt or invalid</p>
+</dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    \GeoIp2\Model\Enterprise
+                                            &mdash; 
+                                    
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="classes/GeoIp2-Database-Reader.html"><div class="path-wrapper">\GeoIp2\Database\Reader</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_isp" name="method_isp" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">isp()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">isp(string  <span class="argument">$ipAddress</span>) : \GeoIp2\Model\Isp</pre>
+                <p><em>This method returns a GeoIP2 ISP model.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$ipAddress </td>
+                                <td><p>an IPv4 or IPv6 address as a string</p>
+</td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\GeoIp2\Exception\AddressNotFoundException</dt>
+                            <dd><p>if the address is
+not in the database</p>
+</dd>
+                                                    <dt>\MaxMind\Db\Reader\InvalidDatabaseException</dt>
+                            <dd><p>if the database
+is corrupt or invalid</p>
+</dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    \GeoIp2\Model\Isp
+                                            &mdash; 
+                                    
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="classes/GeoIp2-Database-Reader.html"><div class="path-wrapper">\GeoIp2\Database\Reader</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_metadata" name="method_metadata" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">metadata()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">metadata() : \MaxMind\Db\Reader\Metadata</pre>
+                <p><em></em></p>
+                
+
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\InvalidArgumentException</dt>
+                            <dd><p>if arguments are passed to the method</p>
+</dd>
+                                                    <dt>\BadMethodCallException</dt>
+                            <dd><p>if the database has been closed</p>
+</dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    \MaxMind\Db\Reader\Metadata
+                                            &mdash; <p>object for the database</p>
+
+                                    
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="classes/GeoIp2-Database-Reader.html"><div class="path-wrapper">\GeoIp2\Database\Reader</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_close" name="method_close" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">close()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">close() : void</pre>
+                <p><em>Closes the GeoIP2 database and returns the resources to the system.</em></p>
+                
+
+                
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="classes/GeoIp2-Database-Reader.html"><div class="path-wrapper">\GeoIp2\Database\Reader</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">Reader.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/Database/Reader.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                            <li><a href="namespaces/geoip2.html"><abbr title="\GeoIp2">GeoIp2</abbr></a></li>
+                                                                            <li><a href="namespaces/maxmind.html"><abbr title="\MaxMind">MaxMind</abbr></a></li>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="https://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on November 18th, 2021 at 17:37.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

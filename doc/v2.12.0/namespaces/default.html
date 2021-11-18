@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>GeoIP2 PHP API v2.12.0</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">GeoIP2 PHP API v2.12.0</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                        <li><a href="namespaces/geoip2.html"><abbr title="\GeoIp2">GeoIp2</abbr></a></li>
+                                                        <li><a href="namespaces/maxmind.html"><abbr title="\MaxMind">MaxMind</abbr></a></li>
+                                                    </ul>
+                    </li>
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">3</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-96221719"></a>
+                                <a href="namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-96221719" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-275330699"></a>
+                                <a href="namespaces/geoip2.html" style="margin-left: 30px; padding-left: 0">GeoIp2</a>
+            </div>
+            <div id="namespace-275330699" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1846025449"></a>
+                                <a href="namespaces/geoip2-database.html" style="margin-left: 30px; padding-left: 0">Database</a>
+            </div>
+            <div id="namespace-1846025449" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/GeoIp2-Database-Reader.html"><abbr title="\GeoIp2\Database\Reader">Reader</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-2099666009"></a>
+                                <a href="namespaces/geoip2-exception.html" style="margin-left: 30px; padding-left: 0">Exception</a>
+            </div>
+            <div id="namespace-2099666009" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/GeoIp2-Exception-AddressNotFoundException.html"><abbr title="\GeoIp2\Exception\AddressNotFoundException">AddressNotFoundException</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Exception-AuthenticationException.html"><abbr title="\GeoIp2\Exception\AuthenticationException">AuthenticationException</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Exception-GeoIp2Exception.html"><abbr title="\GeoIp2\Exception\GeoIp2Exception">GeoIp2Exception</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Exception-HttpException.html"><abbr title="\GeoIp2\Exception\HttpException">HttpException</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Exception-InvalidRequestException.html"><abbr title="\GeoIp2\Exception\InvalidRequestException">InvalidRequestException</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Exception-OutOfQueriesException.html"><abbr title="\GeoIp2\Exception\OutOfQueriesException">OutOfQueriesException</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1506024717"></a>
+                                <a href="namespaces/geoip2-model.html" style="margin-left: 30px; padding-left: 0">Model</a>
+            </div>
+            <div id="namespace-1506024717" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/GeoIp2-Model-AnonymousIp.html"><abbr title="\GeoIp2\Model\AnonymousIp">AnonymousIp</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Model-Asn.html"><abbr title="\GeoIp2\Model\Asn">Asn</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Model-City.html"><abbr title="\GeoIp2\Model\City">City</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Model-ConnectionType.html"><abbr title="\GeoIp2\Model\ConnectionType">ConnectionType</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Model-Country.html"><abbr title="\GeoIp2\Model\Country">Country</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Model-Domain.html"><abbr title="\GeoIp2\Model\Domain">Domain</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Model-Enterprise.html"><abbr title="\GeoIp2\Model\Enterprise">Enterprise</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Model-Insights.html"><abbr title="\GeoIp2\Model\Insights">Insights</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Model-Isp.html"><abbr title="\GeoIp2\Model\Isp">Isp</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1061316947"></a>
+                                <a href="namespaces/geoip2-record.html" style="margin-left: 30px; padding-left: 0">Record</a>
+            </div>
+            <div id="namespace-1061316947" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/GeoIp2-Record-AbstractPlaceRecord.html"><abbr title="\GeoIp2\Record\AbstractPlaceRecord">AbstractPlaceRecord</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Record-AbstractRecord.html"><abbr title="\GeoIp2\Record\AbstractRecord">AbstractRecord</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Record-City.html"><abbr title="\GeoIp2\Record\City">City</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Record-Continent.html"><abbr title="\GeoIp2\Record\Continent">Continent</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Record-Country.html"><abbr title="\GeoIp2\Record\Country">Country</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Record-Location.html"><abbr title="\GeoIp2\Record\Location">Location</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Record-MaxMind.html"><abbr title="\GeoIp2\Record\MaxMind">MaxMind</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Record-Postal.html"><abbr title="\GeoIp2\Record\Postal">Postal</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Record-RepresentedCountry.html"><abbr title="\GeoIp2\Record\RepresentedCountry">RepresentedCountry</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Record-Subdivision.html"><abbr title="\GeoIp2\Record\Subdivision">Subdivision</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Record-Traits.html"><abbr title="\GeoIp2\Record\Traits">Traits</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1942128606"></a>
+                                <a href="namespaces/geoip2-webservice.html" style="margin-left: 30px; padding-left: 0">WebService</a>
+            </div>
+            <div id="namespace-1942128606" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/GeoIp2-WebService-Client.html"><abbr title="\GeoIp2\WebService\Client">Client</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="classes/GeoIp2-ProviderInterface.html"><abbr title="\GeoIp2\ProviderInterface">ProviderInterface</abbr></a></li>
+                                                                                                    <li class="class"><a href="classes/GeoIp2-Util.html"><abbr title="\GeoIp2\Util">Util</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-290689694"></a>
+                                <a href="namespaces/maxmind.html" style="margin-left: 30px; padding-left: 0">MaxMind</a>
+            </div>
+            <div id="namespace-290689694" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1390015999"></a>
+                                <a href="namespaces/maxmind-db.html" style="margin-left: 30px; padding-left: 0">Db</a>
+            </div>
+            <div id="namespace-1390015999" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1174264237"></a>
+                                <a href="namespaces/maxmind-db-reader.html" style="margin-left: 30px; padding-left: 0">Reader</a>
+            </div>
+            <div id="namespace-1174264237" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/MaxMind-Db-Reader-Decoder.html"><abbr title="\MaxMind\Db\Reader\Decoder">Decoder</abbr></a></li>
+                                                    <li class="class"><a href="classes/MaxMind-Db-Reader-InvalidDatabaseException.html"><abbr title="\MaxMind\Db\Reader\InvalidDatabaseException">InvalidDatabaseException</abbr></a></li>
+                                                    <li class="class"><a href="classes/MaxMind-Db-Reader-Metadata.html"><abbr title="\MaxMind\Db\Reader\Metadata">Metadata</abbr></a></li>
+                                                    <li class="class"><a href="classes/MaxMind-Db-Reader-Util.html"><abbr title="\MaxMind\Db\Reader\Util">Util</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/MaxMind-Db-Reader.html"><abbr title="\MaxMind\Db\Reader">Reader</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content namespace">
+                    <nav>
+                                                <a href=""><abbr title=""></abbr></a>
+                                            </nav>
+                    <h1><small></small>\</h1>
+
+                                        <h2>Namespaces</h2>
+                    <table class="table table-hover">
+                                                    <tr>
+                                <td><a href="namespaces/geoip2.html"><abbr title="\GeoIp2">GeoIp2</abbr></a></td>
+                            </tr>
+                                                    <tr>
+                                <td><a href="namespaces/maxmind.html"><abbr title="\MaxMind">MaxMind</abbr></a></td>
+                            </tr>
+                                            </table>
+                    
+                    
+                    
+                                    </div>
+
+                <aside class="span4 detailsbar">
+                    <dl>
+                        <dt>Namespace hierarchy</dt>
+                        <dd class="hierarchy">
+                                                                                                                                                <div class="namespace-wrapper">\</div>
+                        </dd>
+                    </dl>
+                </aside>
+            </div>
+
+            
+            
+        </div>
+    </section>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                            <li><a href="namespaces/geoip2.html"><abbr title="\GeoIp2">GeoIp2</abbr></a></li>
+                                                                            <li><a href="namespaces/maxmind.html"><abbr title="\MaxMind">MaxMind</abbr></a></li>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="https://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on November 18th, 2021 at 17:37.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

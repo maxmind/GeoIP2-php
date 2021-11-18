@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>GeoIP2 PHP API v2.12.0</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src').replace( /\\/g, '/');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist, is empty or trying to view from localhost';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">GeoIP2 PHP API v2.12.0</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                        <li><a href="namespaces/geoip2.html"><abbr title="\GeoIp2">GeoIp2</abbr></a></li>
+                                                        <li><a href="namespaces/maxmind.html"><abbr title="\MaxMind">MaxMind</abbr></a></li>
+                                                    </ul>
+                    </li>
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">3</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-448391073"></a>
+                                <a href="namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-448391073" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-2040644453"></a>
+                                <a href="namespaces/geoip2.html" style="margin-left: 30px; padding-left: 0">GeoIp2</a>
+            </div>
+            <div id="namespace-2040644453" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-781550530"></a>
+                                <a href="namespaces/geoip2-database.html" style="margin-left: 30px; padding-left: 0">Database</a>
+            </div>
+            <div id="namespace-781550530" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/GeoIp2-Database-Reader.html"><abbr title="\GeoIp2\Database\Reader">Reader</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-837771728"></a>
+                                <a href="namespaces/geoip2-exception.html" style="margin-left: 30px; padding-left: 0">Exception</a>
+            </div>
+            <div id="namespace-837771728" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/GeoIp2-Exception-AddressNotFoundException.html"><abbr title="\GeoIp2\Exception\AddressNotFoundException">AddressNotFoundException</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Exception-AuthenticationException.html"><abbr title="\GeoIp2\Exception\AuthenticationException">AuthenticationException</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Exception-GeoIp2Exception.html"><abbr title="\GeoIp2\Exception\GeoIp2Exception">GeoIp2Exception</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Exception-HttpException.html"><abbr title="\GeoIp2\Exception\HttpException">HttpException</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Exception-InvalidRequestException.html"><abbr title="\GeoIp2\Exception\InvalidRequestException">InvalidRequestException</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Exception-OutOfQueriesException.html"><abbr title="\GeoIp2\Exception\OutOfQueriesException">OutOfQueriesException</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-567649965"></a>
+                                <a href="namespaces/geoip2-model.html" style="margin-left: 30px; padding-left: 0">Model</a>
+            </div>
+            <div id="namespace-567649965" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/GeoIp2-Model-AnonymousIp.html"><abbr title="\GeoIp2\Model\AnonymousIp">AnonymousIp</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Model-Asn.html"><abbr title="\GeoIp2\Model\Asn">Asn</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Model-City.html"><abbr title="\GeoIp2\Model\City">City</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Model-ConnectionType.html"><abbr title="\GeoIp2\Model\ConnectionType">ConnectionType</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Model-Country.html"><abbr title="\GeoIp2\Model\Country">Country</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Model-Domain.html"><abbr title="\GeoIp2\Model\Domain">Domain</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Model-Enterprise.html"><abbr title="\GeoIp2\Model\Enterprise">Enterprise</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Model-Insights.html"><abbr title="\GeoIp2\Model\Insights">Insights</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Model-Isp.html"><abbr title="\GeoIp2\Model\Isp">Isp</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1382342114"></a>
+                                <a href="namespaces/geoip2-record.html" style="margin-left: 30px; padding-left: 0">Record</a>
+            </div>
+            <div id="namespace-1382342114" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/GeoIp2-Record-AbstractPlaceRecord.html"><abbr title="\GeoIp2\Record\AbstractPlaceRecord">AbstractPlaceRecord</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Record-AbstractRecord.html"><abbr title="\GeoIp2\Record\AbstractRecord">AbstractRecord</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Record-City.html"><abbr title="\GeoIp2\Record\City">City</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Record-Continent.html"><abbr title="\GeoIp2\Record\Continent">Continent</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Record-Country.html"><abbr title="\GeoIp2\Record\Country">Country</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Record-Location.html"><abbr title="\GeoIp2\Record\Location">Location</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Record-MaxMind.html"><abbr title="\GeoIp2\Record\MaxMind">MaxMind</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Record-Postal.html"><abbr title="\GeoIp2\Record\Postal">Postal</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Record-RepresentedCountry.html"><abbr title="\GeoIp2\Record\RepresentedCountry">RepresentedCountry</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Record-Subdivision.html"><abbr title="\GeoIp2\Record\Subdivision">Subdivision</abbr></a></li>
+                                                    <li class="class"><a href="classes/GeoIp2-Record-Traits.html"><abbr title="\GeoIp2\Record\Traits">Traits</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-2121027898"></a>
+                                <a href="namespaces/geoip2-webservice.html" style="margin-left: 30px; padding-left: 0">WebService</a>
+            </div>
+            <div id="namespace-2121027898" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/GeoIp2-WebService-Client.html"><abbr title="\GeoIp2\WebService\Client">Client</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="classes/GeoIp2-ProviderInterface.html"><abbr title="\GeoIp2\ProviderInterface">ProviderInterface</abbr></a></li>
+                                                                                                    <li class="class"><a href="classes/GeoIp2-Util.html"><abbr title="\GeoIp2\Util">Util</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-583736135"></a>
+                                <a href="namespaces/maxmind.html" style="margin-left: 30px; padding-left: 0">MaxMind</a>
+            </div>
+            <div id="namespace-583736135" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1397934476"></a>
+                                <a href="namespaces/maxmind-db.html" style="margin-left: 30px; padding-left: 0">Db</a>
+            </div>
+            <div id="namespace-1397934476" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1851327817"></a>
+                                <a href="namespaces/maxmind-db-reader.html" style="margin-left: 30px; padding-left: 0">Reader</a>
+            </div>
+            <div id="namespace-1851327817" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/MaxMind-Db-Reader-Decoder.html"><abbr title="\MaxMind\Db\Reader\Decoder">Decoder</abbr></a></li>
+                                                    <li class="class"><a href="classes/MaxMind-Db-Reader-InvalidDatabaseException.html"><abbr title="\MaxMind\Db\Reader\InvalidDatabaseException">InvalidDatabaseException</abbr></a></li>
+                                                    <li class="class"><a href="classes/MaxMind-Db-Reader-Metadata.html"><abbr title="\MaxMind\Db\Reader\Metadata">Metadata</abbr></a></li>
+                                                    <li class="class"><a href="classes/MaxMind-Db-Reader-Util.html"><abbr title="\MaxMind\Db\Reader\Util">Util</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="classes/MaxMind-Db-Reader.html"><abbr title="\MaxMind\Db\Reader">Reader</abbr></a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="namespaces/geoip2-webservice.html"><abbr title="\GeoIp2\WebService">WebService</abbr></a> <i class="icon-level-up"></i>
+                                            </nav>
+                    
+                    <h1><small>\GeoIp2\WebService</small>Client</h1>
+                    <p><em>This class provides a client API for all the GeoIP2 Precision web services.</em></p>
+                    <p>The services are Country, City, and Insights. Each service returns a
+different set of data about an IP address, with Country returning the
+least data and Insights the most.</p>
+<p>Each web service is represented by a different model class, and these model
+classes in turn contain multiple record classes. The record classes have
+attributes which contain data about the IP address.</p>
+<p>If the web service does not return a particular piece of data for an IP
+address, the associated attribute is not populated.</p>
+<p>The web service may not return any information for an entire record, in
+which case all of the attributes for that record class will be empty.</p>
+<h2>Usage</h2>
+<p>The basic API for this class is the same for all of the web service end
+points. First you create a web service object with your MaxMind <code class="prettyprint">$accountId</code>
+and <code class="prettyprint">$licenseKey</code>, then you call the method corresponding to a specific end
+point, passing it the IP address you want to look up.</p>
+<p>If the request succeeds, the method call will return a model class for
+the service you called. This model in turn contains multiple record
+classes, each of which represents part of the data returned by the web
+service.</p>
+<p>If the request fails, the client class throws an exception.</p>
+
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="classes/GeoIp2-WebService-Client.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="classes/GeoIp2-WebService-Client.html#method_city" class="">city()</a><br />
+                                                                    <a href="classes/GeoIp2-WebService-Client.html#method_country" class="">country()</a><br />
+                                                                    <a href="classes/GeoIp2-WebService-Client.html#method_insights" class="">insights()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="classes/GeoIp2-WebService-Client.html#constant_VERSION" class="">VERSION</a><br />
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <em>No protected methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No protected properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="files/webservice-client.html"><div class="path-wrapper">WebService/Client.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">Application</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                    <div class="namespace-wrapper">\GeoIp2\WebService\Client</div>
+                            </dd>
+
+                                                                            <dt>Implements</dt>
+                                                        <dd><a href="classes/GeoIp2-ProviderInterface.html"><div class="namespace-wrapper">\GeoIp2\ProviderInterface</div></a></dd>
+                        
+                        
+                        
+                                                
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr><td colspan="2"><em>None found</em></td></tr>
+                                        </table>
+                </aside>
+            </div>
+
+                                    <a id="constants" name="constants"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Constants</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_VERSION" name="constant_VERSION" class="anchor"></a>
+            <article id="constant_VERSION" class="constant">
+                <h3 class="">VERSION</h3>
+                <pre class="signature">VERSION = &#039;v2.12.0&#039;</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                <dt>File</dt>
+                <dd><a href="files/webservice-client.html"><div class="path-wrapper">WebService/Client.php</div></a></dd>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                            
+                        
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct(int  <span class="argument">$accountId</span>, string  <span class="argument">$licenseKey</span>, array  <span class="argument">$locales = [&#039;en&#039;]</span>, array  <span class="argument">$options = []</span>) : mixed</pre>
+                <p><em>Constructor.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>int</td>
+                                <td>$accountId </td>
+                                <td><p>your MaxMind account ID</p>
+</td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$licenseKey </td>
+                                <td><p>your MaxMind license key</p>
+</td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$locales </td>
+                                <td><p>list of locale codes to use in name property
+from most preferred to least preferred</p>
+</td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$options </td>
+                                <td><p>array of options. Valid options include:</p>
+<ul>
+<li>
+<code class="prettyprint">host</code> - The host to use when querying the web service. To
+query the GeoLite2 web service instead of GeoIP2 Precision,
+set the host to <code class="prettyprint">geolite.info</code>.</li>
+<li>
+<code class="prettyprint">timeout</code> - Timeout in seconds.</li>
+<li>
+<code class="prettyprint">connectTimeout</code> - Initial connection timeout in seconds.</li>
+<li>
+<code class="prettyprint">proxy</code> - The HTTP proxy to use. May include a schema, port,
+username, and password, e.g.,
+<code class="prettyprint">http://username:password@127.0.0.1:10</code>.</li>
+</ul>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                            &mdash; 
+                                    
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="classes/GeoIp2-WebService-Client.html"><div class="path-wrapper">\GeoIp2\WebService\Client</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_city" name="method_city" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">city()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">city(string  <span class="argument">$ipAddress = &#039;me&#039;</span>) : \GeoIp2\Model\City</pre>
+                <p><em>This method calls the City service.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$ipAddress </td>
+                                <td><p>IPv4 or IPv6 address as a string. If no
+address is provided, the address that the web service is called
+from will be used.</p>
+</td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\GeoIp2\Exception\AddressNotFoundException</dt>
+                            <dd><p>if the address you
+provided is not in our database (e.g., a private address).</p>
+</dd>
+                                                    <dt>\GeoIp2\Exception\AuthenticationException</dt>
+                            <dd><p>if there is a problem
+with the account ID or license key that you provided</p>
+</dd>
+                                                    <dt>\GeoIp2\Exception\OutOfQueriesException</dt>
+                            <dd><p>if your account is out
+of queries</p>
+</dd>
+                                                    <dt><a href=""><abbr title=""></abbr></a></dt>
+                            <dd><p>\GeoIp2\Exception\InvalidRequestException} if your request was received by the web service but is
+invalid for some other reason.  This may indicate an issue
+with this API. Please report the error to MaxMind.</p>
+</dd>
+                                                    <dt>\GeoIp2\Exception\HttpException</dt>
+                            <dd><p>if an unexpected HTTP error code or message was returned.
+This could indicate a problem with the connection between
+your server and the web service or that the web service
+returned an invalid document or 500 error code</p>
+</dd>
+                                                    <dt>\GeoIp2\Exception\GeoIp2Exception</dt>
+                            <dd><p>This serves as the parent
+class to the above exceptions. It will be thrown directly
+if a 200 status code is returned but the body is invalid.</p>
+</dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    \GeoIp2\Model\City
+                                            &mdash; <p>a City model for the requested IP address</p>
+
+                                    
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="classes/GeoIp2-WebService-Client.html"><div class="path-wrapper">\GeoIp2\WebService\Client</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_country" name="method_country" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">country()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">country(string  <span class="argument">$ipAddress = &#039;me&#039;</span>) : \GeoIp2\Model\Country</pre>
+                <p><em>This method calls the Country service.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$ipAddress </td>
+                                <td><p>IPv4 or IPv6 address as a string. If no
+address is provided, the address that the web service is called
+from will be used.</p>
+</td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\GeoIp2\Exception\AddressNotFoundException</dt>
+                            <dd><p>if the address you provided is not in our database (e.g.,
+a private address).</p>
+</dd>
+                                                    <dt>\GeoIp2\Exception\AuthenticationException</dt>
+                            <dd><p>if there is a problem
+with the account ID or license key that you provided</p>
+</dd>
+                                                    <dt>\GeoIp2\Exception\OutOfQueriesException</dt>
+                            <dd><p>if your account is out of queries</p>
+</dd>
+                                                    <dt><a href=""><abbr title=""></abbr></a></dt>
+                            <dd><p>\GeoIp2\Exception\InvalidRequestException} if your request was received by the web service but is
+invalid for some other reason.  This may indicate an
+issue with this API. Please report the error to MaxMind.</p>
+</dd>
+                                                    <dt>\GeoIp2\Exception\HttpException</dt>
+                            <dd><p>if an unexpected HTTP error
+code or message was returned. This could indicate a problem
+with the connection between your server and the web service
+or that the web service returned an invalid document or 500
+error code.</p>
+</dd>
+                                                    <dt>\GeoIp2\Exception\GeoIp2Exception</dt>
+                            <dd><p>This serves as the parent class to the above exceptions. It
+will be thrown directly if a 200 status code is returned but
+the body is invalid.</p>
+</dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    \GeoIp2\Model\Country
+                                            &mdash; <p>a Country model for the requested IP address</p>
+
+                                    
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="classes/GeoIp2-WebService-Client.html"><div class="path-wrapper">\GeoIp2\WebService\Client</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_insights" name="method_insights" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">insights()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">insights(string  <span class="argument">$ipAddress = &#039;me&#039;</span>) : \GeoIp2\Model\Insights</pre>
+                <p><em>This method calls the Insights service. Insights is only supported by GeoIP2
+Precision. The GeoLite2 web service does not support it.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$ipAddress </td>
+                                <td><p>IPv4 or IPv6 address as a string. If no
+address is provided, the address that the web service is called
+from will be used.</p>
+</td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\GeoIp2\Exception\AddressNotFoundException</dt>
+                            <dd><p>if the address you
+provided is not in our database (e.g., a private address).</p>
+</dd>
+                                                    <dt>\GeoIp2\Exception\AuthenticationException</dt>
+                            <dd><p>if there is a problem
+with the account ID or license key that you provided</p>
+</dd>
+                                                    <dt>\GeoIp2\Exception\OutOfQueriesException</dt>
+                            <dd><p>if your account is out
+of queries</p>
+</dd>
+                                                    <dt><a href=""><abbr title=""></abbr></a></dt>
+                            <dd><p>\GeoIp2\Exception\InvalidRequestException} if your request was received by the web service but is
+invalid for some other reason.  This may indicate an
+issue with this API. Please report the error to MaxMind.</p>
+</dd>
+                                                    <dt>\GeoIp2\Exception\HttpException</dt>
+                            <dd><p>if an unexpected HTTP error code or message was returned.
+This could indicate a problem with the connection between
+your server and the web service or that the web service
+returned an invalid document or 500 error code</p>
+</dd>
+                                                    <dt>\GeoIp2\Exception\GeoIp2Exception</dt>
+                            <dd><p>This serves as the parent
+class to the above exceptions. It will be thrown directly
+if a 200 status code is returned but the body is invalid.</p>
+</dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    \GeoIp2\Model\Insights
+                                            &mdash; 
+                                    
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="classes/GeoIp2-WebService-Client.html"><div class="path-wrapper">\GeoIp2\WebService\Client</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">Client.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/WebService/Client.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                            <li><a href="namespaces/geoip2.html"><abbr title="\GeoIp2">GeoIp2</abbr></a></li>
+                                                                            <li><a href="namespaces/maxmind.html"><abbr title="\MaxMind">MaxMind</abbr></a></li>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="https://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on November 18th, 2021 at 17:37.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

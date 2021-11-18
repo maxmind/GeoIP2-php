@@ -2,18 +2,16 @@
 layout: default
 title: MaxMind GeoIP2 PHP API
 language: php
-version: v2.11.0
+version: v2.12.0
 ---
 
 # GeoIP2 PHP API #
 
 ## Description ##
 
-This package provides an API for the GeoIP2
-[web services](https://dev.maxmind.com/geoip/geoip2/web-services) and
-[databases](https://dev.maxmind.com/geoip/geoip2/downloadable). The API also
-works with the free
-[GeoLite2 databases](https://dev.maxmind.com/geoip/geoip2/geolite2/).
+This package provides an API for the GeoIP2 and GeoLite2
+[web services](https://dev.maxmind.com/geoip/docs/web-services?lang=en) and
+[databases](https://dev.maxmind.com/geoip/docs/databases?lang=en).
 
 ## Install via Composer ##
 
@@ -364,7 +362,7 @@ Because of these factors, it is possible for any end point to return a record
 where some or all of the attributes are unpopulated.
 
 See the
-[GeoIP2 Precision web service docs](https://dev.maxmind.com/geoip/geoip2/web-services)
+[GeoIP2 Precision web service docs](https://dev.maxmind.com/geoip/docs/web-services?lang=en)
 for details on what data each end point may return.
 
 The only piece of data which is always returned is the `ipAddress`
