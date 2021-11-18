@@ -100,8 +100,7 @@ php phpDocumentor.phar \
     --visibility public \
     --cache-folder "$cachedir" \
     --title "GeoIP2 PHP API $tag" \
-    -t "doc/$tag" \
-    --template=clean
+    -t "doc/$tag"
 
 rm -rf "$cachedir"
 
