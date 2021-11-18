@@ -1,594 +1,373 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
-    <meta charset="utf-8"/>
+    <meta charset="utf-8">
     <title>GeoIP2 PHP API v2.12.0</title>
-    <meta name="author" content=""/>
-    <meta name="description" content=""/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="../">
+    <link rel="icon" href="images/favicon.ico"/>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/base.css">
+            <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/template.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/all.min.css" integrity="sha256-ybRkN9dBjhcS2qrW1z+hfCxq+1aBdwyQM5wlQoQVt/0=" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/themes/prism-okaidia.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/line-numbers/prism-line-numbers.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/line-highlight/prism-line-highlight.css">
+                <script src="https://cdn.jsdelivr.net/npm/fuse.js@3.4.6"></script>
+        <script src="https://cdn.jsdelivr.net/npm/css-vars-ponyfill@2"></script>
+        <script src="js/search.js"></script>
+        <script defer src="js/searchIndex.js"></script>
+    </head>
+<body id="top">
+    <header class="phpdocumentor-header phpdocumentor-section">
+    <h1 class="phpdocumentor-title"><a href="" class="phpdocumentor-title__link">GeoIP2 PHP API v2.12.0</a></h1>
+    <input class="phpdocumentor-header__menu-button" type="checkbox" id="menu-button" name="menu-button" />
+    <label class="phpdocumentor-header__menu-icon" for="menu-button">
+        <i class="fas fa-bars"></i>
+    </label>
+    <section data-search-form class="phpdocumentor-search">
+    <label>
+        <span class="visually-hidden">Search for</span>
+        <svg class="phpdocumentor-search__icon" width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="7.5" cy="7.5" r="6.5" stroke="currentColor" stroke-width="2"/>
+            <line x1="12.4892" y1="12.2727" x2="19.1559" y2="18.9393" stroke="currentColor" stroke-width="3"/>
+        </svg>
+        <input type="search" class="phpdocumentor-field phpdocumentor-search__field" placeholder="Loading .." disabled />
+    </label>
+</section>
 
-    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
-    <link href="../css/font-awesome.min.css" rel="stylesheet">
-    <link href="../css/prism.css" rel="stylesheet" media="all"/>
-    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    <nav class="phpdocumentor-topnav">
+    <ul class="phpdocumentor-topnav__menu">
+        </ul>
+</nav>
+</header>
+
+    <main class="phpdocumentor">
+        <div class="phpdocumentor-section">
+            <input class="phpdocumentor-sidebar__menu-button" type="checkbox" id="sidebar-button" name="sidebar-button" />
+<label class="phpdocumentor-sidebar__menu-icon" for="sidebar-button">
+    Menu
+</label>
+<aside class="phpdocumentor-column -four phpdocumentor-sidebar">
+                    <section class="phpdocumentor-sidebar__category">
+            <h2 class="phpdocumentor-sidebar__category-header">Namespaces</h2>
+                                    <h4 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/geoip2.html">GeoIp2</a></h4>
+    <ul class="phpdocumentor-list">
+                    <li>
+                <a href="namespaces/geoip2-database.html">Database</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/geoip2-exception.html">Exception</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/geoip2-model.html">Model</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/geoip2-record.html">Record</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/geoip2-webservice.html">WebService</a>
+                
+            </li>
+            </ul>
+
+                                    <h4 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/maxmind.html">MaxMind</a></h4>
+    <ul class="phpdocumentor-list">
+                    <li>
+                <a href="namespaces/maxmind-db.html">Db</a>
+                
+            </li>
+            </ul>
+
+                        </section>
+                <section class="phpdocumentor-sidebar__category">
+            <h2 class="phpdocumentor-sidebar__category-header">Packages</h2>
+                                    <h4 class="phpdocumentor-sidebar__root-namespace"><a href="packages/Application.html">Application</a></h4>
+
+                        </section>
+            
+    <section class="phpdocumentor-sidebar__category">
+        <h2 class="phpdocumentor-sidebar__category-header">Reports</h2>
+                <h3 class="phpdocumentor-sidebar__root-package"><a href="reports/deprecated.html">Deprecated</a></h3>
+        <h3 class="phpdocumentor-sidebar__root-package"><a href="reports/errors.html">Errors</a></h3>
+        <h3 class="phpdocumentor-sidebar__root-package"><a href="reports/markers.html">Markers</a></h3>
+    </section>
+
+    <section class="phpdocumentor-sidebar__category">
+        <h2 class="phpdocumentor-sidebar__category-header">Indices</h2>
+        <h3 class="phpdocumentor-sidebar__root-package"><a href="indices/files.html">Files</a></h3>
+    </section>
+</aside>
+
+            <div class="phpdocumentor-column -eight phpdocumentor-content">
+                    <ul class="phpdocumentor-breadcrumbs">
+            <li class="phpdocumentor-breadcrumb"><a href="namespaces/maxmind.html">MaxMind</a></li>
+            <li class="phpdocumentor-breadcrumb"><a href="namespaces/maxmind-db.html">Db</a></li>
+            <li class="phpdocumentor-breadcrumb"><a href="namespaces/maxmind-db-reader.html">Reader</a></li>
+    </ul>
+
+    <article class="phpdocumentor-element -class">
+        <h2 class="phpdocumentor-content__title">
+    Decoder
+
     
-    <!--[if lt IE 9]>
-    <script src="../js/html5.js"></script>
-    <![endif]-->
-    <script src="../js/jquery-1.11.0.min.js"></script>
-    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/jquery.smooth-scroll.js"></script>
-    <script src="../js/prism.min.js"></script>
-    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+            <div class="phpdocumentor-element__package">
+            in package
+            <ul class="phpdocumentor-breadcrumbs">
+                                    <li class="phpdocumentor-breadcrumb"><a href="packages/Application.html">Application</a></li>
+                            </ul>
+        </div>
+    
+    
+    </h2>
+
+        <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="MaxMind/Db/Reader/Decoder.php"><a href="files/maxmind-db-reader-decoder.html"><abbr title="MaxMind/Db/Reader/Decoder.php">Decoder.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">10</span>
+
+    </aside>
+
+        
+    <section class="phpdocumentor-description"></section>
+
+
+
+
+
+
+
+
+<h3 id="toc">
+    Table of Contents
+    <a href="#toc" class="headerlink"><i class="fas fa-link"></i></a>
+</h3>
+
+<dl class="phpdocumentor-table-of-contents">
+                    <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/MaxMind-Db-Reader-Decoder.html#method___construct">__construct()</a>
+    <span>
+                        &nbsp;: mixed    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/MaxMind-Db-Reader-Decoder.html#method_decode">decode()</a>
+    <span>
+                        &nbsp;: array&lt;string|int, mixed&gt;    </span>
+</dt>
+<dd></dd>
+
+        </dl>
+
+
+
+        
+
+        
+
+            <section class="phpdocumentor-methods">
+        <h3 class="phpdocumentor-elements__header" id="methods">
+            Methods
+            <a href="classes/MaxMind-Db-Reader-Decoder.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
+        </h3>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method___construct">
+        __construct()
+        <a href="classes/MaxMind-Db-Reader-Decoder.html#method___construct" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="MaxMind/Db/Reader/Decoder.php"><a href="files/maxmind-db-reader-decoder.html"><abbr title="MaxMind/Db/Reader/Decoder.php">Decoder.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">51</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">resource&nbsp;</span><span class="phpdocumentor-signature__argument__name">$fileStream</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$pointerBase</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$pointerTestHack</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$fileStream</span>
+                : <span class="phpdocumentor-signature__argument__return-type">resource</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$pointerBase</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$pointerTestHack</span>
+                : <span class="phpdocumentor-signature__argument__return-type">bool</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">false</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_decode">
+        decode()
+        <a href="classes/MaxMind-Db-Reader-Decoder.html#method_decode" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="MaxMind/Db/Reader/Decoder.php"><a href="files/maxmind-db-reader-decoder.html"><abbr title="MaxMind/Db/Reader/Decoder.php">Decoder.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">64</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">decode</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$offset</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$offset</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+            &mdash;
+        
+    
+</article>
+            </section>
+
+        
     <script type="text/javascript">
-    function loadExternalCodeSnippets() {
-        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
-            var src = pre.getAttribute('data-src').replace( /\\/g, '/');
-            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
-            var language = 'php';
+        function loadExternalCodeSnippets(line) {
+            Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach((pre) => {
+                var src = pre.getAttribute('data-src').replace( /\\/g, '/');
+                var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+                var language = 'php';
 
-            var code = document.createElement('code');
-            code.className = 'language-' + language;
+                var code = document.createElement('code');
+                code.className = 'language-' + language;
 
-            pre.textContent = '';
+                pre.textContent = '';
 
-            code.textContent = 'Loading…';
+                pre.setAttribute('data-line', line)
+                code.textContent = 'Loading…';
 
-            pre.appendChild(code);
+                pre.appendChild(code);
 
-            var xhr = new XMLHttpRequest();
+                var xhr = new XMLHttpRequest();
 
-            xhr.open('GET', src, true);
+                xhr.open('GET', src, true);
 
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState == 4) {
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4) {
 
-                    if (xhr.status < 400 && xhr.responseText) {
-                        code.textContent = xhr.responseText;
+                        if (xhr.status < 400 && xhr.responseText) {
+                            code.textContent = xhr.responseText;
 
-                        Prism.highlightElement(code);
+                            Prism.highlightElement(code);
+                        }
+                        else if (xhr.status >= 400) {
+                            code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                        }
+                        else {
+                            code.textContent = '✖ Error: File does not exist, is empty or trying to view from localhost';
+                        }
                     }
-                    else if (xhr.status >= 400) {
-                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
-                    }
-                    else {
-                        code.textContent = '✖ Error: File does not exist, is empty or trying to view from localhost';
-                    }
-                }
-            };
+                };
 
-            xhr.send(null);
+                xhr.send(null);
+            });
+        }
+
+        var modals = document.querySelectorAll("[data-modal]");
+
+        modals.forEach(function (trigger) {
+            trigger.addEventListener("click", function (event) {
+                //event.preventDefault();
+                const modal = document.getElementById(trigger.dataset.modal);
+                modal.classList.add("phpdocumentor-modal__open");
+                loadExternalCodeSnippets(trigger.dataset.line)
+                const exits = modal.querySelectorAll("[data-exit-button]");
+                exits.forEach(function (exit) {
+                    exit.addEventListener("click", function (event) {
+                        event.preventDefault();
+                        modal.classList.remove("phpdocumentor-modal__open");
+                    });
+                });
+            });
         });
-    }
+    </script>
 
-    $(document).ready(function(){
-        loadExternalCodeSnippets();
-    });
-    $('#source-view').on('shown', function () {
-        loadExternalCodeSnippets();
-    })
-</script>
-
-    <link rel="shortcut icon" href="../images/favicon.ico"/>
-    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
-    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
-    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
-</head>
-<body>
-
-<div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container">
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <i class="icon-ellipsis-vertical"></i>
-            </a>
-            <a class="brand" href="../index.html">GeoIP2 PHP API v2.12.0</a>
-
-            <div class="nav-collapse">
-                <ul class="nav pull-right">
-                                        <li class="dropdown">
-                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
-                            API Documentation <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu">
-                                                        <li><a href="namespaces/geoip2.html"><abbr title="\GeoIp2">GeoIp2</abbr></a></li>
-                                                        <li><a href="namespaces/maxmind.html"><abbr title="\MaxMind">MaxMind</abbr></a></li>
-                                                    </ul>
-                    </li>
-                                        <li class="dropdown" id="charts-menu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            Charts <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="../graphs/class.html">
-                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="dropdown" id="reports-menu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            Reports <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="../reports/errors.html">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">3</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="../reports/markers.html">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="../reports/deprecated.html">
-                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <!--<div class="go_to_top">-->
-    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
-    <!--</div>-->
-</div>
-
-<div id="___" class="container-fluid">
-        <section class="row-fluid">
-        <div class="span2 sidebar">
-                                <div class="accordion" style="margin-bottom: 0">
-        <div class="accordion-group">
-            <div class="accordion-heading">
-                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-537744208"></a>
-                                <a href="namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
-            </div>
-            <div id="namespace-537744208" class="accordion-body collapse in">
-                <div class="accordion-inner">
-
-                                                    <div class="accordion" style="margin-bottom: 0">
-        <div class="accordion-group">
-            <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1940632639"></a>
-                                <a href="namespaces/geoip2.html" style="margin-left: 30px; padding-left: 0">GeoIp2</a>
-            </div>
-            <div id="namespace-1940632639" class="accordion-body collapse ">
-                <div class="accordion-inner">
-
-                                                    <div class="accordion" style="margin-bottom: 0">
-        <div class="accordion-group">
-            <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-53483235"></a>
-                                <a href="namespaces/geoip2-database.html" style="margin-left: 30px; padding-left: 0">Database</a>
-            </div>
-            <div id="namespace-53483235" class="accordion-body collapse ">
-                <div class="accordion-inner">
-
-                    
-                    <ul>
-                                                                                                    <li class="class"><a href="classes/GeoIp2-Database-Reader.html"><abbr title="\GeoIp2\Database\Reader">Reader</abbr></a></li>
-                                            </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-                                                    <div class="accordion" style="margin-bottom: 0">
-        <div class="accordion-group">
-            <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1040271266"></a>
-                                <a href="namespaces/geoip2-exception.html" style="margin-left: 30px; padding-left: 0">Exception</a>
-            </div>
-            <div id="namespace-1040271266" class="accordion-body collapse ">
-                <div class="accordion-inner">
-
-                    
-                    <ul>
-                                                                                                    <li class="class"><a href="classes/GeoIp2-Exception-AddressNotFoundException.html"><abbr title="\GeoIp2\Exception\AddressNotFoundException">AddressNotFoundException</abbr></a></li>
-                                                    <li class="class"><a href="classes/GeoIp2-Exception-AuthenticationException.html"><abbr title="\GeoIp2\Exception\AuthenticationException">AuthenticationException</abbr></a></li>
-                                                    <li class="class"><a href="classes/GeoIp2-Exception-GeoIp2Exception.html"><abbr title="\GeoIp2\Exception\GeoIp2Exception">GeoIp2Exception</abbr></a></li>
-                                                    <li class="class"><a href="classes/GeoIp2-Exception-HttpException.html"><abbr title="\GeoIp2\Exception\HttpException">HttpException</abbr></a></li>
-                                                    <li class="class"><a href="classes/GeoIp2-Exception-InvalidRequestException.html"><abbr title="\GeoIp2\Exception\InvalidRequestException">InvalidRequestException</abbr></a></li>
-                                                    <li class="class"><a href="classes/GeoIp2-Exception-OutOfQueriesException.html"><abbr title="\GeoIp2\Exception\OutOfQueriesException">OutOfQueriesException</abbr></a></li>
-                                            </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-                                                    <div class="accordion" style="margin-bottom: 0">
-        <div class="accordion-group">
-            <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-792805860"></a>
-                                <a href="namespaces/geoip2-model.html" style="margin-left: 30px; padding-left: 0">Model</a>
-            </div>
-            <div id="namespace-792805860" class="accordion-body collapse ">
-                <div class="accordion-inner">
-
-                    
-                    <ul>
-                                                                                                    <li class="class"><a href="classes/GeoIp2-Model-AnonymousIp.html"><abbr title="\GeoIp2\Model\AnonymousIp">AnonymousIp</abbr></a></li>
-                                                    <li class="class"><a href="classes/GeoIp2-Model-Asn.html"><abbr title="\GeoIp2\Model\Asn">Asn</abbr></a></li>
-                                                    <li class="class"><a href="classes/GeoIp2-Model-City.html"><abbr title="\GeoIp2\Model\City">City</abbr></a></li>
-                                                    <li class="class"><a href="classes/GeoIp2-Model-ConnectionType.html"><abbr title="\GeoIp2\Model\ConnectionType">ConnectionType</abbr></a></li>
-                                                    <li class="class"><a href="classes/GeoIp2-Model-Country.html"><abbr title="\GeoIp2\Model\Country">Country</abbr></a></li>
-                                                    <li class="class"><a href="classes/GeoIp2-Model-Domain.html"><abbr title="\GeoIp2\Model\Domain">Domain</abbr></a></li>
-                                                    <li class="class"><a href="classes/GeoIp2-Model-Enterprise.html"><abbr title="\GeoIp2\Model\Enterprise">Enterprise</abbr></a></li>
-                                                    <li class="class"><a href="classes/GeoIp2-Model-Insights.html"><abbr title="\GeoIp2\Model\Insights">Insights</abbr></a></li>
-                                                    <li class="class"><a href="classes/GeoIp2-Model-Isp.html"><abbr title="\GeoIp2\Model\Isp">Isp</abbr></a></li>
-                                            </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-                                                    <div class="accordion" style="margin-bottom: 0">
-        <div class="accordion-group">
-            <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-399699249"></a>
-                                <a href="namespaces/geoip2-record.html" style="margin-left: 30px; padding-left: 0">Record</a>
-            </div>
-            <div id="namespace-399699249" class="accordion-body collapse ">
-                <div class="accordion-inner">
-
-                    
-                    <ul>
-                                                                                                    <li class="class"><a href="classes/GeoIp2-Record-AbstractPlaceRecord.html"><abbr title="\GeoIp2\Record\AbstractPlaceRecord">AbstractPlaceRecord</abbr></a></li>
-                                                    <li class="class"><a href="classes/GeoIp2-Record-AbstractRecord.html"><abbr title="\GeoIp2\Record\AbstractRecord">AbstractRecord</abbr></a></li>
-                                                    <li class="class"><a href="classes/GeoIp2-Record-City.html"><abbr title="\GeoIp2\Record\City">City</abbr></a></li>
-                                                    <li class="class"><a href="classes/GeoIp2-Record-Continent.html"><abbr title="\GeoIp2\Record\Continent">Continent</abbr></a></li>
-                                                    <li class="class"><a href="classes/GeoIp2-Record-Country.html"><abbr title="\GeoIp2\Record\Country">Country</abbr></a></li>
-                                                    <li class="class"><a href="classes/GeoIp2-Record-Location.html"><abbr title="\GeoIp2\Record\Location">Location</abbr></a></li>
-                                                    <li class="class"><a href="classes/GeoIp2-Record-MaxMind.html"><abbr title="\GeoIp2\Record\MaxMind">MaxMind</abbr></a></li>
-                                                    <li class="class"><a href="classes/GeoIp2-Record-Postal.html"><abbr title="\GeoIp2\Record\Postal">Postal</abbr></a></li>
-                                                    <li class="class"><a href="classes/GeoIp2-Record-RepresentedCountry.html"><abbr title="\GeoIp2\Record\RepresentedCountry">RepresentedCountry</abbr></a></li>
-                                                    <li class="class"><a href="classes/GeoIp2-Record-Subdivision.html"><abbr title="\GeoIp2\Record\Subdivision">Subdivision</abbr></a></li>
-                                                    <li class="class"><a href="classes/GeoIp2-Record-Traits.html"><abbr title="\GeoIp2\Record\Traits">Traits</abbr></a></li>
-                                            </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-                                                    <div class="accordion" style="margin-bottom: 0">
-        <div class="accordion-group">
-            <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-464084683"></a>
-                                <a href="namespaces/geoip2-webservice.html" style="margin-left: 30px; padding-left: 0">WebService</a>
-            </div>
-            <div id="namespace-464084683" class="accordion-body collapse ">
-                <div class="accordion-inner">
-
-                    
-                    <ul>
-                                                                                                    <li class="class"><a href="classes/GeoIp2-WebService-Client.html"><abbr title="\GeoIp2\WebService\Client">Client</abbr></a></li>
-                                            </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-                    
-                    <ul>
-                                                    <li class="interface"><a href="classes/GeoIp2-ProviderInterface.html"><abbr title="\GeoIp2\ProviderInterface">ProviderInterface</abbr></a></li>
-                                                                                                    <li class="class"><a href="classes/GeoIp2-Util.html"><abbr title="\GeoIp2\Util">Util</abbr></a></li>
-                                            </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-                                                    <div class="accordion" style="margin-bottom: 0">
-        <div class="accordion-group">
-            <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1654431026"></a>
-                                <a href="namespaces/maxmind.html" style="margin-left: 30px; padding-left: 0">MaxMind</a>
-            </div>
-            <div id="namespace-1654431026" class="accordion-body collapse ">
-                <div class="accordion-inner">
-
-                                                    <div class="accordion" style="margin-bottom: 0">
-        <div class="accordion-group">
-            <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-429303226"></a>
-                                <a href="namespaces/maxmind-db.html" style="margin-left: 30px; padding-left: 0">Db</a>
-            </div>
-            <div id="namespace-429303226" class="accordion-body collapse ">
-                <div class="accordion-inner">
-
-                                                    <div class="accordion" style="margin-bottom: 0">
-        <div class="accordion-group">
-            <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1705524268"></a>
-                                <a href="namespaces/maxmind-db-reader.html" style="margin-left: 30px; padding-left: 0">Reader</a>
-            </div>
-            <div id="namespace-1705524268" class="accordion-body collapse ">
-                <div class="accordion-inner">
-
-                    
-                    <ul>
-                                                                                                    <li class="class"><a href="classes/MaxMind-Db-Reader-Decoder.html"><abbr title="\MaxMind\Db\Reader\Decoder">Decoder</abbr></a></li>
-                                                    <li class="class"><a href="classes/MaxMind-Db-Reader-InvalidDatabaseException.html"><abbr title="\MaxMind\Db\Reader\InvalidDatabaseException">InvalidDatabaseException</abbr></a></li>
-                                                    <li class="class"><a href="classes/MaxMind-Db-Reader-Metadata.html"><abbr title="\MaxMind\Db\Reader\Metadata">Metadata</abbr></a></li>
-                                                    <li class="class"><a href="classes/MaxMind-Db-Reader-Util.html"><abbr title="\MaxMind\Db\Reader\Util">Util</abbr></a></li>
-                                            </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-                    
-                    <ul>
-                                                                                                    <li class="class"><a href="classes/MaxMind-Db-Reader.html"><abbr title="\MaxMind\Db\Reader">Reader</abbr></a></li>
-                                            </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-                    
-                    <ul>
-                                                                                            </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-                    
-                    <ul>
-                                                                                            </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-        </div>
-    </section>
-    <section class="row-fluid">
-        <div class="span10 offset2">
-            <div class="row-fluid">
-                <div class="span8 content class">
-                    <nav>
-                                                <a href="namespaces/maxmind-db-reader.html"><abbr title="\MaxMind\Db\Reader">Reader</abbr></a> <i class="icon-level-up"></i>
-                                            </nav>
-                    
-                    <h1><small>\MaxMind\Db\Reader</small>Decoder</h1>
-                    <p><em></em></p>
-                    
-                    
-                                        
-                    <section id="summary">
-                        <h2>Summary</h2>
-                        <section class="row-fluid heading">
-                            <section class="span4">
-                                <a href="#methods">Methods</a>
-                            </section>
-                            <section class="span4">
-                                <a href="#properties">Properties</a>
-                            </section>
-                            <section class="span4">
-                                <a href="#constants">Constants</a>
-                            </section>
-                        </section>
-                        <section class="row-fluid public">
-                            <section class="span4">
-                                                                    <a href="classes/MaxMind-Db-Reader-Decoder.html#method___construct" class="">__construct()</a><br />
-                                                                    <a href="classes/MaxMind-Db-Reader-Decoder.html#method_decode" class="">decode()</a><br />
-                                                            </section>
-                            <section class="span4">
-                                                                    <em>No public properties found</em>
-                                                            </section>
-                            <section class="span4">
-                                                                    <em>No constants found</em>
-                                                            </section>
-                        </section>
-                        <section class="row-fluid protected">
-                            <section class="span4">
-                                                                    <em>No protected methods found</em>
-                                                            </section>
-                            <section class="span4">
-                                                                    <em>No protected properties found</em>
-                                                            </section>
-                            <section class="span4">
-                                <em>N/A</em>
-                            </section>
-                        </section>
-                        <section class="row-fluid private">
-                            <section class="span4">
-                                                                    <em>No private methods found</em>
-                                                            </section>
-                            <section class="span4">
-                                                                    <em>No private properties found</em>
-                                                            </section>
-                            <section class="span4">
-                                <em>N/A</em>
-                            </section>
-                        </section>
-                    </section>
-                </div>
-                <aside class="span4 detailsbar">
-                                        
-                    
-                    <dl>
-                        <dt>File</dt>
-                            <dd><a href="files/maxmind-db-reader-decoder.html"><div class="path-wrapper">MaxMind/Db/Reader/Decoder.php</div></a></dd>
-                                                <dt>Package</dt>
-                            <dd><div class="namespace-wrapper">Application</div></dd>
-                                                <dt>Class hierarchy</dt>
-                            <dd class="hierarchy">
-                                                                                                                                                                    <div class="namespace-wrapper">\MaxMind\Db\Reader\Decoder</div>
-                            </dd>
-
-                        
-                        
-                        
-                                                
-                                                                        </dl>
-                    <h2>Tags</h2>
-                    <table class="table table-condensed">
-                                            <tr><td colspan="2"><em>None found</em></td></tr>
-                                        </table>
-                </aside>
-            </div>
-
-                        
-                        
-                                    <a id="methods" name="methods"></a>
-            <div class="row-fluid">
-                <div class="span8 content class"><h2>Methods</h2></div>
-                <aside class="span4 detailsbar"></aside>
-            </div>
-
-                                    <div class="row-fluid">
-        <div class="span8 content class">
-            <a id="method___construct" name="method___construct" class="anchor"></a>
-            <article class="method">
-                <h3 class="public ">__construct()</h3>
-                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">__construct(resource  <span class="argument">$fileStream</span>, int  <span class="argument">$pointerBase</span>, bool  <span class="argument">$pointerTestHack = false</span>) : mixed</pre>
-                <p><em></em></p>
-                
-
-                                    <h4>Parameters</h4>
-                    <table class="table table-condensed table-hover">
-                                                    <tr>
-                                <td>resource</td>
-                                <td>$fileStream </td>
-                                <td></td>
-                            </tr>
-                                                    <tr>
-                                <td>int</td>
-                                <td>$pointerBase </td>
-                                <td></td>
-                            </tr>
-                                                    <tr>
-                                <td>bool</td>
-                                <td>$pointerTestHack </td>
-                                <td></td>
-                            </tr>
-                                            </table>
-                
-                
-                                    <h4>Returns</h4>
-                    mixed
-                                            &mdash; 
-                                    
-                            </article>
-        </div>
-        <aside class="span4 detailsbar">
-            <h1><i class="icon-arrow-down"></i></h1>
-                                                            <dl>
-                                                    <dt>Inherited from</dt>
-                    <dd><a href="classes/MaxMind-Db-Reader-Decoder.html"><div class="path-wrapper">\MaxMind\Db\Reader\Decoder</div></a></dd>
-                                                            </dl>
-            <h2>Tags</h2>
-            <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
-                            </table>
-        </aside>
-    </div>
-
-                                    <div class="row-fluid">
-        <div class="span8 content class">
-            <a id="method_decode" name="method_decode" class="anchor"></a>
-            <article class="method">
-                <h3 class="public ">decode()</h3>
-                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">decode(int  <span class="argument">$offset</span>) : array</pre>
-                <p><em></em></p>
-                
-
-                                    <h4>Parameters</h4>
-                    <table class="table table-condensed table-hover">
-                                                    <tr>
-                                <td>int</td>
-                                <td>$offset </td>
-                                <td></td>
-                            </tr>
-                                            </table>
-                
-                
-                                    <h4>Returns</h4>
-                    array
-                                            &mdash; 
-                                    
-                            </article>
-        </div>
-        <aside class="span4 detailsbar">
-            <h1><i class="icon-arrow-down"></i></h1>
-                                                            <dl>
-                                                    <dt>Inherited from</dt>
-                    <dd><a href="classes/MaxMind-Db-Reader-Decoder.html"><div class="path-wrapper">\MaxMind\Db\Reader\Decoder</div></a></dd>
-                                                            </dl>
-            <h2>Tags</h2>
-            <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
-                            </table>
-        </aside>
-    </div>
-
-                                                                    </div>
-    </section>
-
-    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3 id="source-view-label">Decoder.php</h3>
-        </div>
-        <div class="modal-body">
-            <pre data-src="../files/MaxMind/Db/Reader/Decoder.php.txt" class="language-php line-numbers"></pre>
-        </div>
-    </div>
-
-    <footer class="row-fluid">
-        <section class="span10 offset2">
-            <section class="row-fluid">
-                <section class="span10 offset1">
-                    <section class="row-fluid footer-sections">
-                        <section class="span4">
-                                                        <h1><i class="icon-code"></i></h1>
-                            <div>
-                                <ul>
-                                                                            <li><a href="namespaces/geoip2.html"><abbr title="\GeoIp2">GeoIp2</abbr></a></li>
-                                                                            <li><a href="namespaces/maxmind.html"><abbr title="\MaxMind">MaxMind</abbr></a></li>
-                                                                    </ul>
-                            </div>
-                        </section>
-                        <section class="span4">
-                                                        <h1><i class="icon-bar-chart"></i></h1>
-                            <div>
-                                <ul>
-                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
-                                </ul>
-                            </div>
-                        </section>
-                        <section class="span4">
-                                                        <h1><i class="icon-pushpin"></i></h1>
-                            <div>
-                                <ul>
-                                    <li><a href="../reports/errors.html">Errors</a></li>
-                                    <li><a href="../reports/markers.html">Markers</a></li>
-                                </ul>
-                            </div>
-                        </section>
-                    </section>
-                </section>
-            </section>
-            <section class="row-fluid">
-                <section class="span10 offset1">
-                    <hr />
-                    Documentation is powered by <a href="https://www.phpdoc.org/">phpDocumentor </a> and authored
-                    on November 18th, 2021 at 17:37.
-                </section>
-            </section>
+    </article>
+                <section data-search-results class="phpdocumentor-search-results phpdocumentor-search-results--hidden">
+    <section class="phpdocumentor-search-results__dialog">
+        <header class="phpdocumentor-search-results__header">
+            <h2 class="phpdocumentor-search-results__title">Search results</h2>
+            <button class="phpdocumentor-search-results__close"><i class="fas fa-times"></i></button>
+        </header>
+        <section class="phpdocumentor-search-results__body">
+            <ul class="phpdocumentor-search-results__entries"></ul>
         </section>
-    </footer>
-</div>
+    </section>
+</section>
+            </div>
+        </div>
+        <a href="classes/MaxMind-Db-Reader-Decoder.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
+    </main>
+
+    <script>
+        cssVars({});
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/line-highlight/prism-line-highlight.min.js"></script>
 </body>
 </html>
