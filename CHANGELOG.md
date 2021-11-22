@@ -1,6 +1,13 @@
 CHANGELOG
 =========
 
+2.12.1
+-------------------
+
+* The `geoip2.phar` included in 2.12.0 would only work in CLI applications.
+  This was due to a change in Box 3.x. The Phar should now work in all
+  applications. This release only affects users of the Phar file.
+
 2.12.0 (2021-11-18)
 -------------------
 

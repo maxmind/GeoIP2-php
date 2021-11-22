@@ -1,6 +1,6 @@
 {
-    "alias": "geoip2.phar",
-    "main": "phar-stub.php",
+    "stub": "phar-stub.php",
+    "main": false,
     "output": "geoip2.phar",
     "compactors": [
         "KevinGH\\Box\\Compactor\\Php",
@@ -36,6 +36,5 @@
             "in": "src"
             }
     ],
-    "git-version": "git-version",
-    "shebang": false
+    "git-version": "git-version"
 }
