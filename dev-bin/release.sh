@@ -142,6 +142,6 @@ message="$version
 
 $notes"
 
-hub release create -a "$phar" -m "$message" "$tag"
+gh release create --target "$(git branch --show-current)" -n "$message" "$tag" "$phar"
 
 git push --tags
