@@ -1,7 +1,7 @@
 CHANGELOG
 =========
 
-2.12.1
+2.12.1 (2021-11-23)
 -------------------
 
 * The `geoip2.phar` included in 2.12.0 would only work in CLI applications.

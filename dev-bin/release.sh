@@ -138,10 +138,6 @@ git commit -m "Update for $tag" -a
 
 git push
 
-message="$version
-
-$notes"
-
-gh release create --target "$(git branch --show-current)" -n "$message" "$tag" "$phar"
+gh release create --target "$(git branch --show-current)" -t "$version" -n "$notes" "$tag" "$phar"
 
 git push --tags
