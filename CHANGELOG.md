@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+2.12.2
+-------------------
+
+* The `geoip2.phar` now works when included from another directory.
+  Reported by Eduardo Ruiz. GitHub #179.
+
 2.12.1 (2021-11-23)
 -------------------
 
