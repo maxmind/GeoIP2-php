@@ -258,6 +258,18 @@ print($record->network . "\n"); // '128.101.101.101/32'
 
 ```
 
+## Database Updates ##
+
+You can keep your databases up to date with our
+[GeoIP Update program](https://github.com/maxmind/geoipupdate/releases).
+[Learn more about GeoIP Update on our developer's
+site.](https://dev.maxmind.com/geoip/updating-databases?lang=en)
+
+There is also a third-party tool for updating databases using PHP and
+composer. MaxMind does not offer support for this tool or maintain it.
+[Learn more about the Geoip2-update tool for PHP and composer on its
+github page.](https://github.com/tronovav/geoip2-update)
+
 ## Web Service Client ##
 
 ### Usage ###
