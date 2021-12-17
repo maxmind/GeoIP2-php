@@ -267,7 +267,7 @@ portal.](https://dev.maxmind.com/geoip/updating-databases?lang=en)
 
 There is also a third-party tool for updating databases using PHP and
 Composer. MaxMind does not offer support for this tool or maintain it.
-[Learn more about the Geoip2 Update tool for PHP and composer on its
+[Learn more about the Geoip2 Update tool for PHP and Composer on its
 GitHub page.](https://github.com/tronovav/geoip2-update)
 
 ## Web Service Client ##
