@@ -17,9 +17,9 @@ use GeoIp2\ProviderInterface;
 use MaxMind\WebService\Client as WsClient;
 
 /**
- * This class provides a client API for all the GeoIP2 Precision web services.
- * The services are Country, City, and Insights. Each service returns a
- * different set of data about an IP address, with Country returning the
+ * This class provides a client API for all the GeoIP2 web services.
+ * The services are Country, City Plus, and Insights. Each service returns
+ * a different set of data about an IP address, with Country returning the
  * least data and Insights the most.
  *
  * Each web service is represented by a different model class, and these model
@@ -71,9 +71,10 @@ class Client implements ProviderInterface
      * @param array  $locales    list of locale codes to use in name property
      *                           from most preferred to least preferred
      * @param array  $options    array of options. Valid options include:
-     *                           * `host` - The host to use when querying the web service. To
-     *                           query the GeoLite2 web service instead of GeoIP2 Precision,
-     *                           set the host to `geolite.info`.
+     *                           * `host` - The host to use when querying the web
+     *                           service. To query the GeoLite2 web service
+     *                           instead of the GeoIP2 web service, set the
+     *                           host to `geolite.info`.
      *                           * `timeout` - Timeout in seconds.
      *                           * `connectTimeout` - Initial connection timeout in seconds.
      *                           * `proxy` - The HTTP proxy to use. May include a schema, port,
@@ -110,7 +111,7 @@ class Client implements ProviderInterface
     }
 
     /**
-     * This method calls the City service.
+     * This method calls the City Plus service.
      *
      * @param string $ipAddress IPv4 or IPv6 address as a string. If no
      *                          address is provided, the address that the web service is called
@@ -169,8 +170,8 @@ class Client implements ProviderInterface
     }
 
     /**
-     * This method calls the Insights service. Insights is only supported by GeoIP2
-     * Precision. The GeoLite2 web service does not support it.
+     * This method calls the Insights service. Insights is only supported by
+     * the GeoIP2 web service. The GeoLite2 web service does not support it.
      *
      * @param string $ipAddress IPv4 or IPv6 address as a string. If no
      *                          address is provided, the address that the web service is called
