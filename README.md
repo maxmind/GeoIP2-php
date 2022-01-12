@@ -286,7 +286,8 @@ specifies the language preferences when using the `->name` method on the model
 classes that this client creates. The fourth argument is additional options
 such as `host` and `timeout`.
 
-For instance, to call the GeoLite2 web service instead of GeoIP2 Precision:
+For instance, to call the GeoLite2 web service instead of the GeoIP2 web
+service:
 
 ```php
 $client = new Client(42, 'abcdef123456', ['en'], ['host' => 'geolite.info']);
@@ -317,7 +318,8 @@ use GeoIp2\WebService\Client;
 // This creates a Client object that can be reused across requests.
 // Replace "42" with your account ID and "license_key" with your license
 // key. Set the "host" to "geolite.info" in the fourth argument options
-// array to use the GeoLite2 web service instead of GeoIP2 Precision.
+// array to use the GeoLite2 web service instead of the GeoIP2 web
+// service.
 $client = new Client(42, 'abcdef123456');
 
 // Replace "city" with the method corresponding to the web service that
@@ -367,7 +369,7 @@ Because of these factors, it is possible for any end point to return a record
 where some or all of the attributes are unpopulated.
 
 See the
-[GeoIP2 Precision web service docs](https://dev.maxmind.com/geoip/docs/web-services?lang=en)
+[GeoIP2 web service docs](https://dev.maxmind.com/geoip/docs/web-services?lang=en)
 for details on what data each end point may return.
 
 The only piece of data which is always returned is the `ipAddress`

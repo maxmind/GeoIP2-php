@@ -7,9 +7,7 @@ namespace GeoIp2\Model;
 /**
  * Model class for the data returned by GeoIP2 Country web service and database.
  *
- * The only difference between the City and Insights model classes is which
- * fields in each record may be populated. See
- * https://dev.maxmind.com/geoip/docs/web-services?lang=en for more details.
+ * See https://dev.maxmind.com/geoip/docs/web-services?lang=en for more details.
  *
  * @property-read \GeoIp2\Record\Continent $continent Continent data for the
  * requested IP address.
