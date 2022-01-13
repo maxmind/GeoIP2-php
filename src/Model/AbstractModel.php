@@ -61,7 +61,13 @@ abstract class AbstractModel implements \JsonSerializable
         return $attr !== 'instance' && isset($this->{$attr});
     }
 
-    public function jsonSerialize(): array
+    /**
+     * @return mixed data that can be serialized by json_encode
+     */
+    // We don't specify a return type here as PHP 8 has "mixed" as the return
+    // type for "JsonSerializable::jsonSerialize", but PHP 7 doesn't support
+    // "mixed".
+    public function jsonSerialize()
     {
         return $this->raw;
     }
