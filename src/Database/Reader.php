@@ -40,10 +40,12 @@ class Reader implements ProviderInterface
      * @var DbReader
      */
     private $dbReader;
+
     /**
      * @var string
      */
     private $dbType;
+
     /**
      * @var array<string>
      */

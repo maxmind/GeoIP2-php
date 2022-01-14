@@ -52,10 +52,12 @@ class Client implements ProviderInterface
      * @var array<string>
      */
     private $locales;
+
     /**
      * @var WsClient
      */
     private $client;
+
     /**
      * @var string
      */

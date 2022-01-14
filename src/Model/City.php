@@ -37,18 +37,21 @@ class City extends Country
      * @var \GeoIp2\Record\City
      */
     protected $city;
+
     /**
      * @ignore
      *
      * @var \GeoIp2\Record\Location
      */
     protected $location;
+
     /**
      * @ignore
      *
      * @var \GeoIp2\Record\Postal
      */
     protected $postal;
+
     /**
      * @ignore
      *
