@@ -1,13 +1,6 @@
 CHANGELOG
 =========
 
-2.13.0
--------------------
-
-* The return types on the `jsonSerialize` implementations have been remove
-  to that they do not conflict with `JsonSerializable::jsonSerialize` on PHP
-  8+. Reported by Gokul Hegde. GitHub #185.
-
 2.12.2 (2021-11-30)
 -------------------
 
