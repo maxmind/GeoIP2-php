@@ -97,6 +97,7 @@ use GeoIp2\Util;
  *    <li>cafe
  *    <li>cellular
  *    <li>college
+ *    <li>consumer_privacy_network
  *    <li>content_delivery_network
  *    <li>dialup
  *    <li>government
