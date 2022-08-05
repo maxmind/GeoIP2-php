@@ -139,7 +139,7 @@ class Client implements ProviderInterface
     public function city(string $ipAddress = 'me'): City
     {
         // @phpstan-ignore-next-line
-        return $this->responseFor('city', 'City', $ipAddress);
+        return $this->responseFor('city', City::class, $ipAddress);
     }
 
     /**
@@ -168,7 +168,7 @@ class Client implements ProviderInterface
      */
     public function country(string $ipAddress = 'me'): Country
     {
-        return $this->responseFor('country', 'Country', $ipAddress);
+        return $this->responseFor('country', Country::class, $ipAddress);
     }
 
     /**
@@ -199,7 +199,7 @@ class Client implements ProviderInterface
     public function insights(string $ipAddress = 'me'): Insights
     {
         // @phpstan-ignore-next-line
-        return $this->responseFor('insights', 'Insights', $ipAddress);
+        return $this->responseFor('insights', Insights::class, $ipAddress);
     }
 
     private function responseFor(string $endpoint, string $class, string $ipAddress): Country
@@ -207,7 +207,8 @@ class Client implements ProviderInterface
         $path = implode('/', [self::$basePath, $endpoint, $ipAddress]);
 
         try {
-            $body = $this->client->get('GeoIP2 ' . $class, $path);
+            $service = (new \ReflectionClass($class))->getShortName();
+            $body = $this->client->get('GeoIP2 ' . $service, $path);
         } catch (\MaxMind\Exception\IpAddressNotFoundException $ex) {
             throw new AddressNotFoundException(
                 $ex->getMessage(),
@@ -248,8 +249,6 @@ class Client implements ProviderInterface
                 $ex
             );
         }
-
-        $class = 'GeoIp2\\Model\\' . $class;
 
         return new $class($body, $this->locales);
     }

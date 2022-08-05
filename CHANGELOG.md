@@ -1,6 +1,13 @@
 CHANGELOG
 =========
 
+2.13.0
+-------------------
+
+* The model class names are no longer constructed by concatenating strings.
+  This change was made to improve support for tools like PHP-Scoper.
+  Reported by Andrew Mead. GitHub #194.
+
 2.12.2 (2021-11-30)
 -------------------
 
