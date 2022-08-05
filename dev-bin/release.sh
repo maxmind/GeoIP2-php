@@ -93,7 +93,13 @@ if [ -n "$(git status --porcelain)" ]; then
 fi
 
 # Using Composer is possible, but they don't recommend it.
-wget -O phpDocumentor.phar https://github.com/phpDocumentor/phpDocumentor/releases/download/v3.1.2/phpDocumentor.phar
+phpdocumentor_phar_hash='4a93d278fd4581f17760903134d85fcde3d40d93f739c8c648f3ed02c9c3e7bb  phpDocumentor.phar'
+
+if ! echo "$phpdocumentor_phar_hash" | sha256sum -c; then
+    wget -O phpDocumentor.phar https://github.com/phpDocumentor/phpDocumentor/releases/download/v3.3.1/phpDocumentor.phar
+fi
+
+echo "$phpdocumentor_phar_hash" | sha256sum -c
 
 # Use cache dir in /tmp as otherwise cache files get into the output directory.
 cachedir="/tmp/phpdoc-$$-$RANDOM"
