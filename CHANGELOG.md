@@ -7,6 +7,7 @@ CHANGELOG
 * The model class names are no longer constructed by concatenating strings.
   This change was made to improve support for tools like PHP-Scoper.
   Reported by Andrew Mead. GitHub #194.
+* Box 4.0.1 is now used to generate the `geoip2.phar` file.
 
 2.12.2 (2021-11-30)
 -------------------
