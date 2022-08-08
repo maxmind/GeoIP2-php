@@ -63,7 +63,7 @@ class Client implements ProviderInterface
      */
     private static $basePath = '/geoip/v2.1';
 
-    public const VERSION = 'v2.12.2';
+    public const VERSION = 'v2.13.0';
 
     /**
      * Constructor.

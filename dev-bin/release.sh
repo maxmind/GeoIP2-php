@@ -44,9 +44,14 @@ php composer.phar update --no-dev
 
 perl -pi -e "s/(?<=const VERSION = ').+?(?=';)/$tag/g" src/WebService/Client.php
 
-if [ ! -f box.phar ]; then
-    wget -O box.phar "https://github.com/box-project/box/releases/download/3.13.0/box.phar"
+
+box_phar_hash='d862951a7acca5641bdd3d3e289e675f3c46810c7994aebfe0c9188a80f6cac1  box.phar'
+
+if ! echo "$box_phar_hash" | sha256sum -c; then
+    wget -O box.phar "https://github.com/box-project/box/releases/download/4.0.1/box.phar"
 fi
+
+echo "$box_phar_hash" | sha256sum -c
 
 php box.phar compile
 
@@ -88,7 +93,13 @@ if [ -n "$(git status --porcelain)" ]; then
 fi
 
 # Using Composer is possible, but they don't recommend it.
-wget -O phpDocumentor.phar https://github.com/phpDocumentor/phpDocumentor/releases/download/v3.1.2/phpDocumentor.phar
+phpdocumentor_phar_hash='4a93d278fd4581f17760903134d85fcde3d40d93f739c8c648f3ed02c9c3e7bb  phpDocumentor.phar'
+
+if ! echo "$phpdocumentor_phar_hash" | sha256sum -c; then
+    wget -O phpDocumentor.phar https://github.com/phpDocumentor/phpDocumentor/releases/download/v3.3.1/phpDocumentor.phar
+fi
+
+echo "$phpdocumentor_phar_hash" | sha256sum -c
 
 # Use cache dir in /tmp as otherwise cache files get into the output directory.
 cachedir="/tmp/phpdoc-$$-$RANDOM"
