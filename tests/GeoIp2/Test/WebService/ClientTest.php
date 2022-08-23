@@ -472,7 +472,7 @@ class ClientTest extends TestCase
             $headers['Content-Length'] = \strlen($body);
         }
 
-        return [$status, $headers,  $body];
+        return [$status, $headers, $body];
     }
 
     private function makeRequest(
