@@ -17,7 +17,7 @@ jobs:
           php-version: 8.1
 
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Install dependencies
         run: composer install --no-progress --prefer-dist --optimize-autoloader
