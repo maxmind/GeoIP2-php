@@ -122,7 +122,7 @@ class Traits extends AbstractRecord
      *
      * @var array<string>
      */
-    protected $validAttributes = [
+    protected array $validAttributes = [
         'autonomousSystemNumber',
         'autonomousSystemOrganization',
         'connectionType',

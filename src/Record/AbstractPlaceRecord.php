@@ -9,7 +9,7 @@ abstract class AbstractPlaceRecord extends AbstractRecord
     /**
      * @var array<string>
      */
-    private $locales;
+    private array $locales;
 
     /**
      * @ignore

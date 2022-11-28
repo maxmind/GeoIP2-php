@@ -51,17 +51,9 @@ class Client implements ProviderInterface
     /**
      * @var array<string>
      */
-    private $locales;
-
-    /**
-     * @var WsClient
-     */
-    private $client;
-
-    /**
-     * @var string
-     */
-    private static $basePath = '/geoip/v2.1';
+    private array $locales;
+    private WsClient $client;
+    private static string $basePath = '/geoip/v2.1';
 
     public const VERSION = 'v2.13.0';
 

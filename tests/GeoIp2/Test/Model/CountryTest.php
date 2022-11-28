@@ -40,10 +40,7 @@ class CountryTest extends TestCase
         ],
     ];
 
-    /**
-     * @var Country|null
-     */
-    private $model;
+    private ?Country $model;
 
     protected function setUp(): void
     {

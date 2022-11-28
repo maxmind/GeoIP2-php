@@ -33,31 +33,25 @@ class City extends Country
 {
     /**
      * @ignore
-     *
-     * @var \GeoIp2\Record\City
      */
-    protected $city;
+    protected \GeoIp2\Record\City $city;
 
     /**
      * @ignore
-     *
-     * @var \GeoIp2\Record\Location
      */
-    protected $location;
+    protected \GeoIp2\Record\Location $location;
 
     /**
      * @ignore
-     *
-     * @var \GeoIp2\Record\Postal
      */
-    protected $postal;
+    protected \GeoIp2\Record\Postal $postal;
 
     /**
      * @ignore
      *
      * @var array<\GeoIp2\Record\Subdivision>
      */
-    protected $subdivisions = [];
+    protected array $subdivisions = [];
 
     /**
      * @ignore

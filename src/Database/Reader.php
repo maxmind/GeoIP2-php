@@ -44,20 +44,14 @@ use MaxMind\Db\Reader\InvalidDatabaseException;
  */
 class Reader implements ProviderInterface
 {
-    /**
-     * @var DbReader
-     */
-    private $dbReader;
+    private DbReader $dbReader;
 
-    /**
-     * @var string
-     */
-    private $dbType;
+    private string $dbType;
 
     /**
      * @var array<string>
      */
-    private $locales;
+    private array $locales;
 
     /**
      * Constructor.

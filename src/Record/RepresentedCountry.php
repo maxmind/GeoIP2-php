@@ -22,7 +22,7 @@ class RepresentedCountry extends Country
      *
      * @var array<string>
      */
-    protected $validAttributes = [
+    protected array $validAttributes = [
         'confidence',
         'geonameId',
         'isInEuropeanUnion',
