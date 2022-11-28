@@ -118,11 +118,11 @@ use GeoIp2\Database\Reader;
 
 // This creates the Reader object, which should be reused across
 // lookups.
-$reader = new Reader('/usr/local/share/GeoIP/GeoIP2-City.mmdb');
+$cityDbReader = new Reader('/usr/local/share/GeoIP/GeoIP2-City.mmdb');
 
 // Replace "city" with the appropriate method for your database, e.g.,
 // "country".
-$record = $reader->city('128.101.101.101');
+$record = $cityDbReader->city('128.101.101.101');
 
 print($record->country->isoCode . "\n"); // 'US'
 print($record->country->name . "\n"); // 'United States'
@@ -151,9 +151,9 @@ use GeoIp2\Database\Reader;
 
 // This creates the Reader object, which should be reused across
 // lookups.
-$reader = new Reader('/usr/local/share/GeoIP/GeoIP2-Anonymous-IP.mmdb');
+$anonymousDbReader = new Reader('/usr/local/share/GeoIP/GeoIP2-Anonymous-IP.mmdb');
 
-$record = $reader->anonymousIp('128.101.101.101');
+$record = $anonymousDbReader->anonymousIp('128.101.101.101');
 
 if ($record->isAnonymous) { print "anon\n"; }
 print($record->ipAddress . "\n"); // '128.101.101.101'
@@ -170,9 +170,9 @@ use GeoIp2\Database\Reader;
 
 // This creates the Reader object, which should be reused across
 // lookups.
-$reader = new Reader('/usr/local/share/GeoIP/GeoIP2-Connection-Type.mmdb');
+$connectionTypeDbReader = new Reader('/usr/local/share/GeoIP/GeoIP2-Connection-Type.mmdb');
 
-$record = $reader->connectionType('128.101.101.101');
+$record = $connectionTypeDbReader->connectionType('128.101.101.101');
 
 print($record->connectionType . "\n"); // 'Corporate'
 print($record->ipAddress . "\n"); // '128.101.101.101'
@@ -189,9 +189,9 @@ use GeoIp2\Database\Reader;
 
 // This creates the Reader object, which should be reused across
 // lookups.
-$reader = new Reader('/usr/local/share/GeoIP/GeoIP2-Domain.mmdb');
+$domainDbReader = new Reader('/usr/local/share/GeoIP/GeoIP2-Domain.mmdb');
 
-$record = $reader->domain('128.101.101.101');
+$record = $domainDbReader->domain('128.101.101.101');
 
 print($record->domain . "\n"); // 'umn.edu'
 print($record->ipAddress . "\n"); // '128.101.101.101'
@@ -208,10 +208,10 @@ use GeoIp2\Database\Reader;
 
 // This creates the Reader object, which should be reused across
 // lookups.
-$reader = new Reader('/usr/local/share/GeoIP/GeoIP2-Enterprise.mmdb');
+$enterpriseDbReader = new Reader('/usr/local/share/GeoIP/GeoIP2-Enterprise.mmdb');
 
 // Use the ->enterprise method to do a lookup in the Enterprise database
-$record = $reader->enterprise('128.101.101.101');
+$record = $enterpriseDbReader->enterprise('128.101.101.101');
 
 print($record->country->confidence . "\n"); // 99
 print($record->country->isoCode . "\n"); // 'US'
@@ -244,9 +244,9 @@ use GeoIp2\Database\Reader;
 
 // This creates the Reader object, which should be reused across
 // lookups.
-$reader = new Reader('/usr/local/share/GeoIP/GeoIP2-ISP.mmdb');
+$ispDbReader = new Reader('/usr/local/share/GeoIP/GeoIP2-ISP.mmdb');
 
-$record = $reader->isp('128.101.101.101');
+$record = $ispDbReader->isp('128.101.101.101');
 
 print($record->autonomousSystemNumber . "\n"); // 217
 print($record->autonomousSystemOrganization . "\n"); // 'University of Minnesota'
