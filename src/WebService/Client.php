@@ -135,6 +135,8 @@ class Client implements ProviderInterface
      * @throws \GeoIp2\Exception\GeoIp2Exception This serves as the parent
      *                                           class to the above exceptions. It will be thrown directly
      *                                           if a 200 status code is returned but the body is invalid.
+     * @throws \InvalidArgumentException         if something other than a single IP address or "me" is
+     *                                           passed to the method
      */
     public function city(string $ipAddress = 'me'): City
     {
@@ -165,6 +167,8 @@ class Client implements ProviderInterface
      * @throws \GeoIp2\Exception\GeoIp2Exception This serves as the parent class to the above exceptions. It
      *                                           will be thrown directly if a 200 status code is returned but
      *                                           the body is invalid.
+     * @throws \InvalidArgumentException         if something other than a single IP address or "me" is
+     *                                           passed to the method
      */
     public function country(string $ipAddress = 'me'): Country
     {
@@ -195,6 +199,8 @@ class Client implements ProviderInterface
      * @throws \GeoIp2\Exception\GeoIp2Exception This serves as the parent
      *                                           class to the above exceptions. It will be thrown directly
      *                                           if a 200 status code is returned but the body is invalid.
+     * @throws \InvalidArgumentException         if something other than a single IP address or "me" is
+     *                                           passed to the method
      */
     public function insights(string $ipAddress = 'me'): Insights
     {
@@ -204,6 +210,11 @@ class Client implements ProviderInterface
 
     private function responseFor(string $endpoint, string $class, string $ipAddress): Country
     {
+        if ($ipAddress !== 'me' && !filter_var($ipAddress, \FILTER_VALIDATE_IP)) {
+            throw new \InvalidArgumentException(
+                "The value \"$ipAddress\" is not a valid IP address."
+            );
+        }
         $path = implode('/', [self::$basePath, $endpoint, $ipAddress]);
 
         try {
