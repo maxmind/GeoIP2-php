@@ -419,7 +419,7 @@ to the client API, please see
 
 ## Requirements  ##
 
-This library requires PHP 7.2 or greater.
+This library requires PHP 8.0 or greater.
 
 This library also relies on the [MaxMind DB Reader](https://github.com/maxmind/MaxMind-DB-Reader-php).
 

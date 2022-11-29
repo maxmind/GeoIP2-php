@@ -67,7 +67,7 @@ class ClientTest extends TestCase
             ),
             '1.2.3.5' => $this->response('country', 200),
             '2.2.3.5' => $this->response('country', 200, 'bad body'),
-            '1.2.3.6' => $this->response(
+            '1.2.3' => $this->response(
                 'error',
                 400,
                 [
@@ -316,11 +316,10 @@ class ClientTest extends TestCase
 
     public function testInvalidIPException(): void
     {
-        $this->expectException(\GeoIp2\Exception\InvalidRequestException::class);
-        $this->expectExceptionCode(400);
-        $this->expectExceptionMessage('The value "1.2.3" is not a valid ip address');
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('The value "1.2.3" is not a valid IP address');
 
-        $this->makeRequest('Country', '1.2.3.6');
+        $this->makeRequest('Country', '1.2.3', callsToRequest: 0);
     }
 
     public function testNoErrorBodyIPException(): void

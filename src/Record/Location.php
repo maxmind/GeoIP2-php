@@ -42,7 +42,7 @@ class Location extends AbstractRecord
      *
      * @var array<string>
      */
-    protected $validAttributes = [
+    protected array $validAttributes = [
         'averageIncome',
         'accuracyRadius',
         'latitude',

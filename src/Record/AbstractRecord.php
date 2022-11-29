@@ -9,7 +9,7 @@ abstract class AbstractRecord implements \JsonSerializable
     /**
      * @var array<string, mixed>
      */
-    private $record;
+    private array $record;
 
     /**
      * @ignore

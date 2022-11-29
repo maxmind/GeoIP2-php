@@ -29,5 +29,5 @@ class City extends AbstractPlaceRecord
      *
      * @var array<string>
      */
-    protected $validAttributes = ['confidence', 'geonameId', 'names'];
+    protected array $validAttributes = ['confidence', 'geonameId', 'names'];
 }

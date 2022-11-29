@@ -30,40 +30,18 @@ namespace GeoIp2\Model;
  */
 class Country extends AbstractModel
 {
-    /**
-     * @var \GeoIp2\Record\Continent
-     */
-    protected $continent;
-
-    /**
-     * @var \GeoIp2\Record\Country
-     */
-    protected $country;
+    protected \GeoIp2\Record\Continent $continent;
+    protected \GeoIp2\Record\Country $country;
 
     /**
      * @var array<string>
      */
-    protected $locales;
+    protected array $locales;
 
-    /**
-     * @var \GeoIp2\Record\MaxMind
-     */
-    protected $maxmind;
-
-    /**
-     * @var \GeoIp2\Record\Country
-     */
-    protected $registeredCountry;
-
-    /**
-     * @var \GeoIp2\Record\RepresentedCountry
-     */
-    protected $representedCountry;
-
-    /**
-     * @var \GeoIp2\Record\Traits
-     */
-    protected $traits;
+    protected \GeoIp2\Record\MaxMind $maxmind;
+    protected \GeoIp2\Record\Country $registeredCountry;
+    protected \GeoIp2\Record\RepresentedCountry $representedCountry;
+    protected \GeoIp2\Record\Traits $traits;
 
     /**
      * @ignore

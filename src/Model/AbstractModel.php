@@ -12,7 +12,7 @@ abstract class AbstractModel implements \JsonSerializable
     /**
      * @var array<string, mixed>
      */
-    protected $raw;
+    protected array $raw;
 
     /**
      * @ignore

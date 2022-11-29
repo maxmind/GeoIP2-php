@@ -34,7 +34,7 @@ class Country extends AbstractPlaceRecord
      *
      * @var array<string>
      */
-    protected $validAttributes = [
+    protected array $validAttributes = [
         'confidence',
         'geonameId',
         'isInEuropeanUnion',

@@ -1,6 +1,15 @@
 CHANGELOG
 =========
 
+3.0.0
+-------------------
+
+* IMPORTANT: PHP 8.0 or greater is now required.
+* `GeoIp2\WebService\Client` methods now throw an `InvalidArgumentException`
+  if an invalid IP address is passed to them. Previously, they would make
+  a request to the web service and throw a
+  `GeoIp2\Exception\InvalidRequestException`.
+
 2.13.0 (2022-08-05)
 -------------------
 
