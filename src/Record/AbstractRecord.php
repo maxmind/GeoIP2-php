@@ -10,6 +10,11 @@ abstract class AbstractRecord implements \JsonSerializable
      * @var array<string, mixed>
      */
     private array $record;
+    
+    /**
+     * @var array<string>
+     */
+    private array $validAttributes;
 
     /**
      * @ignore
