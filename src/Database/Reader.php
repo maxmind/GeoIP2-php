@@ -242,7 +242,7 @@ class Reader implements ProviderInterface
 
     private function getRecord(string $class, string $type, string $ipAddress): array
     {
-        if (strpos($this->dbType, $type) === false) {
+        if (!str_contains($this->dbType, $type)) {
             $method = lcfirst((new \ReflectionClass($class))->getShortName());
 
             throw new \BadMethodCallException(
