@@ -107,7 +107,8 @@ If the record is not found, a `\GeoIp2\Exception\AddressNotFoundException`
 is thrown. If the database is invalid or corrupt, a
 `\MaxMind\Db\InvalidDatabaseException` will be thrown.
 
-See the API documentation for more details.
+See the [API documentation](https://maxmind.github.io/GeoIP2-php/) for more
+details.
 
 ### City Example ###
 
@@ -306,7 +307,8 @@ of which represents part of the data returned by the web service.
 
 If there is an error, a structured exception is thrown.
 
-See the API documentation for more details.
+See the [API documentation](https://maxmind.github.io/GeoIP2-php/) for more
+details.
 
 ### Example ###
 
