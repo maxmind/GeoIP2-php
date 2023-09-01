@@ -68,7 +68,12 @@ class Client implements ProviderInterface
      *                           * `host` - The host to use when querying the web
      *                           service. To query the GeoLite2 web service
      *                           instead of the GeoIP2 web service, set the
-     *                           host to `geolite.info`.
+     *                           host to `geolite.info`. To query the Sandbox
+     *                           GeoIP2 web service instead of the production
+     *                           GeoIP2 web service, set the host to
+     *                           `sandbox.maxmind.com`. The sandbox allows you to
+     *                           experiment with the API without affecting your
+     *                           production data.
      *                           * `timeout` - Timeout in seconds.
      *                           * `connectTimeout` - Initial connection timeout in seconds.
      *                           * `proxy` - The HTTP proxy to use. May include a schema, port,
