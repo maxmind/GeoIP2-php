@@ -107,7 +107,8 @@ If the record is not found, a `\GeoIp2\Exception\AddressNotFoundException`
 is thrown. If the database is invalid or corrupt, a
 `\MaxMind\Db\InvalidDatabaseException` will be thrown.
 
-See the API documentation for more details.
+See the [API documentation](https://maxmind.github.io/GeoIP2-php/) for more
+details.
 
 ### City Example ###
 
@@ -293,6 +294,13 @@ service:
 $client = new Client(42, 'abcdef123456', ['en'], ['host' => 'geolite.info']);
 ```
 
+To call the Sandbox GeoIP2 web service instead of the production GeoIP2 web
+service:
+
+```php
+$client = new Client(42, 'abcdef123456', ['en'], ['host' => 'sandbox.maxmind.com']);
+```
+
 After creating the client, you may now call the method corresponding to a
 specific endpoint with the IP address to look up, e.g.:
 
@@ -306,7 +314,8 @@ of which represents part of the data returned by the web service.
 
 If there is an error, a structured exception is thrown.
 
-See the API documentation for more details.
+See the [API documentation](https://maxmind.github.io/GeoIP2-php/) for more
+details.
 
 ### Example ###
 
@@ -319,7 +328,9 @@ use GeoIp2\WebService\Client;
 // Replace "42" with your account ID and "license_key" with your license
 // key. Set the "host" to "geolite.info" in the fourth argument options
 // array to use the GeoLite2 web service instead of the GeoIP2 web
-// service.
+// service. Set the "host" to "sandbox.maxmind.com" in the fourth argument
+// options array to use the Sandbox GeoIP2 web service instead of the
+// production GeoIP2 web service.
 $client = new Client(42, 'abcdef123456');
 
 // Replace "city" with the method corresponding to the web service that
