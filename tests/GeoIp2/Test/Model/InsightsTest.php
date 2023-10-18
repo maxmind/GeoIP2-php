@@ -68,6 +68,7 @@ class InsightsTest extends TestCase
             'traits' => [
                 'autonomous_system_number' => 1234,
                 'autonomous_system_organization' => 'AS Organization',
+                'connection_type' => 'Cable/DSL',
                 'domain' => 'example.com',
                 'ip_address' => '1.2.3.4',
                 'is_anonymous' => true,

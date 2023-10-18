@@ -24,7 +24,8 @@ use GeoIp2\Util;
  * @property-read string|null $connectionType The connection type may take the
  * following  values: "Dialup", "Cable/DSL", "Corporate", "Cellular", and
  * "Satellite". Additional values may be added in the future. This attribute is
- * only available in the GeoIP2 Enterprise database.
+ * only available from the City Plus and Insights web services and the GeoIP2
+ * Enterprise database.
  * @property-read string|null $domain The second level domain associated with the
  * IP address. This will be something like "example.com" or "example.co.uk",
  * not "foo.example.com". This attribute is only available from the
