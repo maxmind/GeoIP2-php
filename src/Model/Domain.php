@@ -37,10 +37,13 @@ class Domain implements \JsonSerializable
 
     public function jsonSerialize(): ?array
     {
-        return [
-            'domain' => $this->domain,
-            'ip_address' => $this->ipAddress,
-            'network' => $this->network,
-        ];
+        $js = [];
+        if ($this->domain !== null) {
+            $js['domain'] = $this->domain;
+        }
+        $js['ip_address'] = $this->ipAddress;
+        $js['network'] = $this->network;
+
+        return $js;
     }
 }

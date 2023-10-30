@@ -64,13 +64,32 @@ class Country implements \JsonSerializable
 
     public function jsonSerialize(): ?array
     {
-        return [
-            'continent' => $this->continent->jsonSerialize(),
-            'country' => $this->country->jsonSerialize(),
-            'maxmind' => $this->maxmind->jsonSerialize(),
-            'registered_country' => $this->registeredCountry->jsonSerialize(),
-            'represented_country' => $this->representedCountry->jsonSerialize(),
-            'traits' => $this->traits->jsonSerialize(),
-        ];
+        $js = [];
+        $continent = $this->continent->jsonSerialize();
+        if (!empty($continent)) {
+            $js['continent'] = $continent;
+        }
+        $country = $this->country->jsonSerialize();
+        if (!empty($country)) {
+            $js['country'] = $country;
+        }
+        $maxmind = $this->maxmind->jsonSerialize();
+        if (!empty($maxmind)) {
+            $js['maxmind'] = $maxmind;
+        }
+        $registeredCountry = $this->registeredCountry->jsonSerialize();
+        if (!empty($registeredCountry)) {
+            $js['registered_country'] = $registeredCountry;
+        }
+        $representedCountry = $this->representedCountry->jsonSerialize();
+        if (!empty($representedCountry)) {
+            $js['represented_country'] = $representedCountry;
+        }
+        $traits = $this->traits->jsonSerialize();
+        if (!empty($traits)) {
+            $js['traits'] = $traits;
+        }
+
+        return $js;
     }
 }

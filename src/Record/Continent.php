@@ -40,8 +40,12 @@ class Continent extends AbstractNamedRecord
     public function jsonSerialize(): array
     {
         $js = parent::jsonSerialize();
-        $js['code'] = $this->code;
-        $js['geoname_id'] = $this->geonameId;
+        if ($this->code !== null) {
+            $js['code'] = $this->code;
+        }
+        if ($this->geonameId !== null) {
+            $js['geoname_id'] = $this->geonameId;
+        }
 
         return $js;
     }
