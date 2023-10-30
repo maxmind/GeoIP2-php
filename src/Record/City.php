@@ -22,12 +22,5 @@ namespace GeoIp2\Record;
  * and the values are names. This attribute is returned by all location
  * services and databases.
  */
-class City extends AbstractPlaceRecord
-{
-    /**
-     * @ignore
-     *
-     * @var array<string>
-     */
-    protected array $validAttributes = ['confidence', 'geonameId', 'names'];
-}
+// phpcs:disable
+class City extends AbstractPlaceRecord {}

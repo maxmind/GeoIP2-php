@@ -29,16 +29,26 @@ namespace GeoIp2\Record;
  */
 class Country extends AbstractPlaceRecord
 {
+    public readonly bool $isInEuropeanUnion;
+    public readonly ?string $isoCode;
+
     /**
      * @ignore
-     *
-     * @var array<string>
      */
-    protected array $validAttributes = [
-        'confidence',
-        'geonameId',
-        'isInEuropeanUnion',
-        'isoCode',
-        'names',
-    ];
+    public function __construct(array $record, array $locales = ['en'])
+    {
+        parent::__construct($record, $locales);
+
+        $this->isInEuropeanUnion = $record['is_in_european_union'] ?? false;
+        $this->isoCode = $record['iso_code'] ?? null;
+    }
+
+    public function jsonSerialize(): array
+    {
+        $js = parent::jsonSerialize();
+        $js['is_in_european_union'] = $this->isInEuropeanUnion;
+        $js['iso_code'] = $this->isoCode;
+
+        return $js;
+    }
 }

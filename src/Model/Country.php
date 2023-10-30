@@ -26,49 +26,50 @@ namespace GeoIp2\Model;
  * the represented country differs from the country.
  * @property-read \GeoIp2\Record\Traits $traits Data for the traits of the
  * requested IP address.
- * @property-read array $raw The raw data from the web service.
  */
-class Country extends AbstractModel
+class Country implements \JsonSerializable
 {
-    protected \GeoIp2\Record\Continent $continent;
-    protected \GeoIp2\Record\Country $country;
-
-    /**
-     * @var array<string>
-     */
-    protected array $locales;
-
-    protected \GeoIp2\Record\MaxMind $maxmind;
-    protected \GeoIp2\Record\Country $registeredCountry;
-    protected \GeoIp2\Record\RepresentedCountry $representedCountry;
-    protected \GeoIp2\Record\Traits $traits;
+    public readonly \GeoIp2\Record\Continent $continent;
+    public readonly \GeoIp2\Record\Country $country;
+    public readonly \GeoIp2\Record\MaxMind $maxmind;
+    public readonly \GeoIp2\Record\Country $registeredCountry;
+    public readonly \GeoIp2\Record\RepresentedCountry $representedCountry;
+    public readonly \GeoIp2\Record\Traits $traits;
 
     /**
      * @ignore
      */
     public function __construct(array $raw, array $locales = ['en'])
     {
-        parent::__construct($raw);
-
         $this->continent = new \GeoIp2\Record\Continent(
-            $this->get('continent'),
+            $raw['continent'] ?? [],
             $locales
         );
         $this->country = new \GeoIp2\Record\Country(
-            $this->get('country'),
+            $raw['country'] ?? [],
             $locales
         );
-        $this->maxmind = new \GeoIp2\Record\MaxMind($this->get('maxmind'));
+        $this->maxmind = new \GeoIp2\Record\MaxMind($raw['maxmind'] ?? []);
         $this->registeredCountry = new \GeoIp2\Record\Country(
-            $this->get('registered_country'),
+            $raw['registered_country'] ?? [],
             $locales
         );
         $this->representedCountry = new \GeoIp2\Record\RepresentedCountry(
-            $this->get('represented_country'),
+            $raw['represented_country'] ?? [],
             $locales
         );
-        $this->traits = new \GeoIp2\Record\Traits($this->get('traits'));
+        $this->traits = new \GeoIp2\Record\Traits($raw['traits'] ?? []);
+    }
 
-        $this->locales = $locales;
+    public function jsonSerialize(): ?array
+    {
+        return [
+            'continent' => $this->continent->jsonSerialize(),
+            'country' => $this->country->jsonSerialize(),
+            'maxmind' => $this->maxmind->jsonSerialize(),
+            'registered_country' => $this->registeredCountry->jsonSerialize(),
+            'represented_country' => $this->representedCountry->jsonSerialize(),
+            'traits' => $this->traits->jsonSerialize(),
+        ];
     }
 }
