@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace GeoIp2\Model;
 
+use GeoIp2\Record\Subdivision;
+
 /**
  * Model class for the data returned by City Plus web service and City
  * database.
@@ -94,15 +96,29 @@ class City extends Country
     {
         $js = parent::jsonSerialize();
 
-        $js['city'] = $this->city->jsonSerialize();
-        $js['location'] = $this->location->jsonSerialize();
-        $js['postal'] = $this->postal->jsonSerialize();
+        $city = $this->city->jsonSerialize();
+        if (!empty($city)) {
+            $js['city'] = $city;
+        }
+
+        $location = $this->location->jsonSerialize();
+        if (!empty($location)) {
+            $js['location'] = $location;
+        }
+
+        $postal =
+         $this->postal->jsonSerialize();
+        if (!empty($postal)) {
+            $js['postal'] = $postal;
+        }
 
         $subdivisions = [];
         foreach ($this->subdivisions as $sub) {
             $subdivisions[] = $sub->jsonSerialize();
         }
-        $js['subdivisions'] = $subdivisions;
+        if (!empty($subdivisions)) {
+            $js['subdivisions'] = $subdivisions;
+        }
 
         return $js;
     }

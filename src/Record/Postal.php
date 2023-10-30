@@ -35,9 +35,14 @@ class Postal implements \JsonSerializable
 
     public function jsonSerialize(): array
     {
-        return [
-            'code' => $this->code,
-            'confidence' => $this->confidence,
-        ];
+        $js = [];
+        if ($this->code !== null) {
+            $js['code'] = $this->code;
+        }
+        if ($this->confidence !== null) {
+            $js['confidence'] = $this->confidence;
+        }
+
+        return $js;
     }
 }

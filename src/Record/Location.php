@@ -58,14 +58,29 @@ class Location implements \JsonSerializable
 
     public function jsonSerialize(): array
     {
-        return [
-            'average_income' => $this->averageIncome,
-            'accuracy_radius' => $this->accuracyRadius,
-            'latitude' => $this->latitude,
-            'longitude' => $this->longitude,
-            'metro_code' => $this->metroCode,
-            'population_density' => $this->populationDensity,
-            'time_zone' => $this->timeZone,
-        ];
+        $js = [];
+        if ($this->averageIncome !== null) {
+            $js['average_income'] = $this->averageIncome;
+        }
+        if ($this->accuracyRadius !== null) {
+            $js['accuracy_radius'] = $this->accuracyRadius;
+        }
+        if ($this->latitude !== null) {
+            $js['latitude'] = $this->latitude;
+        }
+        if ($this->longitude !== null) {
+            $js['longitude'] = $this->longitude;
+        }
+        if ($this->metroCode !== null) {
+            $js['metro_code'] = $this->metroCode;
+        }
+        if ($this->populationDensity !== null) {
+            $js['population_density'] = $this->populationDensity;
+        }
+        if ($this->timeZone !== null) {
+            $js['time_zone'] = $this->timeZone;
+        }
+
+        return $js;
     }
 }

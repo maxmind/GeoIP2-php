@@ -42,11 +42,17 @@ class Asn implements \JsonSerializable
 
     public function jsonSerialize(): ?array
     {
-        return [
-            'autonomous_system_number' => $this->autonomousSystemNumber,
-            'autonomous_system_organization' => $this->autonomousSystemOrganization,
-            'ip_address' => $this->ipAddress,
-            'network' => $this->network,
-        ];
+        $js = [];
+
+        if ($this->autonomousSystemNumber !== null) {
+            $js['autonomous_system_number'] = $this->autonomousSystemNumber;
+        }
+        if ($this->autonomousSystemOrganization !== null) {
+            $js['autonomous_system_organization'] = $this->autonomousSystemOrganization;
+        }
+        $js['ip_address'] = $this->ipAddress;
+        $js['network'] = $this->network;
+
+        return $js;
     }
 }
