@@ -30,15 +30,23 @@ namespace GeoIp2\Record;
  */
 class Subdivision extends AbstractPlaceRecord
 {
+    public readonly ?string $isoCode;
+
     /**
      * @ignore
-     *
-     * @var array<string>
      */
-    protected array $validAttributes = [
-        'confidence',
-        'geonameId',
-        'isoCode',
-        'names',
-    ];
+    public function __construct(array $record, array $locales = ['en'])
+    {
+        parent::__construct($record, $locales);
+
+        $this->isoCode = $record['iso_code'] ?? null;
+    }
+
+    public function jsonSerialize(): array
+    {
+        $js = parent::jsonSerialize();
+        $js['iso_code'] = $this->isoCode;
+
+        return $js;
+    }
 }

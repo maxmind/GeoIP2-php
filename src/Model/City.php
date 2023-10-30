@@ -34,24 +34,29 @@ class City extends Country
     /**
      * @ignore
      */
-    protected \GeoIp2\Record\City $city;
+    public readonly \GeoIp2\Record\City $city;
 
     /**
      * @ignore
      */
-    protected \GeoIp2\Record\Location $location;
+    public readonly \GeoIp2\Record\Location $location;
 
     /**
      * @ignore
      */
-    protected \GeoIp2\Record\Postal $postal;
+    public readonly \GeoIp2\Record\Subdivision $mostSpecificSubdivision;
+
+    /**
+     * @ignore
+     */
+    public readonly \GeoIp2\Record\Postal $postal;
 
     /**
      * @ignore
      *
      * @var array<\GeoIp2\Record\Subdivision>
      */
-    protected array $subdivisions = [];
+    public readonly array $subdivisions;
 
     /**
      * @ignore
@@ -60,58 +65,45 @@ class City extends Country
     {
         parent::__construct($raw, $locales);
 
-        $this->city = new \GeoIp2\Record\City($this->get('city'), $locales);
-        $this->location = new \GeoIp2\Record\Location($this->get('location'));
-        $this->postal = new \GeoIp2\Record\Postal($this->get('postal'));
+        $this->city = new \GeoIp2\Record\City($raw['city'] ?? [], $locales);
+        $this->location = new \GeoIp2\Record\Location($raw['location'] ?? []);
+        $this->postal = new \GeoIp2\Record\Postal($raw['postal'] ?? []);
 
-        $this->createSubdivisions($raw, $locales);
-    }
-
-    private function createSubdivisions(array $raw, array $locales): void
-    {
         if (!isset($raw['subdivisions'])) {
+            $this->subdivisions = [];
+            $this->mostSpecificSubdivision =
+                    new \GeoIp2\Record\Subdivision([], $locales);
+
             return;
         }
 
+        $subdivisions = [];
         foreach ($raw['subdivisions'] as $sub) {
-            $this->subdivisions[] =
+            $subdivisions[] =
                 new \GeoIp2\Record\Subdivision($sub, $locales)
             ;
         }
+
+        // Not using end as we don't want to modify internal pointer.
+        $this->mostSpecificSubdivision =
+            $subdivisions[\count($subdivisions) - 1];
+        $this->subdivisions = $subdivisions;
     }
 
-    /**
-     * @ignore
-     *
-     * @return mixed
-     */
-    public function __get(string $attr)
+    public function jsonSerialize(): ?array
     {
-        if ($attr === 'mostSpecificSubdivision') {
-            return $this->{$attr}();
+        $js = parent::jsonSerialize();
+
+        $js['city'] = $this->city->jsonSerialize();
+        $js['location'] = $this->location->jsonSerialize();
+        $js['postal'] = $this->postal->jsonSerialize();
+
+        $subdivisions = [];
+        foreach ($this->subdivisions as $sub) {
+            $subdivisions[] = $sub->jsonSerialize();
         }
+        $js['subdivisions'] = $subdivisions;
 
-        return parent::__get($attr);
-    }
-
-    /**
-     * @ignore
-     */
-    public function __isset(string $attr): bool
-    {
-        if ($attr === 'mostSpecificSubdivision') {
-            // We always return a mostSpecificSubdivision, even if it is the
-            // empty subdivision
-            return true;
-        }
-
-        return parent::__isset($attr);
-    }
-
-    private function mostSpecificSubdivision(): \GeoIp2\Record\Subdivision
-    {
-        return empty($this->subdivisions) ?
-            new \GeoIp2\Record\Subdivision([], $this->locales) :
-            end($this->subdivisions);
+        return $js;
     }
 }

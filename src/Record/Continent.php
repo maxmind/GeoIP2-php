@@ -21,16 +21,28 @@ namespace GeoIp2\Record;
  * and the values are names. This attribute is returned by all location
  * services and databases.
  */
-class Continent extends AbstractPlaceRecord
+class Continent extends AbstractNamedRecord
 {
+    public readonly ?string $code;
+    public readonly ?int $geonameId;
+
     /**
      * @ignore
-     *
-     * @var array<string>
      */
-    protected array $validAttributes = [
-        'code',
-        'geonameId',
-        'names',
-    ];
+    public function __construct(array $record, array $locales = ['en'])
+    {
+        parent::__construct($record, $locales);
+
+        $this->code = $record['code'] ?? null;
+        $this->geonameId = $record['geoname_id'] ?? null;
+    }
+
+    public function jsonSerialize(): array
+    {
+        $js = parent::jsonSerialize();
+        $js['code'] = $this->code;
+        $js['geoname_id'] = $this->geonameId;
+
+        return $js;
+    }
 }

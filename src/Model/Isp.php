@@ -30,33 +30,46 @@ use GeoIp2\Util;
  *      the record. In particular, this is the largest network where all of the
  *      fields besides $ipAddress have the same value.
  */
-class Isp extends AbstractModel
+class Isp implements \JsonSerializable
 {
-    protected ?int $autonomousSystemNumber;
-    protected ?string $autonomousSystemOrganization;
-    protected ?string $isp;
-    protected ?string $mobileCountryCode;
-    protected ?string $mobileNetworkCode;
-    protected ?string $organization;
-    protected string $ipAddress;
-    protected string $network;
+    public readonly ?int $autonomousSystemNumber;
+    public readonly ?string $autonomousSystemOrganization;
+    public readonly ?string $isp;
+    public readonly ?string $mobileCountryCode;
+    public readonly ?string $mobileNetworkCode;
+    public readonly ?string $organization;
+    public readonly string $ipAddress;
+    public readonly string $network;
 
     /**
      * @ignore
      */
     public function __construct(array $raw)
     {
-        parent::__construct($raw);
-        $this->autonomousSystemNumber = $this->get('autonomous_system_number');
+        $this->autonomousSystemNumber = $raw['autonomous_system_number'] ?? null;
         $this->autonomousSystemOrganization =
-            $this->get('autonomous_system_organization');
-        $this->isp = $this->get('isp');
-        $this->mobileCountryCode = $this->get('mobile_country_code');
-        $this->mobileNetworkCode = $this->get('mobile_network_code');
-        $this->organization = $this->get('organization');
+            $raw['autonomous_system_organization'] ?? null;
+        $this->isp = $raw['isp'] ?? null;
+        $this->mobileCountryCode = $raw['mobile_country_code'] ?? null;
+        $this->mobileNetworkCode = $raw['mobile_network_code'] ?? null;
+        $this->organization = $raw['organization'] ?? null;
 
-        $ipAddress = $this->get('ip_address');
+        $ipAddress = $raw['ip_address'];
         $this->ipAddress = $ipAddress;
-        $this->network = Util::cidr($ipAddress, $this->get('prefix_len'));
+        $this->network = Util::cidr($ipAddress, $raw['prefix_len']);
+    }
+
+    public function jsonSerialize(): ?array
+    {
+        return [
+            'autonomous_system_number' => $this->autonomousSystemNumber,
+            'autonomous_system_organization' => $this->autonomousSystemOrganization,
+            'isp' => $this->isp,
+            'mobile_country_code' => $this->mobileCountryCode,
+            'mobile_network_code' => $this->mobileNetworkCode,
+            'organization' => $this->organization,
+            'ip_address' => $this->ipAddress,
+            'network' => $this->network,
+        ];
     }
 }

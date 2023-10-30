@@ -171,24 +171,79 @@ class CountryTest extends TestCase
                 "traits $meth returns 0 by default"
             );
         }
-
-        $this->assertSame(
-            $this->raw,
-            $this->model->raw,
-            'raw method returns raw input'
-        );
     }
 
     public function testJsonSerialize(): void
     {
+        $js =
+        [
+            'continent' => [
+                'name' => 'North America',
+                'names' => ['en' => 'North America'],
+                'code' => 'NA',
+                'geoname_id' => 42,
+            ],
+            'country' => [
+                'name' => 'United States of America',
+                'names' => ['en' => 'United States of America'],
+                'confidence' => null,
+                'geoname_id' => 1,
+                'is_in_european_union' => false,
+                'iso_code' => 'US',
+            ],
+            'maxmind' => [
+                'queries_remaining' => null,
+            ],
+            'registered_country' => [
+                'name' => 'Germany',
+                'names' => ['en' => 'Germany'],
+                'confidence' => null,
+                'geoname_id' => 2,
+                'is_in_european_union' => true,
+                'iso_code' => 'DE',
+            ],
+            'represented_country' => [
+                'name' => null,
+                'names' => [],
+                'confidence' => null,
+                'geoname_id' => null,
+                'is_in_european_union' => false,
+                'iso_code' => null,
+                'type' => null,
+            ],
+            'traits' => [
+                'autonomous_system_number' => null,
+                'autonomous_system_organization' => null,
+                'connection_type' => null,
+                'domain' => null,
+                'ip_address' => '1.2.3.4',
+                'is_anonymous' => false,
+                'is_anonymous_proxy' => false,
+                'is_anonymous_vpn' => false,
+                'is_hosting_provider' => false,
+                'is_legitimate_proxy' => false,
+                'is_public_proxy' => false,
+                'is_residential_proxy' => false,
+                'is_satellite_provider' => false,
+                'is_tor_exit_node' => false,
+                'isp' => null,
+                'mobile_country_code' => null,
+                'mobile_network_code' => null,
+                'network' => '1.2.3.0/24',
+                'organization' => null,
+                'static_ip_score' => null,
+                'user_count' => null,
+                'user_type' => null,
+            ],
+        ];
         $this->assertSame(
-            $this->raw,
+            $js,
             $this->model->jsonSerialize(),
             'jsonSerialize returns initial array'
         );
 
         $this->assertSame(
-            $this->raw['country'],
+            $js['country'],
             $this->model->country->jsonSerialize(),
             'jsonSerialize returns initial array for the record'
         );
@@ -198,13 +253,13 @@ class CountryTest extends TestCase
         }
 
         $this->assertSame(
-            json_encode($this->raw),
+            json_encode($js),
             json_encode($this->model),
             'json_encode can be called on the model object directly'
         );
 
         $this->assertSame(
-            json_encode($this->raw['country']),
+            json_encode($js['country']),
             json_encode($this->model->country),
             'json_encode can be called on the record object directly'
         );
@@ -227,23 +282,5 @@ class CountryTest extends TestCase
             isset($this->model->traits->unknown),
             'unknown trait is not set'
         );
-    }
-
-    public function testUnknownRecord(): void
-    {
-        $this->expectException(\RuntimeException::class);
-        $this->expectExceptionMessage('Unknown attribute');
-
-        // @phpstan-ignore-next-line
-        $this->model->unknownRecord;
-    }
-
-    public function testUnknownTrait(): void
-    {
-        $this->expectException(\RuntimeException::class);
-        $this->expectExceptionMessage('Unknown attribute');
-
-        // @phpstan-ignore-next-line
-        $this->model->traits->unknown;
     }
 }

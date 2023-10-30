@@ -35,22 +35,37 @@ namespace GeoIp2\Record;
  * specified by the IANA Time Zone Database, e.g., "America/New_York". See
  * https://www.iana.org/time-zones.
  */
-class Location extends AbstractRecord
+class Location implements \JsonSerializable
 {
-    /**
-     * @ignore
-     *
-     * @var array<string>
-     */
-    protected array $validAttributes = [
-        'averageIncome',
-        'accuracyRadius',
-        'latitude',
-        'longitude',
-        'metroCode',
-        'populationDensity',
-        'postalCode',
-        'postalConfidence',
-        'timeZone',
-    ];
+    public readonly ?int $averageIncome;
+    public readonly ?int $accuracyRadius;
+    public readonly ?float $latitude;
+    public readonly ?float $longitude;
+    public readonly ?int $metroCode;
+    public readonly ?int $populationDensity;
+    public readonly ?string $timeZone;
+
+    public function __construct(array $record)
+    {
+        $this->averageIncome = $record['average_income'] ?? null;
+        $this->accuracyRadius = $record['accuracy_radius'] ?? null;
+        $this->latitude = $record['latitude'] ?? null;
+        $this->longitude = $record['longitude'] ?? null;
+        $this->metroCode = $record['metro_code'] ?? null;
+        $this->populationDensity = $record['population_density'] ?? null;
+        $this->timeZone = $record['time_zone'] ?? null;
+    }
+
+    public function jsonSerialize(): array
+    {
+        return [
+            'average_income' => $this->averageIncome,
+            'accuracy_radius' => $this->accuracyRadius,
+            'latitude' => $this->latitude,
+            'longitude' => $this->longitude,
+            'metro_code' => $this->metroCode,
+            'population_density' => $this->populationDensity,
+            'time_zone' => $this->timeZone,
+        ];
+    }
 }
