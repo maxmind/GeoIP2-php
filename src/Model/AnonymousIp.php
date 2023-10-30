@@ -29,32 +29,44 @@ use GeoIp2\Util;
  *      the record. In particular, this is the largest network where all of the
  *      fields besides $ipAddress have the same value.
  */
-class AnonymousIp extends AbstractModel
+class AnonymousIp implements \JsonSerializable
 {
-    protected bool $isAnonymous;
-    protected bool $isAnonymousVpn;
-    protected bool $isHostingProvider;
-    protected bool $isPublicProxy;
-    protected bool $isResidentialProxy;
-    protected bool $isTorExitNode;
-    protected string $ipAddress;
-    protected string $network;
+    public readonly bool $isAnonymous;
+    public readonly bool $isAnonymousVpn;
+    public readonly bool $isHostingProvider;
+    public readonly bool $isPublicProxy;
+    public readonly bool $isResidentialProxy;
+    public readonly bool $isTorExitNode;
+    public readonly string $ipAddress;
+    public readonly string $network;
 
     /**
      * @ignore
      */
     public function __construct(array $raw)
     {
-        parent::__construct($raw);
-
-        $this->isAnonymous = $this->get('is_anonymous');
-        $this->isAnonymousVpn = $this->get('is_anonymous_vpn');
-        $this->isHostingProvider = $this->get('is_hosting_provider');
-        $this->isPublicProxy = $this->get('is_public_proxy');
-        $this->isResidentialProxy = $this->get('is_residential_proxy');
-        $this->isTorExitNode = $this->get('is_tor_exit_node');
-        $ipAddress = $this->get('ip_address');
+        $this->isAnonymous = $raw['is_anonymous'] ?? false;
+        $this->isAnonymousVpn = $raw['is_anonymous_vpn'] ?? false;
+        $this->isHostingProvider = $raw['is_hosting_provider'] ?? false;
+        $this->isPublicProxy = $raw['is_public_proxy'] ?? false;
+        $this->isResidentialProxy = $raw['is_residential_proxy'] ?? false;
+        $this->isTorExitNode = $raw['is_tor_exit_node'] ?? false;
+        $ipAddress = $raw['ip_address'];
         $this->ipAddress = $ipAddress;
-        $this->network = Util::cidr($ipAddress, $this->get('prefix_len'));
+        $this->network = Util::cidr($ipAddress, $raw['prefix_len']);
+    }
+
+    public function jsonSerialize(): ?array
+    {
+        return [
+            'is_anonymous' => $this->isAnonymous,
+            'is_anonymous_vpn' => $this->isAnonymousVpn,
+            'is_hosting_provider' => $this->isHostingProvider,
+            'is_public_proxy' => $this->isPublicProxy,
+            'is_residential_proxy' => $this->isResidentialProxy,
+            'is_tor_exit_node' => $this->isTorExitNode,
+            'ip_address' => $this->ipAddress,
+            'network' => $this->network,
+        ];
     }
 }

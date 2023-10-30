@@ -17,17 +17,23 @@ namespace GeoIp2\Record;
  */
 class RepresentedCountry extends Country
 {
+    public readonly ?string $type;
+
     /**
      * @ignore
-     *
-     * @var array<string>
      */
-    protected array $validAttributes = [
-        'confidence',
-        'geonameId',
-        'isInEuropeanUnion',
-        'isoCode',
-        'names',
-        'type',
-    ];
+    public function __construct(array $record, array $locales = ['en'])
+    {
+        parent::__construct($record, $locales);
+
+        $this->type = $record['type'] ?? null;
+    }
+
+    public function jsonSerialize(): array
+    {
+        $js = parent::jsonSerialize();
+        $js['type'] = $this->type;
+
+        return $js;
+    }
 }

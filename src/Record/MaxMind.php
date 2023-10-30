@@ -12,12 +12,19 @@ namespace GeoIp2\Record;
  * @property-read int|null $queriesRemaining The number of remaining queries you
  * have for the service you are calling.
  */
-class MaxMind extends AbstractRecord
+class MaxMind implements \JsonSerializable
 {
-    /**
-     * @ignore
-     *
-     * @var array<string>
-     */
-    protected array $validAttributes = ['queriesRemaining'];
+    public readonly ?int $queriesRemaining;
+
+    public function __construct(array $record)
+    {
+        $this->queriesRemaining = $record['queries_remaining'] ?? null;
+    }
+
+    public function jsonSerialize(): array
+    {
+        return [
+            'queries_remaining' => $this->queriesRemaining,
+        ];
+    }
 }

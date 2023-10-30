@@ -116,44 +116,87 @@ use GeoIp2\Util;
  *   GeoIP2 Enterprise database.
  * </p>
  */
-class Traits extends AbstractRecord
+class Traits implements \JsonSerializable
 {
-    /**
-     * @ignore
-     *
-     * @var array<string>
-     */
-    protected array $validAttributes = [
-        'autonomousSystemNumber',
-        'autonomousSystemOrganization',
-        'connectionType',
-        'domain',
-        'ipAddress',
-        'isAnonymous',
-        'isAnonymousProxy',
-        'isAnonymousVpn',
-        'isHostingProvider',
-        'isLegitimateProxy',
-        'isp',
-        'isPublicProxy',
-        'isResidentialProxy',
-        'isSatelliteProvider',
-        'isTorExitNode',
-        'mobileCountryCode',
-        'mobileNetworkCode',
-        'network',
-        'organization',
-        'staticIpScore',
-        'userCount',
-        'userType',
-    ];
+    public readonly ?int $autonomousSystemNumber;
+    public readonly ?string $autonomousSystemOrganization;
+    public readonly ?string $connectionType;
+    public readonly ?string $domain;
+    public readonly string $ipAddress;
+    public readonly bool $isAnonymous;
+    public readonly bool $isAnonymousProxy;
+    public readonly bool $isAnonymousVpn;
+    public readonly bool $isHostingProvider;
+    public readonly bool $isLegitimateProxy;
+    public readonly ?string $isp;
+    public readonly bool $isPublicProxy;
+    public readonly bool $isResidentialProxy;
+    public readonly bool $isSatelliteProvider;
+    public readonly bool $isTorExitNode;
+    public readonly ?string $mobileCountryCode;
+    public readonly ?string $mobileNetworkCode;
+    public readonly string $network;
+    public readonly ?string $organization;
+    public readonly ?float $staticIpScore;
+    public readonly ?int $userCount;
+    public readonly ?string $userType;
 
-    public function __construct(?array $record)
+    public function __construct(array $record)
     {
-        if (!isset($record['network']) && isset($record['ip_address'], $record['prefix_len'])) {
-            $record['network'] = Util::cidr($record['ip_address'], $record['prefix_len']);
-        }
+        $this->autonomousSystemNumber = $record['autonomous_system_number'] ?? null;
+        $this->autonomousSystemOrganization = $record['autonomous_system_organization'] ?? null;
+        $this->connectionType = $record['connection_type'] ?? null;
+        $this->domain = $record['domain'] ?? null;
+        $this->ipAddress = $record['ip_address'] ?? null;
+        $this->isAnonymous = $record['is_anonymous'] ?? false;
+        $this->isAnonymousProxy = $record['is_anonymous_proxy'] ?? false;
+        $this->isAnonymousVpn = $record['is_anonymous_vpn'] ?? false;
+        $this->isHostingProvider = $record['is_hosting_provider'] ?? false;
+        $this->isLegitimateProxy = $record['is_legitimate_proxy'] ?? false;
+        $this->isp = $record['isp'] ?? null;
+        $this->isPublicProxy = $record['is_public_proxy'] ?? false;
+        $this->isResidentialProxy = $record['is_residential_proxy'] ?? false;
+        $this->isSatelliteProvider = $record['is_satellite_provider'] ?? false;
+        $this->isTorExitNode = $record['is_tor_exit_node'] ?? false;
+        $this->mobileCountryCode = $record['mobile_country_code'] ?? null;
+        $this->mobileNetworkCode = $record['mobile_network_code'] ?? null;
+        $this->organization = $record['organization'] ?? null;
+        $this->staticIpScore = $record['static_ip_score'] ?? null;
+        $this->userCount = $record['user_count'] ?? null;
+        $this->userType = $record['user_type'] ?? null;
 
-        parent::__construct($record);
+        if (isset($record['network'])) {
+            $this->network = $record['network'];
+        } else {
+            $this->network = Util::cidr($this->ipAddress, $record['prefix_len'] ?? 0);
+        }
+    }
+
+    public function jsonSerialize(): array
+    {
+        return [
+            'autonomous_system_number' => $this->autonomousSystemNumber,
+            'autonomous_system_organization' => $this->autonomousSystemOrganization,
+            'connection_type' => $this->connectionType,
+            'domain' => $this->domain,
+            'ip_address' => $this->ipAddress,
+            'is_anonymous' => $this->isAnonymous,
+            'is_anonymous_proxy' => $this->isAnonymousProxy,
+            'is_anonymous_vpn' => $this->isAnonymousVpn,
+            'is_hosting_provider' => $this->isHostingProvider,
+            'is_legitimate_proxy' => $this->isLegitimateProxy,
+            'is_public_proxy' => $this->isPublicProxy,
+            'is_residential_proxy' => $this->isResidentialProxy,
+            'is_satellite_provider' => $this->isSatelliteProvider,
+            'is_tor_exit_node' => $this->isTorExitNode,
+            'isp' => $this->isp,
+            'mobile_country_code' => $this->mobileCountryCode,
+            'mobile_network_code' => $this->mobileNetworkCode,
+            'network' => $this->network,
+            'organization' => $this->organization,
+            'static_ip_score' => $this->staticIpScore,
+            'user_count' => $this->userCount,
+            'user_type' => $this->userType,
+        ];
     }
 }

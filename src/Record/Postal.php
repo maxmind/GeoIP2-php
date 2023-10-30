@@ -19,12 +19,25 @@ namespace GeoIp2\Record;
  * available from the Insights service and the GeoIP2 Enterprise
  * database.
  */
-class Postal extends AbstractRecord
+class Postal implements \JsonSerializable
 {
+    public readonly ?string $code;
+    public readonly ?int $confidence;
+
     /**
      * @ignore
-     *
-     * @var array<string>
      */
-    protected array $validAttributes = ['code', 'confidence'];
+    public function __construct(array $record)
+    {
+        $this->code = $record['code'] ?? null;
+        $this->confidence = $record['confidence'] ?? null;
+    }
+
+    public function jsonSerialize(): array
+    {
+        return [
+            'code' => $this->code,
+            'confidence' => $this->confidence,
+        ];
+    }
 }

@@ -40,22 +40,27 @@ class InsightsTest extends TestCase
                 'longitude' => 93.2636,
                 'metro_code' => 765,
                 'population_density' => 1341,
-                'postal_code' => '55401',
-                'postal_confidence' => 33,
                 'time_zone' => 'America/Chicago',
             ],
             'maxmind' => [
                 'queries_remaining' => 22,
             ],
+            'postal' => [
+                'code' => '55401',
+                'confidence' => 33,
+            ],
             'registered_country' => [
+                'confidence' => null,
                 'geoname_id' => 2,
                 'iso_code' => 'CA',
                 'names' => ['en' => 'Canada'],
             ],
             'represented_country' => [
+                'confidence' => null,
                 'geoname_id' => 3,
                 'iso_code' => 'GB',
                 'names' => ['en' => 'United Kingdom'],
+                'type' => 'military',
             ],
             'subdivisions' => [
                 [
@@ -72,8 +77,10 @@ class InsightsTest extends TestCase
                 'domain' => 'example.com',
                 'ip_address' => '1.2.3.4',
                 'is_anonymous' => true,
+                'is_anonymous_proxy' => true,
                 'is_anonymous_vpn' => true,
                 'is_hosting_provider' => true,
+                'is_legitimate_proxy' => true,
                 'is_public_proxy' => true,
                 'is_residential_proxy' => true,
                 'is_satellite_provider' => true,
@@ -81,6 +88,7 @@ class InsightsTest extends TestCase
                 'isp' => 'Comcast',
                 'mobile_country_code' => '310',
                 'mobile_network_code' => '004',
+                'network' => '1.2.3.0/24',
                 'organization' => 'Blorg',
                 'static_ip_score' => 1.3,
                 'user_count' => 2,
@@ -191,9 +199,9 @@ class InsightsTest extends TestCase
             '$model->traits->isTorExitNode is true'
         );
 
-        $this->assertFalse(
+        $this->assertTrue(
             $model->traits->isAnonymousProxy,
-            '$model->traits->isAnonymousProxy is false'
+            '$model->traits->isAnonymousProxy is true'
         );
 
         $this->assertSame(
@@ -221,15 +229,102 @@ class InsightsTest extends TestCase
         );
 
         $this->assertSame(
-            $raw,
-            $model->raw,
-            'raw method returns raw input'
-        );
-
-        $this->assertSame(
             2,
             $model->traits->userCount,
             'userCount is correct'
+        );
+
+        $this->assertSame(
+            [
+                'continent' => [
+                    'name' => 'North America',
+                    'names' => ['en' => 'North America'],
+                    'code' => 'NA',
+                    'geoname_id' => 42,
+                ],
+                'country' => [
+                    'name' => 'United States of America',
+                    'names' => ['en' => 'United States of America'],
+                    'confidence' => 99,
+                    'geoname_id' => 1,
+                    'is_in_european_union' => false,
+                    'iso_code' => 'US',
+                ],
+                'maxmind' => [
+                    'queries_remaining' => 22,
+                ],
+                'registered_country' => [
+                    'name' => 'Canada',
+                    'names' => ['en' => 'Canada'],
+                    'confidence' => null,
+                    'geoname_id' => 2,
+                    'is_in_european_union' => false,
+                    'iso_code' => 'CA',
+                ],
+                'represented_country' => [
+                    'name' => 'United Kingdom',
+                    'names' => ['en' => 'United Kingdom'],
+                    'confidence' => null,
+                    'geoname_id' => 3,
+                    'is_in_european_union' => false,
+                    'iso_code' => 'GB',
+                    'type' => 'military',
+                ],
+                'traits' => [
+                    'autonomous_system_number' => 1234,
+                    'autonomous_system_organization' => 'AS Organization',
+                    'connection_type' => 'Cable/DSL',
+                    'domain' => 'example.com',
+                    'ip_address' => '1.2.3.4',
+                    'is_anonymous' => true,
+                    'is_anonymous_proxy' => true,
+                    'is_anonymous_vpn' => true,
+                    'is_hosting_provider' => true,
+                    'is_legitimate_proxy' => true,
+                    'is_public_proxy' => true,
+                    'is_residential_proxy' => true,
+                    'is_satellite_provider' => true,
+                    'is_tor_exit_node' => true,
+                    'isp' => 'Comcast',
+                    'mobile_country_code' => '310',
+                    'mobile_network_code' => '004',
+                    'network' => '1.2.3.0/24',
+                    'organization' => 'Blorg',
+                    'static_ip_score' => 1.3,
+                    'user_count' => 2,
+                    'user_type' => 'college',
+                ],
+                'city' => [
+                    'name' => 'Minneapolis',
+                    'names' => ['en' => 'Minneapolis'],
+                    'confidence' => 76,
+                    'geoname_id' => 9876,
+                ],
+                'location' => [
+                    'average_income' => 24626,
+                    'accuracy_radius' => 1500,
+                    'latitude' => 44.98,
+                    'longitude' => 93.2636,
+                    'metro_code' => 765,
+                    'population_density' => 1341,
+                    'time_zone' => 'America/Chicago',
+                ],
+                'postal' => [
+                    'code' => '55401',
+                    'confidence' => 33,
+                ],
+                'subdivisions' => [
+                    [
+                        'name' => 'Minnesota',
+                        'names' => ['en' => 'Minnesota'],
+                        'confidence' => 88,
+                        'geoname_id' => 574635,
+                        'iso_code' => 'MN',
+                    ],
+                ],
+            ],
+            $model->jsonSerialize(),
+            'jsonSerialize returns initial array'
         );
     }
 
@@ -303,12 +398,6 @@ class InsightsTest extends TestCase
             $model->traits,
             '$model->traits'
         );
-
-        $this->assertSame(
-            $raw,
-            $model->raw,
-            'raw method returns raw input with no added empty values'
-        );
     }
 
     public function testUnknown(): void
@@ -332,17 +421,11 @@ class InsightsTest extends TestCase
             $model,
             'no exception when Insights model gets raw data with unknown keys'
         );
-
-        $this->assertSame(
-            $raw,
-            $model->raw,
-            'raw method returns raw input'
-        );
     }
 
     public function testMostSpecificSubdivisionWithNoSubdivisions(): void
     {
-        $model = new Insights([], ['en']);
+        $model = new Insights(['traits' => ['ip_address' => '1.1.1.1']], ['en']);
 
         $this->assertTrue(
             isset($model->mostSpecificSubdivision),

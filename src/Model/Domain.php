@@ -18,22 +18,29 @@ use GeoIp2\Util;
  *      the record. In particular, this is the largest network where all of the
  *      fields besides $ipAddress have the same value.
  */
-class Domain extends AbstractModel
+class Domain implements \JsonSerializable
 {
-    protected ?string $domain;
-    protected string $ipAddress;
-    protected string $network;
+    public readonly ?string $domain;
+    public readonly string $ipAddress;
+    public readonly string $network;
 
     /**
      * @ignore
      */
     public function __construct(array $raw)
     {
-        parent::__construct($raw);
-
-        $this->domain = $this->get('domain');
-        $ipAddress = $this->get('ip_address');
+        $this->domain = $raw['domain'] ?? null;
+        $ipAddress = $raw['ip_address'];
         $this->ipAddress = $ipAddress;
-        $this->network = Util::cidr($ipAddress, $this->get('prefix_len'));
+        $this->network = Util::cidr($ipAddress, $raw['prefix_len']);
+    }
+
+    public function jsonSerialize(): ?array
+    {
+        return [
+            'domain' => $this->domain,
+            'ip_address' => $this->ipAddress,
+            'network' => $this->network,
+        ];
     }
 }
