@@ -50,13 +50,11 @@ class InsightsTest extends TestCase
                 'confidence' => 33,
             ],
             'registered_country' => [
-                'confidence' => null,
                 'geoname_id' => 2,
                 'iso_code' => 'CA',
                 'names' => ['en' => 'Canada'],
             ],
             'represented_country' => [
-                'confidence' => null,
                 'geoname_id' => 3,
                 'iso_code' => 'GB',
                 'names' => ['en' => 'United Kingdom'],
@@ -247,7 +245,6 @@ class InsightsTest extends TestCase
                     'names' => ['en' => 'United States of America'],
                     'confidence' => 99,
                     'geoname_id' => 1,
-                    'is_in_european_union' => false,
                     'iso_code' => 'US',
                 ],
                 'maxmind' => [
@@ -256,17 +253,13 @@ class InsightsTest extends TestCase
                 'registered_country' => [
                     'name' => 'Canada',
                     'names' => ['en' => 'Canada'],
-                    'confidence' => null,
                     'geoname_id' => 2,
-                    'is_in_european_union' => false,
                     'iso_code' => 'CA',
                 ],
                 'represented_country' => [
                     'name' => 'United Kingdom',
                     'names' => ['en' => 'United Kingdom'],
-                    'confidence' => null,
                     'geoname_id' => 3,
-                    'is_in_european_union' => false,
                     'iso_code' => 'GB',
                     'type' => 'military',
                 ],
@@ -330,7 +323,7 @@ class InsightsTest extends TestCase
 
     public function testEmptyObjects(): void
     {
-        $raw = ['traits' => ['ip_address' => '5.6.7.8']];
+        $raw = ['traits' => ['ip_address' => '5.6.7.8', 'network' => '5.6.7.0/24']];
 
         $model = new Insights($raw, ['en']);
 
@@ -392,6 +385,12 @@ class InsightsTest extends TestCase
             'GeoIp2\Record\Traits',
             $model->traits,
             '$model->traits'
+        );
+
+        $this->assertSame(
+            $raw,
+            $model->jsonSerialize(),
+            'jsonSerialize',
         );
     }
 

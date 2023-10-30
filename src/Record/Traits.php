@@ -174,29 +174,70 @@ class Traits implements \JsonSerializable
 
     public function jsonSerialize(): array
     {
-        return [
-            'autonomous_system_number' => $this->autonomousSystemNumber,
-            'autonomous_system_organization' => $this->autonomousSystemOrganization,
-            'connection_type' => $this->connectionType,
-            'domain' => $this->domain,
-            'ip_address' => $this->ipAddress,
-            'is_anonymous' => $this->isAnonymous,
-            'is_anonymous_proxy' => $this->isAnonymousProxy,
-            'is_anonymous_vpn' => $this->isAnonymousVpn,
-            'is_hosting_provider' => $this->isHostingProvider,
-            'is_legitimate_proxy' => $this->isLegitimateProxy,
-            'is_public_proxy' => $this->isPublicProxy,
-            'is_residential_proxy' => $this->isResidentialProxy,
-            'is_satellite_provider' => $this->isSatelliteProvider,
-            'is_tor_exit_node' => $this->isTorExitNode,
-            'isp' => $this->isp,
-            'mobile_country_code' => $this->mobileCountryCode,
-            'mobile_network_code' => $this->mobileNetworkCode,
-            'network' => $this->network,
-            'organization' => $this->organization,
-            'static_ip_score' => $this->staticIpScore,
-            'user_count' => $this->userCount,
-            'user_type' => $this->userType,
-        ];
+        $js = [];
+        if ($this->autonomousSystemNumber !== null) {
+            $js['autonomous_system_number'] = $this->autonomousSystemNumber;
+        }
+        if ($this->autonomousSystemOrganization !== null) {
+            $js['autonomous_system_organization'] = $this->autonomousSystemOrganization;
+        }
+        if ($this->connectionType !== null) {
+            $js['connection_type'] = $this->connectionType;
+        }
+        if ($this->domain !== null) {
+            $js['domain'] = $this->domain;
+        }
+        $js['ip_address'] = $this->ipAddress;
+        if ($this->isAnonymous !== false) {
+            $js['is_anonymous'] = $this->isAnonymous;
+        }
+        if ($this->isAnonymousProxy !== false) {
+            $js['is_anonymous_proxy'] = $this->isAnonymousProxy;
+        }
+        if ($this->isAnonymousVpn !== false) {
+            $js['is_anonymous_vpn'] = $this->isAnonymousVpn;
+        }
+        if ($this->isHostingProvider !== false) {
+            $js['is_hosting_provider'] = $this->isHostingProvider;
+        }
+        if ($this->isLegitimateProxy !== false) {
+            $js['is_legitimate_proxy'] = $this->isLegitimateProxy;
+        }
+        if ($this->isPublicProxy !== false) {
+            $js['is_public_proxy'] = $this->isPublicProxy;
+        }
+        if ($this->isResidentialProxy !== false) {
+            $js['is_residential_proxy'] = $this->isResidentialProxy;
+        }
+        if ($this->isSatelliteProvider !== false) {
+            $js['is_satellite_provider'] = $this->isSatelliteProvider;
+        }
+        if ($this->isTorExitNode !== false) {
+            $js['is_tor_exit_node'] = $this->isTorExitNode;
+        }
+        if ($this->isp !== null) {
+            $js['isp'] = $this->isp;
+        }
+        if ($this->mobileCountryCode !== null) {
+            $js['mobile_country_code'] = $this->mobileCountryCode;
+        }
+        if ($this->mobileNetworkCode !== null) {
+            $js['mobile_network_code'] = $this->mobileNetworkCode;
+        }
+        $js['network'] = $this->network;
+        if ($this->organization !== null) {
+            $js['organization'] = $this->organization;
+        }
+        if ($this->staticIpScore !== null) {
+            $js['static_ip_score'] = $this->staticIpScore;
+        }
+        if ($this->userCount !== null) {
+            $js['user_count'] = $this->userCount;
+        }
+        if ($this->userType !== null) {
+            $js['user_type'] = $this->userType;
+        }
+
+        return $js;
     }
 }

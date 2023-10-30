@@ -46,8 +46,12 @@ class Country extends AbstractPlaceRecord
     public function jsonSerialize(): array
     {
         $js = parent::jsonSerialize();
-        $js['is_in_european_union'] = $this->isInEuropeanUnion;
-        $js['iso_code'] = $this->isoCode;
+        if ($this->isInEuropeanUnion !== false) {
+            $js['is_in_european_union'] = $this->isInEuropeanUnion;
+        }
+        if ($this->isoCode !== null) {
+            $js['iso_code'] = $this->isoCode;
+        }
 
         return $js;
     }

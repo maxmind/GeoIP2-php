@@ -61,15 +61,28 @@ class Isp implements \JsonSerializable
 
     public function jsonSerialize(): ?array
     {
-        return [
-            'autonomous_system_number' => $this->autonomousSystemNumber,
-            'autonomous_system_organization' => $this->autonomousSystemOrganization,
-            'isp' => $this->isp,
-            'mobile_country_code' => $this->mobileCountryCode,
-            'mobile_network_code' => $this->mobileNetworkCode,
-            'organization' => $this->organization,
-            'ip_address' => $this->ipAddress,
-            'network' => $this->network,
-        ];
+        $js = [];
+        if ($this->autonomousSystemNumber !== null) {
+            $js['autonomous_system_number'] = $this->autonomousSystemNumber;
+        }
+        if ($this->autonomousSystemOrganization !== null) {
+            $js['autonomous_system_organization'] = $this->autonomousSystemOrganization;
+        }
+        if ($this->isp !== null) {
+            $js['isp'] = $this->isp;
+        }
+        if ($this->mobileCountryCode !== null) {
+            $js['mobile_country_code'] = $this->mobileCountryCode;
+        }
+        if ($this->mobileNetworkCode !== null) {
+            $js['mobile_network_code'] = $this->mobileNetworkCode;
+        }
+        if ($this->organization !== null) {
+            $js['organization'] = $this->organization;
+        }
+        $js['ip_address'] = $this->ipAddress;
+        $js['network'] = $this->network;
+
+        return $js;
     }
 }

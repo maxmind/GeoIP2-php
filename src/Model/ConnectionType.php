@@ -37,10 +37,13 @@ class ConnectionType implements \JsonSerializable
 
     public function jsonSerialize(): ?array
     {
-        return [
-            'connection_type' => $this->connectionType,
-            'ip_address' => $this->ipAddress,
-            'network' => $this->network,
-        ];
+        $js = [];
+        if ($this->connectionType !== null) {
+            $js['connection_type'] = $this->connectionType;
+        }
+        $js['ip_address'] = $this->ipAddress;
+        $js['network'] = $this->network;
+
+        return $js;
     }
 }

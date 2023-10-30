@@ -45,7 +45,9 @@ class Subdivision extends AbstractPlaceRecord
     public function jsonSerialize(): array
     {
         $js = parent::jsonSerialize();
-        $js['iso_code'] = $this->isoCode;
+        if ($this->isoCode !== null) {
+            $js['iso_code'] = $this->isoCode;
+        }
 
         return $js;
     }

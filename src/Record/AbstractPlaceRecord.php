@@ -23,8 +23,13 @@ abstract class AbstractPlaceRecord extends AbstractNamedRecord
     public function jsonSerialize(): array
     {
         $js = parent::jsonSerialize();
-        $js['confidence'] = $this->confidence;
-        $js['geoname_id'] = $this->geonameId;
+        if ($this->confidence !== null) {
+            $js['confidence'] = $this->confidence;
+        }
+
+        if ($this->geonameId !== null) {
+            $js['geoname_id'] = $this->geonameId;
+        }
 
         return $js;
     }

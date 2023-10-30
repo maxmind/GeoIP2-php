@@ -23,8 +23,11 @@ class MaxMind implements \JsonSerializable
 
     public function jsonSerialize(): array
     {
-        return [
-            'queries_remaining' => $this->queriesRemaining,
-        ];
+        $js = [];
+        if ($this->queriesRemaining !== null) {
+            $js['queries_remaining'] = $this->queriesRemaining;
+        }
+
+        return $js;
     }
 }

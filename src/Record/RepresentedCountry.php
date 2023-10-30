@@ -32,7 +32,9 @@ class RepresentedCountry extends Country
     public function jsonSerialize(): array
     {
         $js = parent::jsonSerialize();
-        $js['type'] = $this->type;
+        if ($this->type !== null) {
+            $js['type'] = $this->type;
+        }
 
         return $js;
     }
