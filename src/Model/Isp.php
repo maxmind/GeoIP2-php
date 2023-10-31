@@ -8,37 +8,59 @@ use GeoIp2\Util;
 
 /**
  * This class provides the GeoIP2 ISP model.
- *
- * @property-read int|null $autonomousSystemNumber The autonomous system number
- *     associated with the IP address.
- * @property-read string|null $autonomousSystemOrganization The organization
- *     associated with the registered autonomous system number for the IP
- *     address.
- * @property-read string|null $isp The name of the ISP associated with the IP
- *     address.
- * @property-read string|null $mobileCountryCode The [mobile country code
- *     (MCC)](https://en.wikipedia.org/wiki/Mobile_country_code) associated with
- *     the IP address and ISP.
- * @property-read string|null $mobileNetworkCode The [mobile network code
- *     (MNC)](https://en.wikipedia.org/wiki/Mobile_country_code) associated with
- *     the IP address and ISP.
- * @property-read string|null $organization The name of the organization associated
- *     with the IP address.
- * @property-read string $ipAddress The IP address that the data in the model is
- *     for.
- * @property-read string $network The network in CIDR notation associated with
- *      the record. In particular, this is the largest network where all of the
- *      fields besides $ipAddress have the same value.
  */
 class Isp implements \JsonSerializable
 {
+    /**
+     * @var int|null the autonomous system number
+     *               associated with the IP address
+     */
     public readonly ?int $autonomousSystemNumber;
+
+    /**
+     * @var string|null the organization
+     *                  associated with the registered autonomous system number for the IP
+     *                  address
+     */
     public readonly ?string $autonomousSystemOrganization;
+
+    /**
+     * @var string|null the name of the ISP associated with the IP
+     *                  address
+     */
     public readonly ?string $isp;
+
+    /**
+     * @var string|null The [mobile country code
+     *                  (MCC)](https://en.wikipedia.org/wiki/Mobile_country_code) associated with
+     *                  the IP address and ISP.
+     */
     public readonly ?string $mobileCountryCode;
+
+    /**
+     * @var string|null The [mobile network code
+     *                  (MNC)](https://en.wikipedia.org/wiki/Mobile_country_code) associated with
+     *                  the IP address and ISP.
+     */
     public readonly ?string $mobileNetworkCode;
+
+    /**
+     * @var string|null the name of the organization associated
+     *                  with the IP address
+     */
     public readonly ?string $organization;
+
+    /**
+     * @var string the IP address that the data in the model is
+     *             for
+     */
     public readonly string $ipAddress;
+
+    /**
+     * @var string The network in CIDR notation associated with
+     *             the record. In particular, this is the largest network where all of the
+     *             fields besides $ipAddress have the same value.
+     */
     public readonly string $network;
 
     /**

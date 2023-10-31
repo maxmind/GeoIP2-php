@@ -6,7 +6,17 @@ namespace GeoIp2\Record;
 
 abstract class AbstractPlaceRecord extends AbstractNamedRecord
 {
+    /**
+     * @var int|null A value from 0-100 indicating MaxMind's
+     *               confidence that the location level is correct. This attribute is only available
+     *               from the Insights service and the GeoIP2 Enterprise database.
+     */
     public readonly ?int $confidence;
+
+    /**
+     * @var int|null The GeoName ID for the location level. This attribute
+     *               is returned by all location services and databases.
+     */
     public readonly ?int $geonameId;
 
     /**

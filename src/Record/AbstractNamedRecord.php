@@ -6,7 +6,18 @@ namespace GeoIp2\Record;
 
 abstract class AbstractNamedRecord implements \JsonSerializable
 {
+    /**
+     * @var string|null The name based on the locales list
+     *                  passed to the constructor. This attribute is returned by all location
+     *                  services and databases.
+     */
     public readonly ?string $name;
+
+    /**
+     * @var array An array map where the keys are locale codes
+     *            and the values are names. This attribute is returned by all location
+     *            services and databases.
+     */
     public readonly array $names;
 
     /**

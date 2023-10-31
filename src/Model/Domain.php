@@ -8,20 +8,27 @@ use GeoIp2\Util;
 
 /**
  * This class provides the GeoIP2 Domain model.
- *
- * @property-read string|null $domain The second level domain associated with the
- *     IP address. This will be something like "example.com" or
- *     "example.co.uk", not "foo.example.com".
- * @property-read string $ipAddress The IP address that the data in the model is
- *     for.
- * @property-read string $network The network in CIDR notation associated with
- *      the record. In particular, this is the largest network where all of the
- *      fields besides $ipAddress have the same value.
  */
 class Domain implements \JsonSerializable
 {
+    /**
+     * @var string|null The second level domain associated with the
+     *                  IP address. This will be something like "example.com" or
+     *                  "example.co.uk", not "foo.example.com".
+     */
     public readonly ?string $domain;
+
+    /**
+     * @var string the IP address that the data in the model is
+     *             for
+     */
     public readonly string $ipAddress;
+
+    /**
+     * @var string The network in CIDR notation associated with
+     *             the record. In particular, this is the largest network where all of the
+     *             fields besides $ipAddress have the same value.
+     */
     public readonly string $network;
 
     /**

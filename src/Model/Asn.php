@@ -8,23 +8,33 @@ use GeoIp2\Util;
 
 /**
  * This class provides the GeoLite2 ASN model.
- *
- * @property-read int|null $autonomousSystemNumber The autonomous system number
- *     associated with the IP address.
- * @property-read string|null $autonomousSystemOrganization The organization
- *     associated with the registered autonomous system number for the IP
- *     address.
- * @property-read string $ipAddress The IP address that the data in the model is
- *     for.
- * @property-read string $network The network in CIDR notation associated with
- *      the record. In particular, this is the largest network where all of the
- *      fields besides $ipAddress have the same value.
  */
 class Asn implements \JsonSerializable
 {
+    /**
+     * @var int|null the autonomous system number
+     *               associated with the IP address
+     */
     public readonly ?int $autonomousSystemNumber;
+
+    /**
+     * @var string|null the organization
+     *                  associated with the registered autonomous system number for the IP
+     *                  address
+     */
     public readonly ?string $autonomousSystemOrganization;
+
+    /**
+     * @var string the IP address that the data in the model is
+     *             for
+     */
     public readonly string $ipAddress;
+
+    /**
+     * @var string The network in CIDR notation associated with
+     *             the record. In particular, this is the largest network where all of the
+     *             fields besides $ipAddress have the same value.
+     */
     public readonly string $network;
 
     /**
