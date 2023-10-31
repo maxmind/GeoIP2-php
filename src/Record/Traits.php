@@ -31,7 +31,7 @@ use GeoIp2\Util;
  * not "foo.example.com". This attribute is only available from the
  * City Plus and Insights web services and the GeoIP2 Enterprise
  * database.
- * @property-read string $ipAddress The IP address that the data in the model
+ * @property-read string|null $ipAddress The IP address that the data in the model
  * is for. If you performed a "me" lookup against the web service, this
  * will be the externally routable IP address for the system the code is
  * running on. If the system is behind a NAT, this may differ from the IP
@@ -70,7 +70,7 @@ use GeoIp2\Util;
  * @property-read string|null $isp The name of the ISP associated with the IP
  * address. This attribute is only available from the City Plus and Insights
  * web services and the GeoIP2 Enterprise database.
- * @property-read string $network The network in CIDR notation associated with
+ * @property-read string|null $network The network in CIDR notation associated with
  * the record. In particular, this is the largest network where all of the
  * fields besides $ipAddress have the same value.
  * @property-read string|null $organization The name of the organization
@@ -122,7 +122,7 @@ class Traits implements \JsonSerializable
     public readonly ?string $autonomousSystemOrganization;
     public readonly ?string $connectionType;
     public readonly ?string $domain;
-    public readonly string $ipAddress;
+    public readonly ?string $ipAddress;
     public readonly bool $isAnonymous;
     public readonly bool $isAnonymousProxy;
     public readonly bool $isAnonymousVpn;
@@ -135,7 +135,7 @@ class Traits implements \JsonSerializable
     public readonly bool $isTorExitNode;
     public readonly ?string $mobileCountryCode;
     public readonly ?string $mobileNetworkCode;
-    public readonly string $network;
+    public readonly ?string $network;
     public readonly ?string $organization;
     public readonly ?float $staticIpScore;
     public readonly ?int $userCount;
@@ -168,7 +168,7 @@ class Traits implements \JsonSerializable
         if (isset($record['network'])) {
             $this->network = $record['network'];
         } else {
-            $this->network = Util::cidr($this->ipAddress, $record['prefix_len'] ?? 0);
+            $this->network = isset($record['prefix_len']) ? Util::cidr($this->ipAddress, $record['prefix_len']) : null;
         }
     }
 
@@ -187,7 +187,9 @@ class Traits implements \JsonSerializable
         if ($this->domain !== null) {
             $js['domain'] = $this->domain;
         }
-        $js['ip_address'] = $this->ipAddress;
+        if ($this->ipAddress !== null) {
+            $js['ip_address'] = $this->ipAddress;
+        }
         if ($this->isAnonymous !== false) {
             $js['is_anonymous'] = $this->isAnonymous;
         }
@@ -224,7 +226,9 @@ class Traits implements \JsonSerializable
         if ($this->mobileNetworkCode !== null) {
             $js['mobile_network_code'] = $this->mobileNetworkCode;
         }
-        $js['network'] = $this->network;
+        if ($this->network !== null) {
+            $js['network'] = $this->network;
+        }
         if ($this->organization !== null) {
             $js['organization'] = $this->organization;
         }
