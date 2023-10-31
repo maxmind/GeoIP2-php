@@ -164,13 +164,6 @@ class CountryTest extends TestCase
             $this->model->registeredCountry->name,
             'registered_country name is Germany'
         );
-
-        foreach (['isAnonymousProxy', 'isSatelliteProvider'] as $meth) {
-            $this->assertFalse(
-                $this->model->traits->{$meth},
-                "traits $meth returns 0 by default"
-            );
-        }
     }
 
     public function testJsonSerialize(): void

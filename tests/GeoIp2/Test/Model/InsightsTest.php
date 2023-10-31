@@ -75,13 +75,11 @@ class InsightsTest extends TestCase
                 'domain' => 'example.com',
                 'ip_address' => '1.2.3.4',
                 'is_anonymous' => true,
-                'is_anonymous_proxy' => true,
                 'is_anonymous_vpn' => true,
                 'is_hosting_provider' => true,
                 'is_legitimate_proxy' => true,
                 'is_public_proxy' => true,
                 'is_residential_proxy' => true,
-                'is_satellite_provider' => true,
                 'is_tor_exit_node' => true,
                 'isp' => 'Comcast',
                 'mobile_country_code' => '310',
@@ -188,18 +186,8 @@ class InsightsTest extends TestCase
         );
 
         $this->assertTrue(
-            $model->traits->isSatelliteProvider,
-            '$model->traits->isSatelliteProvider is true'
-        );
-
-        $this->assertTrue(
             $model->traits->isTorExitNode,
             '$model->traits->isTorExitNode is true'
-        );
-
-        $this->assertTrue(
-            $model->traits->isAnonymousProxy,
-            '$model->traits->isAnonymousProxy is true'
         );
 
         $this->assertSame(
@@ -266,13 +254,11 @@ class InsightsTest extends TestCase
                     'domain' => 'example.com',
                     'ip_address' => '1.2.3.4',
                     'is_anonymous' => true,
-                    'is_anonymous_proxy' => true,
                     'is_anonymous_vpn' => true,
                     'is_hosting_provider' => true,
                     'is_legitimate_proxy' => true,
                     'is_public_proxy' => true,
                     'is_residential_proxy' => true,
-                    'is_satellite_provider' => true,
                     'is_tor_exit_node' => true,
                     'isp' => 'Comcast',
                     'mobile_country_code' => '310',

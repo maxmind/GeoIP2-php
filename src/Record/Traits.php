@@ -67,16 +67,6 @@ class Traits implements \JsonSerializable
     public readonly bool $isAnonymous;
 
     /**
-     * @var bool *Deprecated.* Please see our GeoIP2
-     *           Anonymous IP database
-     *           (https://www.maxmind.com/en/geoip2-anonymous-ip-database) to determine
-     *           whether the IP address is used by an anonymizing service.
-     *
-     * @deprecated
-     */
-    public readonly bool $isAnonymousProxy;
-
-    /**
      * @var bool This is true if the IP address is
      *           registered to an anonymous VPN provider. If a VPN provider does not register
      *           subnets under names associated with them, we will likely only flag their IP
@@ -112,16 +102,6 @@ class Traits implements \JsonSerializable
      *           property is only available from GeoIP2 Insights.
      */
     public readonly bool $isResidentialProxy;
-
-    /**
-     * @var bool *Deprecated.* Due to the
-     *           increased coverage by mobile carriers, very few satellite providers now
-     *           serve multiple countries. As a result, the output does not provide
-     *           sufficiently relevant data for us to maintain it.
-     *
-     * @deprecated
-     */
-    public readonly bool $isSatelliteProvider;
 
     /**
      * @var bool This is true if the IP address is a Tor
@@ -217,14 +197,12 @@ class Traits implements \JsonSerializable
         $this->domain = $record['domain'] ?? null;
         $this->ipAddress = $record['ip_address'] ?? null;
         $this->isAnonymous = $record['is_anonymous'] ?? false;
-        $this->isAnonymousProxy = $record['is_anonymous_proxy'] ?? false;
         $this->isAnonymousVpn = $record['is_anonymous_vpn'] ?? false;
         $this->isHostingProvider = $record['is_hosting_provider'] ?? false;
         $this->isLegitimateProxy = $record['is_legitimate_proxy'] ?? false;
         $this->isp = $record['isp'] ?? null;
         $this->isPublicProxy = $record['is_public_proxy'] ?? false;
         $this->isResidentialProxy = $record['is_residential_proxy'] ?? false;
-        $this->isSatelliteProvider = $record['is_satellite_provider'] ?? false;
         $this->isTorExitNode = $record['is_tor_exit_node'] ?? false;
         $this->mobileCountryCode = $record['mobile_country_code'] ?? null;
         $this->mobileNetworkCode = $record['mobile_network_code'] ?? null;
@@ -261,9 +239,6 @@ class Traits implements \JsonSerializable
         if ($this->isAnonymous !== false) {
             $js['is_anonymous'] = $this->isAnonymous;
         }
-        if ($this->isAnonymousProxy !== false) {
-            $js['is_anonymous_proxy'] = $this->isAnonymousProxy;
-        }
         if ($this->isAnonymousVpn !== false) {
             $js['is_anonymous_vpn'] = $this->isAnonymousVpn;
         }
@@ -278,9 +253,6 @@ class Traits implements \JsonSerializable
         }
         if ($this->isResidentialProxy !== false) {
             $js['is_residential_proxy'] = $this->isResidentialProxy;
-        }
-        if ($this->isSatelliteProvider !== false) {
-            $js['is_satellite_provider'] = $this->isSatelliteProvider;
         }
         if ($this->isTorExitNode !== false) {
             $js['is_tor_exit_node'] = $this->isTorExitNode;
