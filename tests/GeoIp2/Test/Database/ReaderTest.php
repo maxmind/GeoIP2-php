@@ -14,7 +14,7 @@ use PHPUnit\Framework\TestCase;
  */
 class ReaderTest extends TestCase
 {
-    public function databaseTypes(): array
+    public static function databaseTypes(): array
     {
         return [['City', 'city'], ['Country', 'country']];
     }
