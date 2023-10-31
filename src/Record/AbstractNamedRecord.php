@@ -29,9 +29,6 @@ abstract class AbstractNamedRecord implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $js = [];
-        if ($this->name !== null) {
-            $js['name'] = $this->name;
-        }
         if (!empty($this->names)) {
             $js['names'] = $this->names;
         }

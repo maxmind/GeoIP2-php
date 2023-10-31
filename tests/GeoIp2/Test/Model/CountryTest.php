@@ -178,19 +178,16 @@ class CountryTest extends TestCase
         $js =
         [
             'continent' => [
-                'name' => 'North America',
                 'names' => ['en' => 'North America'],
                 'code' => 'NA',
                 'geoname_id' => 42,
             ],
             'country' => [
-                'name' => 'United States of America',
                 'names' => ['en' => 'United States of America'],
                 'geoname_id' => 1,
                 'iso_code' => 'US',
             ],
             'registered_country' => [
-                'name' => 'Germany',
                 'names' => ['en' => 'Germany'],
                 'geoname_id' => 2,
                 'is_in_european_union' => true,
