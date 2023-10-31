@@ -235,13 +235,11 @@ class InsightsTest extends TestCase
         $this->assertSame(
             [
                 'continent' => [
-                    'name' => 'North America',
                     'names' => ['en' => 'North America'],
                     'code' => 'NA',
                     'geoname_id' => 42,
                 ],
                 'country' => [
-                    'name' => 'United States of America',
                     'names' => ['en' => 'United States of America'],
                     'confidence' => 99,
                     'geoname_id' => 1,
@@ -251,13 +249,11 @@ class InsightsTest extends TestCase
                     'queries_remaining' => 22,
                 ],
                 'registered_country' => [
-                    'name' => 'Canada',
                     'names' => ['en' => 'Canada'],
                     'geoname_id' => 2,
                     'iso_code' => 'CA',
                 ],
                 'represented_country' => [
-                    'name' => 'United Kingdom',
                     'names' => ['en' => 'United Kingdom'],
                     'geoname_id' => 3,
                     'iso_code' => 'GB',
@@ -288,7 +284,6 @@ class InsightsTest extends TestCase
                     'user_type' => 'college',
                 ],
                 'city' => [
-                    'name' => 'Minneapolis',
                     'names' => ['en' => 'Minneapolis'],
                     'confidence' => 76,
                     'geoname_id' => 9876,
@@ -308,7 +303,6 @@ class InsightsTest extends TestCase
                 ],
                 'subdivisions' => [
                     [
-                        'name' => 'Minnesota',
                         'names' => ['en' => 'Minnesota'],
                         'confidence' => 88,
                         'geoname_id' => 574635,
