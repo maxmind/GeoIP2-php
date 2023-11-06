@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         operating-system: [ubuntu-latest, windows-latest, macos-latest]
-        php-versions: ['8.0', '8.1']
+        php-versions: ['8.1', '8.2']
     name: "PHP ${{ matrix.php-versions }} test on ${{ matrix.operating-system }}"
     steps:
       - name: Setup PHP
@@ -33,4 +33,4 @@ jobs:
         run: composer install --no-progress --prefer-dist --optimize-autoloader
 
       - name: Test with phpunit
-        run: vendor/bin/phpunit --coverage-text
+        run: vendor/bin/phpunit

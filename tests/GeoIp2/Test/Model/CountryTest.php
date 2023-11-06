@@ -164,31 +164,41 @@ class CountryTest extends TestCase
             $this->model->registeredCountry->name,
             'registered_country name is Germany'
         );
-
-        foreach (['isAnonymousProxy', 'isSatelliteProvider'] as $meth) {
-            $this->assertFalse(
-                $this->model->traits->{$meth},
-                "traits $meth returns 0 by default"
-            );
-        }
-
-        $this->assertSame(
-            $this->raw,
-            $this->model->raw,
-            'raw method returns raw input'
-        );
     }
 
     public function testJsonSerialize(): void
     {
+        $js =
+        [
+            'continent' => [
+                'names' => ['en' => 'North America'],
+                'code' => 'NA',
+                'geoname_id' => 42,
+            ],
+            'country' => [
+                'names' => ['en' => 'United States of America'],
+                'geoname_id' => 1,
+                'iso_code' => 'US',
+            ],
+            'registered_country' => [
+                'names' => ['en' => 'Germany'],
+                'geoname_id' => 2,
+                'is_in_european_union' => true,
+                'iso_code' => 'DE',
+            ],
+            'traits' => [
+                'ip_address' => '1.2.3.4',
+                'network' => '1.2.3.0/24',
+            ],
+        ];
         $this->assertSame(
-            $this->raw,
+            $js,
             $this->model->jsonSerialize(),
             'jsonSerialize returns initial array'
         );
 
         $this->assertSame(
-            $this->raw['country'],
+            $js['country'],
             $this->model->country->jsonSerialize(),
             'jsonSerialize returns initial array for the record'
         );
@@ -198,13 +208,13 @@ class CountryTest extends TestCase
         }
 
         $this->assertSame(
-            json_encode($this->raw),
+            json_encode($js),
             json_encode($this->model),
             'json_encode can be called on the model object directly'
         );
 
         $this->assertSame(
-            json_encode($this->raw['country']),
+            json_encode($js['country']),
             json_encode($this->model->country),
             'json_encode can be called on the record object directly'
         );
@@ -227,23 +237,5 @@ class CountryTest extends TestCase
             isset($this->model->traits->unknown),
             'unknown trait is not set'
         );
-    }
-
-    public function testUnknownRecord(): void
-    {
-        $this->expectException(\RuntimeException::class);
-        $this->expectExceptionMessage('Unknown attribute');
-
-        // @phpstan-ignore-next-line
-        $this->model->unknownRecord;
-    }
-
-    public function testUnknownTrait(): void
-    {
-        $this->expectException(\RuntimeException::class);
-        $this->expectExceptionMessage('Unknown attribute');
-
-        // @phpstan-ignore-next-line
-        $this->model->traits->unknown;
     }
 }

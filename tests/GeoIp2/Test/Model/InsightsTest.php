@@ -40,12 +40,14 @@ class InsightsTest extends TestCase
                 'longitude' => 93.2636,
                 'metro_code' => 765,
                 'population_density' => 1341,
-                'postal_code' => '55401',
-                'postal_confidence' => 33,
                 'time_zone' => 'America/Chicago',
             ],
             'maxmind' => [
                 'queries_remaining' => 22,
+            ],
+            'postal' => [
+                'code' => '55401',
+                'confidence' => 33,
             ],
             'registered_country' => [
                 'geoname_id' => 2,
@@ -56,6 +58,7 @@ class InsightsTest extends TestCase
                 'geoname_id' => 3,
                 'iso_code' => 'GB',
                 'names' => ['en' => 'United Kingdom'],
+                'type' => 'military',
             ],
             'subdivisions' => [
                 [
@@ -74,13 +77,14 @@ class InsightsTest extends TestCase
                 'is_anonymous' => true,
                 'is_anonymous_vpn' => true,
                 'is_hosting_provider' => true,
+                'is_legitimate_proxy' => true,
                 'is_public_proxy' => true,
                 'is_residential_proxy' => true,
-                'is_satellite_provider' => true,
                 'is_tor_exit_node' => true,
                 'isp' => 'Comcast',
                 'mobile_country_code' => '310',
                 'mobile_network_code' => '004',
+                'network' => '1.2.3.0/24',
                 'organization' => 'Blorg',
                 'static_ip_score' => 1.3,
                 'user_count' => 2,
@@ -182,18 +186,8 @@ class InsightsTest extends TestCase
         );
 
         $this->assertTrue(
-            $model->traits->isSatelliteProvider,
-            '$model->traits->isSatelliteProvider is true'
-        );
-
-        $this->assertTrue(
             $model->traits->isTorExitNode,
             '$model->traits->isTorExitNode is true'
-        );
-
-        $this->assertFalse(
-            $model->traits->isAnonymousProxy,
-            '$model->traits->isAnonymousProxy is false'
         );
 
         $this->assertSame(
@@ -221,21 +215,95 @@ class InsightsTest extends TestCase
         );
 
         $this->assertSame(
-            $raw,
-            $model->raw,
-            'raw method returns raw input'
-        );
-
-        $this->assertSame(
             2,
             $model->traits->userCount,
             'userCount is correct'
+        );
+
+        $this->assertSame(
+            [
+                'continent' => [
+                    'names' => ['en' => 'North America'],
+                    'code' => 'NA',
+                    'geoname_id' => 42,
+                ],
+                'country' => [
+                    'names' => ['en' => 'United States of America'],
+                    'confidence' => 99,
+                    'geoname_id' => 1,
+                    'iso_code' => 'US',
+                ],
+                'maxmind' => [
+                    'queries_remaining' => 22,
+                ],
+                'registered_country' => [
+                    'names' => ['en' => 'Canada'],
+                    'geoname_id' => 2,
+                    'iso_code' => 'CA',
+                ],
+                'represented_country' => [
+                    'names' => ['en' => 'United Kingdom'],
+                    'geoname_id' => 3,
+                    'iso_code' => 'GB',
+                    'type' => 'military',
+                ],
+                'traits' => [
+                    'autonomous_system_number' => 1234,
+                    'autonomous_system_organization' => 'AS Organization',
+                    'connection_type' => 'Cable/DSL',
+                    'domain' => 'example.com',
+                    'ip_address' => '1.2.3.4',
+                    'is_anonymous' => true,
+                    'is_anonymous_vpn' => true,
+                    'is_hosting_provider' => true,
+                    'is_legitimate_proxy' => true,
+                    'is_public_proxy' => true,
+                    'is_residential_proxy' => true,
+                    'is_tor_exit_node' => true,
+                    'isp' => 'Comcast',
+                    'mobile_country_code' => '310',
+                    'mobile_network_code' => '004',
+                    'network' => '1.2.3.0/24',
+                    'organization' => 'Blorg',
+                    'static_ip_score' => 1.3,
+                    'user_count' => 2,
+                    'user_type' => 'college',
+                ],
+                'city' => [
+                    'names' => ['en' => 'Minneapolis'],
+                    'confidence' => 76,
+                    'geoname_id' => 9876,
+                ],
+                'location' => [
+                    'average_income' => 24626,
+                    'accuracy_radius' => 1500,
+                    'latitude' => 44.98,
+                    'longitude' => 93.2636,
+                    'metro_code' => 765,
+                    'population_density' => 1341,
+                    'time_zone' => 'America/Chicago',
+                ],
+                'postal' => [
+                    'code' => '55401',
+                    'confidence' => 33,
+                ],
+                'subdivisions' => [
+                    [
+                        'names' => ['en' => 'Minnesota'],
+                        'confidence' => 88,
+                        'geoname_id' => 574635,
+                        'iso_code' => 'MN',
+                    ],
+                ],
+            ],
+            $model->jsonSerialize(),
+            'jsonSerialize returns initial array'
         );
     }
 
     public function testEmptyObjects(): void
     {
-        $raw = ['traits' => ['ip_address' => '5.6.7.8']];
+        $raw = ['traits' => ['ip_address' => '5.6.7.8', 'network' => '5.6.7.0/24']];
 
         $model = new Insights($raw, ['en']);
 
@@ -293,11 +361,6 @@ class InsightsTest extends TestCase
             '$model->mostSpecificSubdivision'
         );
 
-        $this->assertTrue(
-            isset($model->mostSpecificSubdivision),
-            'mostSpecificSubdivision is set'
-        );
-
         $this->assertInstanceOf(
             'GeoIp2\Record\Traits',
             $model->traits,
@@ -306,8 +369,8 @@ class InsightsTest extends TestCase
 
         $this->assertSame(
             $raw,
-            $model->raw,
-            'raw method returns raw input with no added empty values'
+            $model->jsonSerialize(),
+            'jsonSerialize',
         );
     }
 
@@ -332,17 +395,11 @@ class InsightsTest extends TestCase
             $model,
             'no exception when Insights model gets raw data with unknown keys'
         );
-
-        $this->assertSame(
-            $raw,
-            $model->raw,
-            'raw method returns raw input'
-        );
     }
 
     public function testMostSpecificSubdivisionWithNoSubdivisions(): void
     {
-        $model = new Insights([], ['en']);
+        $model = new Insights(['traits' => ['ip_address' => '1.1.1.1']], ['en']);
 
         $this->assertTrue(
             isset($model->mostSpecificSubdivision),
