@@ -5,10 +5,4 @@
       <directory suffix="Test.php">./tests/GeoIp2/Test/</directory>
     </testsuite>
   </testsuites>
-  <logging/>
-  <source>
-    <include>
-      <directory suffix=".php">./src/GeoIp2/</directory>
-    </include>
-  </source>
 </phpunit>
