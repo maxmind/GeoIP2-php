@@ -171,7 +171,7 @@ class ReaderTest extends TestCase
         $ipAddress = '1.0.1.1';
 
         $record = $reader->connectionType($ipAddress);
-        $this->assertSame('Cable/DSL', $record->connectionType);
+        $this->assertSame('Cellular', $record->connectionType);
         $this->assertSame($ipAddress, $record->ipAddress);
         $this->assertSame('1.0.1.0/24', $record->network);
         $reader->close();
