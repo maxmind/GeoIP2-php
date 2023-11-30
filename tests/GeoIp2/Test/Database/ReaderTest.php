@@ -177,6 +177,28 @@ class ReaderTest extends TestCase
         $reader->close();
     }
 
+    public function testCity(): void
+    {
+        $reader = new Reader('maxmind-db/test-data/GeoIP2-City-Test.mmdb');
+
+        // This IP has is_anycast
+        $record = $reader->city('214.1.1.0');
+        $this->assertTrue($record->traits->isAnycast);
+
+        $reader->close();
+    }
+
+    public function testCountry(): void
+    {
+        $reader = new Reader('maxmind-db/test-data/GeoIP2-Country-Test.mmdb');
+
+        // This IP has is_anycast
+        $record = $reader->country('214.1.1.0');
+        $this->assertTrue($record->traits->isAnycast);
+
+        $reader->close();
+    }
+
     public function testDomain(): void
     {
         $reader = new Reader('maxmind-db/test-data/GeoIP2-Domain-Test.mmdb');
@@ -213,6 +235,10 @@ class ReaderTest extends TestCase
         $record = $reader->enterprise('149.101.100.0');
         $this->assertSame('310', $record->traits->mobileCountryCode);
         $this->assertSame('004', $record->traits->mobileNetworkCode);
+
+        // This IP has is_anycast
+        $record = $reader->enterprise('214.1.1.0');
+        $this->assertTrue($record->traits->isAnycast);
 
         $reader->close();
     }

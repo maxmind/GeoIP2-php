@@ -16,6 +16,11 @@ CHANGELOG
   if an invalid IP address is passed to them. Previously, they would make
   a request to the web service and throw a
   `GeoIp2\Exception\InvalidRequestException`.
+* The `isAnycast` property was added to `GeoIp2\Record\Traits`. This returns
+  `true` if the IP address belongs to an [anycast
+  network](https://en.wikipedia.org/wiki/Anycast). This is available for the
+  GeoIP2 Country, City Plus, and Insights web services and the GeoIP2 Country,
+  City, and Enterprise databases.
 
 2.13.0 (2022-08-05)
 -------------------
