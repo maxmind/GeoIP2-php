@@ -76,6 +76,13 @@ class Traits implements \JsonSerializable
     public readonly bool $isAnonymousVpn;
 
     /**
+     * @var bool This is true if the IP address belongs to an [anycast
+     *           network](https://en.wikipedia.org/wiki/Anycast). This property is not
+     *           available from GeoLite databases or web services.
+     */
+    public readonly bool $isAnycast;
+
+    /**
      * @var bool This is true if the IP address belongs
      *           to a hosting or VPN provider (see description of isAnonymousVpn property).
      *           This property is only available from GeoIP2 Insights.
@@ -198,6 +205,7 @@ class Traits implements \JsonSerializable
         $this->ipAddress = $record['ip_address'] ?? null;
         $this->isAnonymous = $record['is_anonymous'] ?? false;
         $this->isAnonymousVpn = $record['is_anonymous_vpn'] ?? false;
+        $this->isAnycast = $record['is_anycast'] ?? false;
         $this->isHostingProvider = $record['is_hosting_provider'] ?? false;
         $this->isLegitimateProxy = $record['is_legitimate_proxy'] ?? false;
         $this->isp = $record['isp'] ?? null;
@@ -241,6 +249,9 @@ class Traits implements \JsonSerializable
         }
         if ($this->isAnonymousVpn !== false) {
             $js['is_anonymous_vpn'] = $this->isAnonymousVpn;
+        }
+        if ($this->isAnycast !== false) {
+            $js['is_anycast'] = $this->isAnycast;
         }
         if ($this->isHostingProvider !== false) {
             $js['is_hosting_provider'] = $this->isHostingProvider;

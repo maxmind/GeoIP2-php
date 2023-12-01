@@ -36,6 +36,7 @@ class CountryTest extends TestCase
         ],
         'traits' => [
             'ip_address' => '1.2.3.4',
+            'is_anycast' => true,
             'prefix_len' => 24,
         ],
     ];
@@ -188,6 +189,7 @@ class CountryTest extends TestCase
             ],
             'traits' => [
                 'ip_address' => '1.2.3.4',
+                'is_anycast' => true,
                 'network' => '1.2.3.0/24',
             ],
         ];

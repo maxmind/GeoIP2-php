@@ -32,6 +32,7 @@ class ClientTest extends TestCase
         'maxmind' => ['queries_remaining' => 11],
         'traits' => [
             'ip_address' => '1.2.3.4',
+            'is_anycast' => true,
             'network' => '1.2.3.0/24',
         ],
     ];
@@ -236,6 +237,11 @@ class ClientTest extends TestCase
             'registered_country is_in_european_union is false'
         );
 
+        $this->assertTrue(
+            $country->traits->isAnycast,
+            'is_anycast'
+        );
+
         $this->assertSame(
             '1.2.3.0/24',
             $country->traits->network,
@@ -253,6 +259,11 @@ class ClientTest extends TestCase
             42,
             $record->continent->geonameId,
             'continent geoname_id is 42'
+        );
+
+        $this->assertTrue(
+            $record->traits->isAnycast,
+            'is_anycast'
         );
 
         $this->assertSame(

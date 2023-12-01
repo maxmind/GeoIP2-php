@@ -76,6 +76,7 @@ class InsightsTest extends TestCase
                 'ip_address' => '1.2.3.4',
                 'is_anonymous' => true,
                 'is_anonymous_vpn' => true,
+                'is_anycast' => true,
                 'is_hosting_provider' => true,
                 'is_legitimate_proxy' => true,
                 'is_public_proxy' => true,
@@ -171,6 +172,11 @@ class InsightsTest extends TestCase
         );
 
         $this->assertTrue(
+            $model->traits->isAnycast,
+            '$model->traits->isAnycast is true'
+        );
+
+        $this->assertTrue(
             $model->traits->isHostingProvider,
             '$model->traits->isHostingProvider is true'
         );
@@ -255,6 +261,7 @@ class InsightsTest extends TestCase
                     'ip_address' => '1.2.3.4',
                     'is_anonymous' => true,
                     'is_anonymous_vpn' => true,
+                    'is_anycast' => true,
                     'is_hosting_provider' => true,
                     'is_legitimate_proxy' => true,
                     'is_public_proxy' => true,
