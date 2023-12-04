@@ -45,10 +45,10 @@ php composer.phar update --no-dev
 perl -pi -e "s/(?<=const VERSION = ').+?(?=';)/$tag/g" src/WebService/Client.php
 
 
-box_phar_hash='d862951a7acca5641bdd3d3e289e675f3c46810c7994aebfe0c9188a80f6cac1  box.phar'
+box_phar_hash='c24c400c424a68041d7af146c71943bf1acc0c5abafa45297c503b832b9c6b16  box.phar'
 
 if ! echo "$box_phar_hash" | sha256sum -c; then
-    wget -O box.phar "https://github.com/box-project/box/releases/download/4.0.1/box.phar"
+    wget -O box.phar "https://github.com/box-project/box/releases/download/4.5.1/box.phar"
 fi
 
 echo "$box_phar_hash" | sha256sum -c
@@ -93,10 +93,10 @@ if [ -n "$(git status --porcelain)" ]; then
 fi
 
 # Using Composer is possible, but they don't recommend it.
-phpdocumentor_phar_hash='4a93d278fd4581f17760903134d85fcde3d40d93f739c8c648f3ed02c9c3e7bb  phpDocumentor.phar'
+phpdocumentor_phar_hash='bad7e4b8c99e73391bb3183a127593ecd1cd66ae42b4a33efe495d193e257f04  phpDocumentor.phar'
 
 if ! echo "$phpdocumentor_phar_hash" | sha256sum -c; then
-    wget -O phpDocumentor.phar https://github.com/phpDocumentor/phpDocumentor/releases/download/v3.3.1/phpDocumentor.phar
+    wget -O phpDocumentor.phar https://github.com/phpDocumentor/phpDocumentor/releases/download/v3.4.3/phpDocumentor.phar
 fi
 
 echo "$phpdocumentor_phar_hash" | sha256sum -c
@@ -106,12 +106,16 @@ cachedir="/tmp/phpdoc-$$-$RANDOM"
 rm -rf "$cachedir"
 
 php phpDocumentor.phar \
+    --visibility=public \
+    --cache-folder="$cachedir" \
+    --title="GeoIP2 PHP API $tag" \
+    run \
     -d "$PWD/../src" \
-    -d "$PWD/.maxminddb/src" \
-    --visibility public \
-    --cache-folder "$cachedir" \
-    --title "GeoIP2 PHP API $tag" \
     -t "doc/$tag"
+# This used to work but doesn't as of 4.5.1. They say that they are working
+# on fixing it. Neither the config file nor the relative path fix work as
+# suggested either.
+#    -d "$PWD/.maxminddb/src" \
 
 rm -rf "$cachedir"
 
