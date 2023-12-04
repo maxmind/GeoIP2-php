@@ -1,8 +1,8 @@
 CHANGELOG
 =========
 
-3.0.0
--------------------
+3.0.0 (2023-12-04)
+------------------
 
 * IMPORTANT: PHP 8.1 or greater is now required.
 * BREAKING: Read-only properties are now used for the model and record
