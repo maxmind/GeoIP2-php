@@ -4,6 +4,11 @@ declare(strict_types=1);
 
 namespace GeoIp2\Model;
 
+use GeoIp2\Record\City;
+use GeoIp2\Record\Location;
+use GeoIp2\Record\Postal;
+use GeoIp2\Record\Subdivision;
+
 /**
  * Model class for the data returned by City Plus web service and City
  * database.
@@ -14,28 +19,28 @@ namespace GeoIp2\Model;
 class City extends Country
 {
     /**
-     * @var \GeoIp2\Record\City city data for the requested IP
-     *                          address
+     * @var City city data for the requested IP
+     *           address
      */
     public readonly \GeoIp2\Record\City $city;
 
     /**
-     * @var \GeoIp2\Record\Location location data for the
-     *                              requested IP address
+     * @var Location location data for the
+     *               requested IP address
      */
     public readonly \GeoIp2\Record\Location $location;
 
     /**
-     * @var \GeoIp2\Record\Subdivision An object
-     *                                 representing the most specific subdivision returned. If the response
-     *                                 did not contain any subdivisions, this method returns an empty
-     *                                 \GeoIp2\Record\Subdivision object.
+     * @var Subdivision An object
+     *                  representing the most specific subdivision returned. If the response
+     *                  did not contain any subdivisions, this method returns an empty
+     *                  \GeoIp2\Record\Subdivision object.
      */
     public readonly \GeoIp2\Record\Subdivision $mostSpecificSubdivision;
 
     /**
-     * @var \GeoIp2\Record\Postal postal data for the
-     *                            requested IP address
+     * @var Postal postal data for the
+     *             requested IP address
      */
     public readonly \GeoIp2\Record\Postal $postal;
 

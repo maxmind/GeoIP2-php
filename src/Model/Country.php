@@ -4,6 +4,12 @@ declare(strict_types=1);
 
 namespace GeoIp2\Model;
 
+use GeoIp2\Record\Continent;
+use GeoIp2\Record\Country;
+use GeoIp2\Record\MaxMind;
+use GeoIp2\Record\RepresentedCountry;
+use GeoIp2\Record\Traits;
+
 /**
  * Model class for the data returned by GeoIP2 Country web service and database.
  *
@@ -12,42 +18,42 @@ namespace GeoIp2\Model;
 class Country implements \JsonSerializable
 {
     /**
-     * @var \GeoIp2\Record\Continent continent data for the
-     *                               requested IP address
+     * @var Continent continent data for the
+     *                requested IP address
      */
     public readonly \GeoIp2\Record\Continent $continent;
 
     /**
-     * @var \GeoIp2\Record\Country Country data for the requested
-     *                             IP address. This object represents the country where MaxMind believes the
-     *                             end user is located.
+     * @var Country Country data for the requested
+     *              IP address. This object represents the country where MaxMind believes the
+     *              end user is located.
      */
     public readonly \GeoIp2\Record\Country $country;
 
     /**
-     * @var \GeoIp2\Record\MaxMind data related to your MaxMind
-     *                             account
+     * @var MaxMind data related to your MaxMind
+     *              account
      */
     public readonly \GeoIp2\Record\MaxMind $maxmind;
 
     /**
-     * @var \GeoIp2\Record\Country Registered country
-     *                             data for the requested IP address. This record represents the country
-     *                             where the ISP has registered a given IP block and may differ from the
-     *                             user's country.
+     * @var Country Registered country
+     *              data for the requested IP address. This record represents the country
+     *              where the ISP has registered a given IP block and may differ from the
+     *              user's country.
      */
     public readonly \GeoIp2\Record\Country $registeredCountry;
 
     /**
-     * @var \GeoIp2\Record\RepresentedCountry * Represented country data for the requested IP address. The represented
-     *                                        country is used for things like military bases. It is only present when
-     *                                        the represented country differs from the country.
+     * @var RepresentedCountry * Represented country data for the requested IP address. The represented
+     *                         country is used for things like military bases. It is only present when
+     *                         the represented country differs from the country.
      */
     public readonly \GeoIp2\Record\RepresentedCountry $representedCountry;
 
     /**
-     * @var \GeoIp2\Record\Traits data for the traits of the
-     *                            requested IP address
+     * @var Traits data for the traits of the
+     *             requested IP address
      */
     public readonly \GeoIp2\Record\Traits $traits;
 
