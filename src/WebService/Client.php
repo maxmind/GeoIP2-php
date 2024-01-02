@@ -119,15 +119,14 @@ class Client implements ProviderInterface
      *                          address is provided, the address that the web service is called
      *                          from will be used.
      *
-     * @throws AddressNotFoundException if the address you
-     *                                  provided is not in our database (e.g., a private address).
-     * @throws AuthenticationException  if there is a problem
-     *                                  with the account ID or license key that you provided
-     * @throws OutOfQueriesException    if your account is out
-     *                                  of queries
-     * @throws InvalidRequestException} if your request was received by the web service but is
-     *                                                    invalid for some other reason.  This may indicate an issue
-     *                                                    with this API. Please report the error to MaxMind.
+     * @throws AddressNotFoundException  if the address you provided is not in our database (e.g.,
+     *                                   a private address).
+     * @throws AuthenticationException   if there is a problem with the account ID or license key
+     *                                   that you provided
+     * @throws OutOfQueriesException     if your account is out of queries
+     * @throws InvalidRequestException   if your request was received by the web service but is
+     *                                   invalid for some other reason.  This may indicate an issue
+     *                                   with this API. Please report the error to MaxMind.
      * @throws HttpException             if an unexpected HTTP error code or message was returned.
      *                                   This could indicate a problem with the connection between
      *                                   your server and the web service or that the web service
@@ -151,14 +150,13 @@ class Client implements ProviderInterface
      *                          address is provided, the address that the web service is called
      *                          from will be used.
      *
-     * @throws AddressNotFoundException if the address you provided is not in our database (e.g.,
-     *                                  a private address).
-     * @throws AuthenticationException  if there is a problem
-     *                                  with the account ID or license key that you provided
-     * @throws OutOfQueriesException    if your account is out of queries
-     * @throws InvalidRequestException} if your request was received by the web service but is
-     *                                                    invalid for some other reason.  This may indicate an
-     *                                                    issue with this API. Please report the error to MaxMind.
+     * @throws AddressNotFoundException  if the address you provided is not in our database (e.g.,
+     *                                   a private address).
+     * @throws AuthenticationException   if there is a problem with the account ID or license key that you provided
+     * @throws OutOfQueriesException     if your account is out of queries
+     * @throws InvalidRequestException   if your request was received by the web service but is
+     *                                   invalid for some other reason.  This may indicate an
+     *                                   issue with this API. Please report the error to MaxMind.
      * @throws HttpException             if an unexpected HTTP error
      *                                   code or message was returned. This could indicate a problem
      *                                   with the connection between your server and the web service
@@ -183,15 +181,14 @@ class Client implements ProviderInterface
      *                          address is provided, the address that the web service is called
      *                          from will be used.
      *
-     * @throws AddressNotFoundException if the address you
-     *                                  provided is not in our database (e.g., a private address).
-     * @throws AuthenticationException  if there is a problem
-     *                                  with the account ID or license key that you provided
-     * @throws OutOfQueriesException    if your account is out
-     *                                  of queries
-     * @throws InvalidRequestException} if your request was received by the web service but is
-     *                                                    invalid for some other reason.  This may indicate an
-     *                                                    issue with this API. Please report the error to MaxMind.
+     * @throws AddressNotFoundException  if the address you provided is not in our database (e.g.,
+     *                                   a private address).
+     * @throws AuthenticationException   if there is a problem with the account ID or license key
+     *                                   that you provided
+     * @throws OutOfQueriesException     if your account is out of queries
+     * @throws InvalidRequestException   if your request was received by the web service but is
+     *                                   invalid for some other reason.  This may indicate an
+     *                                   issue with this API. Please report the error to MaxMind.
      * @throws HttpException             if an unexpected HTTP error code or message was returned.
      *                                   This could indicate a problem with the connection between
      *                                   your server and the web service or that the web service
