@@ -61,7 +61,7 @@ class Country implements \JsonSerializable
      */
     public function __construct(array $raw, array $locales = ['en'])
     {
-        $this->continent = new \GeoIp2\Record\Continent(
+        $this->continent = new Continent(
             $raw['continent'] ?? [],
             $locales
         );
@@ -69,16 +69,16 @@ class Country implements \JsonSerializable
             $raw['country'] ?? [],
             $locales
         );
-        $this->maxmind = new \GeoIp2\Record\MaxMind($raw['maxmind'] ?? []);
+        $this->maxmind = new MaxMind($raw['maxmind'] ?? []);
         $this->registeredCountry = new CountryRecord(
             $raw['registered_country'] ?? [],
             $locales
         );
-        $this->representedCountry = new \GeoIp2\Record\RepresentedCountry(
+        $this->representedCountry = new RepresentedCountry(
             $raw['represented_country'] ?? [],
             $locales
         );
-        $this->traits = new \GeoIp2\Record\Traits($raw['traits'] ?? []);
+        $this->traits = new Traits($raw['traits'] ?? []);
     }
 
     public function jsonSerialize(): ?array

@@ -66,13 +66,13 @@ class City extends Country
         parent::__construct($raw, $locales);
 
         $this->city = new CityRecord($raw['city'] ?? [], $locales);
-        $this->location = new \GeoIp2\Record\Location($raw['location'] ?? []);
-        $this->postal = new \GeoIp2\Record\Postal($raw['postal'] ?? []);
+        $this->location = new Location($raw['location'] ?? []);
+        $this->postal = new Postal($raw['postal'] ?? []);
 
         if (!isset($raw['subdivisions'])) {
             $this->subdivisions = [];
             $this->mostSpecificSubdivision =
-                    new \GeoIp2\Record\Subdivision([], $locales);
+                    new Subdivision([], $locales);
 
             return;
         }
@@ -80,7 +80,7 @@ class City extends Country
         $subdivisions = [];
         foreach ($raw['subdivisions'] as $sub) {
             $subdivisions[] =
-                new \GeoIp2\Record\Subdivision($sub, $locales)
+                new Subdivision($sub, $locales)
             ;
         }
 

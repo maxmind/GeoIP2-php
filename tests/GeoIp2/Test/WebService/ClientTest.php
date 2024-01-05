@@ -559,7 +559,7 @@ class ClientTest extends TestCase
 
         $method = strtolower($service);
 
-        $client = new \GeoIp2\WebService\Client(
+        $client = new Client(
             $accountId,
             $licenseKey,
             $locales,

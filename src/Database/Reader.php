@@ -16,6 +16,7 @@ use GeoIp2\Model\Isp;
 use GeoIp2\ProviderInterface;
 use MaxMind\Db\Reader as DbReader;
 use MaxMind\Db\Reader\InvalidDatabaseException;
+use MaxMind\Db\Reader\Metadata;
 
 /**
  * Instances of this class provide a reader for the GeoIP2 database format.
@@ -250,7 +251,7 @@ class Reader implements ProviderInterface
      * @throws \InvalidArgumentException if arguments are passed to the method
      * @throws \BadMethodCallException   if the database has been closed
      *
-     * @return \MaxMind\Db\Reader\Metadata object for the database
+     * @return Metadata object for the database
      */
     public function metadata(): DbReader\Metadata
     {
