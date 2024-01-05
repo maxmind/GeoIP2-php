@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace GeoIp2\Model;
 
 use GeoIp2\Record\Continent;
-use GeoIp2\Record\Country;
+use GeoIp2\Record\Country as CountryRecord;
 use GeoIp2\Record\MaxMind;
 use GeoIp2\Record\RepresentedCountry;
 use GeoIp2\Record\Traits;
@@ -23,11 +23,11 @@ class Country implements \JsonSerializable
     public readonly \GeoIp2\Record\Continent $continent;
 
     /**
-     * @var Country Country data for the requested IP address. This object
-     *              represents the country where MaxMind believes the end user
-     *              is located.
+     * @var CountryRecord Country data for the requested IP address. This
+     *                    object represents the country where MaxMind believes
+     *                    the end user is located.
      */
-    public readonly \GeoIp2\Record\Country $country;
+    public readonly CountryRecord $country;
 
     /**
      * @var MaxMind data related to your MaxMind account
@@ -35,11 +35,12 @@ class Country implements \JsonSerializable
     public readonly \GeoIp2\Record\MaxMind $maxmind;
 
     /**
-     * @var Country Registered country data for the requested IP address. This
-     *              record represents the country where the ISP has registered
-     *              a given IP block and may differ from the user's country.
+     * @var CountryRecord Registered country data for the requested IP address.
+     *                    This record represents the country where the ISP has
+     *                    registered a given IP block and may differ from the
+     *                    user's country.
      */
-    public readonly \GeoIp2\Record\Country $registeredCountry;
+    public readonly CountryRecord $registeredCountry;
 
     /**
      * @var RepresentedCountry Represented country data for the requested IP
@@ -64,12 +65,12 @@ class Country implements \JsonSerializable
             $raw['continent'] ?? [],
             $locales
         );
-        $this->country = new \GeoIp2\Record\Country(
+        $this->country = new CountryRecord(
             $raw['country'] ?? [],
             $locales
         );
         $this->maxmind = new \GeoIp2\Record\MaxMind($raw['maxmind'] ?? []);
-        $this->registeredCountry = new \GeoIp2\Record\Country(
+        $this->registeredCountry = new CountryRecord(
             $raw['registered_country'] ?? [],
             $locales
         );

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace GeoIp2\Model;
 
-use GeoIp2\Record\City;
+use GeoIp2\Record\City as CityRecord;
 use GeoIp2\Record\Location;
 use GeoIp2\Record\Postal;
 use GeoIp2\Record\Subdivision;
@@ -19,9 +19,9 @@ use GeoIp2\Record\Subdivision;
 class City extends Country
 {
     /**
-     * @var City city data for the requested IP address
+     * @var CityRecord city data for the requested IP address
      */
-    public readonly \GeoIp2\Record\City $city;
+    public readonly CityRecord $city;
 
     /**
      * @var Location location data for the requested IP address
@@ -65,7 +65,7 @@ class City extends Country
     {
         parent::__construct($raw, $locales);
 
-        $this->city = new \GeoIp2\Record\City($raw['city'] ?? [], $locales);
+        $this->city = new CityRecord($raw['city'] ?? [], $locales);
         $this->location = new \GeoIp2\Record\Location($raw['location'] ?? []);
         $this->postal = new \GeoIp2\Record\Postal($raw['postal'] ?? []);
 
