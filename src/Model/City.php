@@ -4,6 +4,11 @@ declare(strict_types=1);
 
 namespace GeoIp2\Model;
 
+use GeoIp2\Record\City as CityRecord;
+use GeoIp2\Record\Location;
+use GeoIp2\Record\Postal;
+use GeoIp2\Record\Subdivision;
+
 /**
  * Model class for the data returned by City Plus web service and City
  * database.
@@ -14,39 +19,42 @@ namespace GeoIp2\Model;
 class City extends Country
 {
     /**
-     * @var \GeoIp2\Record\City city data for the requested IP
-     *                          address
+     * @var CityRecord city data for the requested IP address
      */
-    public readonly \GeoIp2\Record\City $city;
+    public readonly CityRecord $city;
 
     /**
-     * @var \GeoIp2\Record\Location location data for the
-     *                              requested IP address
+     * @var Location location data for the requested IP address
      */
     public readonly \GeoIp2\Record\Location $location;
 
     /**
-     * @var \GeoIp2\Record\Subdivision An object
-     *                                 representing the most specific subdivision returned. If the response
-     *                                 did not contain any subdivisions, this method returns an empty
-     *                                 \GeoIp2\Record\Subdivision object.
+     * @var Subdivision An object representing the most specific subdivision
+     *                  returned. If the response did not contain any
+     *                  subdivisions, this method returns an empty
+     *                  \GeoIp2\Record\Subdivision object.
      */
     public readonly \GeoIp2\Record\Subdivision $mostSpecificSubdivision;
 
     /**
-     * @var \GeoIp2\Record\Postal postal data for the
-     *                            requested IP address
+     * @var Postal postal data for the
+     *             requested IP address
      */
     public readonly \GeoIp2\Record\Postal $postal;
 
     /**
      * @var array<\GeoIp2\Record\Subdivision> An array of \GeoIp2\Record\Subdivision
-     *                                        objects representing the country subdivisions for the requested IP
-     *                                        address. The number and type of subdivisions varies by country, but a
-     *                                        subdivision is typically a state, province, county, etc. Subdivisions
-     *                                        are ordered from most general (largest) to most specific (smallest).
-     *                                        If the response did not contain any subdivisions, this method returns
-     *                                        an empty array.
+     *                                        objects representing the country
+     *                                        subdivisions for the requested IP
+     *                                        address. The number and type of
+     *                                        subdivisions varies by country,
+     *                                        but a subdivision is typically a
+     *                                        state, province, county, etc.
+     *                                        Subdivisions are ordered from most
+     *                                        general (largest) to most specific
+     *                                        (smallest). If the response did
+     *                                        not contain any subdivisions, this
+     *                                        method returns an empty array.
      */
     public readonly array $subdivisions;
 
@@ -57,14 +65,14 @@ class City extends Country
     {
         parent::__construct($raw, $locales);
 
-        $this->city = new \GeoIp2\Record\City($raw['city'] ?? [], $locales);
-        $this->location = new \GeoIp2\Record\Location($raw['location'] ?? []);
-        $this->postal = new \GeoIp2\Record\Postal($raw['postal'] ?? []);
+        $this->city = new CityRecord($raw['city'] ?? [], $locales);
+        $this->location = new Location($raw['location'] ?? []);
+        $this->postal = new Postal($raw['postal'] ?? []);
 
         if (!isset($raw['subdivisions'])) {
             $this->subdivisions = [];
             $this->mostSpecificSubdivision =
-                    new \GeoIp2\Record\Subdivision([], $locales);
+                    new Subdivision([], $locales);
 
             return;
         }
@@ -72,7 +80,7 @@ class City extends Country
         $subdivisions = [];
         foreach ($raw['subdivisions'] as $sub) {
             $subdivisions[] =
-                new \GeoIp2\Record\Subdivision($sub, $locales)
+                new Subdivision($sub, $locales)
             ;
         }
 

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace GeoIp2\Test\Database;
 
 use GeoIp2\Database\Reader;
+use GeoIp2\Exception\AddressNotFoundException;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -76,7 +77,7 @@ class ReaderTest extends TestCase
 
     public function testUnknownAddress(): void
     {
-        $this->expectException(\GeoIp2\Exception\AddressNotFoundException::class);
+        $this->expectException(AddressNotFoundException::class);
         $this->expectExceptionMessage('The address 10.10.10.10 is not in the database.');
 
         $reader = new Reader('maxmind-db/test-data/GeoIP2-City-Test.mmdb');
