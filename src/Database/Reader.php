@@ -253,7 +253,7 @@ class Reader implements ProviderInterface
      *
      * @return Metadata object for the database
      */
-    public function metadata(): DbReader\Metadata
+    public function metadata(): Metadata
     {
         return $this->dbReader->metadata();
     }

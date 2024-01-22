@@ -20,7 +20,7 @@ class Country implements \JsonSerializable
     /**
      * @var Continent continent data for the requested IP address
      */
-    public readonly \GeoIp2\Record\Continent $continent;
+    public readonly Continent $continent;
 
     /**
      * @var CountryRecord Country data for the requested IP address. This
@@ -32,7 +32,7 @@ class Country implements \JsonSerializable
     /**
      * @var MaxMind data related to your MaxMind account
      */
-    public readonly \GeoIp2\Record\MaxMind $maxmind;
+    public readonly MaxMind $maxmind;
 
     /**
      * @var CountryRecord Registered country data for the requested IP address.
@@ -49,12 +49,12 @@ class Country implements \JsonSerializable
      *                         when the represented country differs from the
      *                         country.
      */
-    public readonly \GeoIp2\Record\RepresentedCountry $representedCountry;
+    public readonly RepresentedCountry $representedCountry;
 
     /**
      * @var Traits data for the traits of the requested IP address
      */
-    public readonly \GeoIp2\Record\Traits $traits;
+    public readonly Traits $traits;
 
     /**
      * @ignore

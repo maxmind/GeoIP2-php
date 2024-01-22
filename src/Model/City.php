@@ -26,7 +26,7 @@ class City extends Country
     /**
      * @var Location location data for the requested IP address
      */
-    public readonly \GeoIp2\Record\Location $location;
+    public readonly Location $location;
 
     /**
      * @var Subdivision An object representing the most specific subdivision
@@ -34,13 +34,13 @@ class City extends Country
      *                  subdivisions, this method returns an empty
      *                  \GeoIp2\Record\Subdivision object.
      */
-    public readonly \GeoIp2\Record\Subdivision $mostSpecificSubdivision;
+    public readonly Subdivision $mostSpecificSubdivision;
 
     /**
      * @var Postal postal data for the
      *             requested IP address
      */
-    public readonly \GeoIp2\Record\Postal $postal;
+    public readonly Postal $postal;
 
     /**
      * @var array<\GeoIp2\Record\Subdivision> An array of \GeoIp2\Record\Subdivision
