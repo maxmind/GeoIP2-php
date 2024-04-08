@@ -22,6 +22,9 @@ jobs:
       - name: Install dependencies
         run: composer install --no-progress --prefer-dist --optimize-autoloader
 
+      - name: Validate composer.json
+        run: composer validate
+
       - name: Lint with php-cs-fixer
         run: vendor/bin/php-cs-fixer fix --verbose --diff --dry-run
 
