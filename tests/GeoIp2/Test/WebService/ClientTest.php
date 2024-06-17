@@ -515,7 +515,7 @@ class ClientTest extends TestCase
             ->method('get')
             ->willReturn([$statusCode, $contentType, $responseBody]);
         $factory = $this->getMockBuilder(
-            'MaxMind\\WebService\\Http\\RequestFactory'
+            'MaxMind\WebService\Http\RequestFactory'
         )->getMock();
         $host = isset($options['host']) ? $options['host'] : 'geoip.maxmind.com';
         $url = 'https://' . $host . '/geoip/v2.1/' . strtolower($service)
