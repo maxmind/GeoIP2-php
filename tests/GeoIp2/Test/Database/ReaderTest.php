@@ -15,6 +15,9 @@ use PHPUnit\Framework\TestCase;
  */
 class ReaderTest extends TestCase
 {
+    /**
+     * @return array<list<string>>
+     */
     public static function databaseTypes(): array
     {
         return [['City', 'city'], ['Country', 'country']];

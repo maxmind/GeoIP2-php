@@ -44,6 +44,9 @@ class ClientTest extends TestCase
         ],
     ];
 
+    /**
+     * @return list<array<string, mixed>>
+     */
     private function getResponse(string $service, string $ipAddress): array
     {
         if ($service === 'Insights') {
@@ -492,6 +495,10 @@ class ClientTest extends TestCase
         return [$status, $headers, $body];
     }
 
+    /**
+     * @param list<string>         $locales
+     * @param array<string, mixed> $options
+     */
     private function makeRequest(
         string $service,
         string $ipAddress,

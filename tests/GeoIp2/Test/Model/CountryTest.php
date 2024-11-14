@@ -41,6 +41,7 @@ class CountryTest extends TestCase
         ],
     ];
 
+    // @phpstan-ignore-next-line
     private ?Country $model;
 
     protected function setUp(): void
