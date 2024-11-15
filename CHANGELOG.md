@@ -1,7 +1,7 @@
 CHANGELOG
 =========
 
-3.1.0
+3.1.0 (2024-11-15)
 ------------------
 
 * This library no longer uses implicitly nullable parameter types. This
