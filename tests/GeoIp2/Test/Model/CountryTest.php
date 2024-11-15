@@ -41,6 +41,7 @@ class CountryTest extends TestCase
         ],
     ];
 
+    // @phpstan-ignore-next-line
     private ?Country $model;
 
     protected function setUp(): void
@@ -204,10 +205,6 @@ class CountryTest extends TestCase
             $this->model->country->jsonSerialize(),
             'jsonSerialize returns initial array for the record'
         );
-
-        if (version_compare(\PHP_VERSION, '5.4.0', '<')) {
-            $this->markTestSkipped('Requires PHP 5.4+.');
-        }
 
         $this->assertSame(
             json_encode($js),

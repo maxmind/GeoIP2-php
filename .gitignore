@@ -2,6 +2,7 @@ _site
 .gh-pages
 .idea
 .php_cs.cache
+.php-cs-fixer.cache
 .phpunit.cache/
 .phpunit.result.cache
 GeoLite2-City.mmdb

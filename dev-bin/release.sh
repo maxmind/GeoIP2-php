@@ -45,10 +45,10 @@ php composer.phar update --no-dev
 perl -pi -e "s/(?<=const VERSION = ').+?(?=';)/$tag/g" src/WebService/Client.php
 
 
-box_phar_hash='c24c400c424a68041d7af146c71943bf1acc0c5abafa45297c503b832b9c6b16  box.phar'
+box_phar_hash='8d12a7d69a5003a80bd603ea95a8f3dcea30b9a2ad84cd7cb15b8193929def9e  box.phar'
 
 if ! echo "$box_phar_hash" | sha256sum -c; then
-    wget -O box.phar "https://github.com/box-project/box/releases/download/4.5.1/box.phar"
+    wget -O box.phar "https://github.com/box-project/box/releases/download/4.6.1/box.phar"
 fi
 
 echo "$box_phar_hash" | sha256sum -c
@@ -93,10 +93,10 @@ if [ -n "$(git status --porcelain)" ]; then
 fi
 
 # Using Composer is possible, but they don't recommend it.
-phpdocumentor_phar_hash='bad7e4b8c99e73391bb3183a127593ecd1cd66ae42b4a33efe495d193e257f04  phpDocumentor.phar'
+phpdocumentor_phar_hash='9760ac280a10041928a8743354f68692c22f14cd5d05135dfc15e11d3b3c25ea  phpDocumentor.phar'
 
 if ! echo "$phpdocumentor_phar_hash" | sha256sum -c; then
-    wget -O phpDocumentor.phar https://github.com/phpDocumentor/phpDocumentor/releases/download/v3.4.3/phpDocumentor.phar
+    wget -O phpDocumentor.phar https://github.com/phpDocumentor/phpDocumentor/releases/download/v3.5.3/phpDocumentor.phar
 fi
 
 echo "$phpdocumentor_phar_hash" | sha256sum -c

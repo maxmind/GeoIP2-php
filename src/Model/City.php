@@ -60,6 +60,9 @@ class City extends Country
 
     /**
      * @ignore
+     *
+     * @param array<string, mixed> $raw
+     * @param list<string>         $locales
      */
     public function __construct(array $raw, array $locales = ['en'])
     {
@@ -90,6 +93,9 @@ class City extends Country
         $this->subdivisions = $subdivisions;
     }
 
+    /**
+     * @return array<string, mixed>|null
+     */
     public function jsonSerialize(): ?array
     {
         $js = parent::jsonSerialize();

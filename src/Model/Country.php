@@ -58,6 +58,9 @@ class Country implements \JsonSerializable
 
     /**
      * @ignore
+     *
+     * @param array<string, mixed> $raw
+     * @param list<string>         $locales
      */
     public function __construct(array $raw, array $locales = ['en'])
     {
@@ -81,6 +84,9 @@ class Country implements \JsonSerializable
         $this->traits = new Traits($raw['traits'] ?? []);
     }
 
+    /**
+     * @return array<string, mixed>|null
+     */
     public function jsonSerialize(): ?array
     {
         $js = [];

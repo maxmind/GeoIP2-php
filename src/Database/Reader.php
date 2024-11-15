@@ -56,9 +56,9 @@ class Reader implements ProviderInterface
     /**
      * Constructor.
      *
-     * @param string $filename the path to the GeoIP2 database file
-     * @param array  $locales  list of locale codes to use in name property
-     *                         from most preferred to least preferred
+     * @param string        $filename the path to the GeoIP2 database file
+     * @param array<string> $locales  list of locale codes to use in name property
+     *                                from most preferred to least preferred
      *
      * @throws InvalidDatabaseException if the database is corrupt or invalid
      */
@@ -215,6 +215,9 @@ class Reader implements ProviderInterface
         return new $class($record);
     }
 
+    /**
+     * @return array{0:array<string, mixed>, 1:int}
+     */
     private function getRecord(string $class, string $type, string $ipAddress): array
     {
         if (!str_contains($this->dbType, $type)) {

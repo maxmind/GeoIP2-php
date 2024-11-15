@@ -58,30 +58,30 @@ class Client implements ProviderInterface
     private WsClient $client;
     private static string $basePath = '/geoip/v2.1';
 
-    public const VERSION = 'v3.0.0';
+    public const VERSION = 'v3.1.0';
 
     /**
      * Constructor.
      *
-     * @param int    $accountId  your MaxMind account ID
-     * @param string $licenseKey your MaxMind license key
-     * @param array  $locales    list of locale codes to use in name property
-     *                           from most preferred to least preferred
-     * @param array  $options    array of options. Valid options include:
-     *                           * `host` - The host to use when querying the web
-     *                           service. To query the GeoLite2 web service
-     *                           instead of the GeoIP2 web service, set the
-     *                           host to `geolite.info`. To query the Sandbox
-     *                           GeoIP2 web service instead of the production
-     *                           GeoIP2 web service, set the host to
-     *                           `sandbox.maxmind.com`. The sandbox allows you to
-     *                           experiment with the API without affecting your
-     *                           production data.
-     *                           * `timeout` - Timeout in seconds.
-     *                           * `connectTimeout` - Initial connection timeout in seconds.
-     *                           * `proxy` - The HTTP proxy to use. May include a schema, port,
-     *                           username, and password, e.g.,
-     *                           `http://username:password@127.0.0.1:10`.
+     * @param int                  $accountId  your MaxMind account ID
+     * @param string               $licenseKey your MaxMind license key
+     * @param list<string>         $locales    list of locale codes to use in name property
+     *                                         from most preferred to least preferred
+     * @param array<string, mixed> $options    array of options. Valid options include:
+     *                                         * `host` - The host to use when querying the web
+     *                                         service. To query the GeoLite2 web service
+     *                                         instead of the GeoIP2 web service, set the
+     *                                         host to `geolite.info`. To query the Sandbox
+     *                                         GeoIP2 web service instead of the production
+     *                                         GeoIP2 web service, set the host to
+     *                                         `sandbox.maxmind.com`. The sandbox allows you to
+     *                                         experiment with the API without affecting your
+     *                                         production data.
+     *                                         * `timeout` - Timeout in seconds.
+     *                                         * `connectTimeout` - Initial connection timeout in seconds.
+     *                                         * `proxy` - The HTTP proxy to use. May include a schema, port,
+     *                                         username, and password, e.g.,
+     *                                         `http://username:password@127.0.0.1:10`.
      */
     public function __construct(
         int $accountId,
