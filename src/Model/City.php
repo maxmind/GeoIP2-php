@@ -43,18 +43,18 @@ class City extends Country
     public readonly Postal $postal;
 
     /**
-     * @var array<\GeoIp2\Record\Subdivision> An array of \GeoIp2\Record\Subdivision
-     *                                        objects representing the country
-     *                                        subdivisions for the requested IP
-     *                                        address. The number and type of
-     *                                        subdivisions varies by country,
-     *                                        but a subdivision is typically a
-     *                                        state, province, county, etc.
-     *                                        Subdivisions are ordered from most
-     *                                        general (largest) to most specific
-     *                                        (smallest). If the response did
-     *                                        not contain any subdivisions, this
-     *                                        method returns an empty array.
+     * @var array<Subdivision> An array of \GeoIp2\Record\Subdivision
+     *                         objects representing the country
+     *                         subdivisions for the requested IP
+     *                         address. The number and type of
+     *                         subdivisions varies by country,
+     *                         but a subdivision is typically a
+     *                         state, province, county, etc.
+     *                         Subdivisions are ordered from most
+     *                         general (largest) to most specific
+     *                         (smallest). If the response did
+     *                         not contain any subdivisions, this
+     *                         method returns an empty array.
      */
     public readonly array $subdivisions;
 
