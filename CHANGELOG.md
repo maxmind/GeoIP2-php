@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+3.2.0
+------------------
+
+* `metroCode` on `GeoIp2\Record\Location` has been deprecated. The code
+  values are no longer being maintained.
+
 3.1.0 (2024-11-15)
 ------------------
 
