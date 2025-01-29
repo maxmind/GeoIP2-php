@@ -6,6 +6,8 @@ on:
   schedule:
     - cron: '55 3 * * SUN'
 
+permissions: {}
+
 jobs:
   run:
     runs-on: ubuntu-latest
