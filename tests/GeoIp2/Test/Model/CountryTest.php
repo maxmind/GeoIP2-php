@@ -170,8 +170,8 @@ class CountryTest extends TestCase
 
     public function testJsonSerialize(): void
     {
-        $js =
-        [
+        $js
+        = [
             'continent' => [
                 'names' => ['en' => 'North America'],
                 'code' => 'NA',
