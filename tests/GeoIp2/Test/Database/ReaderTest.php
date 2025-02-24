@@ -16,14 +16,6 @@ use PHPUnit\Framework\TestCase;
 class ReaderTest extends TestCase
 {
     /**
-     * @return array<list<string>>
-     */
-    public static function databaseTypes(): array
-    {
-        return [['City', 'city'], ['Country', 'country']];
-    }
-
-    /**
      * @dataProvider databaseTypes
      */
     public function testDefaultLocale(string $type, string $method): void
@@ -76,6 +68,14 @@ class ReaderTest extends TestCase
             'registered_country is_in_european_union is true'
         );
         $reader->close();
+    }
+
+    /**
+     * @return array<list<string>>
+     */
+    public static function databaseTypes(): array
+    {
+        return [['City', 'city'], ['Country', 'country']];
     }
 
     public function testUnknownAddress(): void

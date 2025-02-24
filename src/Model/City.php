@@ -74,22 +74,22 @@ class City extends Country
 
         if (!isset($raw['subdivisions'])) {
             $this->subdivisions = [];
-            $this->mostSpecificSubdivision =
-                    new Subdivision([], $locales);
+            $this->mostSpecificSubdivision
+                    = new Subdivision([], $locales);
 
             return;
         }
 
         $subdivisions = [];
         foreach ($raw['subdivisions'] as $sub) {
-            $subdivisions[] =
-                new Subdivision($sub, $locales)
+            $subdivisions[]
+                = new Subdivision($sub, $locales)
             ;
         }
 
         // Not using end as we don't want to modify internal pointer.
-        $this->mostSpecificSubdivision =
-            $subdivisions[\count($subdivisions) - 1];
+        $this->mostSpecificSubdivision
+            = $subdivisions[\count($subdivisions) - 1];
         $this->subdivisions = $subdivisions;
     }
 
@@ -110,8 +110,8 @@ class City extends Country
             $js['location'] = $location;
         }
 
-        $postal =
-         $this->postal->jsonSerialize();
+        $postal
+         = $this->postal->jsonSerialize();
         if (!empty($postal)) {
             $js['postal'] = $postal;
         }
