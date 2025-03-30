@@ -42,7 +42,7 @@ use MaxMind\Db\Reader\Metadata;
  * corrupt or invalid, a {@link \MaxMind\Db\Reader\InvalidDatabaseException}
  * will be thrown.
  */
-class Reader implements ProviderInterface
+class Reader implements ReaderInterface, ProviderInterface
 {
     private DbReader $dbReader;
 
