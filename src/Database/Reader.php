@@ -45,14 +45,8 @@ use MaxMind\Db\Reader\Metadata;
  */
 class Reader implements ProviderInterface
 {
-    private DbReader $dbReader;
-
-    private string $dbType;
-
-    /**
-     * @var array<string>
-     */
-    private array $locales;
+    private readonly DbReader $dbReader;
+    private readonly string $dbType;
 
     /**
      * Constructor.
@@ -65,11 +59,11 @@ class Reader implements ProviderInterface
      */
     public function __construct(
         string $filename,
-        array $locales = ['en']
+        /** @var array<string> */
+        public readonly array $locales = ['en']
     ) {
         $this->dbReader = new DbReader($filename);
         $this->dbType = $this->dbReader->metadata()->databaseType;
-        $this->locales = $locales;
     }
 
     /**
