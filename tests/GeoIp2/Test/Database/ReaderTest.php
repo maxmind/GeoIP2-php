@@ -152,6 +152,30 @@ class ReaderTest extends TestCase
         $reader->close();
     }
 
+    public function testAnonymousPlus(): void
+    {
+        $reader = new Reader('maxmind-db/test-data/GeoIP-Anonymous-Plus-Test.mmdb');
+        $ipAddress = '1.2.0.1';
+
+        $record = $reader->anonymousPlus($ipAddress);
+
+        $this->assertSame($record->anonymizerConfidence, 30);
+        $this->assertTrue($record->isAnonymous);
+        $this->assertTrue($record->isAnonymousVpn);
+        $this->assertFalse($record->isHostingProvider);
+        $this->assertFalse($record->isPublicProxy);
+        $this->assertFalse($record->isResidentialProxy);
+        $this->assertFalse($record->isTorExitNode);
+        $this->assertSame($record->networkLastSeen, '2025-04-14');
+        $this->assertSame($record->providerName, 'foo');
+
+
+        $this->assertSame($ipAddress, $record->ipAddress);
+        $this->assertSame('1.2.0.1/32', $record->network);
+
+        $reader->close();
+    }
+
     public function testAsn(): void
     {
         $reader = new Reader('maxmind-db/test-data/GeoLite2-ASN-Test.mmdb');

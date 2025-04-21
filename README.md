@@ -162,6 +162,28 @@ print($record->network . "\n"); // '128.101.101.101/32'
 
 ```
 
+### Anonymous Plus Example ###
+
+```php
+<?php
+require_once 'vendor/autoload.php';
+use GeoIp2\Database\Reader;
+
+// This creates the Reader object, which should be reused across
+// lookups.
+$anonymousDbReader = new Reader('/usr/local/share/GeoIP/GeoIP-Anonymous-Plus.mmdb');
+
+$record = $anonymousDbReader->anonymousIp('203.0.113.0');
+
+print($record->anonymizerConfidence . "\n"); // 30
+print($record->networkLastSeen . "\n"); // '2025-04-14'
+print($record->providerName . "\n"); // 'FooBar VPN'
+
+print($record->ipAddress . "\n"); // '203.0.113.0'
+print($record->network . "\n"); // '203.0.113.0/32'
+
+```
+
 ### Connection-Type Example ###
 
 ```php
