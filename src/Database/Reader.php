@@ -79,6 +79,7 @@ class Reader implements ProviderInterface
      *
      * @throws AddressNotFoundException if the address is not in the database
      * @throws InvalidDatabaseException if the database is corrupt or invalid
+     * @throws \BadMethodCallException  if this database type is not supported
      */
     public function city(string $ipAddress): City
     {
@@ -92,6 +93,7 @@ class Reader implements ProviderInterface
      *
      * @throws AddressNotFoundException if the address is not in the database
      * @throws InvalidDatabaseException if the database is corrupt or invalid
+     * @throws \BadMethodCallException  if this database type is not supported
      */
     public function country(string $ipAddress): Country
     {
@@ -105,6 +107,7 @@ class Reader implements ProviderInterface
      *
      * @throws AddressNotFoundException if the address is not in the database
      * @throws InvalidDatabaseException if the database is corrupt or invalid
+     * @throws \BadMethodCallException  if this database type is not supported
      */
     public function anonymousIp(string $ipAddress): AnonymousIp
     {
@@ -122,6 +125,7 @@ class Reader implements ProviderInterface
      *
      * @throws AddressNotFoundException if the address is not in the database
      * @throws InvalidDatabaseException if the database is corrupt or invalid
+     * @throws \BadMethodCallException  if this database type is not supported
      */
     public function anonymousPlus(string $ipAddress): AnonymousPlus
     {
@@ -139,6 +143,7 @@ class Reader implements ProviderInterface
      *
      * @throws AddressNotFoundException if the address is not in the database
      * @throws InvalidDatabaseException if the database is corrupt or invalid
+     * @throws \BadMethodCallException  if this database type is not supported
      */
     public function asn(string $ipAddress): Asn
     {
@@ -156,6 +161,7 @@ class Reader implements ProviderInterface
      *
      * @throws AddressNotFoundException if the address is not in the database
      * @throws InvalidDatabaseException if the database is corrupt or invalid
+     * @throws \BadMethodCallException  if this database type is not supported
      */
     public function connectionType(string $ipAddress): ConnectionType
     {
@@ -173,6 +179,7 @@ class Reader implements ProviderInterface
      *
      * @throws AddressNotFoundException if the address is not in the database
      * @throws InvalidDatabaseException if the database is corrupt or invalid
+     * @throws \BadMethodCallException  if this database type is not supported
      */
     public function domain(string $ipAddress): Domain
     {
@@ -190,6 +197,7 @@ class Reader implements ProviderInterface
      *
      * @throws AddressNotFoundException if the address is not in the database
      * @throws InvalidDatabaseException if the database is corrupt or invalid
+     * @throws \BadMethodCallException  if this database type is not supported
      */
     public function enterprise(string $ipAddress): Enterprise
     {
@@ -203,6 +211,7 @@ class Reader implements ProviderInterface
      *
      * @throws AddressNotFoundException if the address is not in the database
      * @throws InvalidDatabaseException if the database is corrupt or invalid
+     * @throws \BadMethodCallException  if this database type is not supported
      */
     public function isp(string $ipAddress): Isp
     {
