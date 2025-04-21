@@ -6,6 +6,7 @@ namespace GeoIp2\Database;
 
 use GeoIp2\Exception\AddressNotFoundException;
 use GeoIp2\Model\AnonymousIp;
+use GeoIp2\Model\AnonymousPlus;
 use GeoIp2\Model\Asn;
 use GeoIp2\Model\City;
 use GeoIp2\Model\ConnectionType;
@@ -110,6 +111,23 @@ class Reader implements ProviderInterface
         return $this->flatModelFor(
             AnonymousIp::class,
             'GeoIP2-Anonymous-IP',
+            $ipAddress
+        );
+    }
+
+    /**
+     * This method returns a GeoIP Anonymous Plus model.
+     *
+     * @param string $ipAddress an IPv4 or IPv6 address as a string
+     *
+     * @throws AddressNotFoundException if the address is not in the database
+     * @throws InvalidDatabaseException if the database is corrupt or invalid
+     */
+    public function anonymousPlus(string $ipAddress): AnonymousPlus
+    {
+        return $this->flatModelFor(
+            AnonymousPlus::class,
+            'GeoIP-Anonymous-Plus',
             $ipAddress
         );
     }
