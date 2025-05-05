@@ -2,7 +2,7 @@
 layout: default
 title: MaxMind GeoIP2 PHP API
 language: php
-version: v3.1.0
+version: v3.2.0
 ---
 
 # GeoIP2 PHP API #
@@ -166,6 +166,28 @@ $record = $anonymousDbReader->anonymousIp('128.101.101.101');
 if ($record->isAnonymous) { print "anon\n"; }
 print($record->ipAddress . "\n"); // '128.101.101.101'
 print($record->network . "\n"); // '128.101.101.101/32'
+
+```
+
+### Anonymous Plus Example ###
+
+```php
+<?php
+require_once 'vendor/autoload.php';
+use GeoIp2\Database\Reader;
+
+// This creates the Reader object, which should be reused across
+// lookups.
+$anonymousDbReader = new Reader('/usr/local/share/GeoIP/GeoIP-Anonymous-Plus.mmdb');
+
+$record = $anonymousDbReader->anonymousIp('203.0.113.0');
+
+print($record->anonymizerConfidence . "\n"); // 30
+print($record->networkLastSeen . "\n"); // '2025-04-14'
+print($record->providerName . "\n"); // 'FooBar VPN'
+
+print($record->ipAddress . "\n"); // '203.0.113.0'
+print($record->network . "\n"); // '203.0.113.0/32'
 
 ```
 
@@ -450,6 +472,6 @@ The GeoIP2 PHP API uses [Semantic Versioning](https://semver.org/).
 
 ## Copyright and License ##
 
-This software is Copyright (c) 2013-2024 by MaxMind, Inc.
+This software is Copyright (c) 2013-2025 by MaxMind, Inc.
 
 This is free software, licensed under the Apache License, Version 2.0.
