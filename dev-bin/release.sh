@@ -43,6 +43,7 @@ php composer.phar self-update
 php composer.phar update --no-dev
 
 perl -pi -e "s/(?<=const VERSION = ').+?(?=';)/$tag/g" src/WebService/Client.php
+perl -pi -e "s{(?<=php composer\.phar require geoip2/geoip2:).+}{^$version}g" README.md
 
 
 box_phar_hash='8d12a7d69a5003a80bd603ea95a8f3dcea30b9a2ad84cd7cb15b8193929def9e  box.phar'
