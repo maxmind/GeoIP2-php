@@ -54,7 +54,7 @@ class Client implements ProviderInterface
     private readonly WsClient $client;
     private static string $basePath = '/geoip/v2.1';
 
-    public const VERSION = 'v3.1.0';
+    public const VERSION = 'v3.2.0';
 
     /**
      * Constructor.
