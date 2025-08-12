@@ -14,7 +14,7 @@ jobs:
     name: "PHP Lints"
     steps:
       - name: Setup PHP
-        uses: shivammathur/setup-php@ccf2c627fe61b1b4d924adfcbd19d661a18133a0 # 2.35.2
+        uses: shivammathur/setup-php@20529878ed81ef8e78ddf08b480401e6101a850f # 2.35.3
         with:
           php-version: 8.3
 
