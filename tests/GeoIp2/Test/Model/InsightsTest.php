@@ -17,6 +17,17 @@ class InsightsTest extends TestCase
     public function testFull(): void
     {
         $raw = [
+            'anonymizer' => [
+                'confidence' => 99,
+                'is_anonymous' => true,
+                'is_anonymous_vpn' => true,
+                'is_hosting_provider' => true,
+                'is_public_proxy' => true,
+                'is_residential_proxy' => true,
+                'is_tor_exit_node' => true,
+                'network_last_seen' => '2025-04-14',
+                'provider_name' => 'NordVPN',
+            ],
             'city' => [
                 'confidence' => 76,
                 'geoname_id' => 9876,
@@ -74,6 +85,7 @@ class InsightsTest extends TestCase
                 'connection_type' => 'Cable/DSL',
                 'domain' => 'example.com',
                 'ip_address' => '1.2.3.4',
+                'ip_risk_snapshot' => 15.37,
                 'is_anonymous' => true,
                 'is_anonymous_vpn' => true,
                 'is_anycast' => true,
@@ -164,6 +176,66 @@ class InsightsTest extends TestCase
             'GeoIp2\Record\Traits',
             $model->traits,
             '$model->traits'
+        );
+
+        $this->assertInstanceOf(
+            'GeoIp2\Record\Anonymizer',
+            $model->anonymizer,
+            '$model->anonymizer'
+        );
+
+        $this->assertSame(
+            99,
+            $model->anonymizer->confidence,
+            '$model->anonymizer->confidence is 99'
+        );
+
+        $this->assertTrue(
+            $model->anonymizer->isAnonymous,
+            '$model->anonymizer->isAnonymous is true'
+        );
+
+        $this->assertTrue(
+            $model->anonymizer->isAnonymousVpn,
+            '$model->anonymizer->isAnonymousVpn is true'
+        );
+
+        $this->assertTrue(
+            $model->anonymizer->isHostingProvider,
+            '$model->anonymizer->isHostingProvider is true'
+        );
+
+        $this->assertTrue(
+            $model->anonymizer->isPublicProxy,
+            '$model->anonymizer->isPublicProxy is true'
+        );
+
+        $this->assertTrue(
+            $model->anonymizer->isResidentialProxy,
+            '$model->anonymizer->isResidentialProxy is true'
+        );
+
+        $this->assertTrue(
+            $model->anonymizer->isTorExitNode,
+            '$model->anonymizer->isTorExitNode is true'
+        );
+
+        $this->assertSame(
+            '2025-04-14',
+            $model->anonymizer->networkLastSeen,
+            '$model->anonymizer->networkLastSeen is 2025-04-14'
+        );
+
+        $this->assertSame(
+            'NordVPN',
+            $model->anonymizer->providerName,
+            '$model->anonymizer->providerName is NordVPN'
+        );
+
+        $this->assertSame(
+            15.37,
+            $model->traits->ipRiskSnapshot,
+            '$model->traits->ipRiskSnapshot is 15.37'
         );
 
         $this->assertTrue(
@@ -272,6 +344,7 @@ class InsightsTest extends TestCase
                     'mobile_network_code' => '004',
                     'network' => '1.2.3.0/24',
                     'organization' => 'Blorg',
+                    'ip_risk_snapshot' => 15.37,
                     'static_ip_score' => 1.3,
                     'user_count' => 2,
                     'user_type' => 'college',
@@ -301,6 +374,17 @@ class InsightsTest extends TestCase
                         'geoname_id' => 574635,
                         'iso_code' => 'MN',
                     ],
+                ],
+                'anonymizer' => [
+                    'confidence' => 99,
+                    'is_anonymous' => true,
+                    'is_anonymous_vpn' => true,
+                    'is_hosting_provider' => true,
+                    'is_public_proxy' => true,
+                    'is_residential_proxy' => true,
+                    'is_tor_exit_node' => true,
+                    'network_last_seen' => '2025-04-14',
+                    'provider_name' => 'NordVPN',
                 ],
             ],
             $model->jsonSerialize(),
