@@ -18,3 +18,7 @@ t.php
 vendor/
 *.sw?
 *.old
+
+# Claude Code directories
+.claude/
+.claude_cache/

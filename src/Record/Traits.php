@@ -63,6 +63,8 @@ class Traits implements \JsonSerializable
      * @var bool This is true if the IP address belongs to
      *           any sort of anonymous network. This property is only available from GeoIP2
      *           Insights.
+     *
+     * @deprecated use $anonymizer->isAnonymous in the Insights response instead
      */
     public readonly bool $isAnonymous;
 
@@ -72,6 +74,8 @@ class Traits implements \JsonSerializable
      *           subnets under names associated with them, we will likely only flag their IP
      *           ranges using the isHostingProvider property. This property is only available
      *           from GeoIP2 Insights.
+     *
+     * @deprecated use $anonymizer->isAnonymousVpn in the Insights response instead
      */
     public readonly bool $isAnonymousVpn;
 
@@ -86,6 +90,8 @@ class Traits implements \JsonSerializable
      * @var bool This is true if the IP address belongs
      *           to a hosting or VPN provider (see description of isAnonymousVpn property).
      *           This property is only available from GeoIP2 Insights.
+     *
+     * @deprecated use $anonymizer->isHostingProvider in the Insights response instead
      */
     public readonly bool $isHostingProvider;
 
@@ -100,6 +106,8 @@ class Traits implements \JsonSerializable
     /**
      * @var bool This is true if the IP address belongs to
      *           a public proxy. This property is only available from GeoIP2 Insights.
+     *
+     * @deprecated use $anonymizer->isPublicProxy in the Insights response instead
      */
     public readonly bool $isPublicProxy;
 
@@ -107,12 +115,16 @@ class Traits implements \JsonSerializable
      * @var bool This is true if the IP address is
      *           on a suspected anonymizing network and belongs to a residential ISP. This
      *           property is only available from GeoIP2 Insights.
+     *
+     * @deprecated use $anonymizer->isResidentialProxy in the Insights response instead
      */
     public readonly bool $isResidentialProxy;
 
     /**
      * @var bool This is true if the IP address is a Tor
      *           exit node. This property is only available from GeoIP2 Insights.
+     *
+     * @deprecated use $anonymizer->isTorExitNode in the Insights response instead
      */
     public readonly bool $isTorExitNode;
 
@@ -152,6 +164,17 @@ class Traits implements \JsonSerializable
      *                  City Plus and Insights web services and the GeoIP2 Enterprise database.
      */
     public readonly ?string $organization;
+
+    /**
+     * @var float|null A risk score from 0.01 to 99 indicating the risk associated with the
+     *                 IP address. A higher score indicates a higher risk. Please note that the IP
+     *                 risk score provided in GeoIP products and services is more static than the
+     *                 IP risk score provided in minFraud and is not responsive to traffic on your
+     *                 network. If you need realtime IP risk scoring based on behavioral signals on
+     *                 your own network, please use minFraud. This attribute is only available from
+     *                 the GeoIP2 Insights web service.
+     */
+    public readonly ?float $ipRiskSnapshot;
 
     /**
      * @var float|null An indicator of how static or
@@ -220,6 +243,7 @@ class Traits implements \JsonSerializable
         $this->mobileCountryCode = $record['mobile_country_code'] ?? null;
         $this->mobileNetworkCode = $record['mobile_network_code'] ?? null;
         $this->organization = $record['organization'] ?? null;
+        $this->ipRiskSnapshot = $record['ip_risk_snapshot'] ?? null;
         $this->staticIpScore = $record['static_ip_score'] ?? null;
         $this->userCount = $record['user_count'] ?? null;
         $this->userType = $record['user_type'] ?? null;
@@ -290,6 +314,9 @@ class Traits implements \JsonSerializable
         }
         if ($this->organization !== null) {
             $js['organization'] = $this->organization;
+        }
+        if ($this->ipRiskSnapshot !== null) {
+            $js['ip_risk_snapshot'] = $this->ipRiskSnapshot;
         }
         if ($this->staticIpScore !== null) {
             $js['static_ip_score'] = $this->staticIpScore;
