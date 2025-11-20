@@ -25,7 +25,7 @@ You should now have the file `composer.phar` in your project directory.
 Run in your project root:
 
 ```sh
-php composer.phar require geoip2/geoip2:^3.2.0
+php composer.phar require geoip2/geoip2:^3.3.0
 ```
 
 You should now have the files `composer.json` and `composer.lock` as well as

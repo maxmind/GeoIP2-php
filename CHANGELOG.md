@@ -1,7 +1,7 @@
 CHANGELOG
 =========
 
-3.3.0 (unreleased)
+3.3.0 (2025-11-20)
 ------------------
 
 * A new `anonymizer` property has been added to `GeoIp2\Model\Insights`.
