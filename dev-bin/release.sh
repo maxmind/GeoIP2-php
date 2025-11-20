@@ -46,10 +46,10 @@ perl -pi -e "s/(?<=const VERSION = ').+?(?=';)/$tag/g" src/WebService/Client.php
 perl -pi -e "s{(?<=php composer\.phar require geoip2/geoip2:).+}{^$version}g" README.md
 
 
-box_phar_hash='aa0966319f709e74bf2bf1d58ddb987903ae4f6d0a9d335ec2261813c189f7fc  box.phar'
+box_phar_hash='f98cf885a7c07c84df66e33888f1d93f063298598e0a5f41ca322aeb9683179b  box.phar'
 
 if ! echo "$box_phar_hash" | sha256sum -c; then
-    wget -O box.phar "https://github.com/box-project/box/releases/download/4.6.6/box.phar"
+    wget -O box.phar "https://github.com/box-project/box/releases/download/4.6.10/box.phar"
 fi
 
 echo "$box_phar_hash" | sha256sum -c
@@ -94,10 +94,10 @@ if [ -n "$(git status --porcelain)" ]; then
 fi
 
 # Using Composer is possible, but they don't recommend it.
-phpdocumentor_phar_hash='5223cc8455d53c51fcd5a3d4ac7817acdbec3f3e325981688d345f2468097230  phpDocumentor.phar'
+phpdocumentor_phar_hash='aa00973d88b278fe59fd8dce826d8d5419df589cb7563ac379856ec305d6b938  phpDocumentor.phar'
 
 if ! echo "$phpdocumentor_phar_hash" | sha256sum -c; then
-    wget -O phpDocumentor.phar https://github.com/phpDocumentor/phpDocumentor/releases/download/v3.7.1/phpDocumentor.phar
+    wget -O phpDocumentor.phar https://github.com/phpDocumentor/phpDocumentor/releases/download/v3.8.1/phpDocumentor.phar
 fi
 
 echo "$phpdocumentor_phar_hash" | sha256sum -c
