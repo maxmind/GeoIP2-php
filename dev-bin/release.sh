@@ -2,6 +2,14 @@
 
 set -eu -o pipefail
 
+# Check that we're not on the main branch
+current_branch=$(git branch --show-current)
+if [ "$current_branch" = "main" ]; then
+    echo "Error: Releases should not be done directly on the main branch."
+    echo "Please create a release branch and run this script from there."
+    exit 1
+fi
+
 phar='geoip2.phar'
 
 changelog=$(cat CHANGELOG.md)
