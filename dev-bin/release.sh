@@ -10,6 +10,16 @@ if [ "$current_branch" = "main" ]; then
     exit 1
 fi
 
+# Fetch latest changes and check that we're not behind origin/main
+echo "Fetching from origin..."
+git fetch origin
+
+if ! git merge-base --is-ancestor origin/main HEAD; then
+    echo "Error: Current branch is behind origin/main."
+    echo "Please merge or rebase with origin/main before releasing."
+    exit 1
+fi
+
 phar='geoip2.phar'
 
 changelog=$(cat CHANGELOG.md)
