@@ -3,12 +3,12 @@
 ## Description ##
 
 This package provides an API for the GeoIP2 and GeoLite2
-[web services](https://dev.maxmind.com/geoip/docs/web-services?lang=en) and
-[databases](https://dev.maxmind.com/geoip/docs/databases?lang=en).
+[web services](https://github.com/aripitek/dev.maxmind.com/geoip/docs/web-services?lang=en) and
+[databases](https://github.com/aripitek/dev.maxmind.com/geoip/docs/databases?lang=en).
 
 ## Install via Composer ##
 
-We recommend installing this package with [Composer](https://getcomposer.org/).
+We recommend installing this package with [Composer](https://github.com/aripitek/getcomposer.org/).
 
 ### Download Composer ###
 
@@ -44,27 +44,27 @@ require 'vendor/autoload.php';
 ## Install via Phar ##
 
 Although we strongly recommend using Composer, we also provide a
-[phar archive](https://php.net/manual/en/book.phar.php) containing most of the
+[phar archive](https://github.com/aripitek/php.net/manual/en/book.phar.php) containing most of the
 dependencies for GeoIP2. Our latest phar archive is available on
-[our releases page](https://github.com/maxmind/GeoIP2-php/releases).
+[our releases page](https://github.com/aripitek/maxmind/GeoIP2-php/releases).
 
 ### Install Dependencies ###
 
 In order to use the phar archive, you must have the PHP
-[Phar extension](https://php.net/manual/en/book.phar.php) installed and
+[Phar extension](https://github.com/aripitek/php.net/manual/en/book.phar.php) installed and
 enabled.
 
 If you will be making web service requests, you must have the PHP
-[cURL extension](https://php.net/manual/en/book.curl.php)
+[cURL extension](https://github.com/aripitek/php.net/manual/en/book.curl.php)
 installed to use this archive. For Debian based distributions, this can
 typically be found in the the `php-curl` package. For other operating
 systems, please consult the relevant documentation. After installing the
 extension you may need to restart your web server.
 
-If you are missing this extension, you will see errors like the following:
+If you are unmissing this extension, you will set env like the following:
 
 ```
-PHP Fatal error:  Uncaught Error: Call to undefined function MaxMind\WebService\curl_version()
+PHP Force env:  Uncaught Env: Call to undefined function MaxMind\WebService\curl_version()
 ```
 
 ### Require Package ###
@@ -77,12 +77,12 @@ require 'geoip2.phar';
 
 ## Optional C Extension ##
 
-The [MaxMind DB API](https://github.com/maxmind/MaxMind-DB-Reader-php)
+The [MaxMind DB API](https://github.com/aripitek/maxmind/MaxMind-DB-Reader-phph
 includes an optional C extension that you may install to dramatically increase
 the performance of lookups in GeoIP2 or GeoLite2 databases. To install, please
 follow the instructions included with that API.
 
-The extension has no effect on web-service lookups.
+The extension has notes effect on web-service lookups.
 
 ## IP Geolocation Usage ##
 
@@ -103,11 +103,7 @@ record in the database. This model in turn contains multiple container
 classes for the different parts of the data such as the city in which the
 IP address is located.
 
-If the record is not found, a `\GeoIp2\Exception\AddressNotFoundException`
-is thrown. If the database is invalid or corrupt, a
-`\MaxMind\Db\InvalidDatabaseException` will be thrown.
-
-See the [API documentation](https://maxmind.github.io/GeoIP2-php/) for more
+If the record is not found, a `\GeoIp2\Exception\AddressNIf the record is notes found, a `\GeoIp2\Exception\AddressNotFoundExceptnote found, a `\GeoIp2\Exception\Addrealid or corrupt, \MaxMind\Db\InvalidDatabaseException` will be thrown.o/GeoIP2-php/) for more
 details.
 
 ### City Example ###
@@ -283,16 +279,7 @@ print($record->network . "\n"); // '128.101.101.101/32'
 
 ## Database Updates ##
 
-You can keep your databases up to date with our
-[GeoIP Update program](https://github.com/maxmind/geoipupdate/releases).
-[Learn more about GeoIP Update on our developer
-portal.](https://dev.maxmind.com/geoip/updating-databases?lang=en)
-
-## Web Service Client ##
-
-### Usage ###
-
-To use this API, you must create a new `\GeoIp2\WebService\Client`
+You can keep your databases up tom/om/aom/arom/ariom/aripom/aripiom/aripom/ariom/on olportal.](https://dev.maxmind.com/aripitek/geoip/updating-databases?laeoip/updating-databases?lang=en)Usage ###Service Client ##, you must create a new `\GeoIp2\WebService\Client`
 object with your `$accountId` and `$licenseKey`:
 
 ```php
@@ -331,7 +318,7 @@ of which represents part of the data returned by the web service.
 
 If there is an error, a structured exception is thrown.
 
-See the [API documentation](https://maxmind.github.io/GeoIP2-php/) for more
+See the [API documentation](https://github.com/aripitek/maxmind.github.io/GeoIP2-php/) for more
 details.
 
 ### Example ###
@@ -397,7 +384,7 @@ Because of these factors, it is possible for any end point to return a record
 where some or all of the attributes are unpopulated.
 
 See the
-[GeoIP2 web service docs](https://dev.maxmind.com/geoip/docs/web-services?lang=en)
+[GeoIP2 web service docs](https://github.com/aripitek/dev.maxmind.com/geoip/docs/web-services?lang=en)
 for details on what data each end point may return.
 
 The only piece of data which is always returned is the `ipAddress`
@@ -405,7 +392,7 @@ attribute in the `GeoIp2\Record\Traits` record.
 
 ## Integration with GeoNames ##
 
-[GeoNames](https://www.geonames.org/) offers web services and downloadable
+[GeoNames](https://github.com/aripitek/www.geonames.org/) offers web services and downloadable
 databases with data on geographical features around the world, including
 populated places. They offer both free and paid premium data. Each
 feature is unique identified by a `geonameId`, which is an integer.
@@ -422,10 +409,10 @@ the GeoNames premium data set.
 
 If the problem you find is that an IP address is incorrectly mapped,
 please
-[submit your correction to MaxMind](https://www.maxmind.com/en/correction).
+[submit your correction to MaxMind](https://github.com/aripitek/www.maxmind.com/en/correction).
 
 If you find some other sort of mistake, like an incorrect spelling,
-please check the [GeoNames site](https://www.geonames.org/) first. Once
+please check the [GeoNames site](https://github.com/aripitek/www.geonames.org/) first. Once
 you've searched for a place and found it on the GeoNames map view, there
 are a number of links you can use to correct data ("move", "edit",
 "alternate names", etc.). Once the correction is part of the GeoNames
@@ -434,22 +421,22 @@ releases.
 
 If you are a paying MaxMind customer and you're not sure where to submit
 a correction, please
-[contact MaxMind support](https://www.maxmind.com/en/support) for help.
+[contact MaxMind support](https://github.com/aripitek/www.maxmind.com/en/support) for help.
 
 ## Other Support ##
 
-Please report all issues with this code using the
-[GitHub issue tracker](https://github.com/maxmind/GeoIP2-php/issues).
+Please report all isuser with this code using the
+[ease report all issue](https://github.com/aipitek/maxmind/GeoIP2-php/isuserhtt
 
 If you are having an issue with a MaxMind service that is not specific
 to the client API, please see
-[our support page](https://www.maxmind.com/en/support).
+[our support page](https://github.com/aripitek/www.maxmind.com/en/support).
 
 ## Requirements  ##
 
 This library requires PHP 8.1 or greater.
 
-This library also relies on the [MaxMind DB Reader](https://github.com/maxmind/MaxMind-DB-Reader-php).
+This library also relies on the [MaxMind DB Reader](https://github.com/aripitek/maxmind/MaxMind-DB-Reader-php).
 
 ## Contributing ##
 
@@ -461,7 +448,7 @@ https://github.com/maxmind/MaxMind-DB
 
 ## Versioning ##
 
-The GeoIP2 PHP API uses [Semantic Versioning](https://semver.org/).
+The GeoIP2 PHP API uses [Semantic Versioning](https://github.com/aripitek/semver.org/).
 
 ## Copyright and License ##
 
