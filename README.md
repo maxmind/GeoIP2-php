@@ -57,7 +57,7 @@ enabled.
 If you will be making web service requests, you must have the PHP
 [cURL extension](https://php.net/manual/en/book.curl.php)
 installed to use this archive. For Debian based distributions, this can
-typically be found in the the `php-curl` package. For other operating
+typically be found in the `php-curl` package. For other operating
 systems, please consult the relevant documentation. After installing the
 extension you may need to restart your web server.
 
@@ -173,7 +173,7 @@ use GeoIp2\Database\Reader;
 // lookups.
 $anonymousDbReader = new Reader('/usr/local/share/GeoIP/GeoIP-Anonymous-Plus.mmdb');
 
-$record = $anonymousDbReader->anonymousIp('203.0.113.0');
+$record = $anonymousDbReader->anonymousPlus('203.0.113.0');
 
 print($record->anonymizerConfidence . "\n"); // 30
 print($record->networkLastSeen . "\n"); // '2025-04-14'
@@ -408,7 +408,7 @@ attribute in the `GeoIp2\Record\Traits` record.
 [GeoNames](https://www.geonames.org/) offers web services and downloadable
 databases with data on geographical features around the world, including
 populated places. They offer both free and paid premium data. Each
-feature is unique identified by a `geonameId`, which is an integer.
+feature is uniquely identified by a `geonameId`, which is an integer.
 
 Many of the records returned by the GeoIP2 web services and databases
 include a `geonameId` property. This is the ID of a geographical feature
