@@ -453,7 +453,7 @@ This library also relies on the [MaxMind DB Reader](https://github.com/maxmind/M
 
 ## Contributing ##
 
-Patches and pull requests are encouraged. All code should follow the PSR-2
+Patches and pull requests are encouraged. All code should follow the PSR-12
 style guidelines. Please include unit tests whenever possible. You may obtain
 the test data for the maxmind-db folder by running `git submodule update
 --init --recursive` or adding `--recursive` to your initial clone, or from
