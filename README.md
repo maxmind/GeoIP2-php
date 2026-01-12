@@ -1,16 +1,17 @@
-# GeoIP2 PHP API #
+# GeoIP2 PHP API
 
-## Description ##
+## Description
 
 This package provides an API for the GeoIP2 and GeoLite2
 [web services](https://dev.maxmind.com/geoip/docs/web-services?lang=en) and
 [databases](https://dev.maxmind.com/geoip/docs/databases?lang=en).
 
-## Install via Composer ##
+## Install via Composer
 
-We recommend installing this package with [Composer](https://getcomposer.org/).
+We recommend installing this package with
+[Composer](https://getcomposer.org/).
 
-### Download Composer ###
+### Download Composer
 
 To download Composer, run in the root directory of your project:
 
@@ -20,7 +21,7 @@ curl -sS https://getcomposer.org/installer | php
 
 You should now have the file `composer.phar` in your project directory.
 
-### Install Dependencies ###
+### Install Dependencies
 
 Run in your project root:
 
@@ -32,7 +33,7 @@ You should now have the files `composer.json` and `composer.lock` as well as
 the directory `vendor` in your project directory. If you use a version control
 system, `composer.json` should be added to it.
 
-### Require Autoloader ###
+### Require Autoloader
 
 After installing the dependencies, you need to require the Composer autoloader
 from your code:
@@ -41,25 +42,25 @@ from your code:
 require 'vendor/autoload.php';
 ```
 
-## Install via Phar ##
+## Install via Phar
 
 Although we strongly recommend using Composer, we also provide a
 [phar archive](https://php.net/manual/en/book.phar.php) containing most of the
 dependencies for GeoIP2. Our latest phar archive is available on
 [our releases page](https://github.com/maxmind/GeoIP2-php/releases).
 
-### Install Dependencies ###
+### Install Dependencies
 
 In order to use the phar archive, you must have the PHP
 [Phar extension](https://php.net/manual/en/book.phar.php) installed and
 enabled.
 
 If you will be making web service requests, you must have the PHP
-[cURL extension](https://php.net/manual/en/book.curl.php)
-installed to use this archive. For Debian based distributions, this can
-typically be found in the the `php-curl` package. For other operating
-systems, please consult the relevant documentation. After installing the
-extension you may need to restart your web server.
+[cURL extension](https://php.net/manual/en/book.curl.php) installed to use
+this archive. For Debian-based distributions, this can typically be found in
+the `php-curl` package. For other operating systems, please consult the
+relevant documentation. After installing the extension you may need to restart
+your web server.
 
 If you are missing this extension, you will see errors like the following:
 
@@ -67,7 +68,7 @@ If you are missing this extension, you will see errors like the following:
 PHP Fatal error:  Uncaught Error: Call to undefined function MaxMind\WebService\curl_version()
 ```
 
-### Require Package ###
+### Require Package
 
 To use the archive, just require it from your script:
 
@@ -75,7 +76,7 @@ To use the archive, just require it from your script:
 require 'geoip2.phar';
 ```
 
-## Optional C Extension ##
+## Optional C Extension
 
 The [MaxMind DB API](https://github.com/maxmind/MaxMind-DB-Reader-php)
 includes an optional C extension that you may install to dramatically increase
@@ -84,33 +85,33 @@ follow the instructions included with that API.
 
 The extension has no effect on web-service lookups.
 
-## IP Geolocation Usage ##
+## IP Geolocation Usage
 
 IP geolocation is inherently imprecise. Locations are often near the center of
 the population. Any location provided by a GeoIP2 database or web service
 should not be used to identify a particular address or household.
 
-## Database Reader ##
+## Database Reader
 
-### Usage ###
+### Usage
 
 To use this API, you must create a new `\GeoIp2\Database\Reader` object with
 the path to the database file as the first argument to the constructor. You
 may then call the method corresponding to the database you are using.
 
 If the lookup succeeds, the method call will return a model class for the
-record in the database. This model in turn contains multiple container
-classes for the different parts of the data such as the city in which the
-IP address is located.
+record in the database. This model in turn contains multiple container classes
+for the different parts of the data such as the city in which the IP address
+is located.
 
-If the record is not found, a `\GeoIp2\Exception\AddressNotFoundException`
-is thrown. If the database is invalid or corrupt, a
+If the record is not found, a `\GeoIp2\Exception\AddressNotFoundException` is
+thrown. If the database is invalid or corrupt, a
 `\MaxMind\Db\InvalidDatabaseException` will be thrown.
 
 See the [API documentation](https://maxmind.github.io/GeoIP2-php/) for more
 details.
 
-### City Example ###
+### City Example
 
 ```php
 <?php
@@ -143,7 +144,7 @@ print($record->traits->network . "\n"); // '128.101.101.101/32'
 
 ```
 
-### Anonymous IP Example ###
+### Anonymous IP Example
 
 ```php
 <?php
@@ -162,7 +163,7 @@ print($record->network . "\n"); // '128.101.101.101/32'
 
 ```
 
-### Anonymous Plus Example ###
+### Anonymous Plus Example
 
 ```php
 <?php
@@ -173,7 +174,7 @@ use GeoIp2\Database\Reader;
 // lookups.
 $anonymousDbReader = new Reader('/usr/local/share/GeoIP/GeoIP-Anonymous-Plus.mmdb');
 
-$record = $anonymousDbReader->anonymousIp('203.0.113.0');
+$record = $anonymousDbReader->anonymousPlus('203.0.113.0');
 
 print($record->anonymizerConfidence . "\n"); // 30
 print($record->networkLastSeen . "\n"); // '2025-04-14'
@@ -184,7 +185,7 @@ print($record->network . "\n"); // '203.0.113.0/32'
 
 ```
 
-### Connection-Type Example ###
+### Connection-Type Example
 
 ```php
 <?php
@@ -203,7 +204,7 @@ print($record->network . "\n"); // '128.101.101.101/32'
 
 ```
 
-### Domain Example ###
+### Domain Example
 
 ```php
 <?php
@@ -222,7 +223,7 @@ print($record->network . "\n"); // '128.101.101.101/32'
 
 ```
 
-### Enterprise Example ###
+### Enterprise Example
 
 ```php
 <?php
@@ -258,7 +259,7 @@ print($record->traits->network . "\n"); // '128.101.101.101/32'
 
 ```
 
-### ISP Example ###
+### ISP Example
 
 ```php
 <?php
@@ -281,28 +282,27 @@ print($record->network . "\n"); // '128.101.101.101/32'
 
 ```
 
-## Database Updates ##
+## Database Updates
 
 You can keep your databases up to date with our
 [GeoIP Update program](https://github.com/maxmind/geoipupdate/releases).
-[Learn more about GeoIP Update on our developer
-portal.](https://dev.maxmind.com/geoip/updating-databases?lang=en)
+[Learn more about GeoIP Update on our developer portal.](https://dev.maxmind.com/geoip/updating-databases?lang=en)
 
-## Web Service Client ##
+## Web Service Client
 
-### Usage ###
+### Usage
 
-To use this API, you must create a new `\GeoIp2\WebService\Client`
-object with your `$accountId` and `$licenseKey`:
+To use this API, you must create a new `\GeoIp2\WebService\Client` object with
+your `$accountId` and `$licenseKey`:
 
 ```php
 $client = new Client(42, 'abcdef123456');
 ```
 
-You may also call the constructor with additional arguments. The third argument
-specifies the language preferences when using the `->name` method on the model
-classes that this client creates. The fourth argument is additional options
-such as `host` and `timeout`.
+You may also call the constructor with additional arguments. The third
+argument specifies the language preferences when using the `->name` method on
+the model classes that this client creates. The fourth argument is additional
+options such as `host` and `timeout`.
 
 For instance, to call the GeoLite2 web service instead of the GeoIP2 web
 service:
@@ -334,7 +334,7 @@ If there is an error, a structured exception is thrown.
 See the [API documentation](https://maxmind.github.io/GeoIP2-php/) for more
 details.
 
-### Example ###
+### Example
 
 ```php
 <?php
@@ -372,99 +372,98 @@ print($record->traits->network . "\n"); // '128.101.101.101/32'
 
 ```
 
-## Values to use for Database or Array Keys ##
+## Values to use for Database or Array Keys
 
-**We strongly discourage you from using a value from any `names` property as
-a key in a database or array.**
+**We strongly discourage you from using a value from any `names` property as a
+key in a database or array.**
 
 These names may change between releases. Instead we recommend using one of the
 following:
 
-* `GeoIp2\Record\City` - `$city->geonameId`
-* `GeoIp2\Record\Continent` - `$continent->code` or `$continent->geonameId`
-* `GeoIp2\Record\Country` and `GeoIp2\Record\RepresentedCountry` -
+- `GeoIp2\Record\City` - `$city->geonameId`
+- `GeoIp2\Record\Continent` - `$continent->code` or `$continent->geonameId`
+- `GeoIp2\Record\Country` and `GeoIp2\Record\RepresentedCountry` -
   `$country->isoCode` or `$country->geonameId`
-* `GeoIp2\Record\Subdivision` - `$subdivision->isoCode` or `$subdivision->geonameId`
+- `GeoIp2\Record\Subdivision` - `$subdivision->isoCode` or
+  `$subdivision->geonameId`
 
-### What data is returned? ###
+### What data is returned?
 
-While many of the end points return the same basic records, the attributes
-which can be populated vary between end points. In addition, while an end
-point may offer a particular piece of data, MaxMind does not always have every
-piece of data for any given IP address.
+While many of the endpoints return the same basic records, the attributes
+which can be populated vary between endpoints. In addition, while an endpoint
+may offer a particular piece of data, MaxMind does not always have every piece
+of data for any given IP address.
 
-Because of these factors, it is possible for any end point to return a record
+Because of these factors, it is possible for any endpoint to return a record
 where some or all of the attributes are unpopulated.
 
 See the
 [GeoIP2 web service docs](https://dev.maxmind.com/geoip/docs/web-services?lang=en)
-for details on what data each end point may return.
+for details on what data each endpoint may return.
 
-The only piece of data which is always returned is the `ipAddress`
-attribute in the `GeoIp2\Record\Traits` record.
+The only piece of data which is always returned is the `ipAddress` attribute
+in the `GeoIp2\Record\Traits` record.
 
-## Integration with GeoNames ##
+## Integration with GeoNames
 
 [GeoNames](https://www.geonames.org/) offers web services and downloadable
 databases with data on geographical features around the world, including
-populated places. They offer both free and paid premium data. Each
-feature is unique identified by a `geonameId`, which is an integer.
+populated places. They offer both free and paid premium data. Each feature is
+uniquely identified by a `geonameId`, which is an integer.
 
-Many of the records returned by the GeoIP2 web services and databases
-include a `geonameId` property. This is the ID of a geographical feature
-(city, region, country, etc.) in the GeoNames database.
+Many of the records returned by the GeoIP2 web services and databases include
+a `geonameId` property. This is the ID of a geographical feature (city,
+region, country, etc.) in the GeoNames database.
 
 Some of the data that MaxMind provides is also sourced from GeoNames. We
-source things like place names, ISO codes, and other similar data from
-the GeoNames premium data set.
+source things like place names, ISO codes, and other similar data from the
+GeoNames premium data set.
 
-## Reporting data problems ##
+## Reporting data problems
 
-If the problem you find is that an IP address is incorrectly mapped,
-please
+If the problem you find is that an IP address is incorrectly mapped, please
 [submit your correction to MaxMind](https://www.maxmind.com/en/correction).
 
-If you find some other sort of mistake, like an incorrect spelling,
-please check the [GeoNames site](https://www.geonames.org/) first. Once
-you've searched for a place and found it on the GeoNames map view, there
-are a number of links you can use to correct data ("move", "edit",
-"alternate names", etc.). Once the correction is part of the GeoNames
-data set, it will be automatically incorporated into future MaxMind
-releases.
+If you find some other sort of mistake, like an incorrect spelling, please
+check the [GeoNames site](https://www.geonames.org/) first. Once you've
+searched for a place and found it on the GeoNames map view, there are a number
+of links you can use to correct data ("move", "edit", "alternate names",
+etc.). Once the correction is part of the GeoNames data set, it will be
+automatically incorporated into future MaxMind releases.
 
-If you are a paying MaxMind customer and you're not sure where to submit
-a correction, please
+If you are a paying MaxMind customer and you're not sure where to submit a
+correction, please
 [contact MaxMind support](https://www.maxmind.com/en/support) for help.
 
-## Other Support ##
+## Other Support
 
 Please report all issues with this code using the
 [GitHub issue tracker](https://github.com/maxmind/GeoIP2-php/issues).
 
-If you are having an issue with a MaxMind service that is not specific
-to the client API, please see
-[our support page](https://www.maxmind.com/en/support).
+If you are having an issue with a MaxMind service that is not specific to the
+client API, please see [our support page](https://www.maxmind.com/en/support).
 
-## Requirements  ##
+## Requirements
 
 This library requires PHP 8.1 or greater.
 
-This library also relies on the [MaxMind DB Reader](https://github.com/maxmind/MaxMind-DB-Reader-php).
+This library also relies on the
+[MaxMind DB Reader](https://github.com/maxmind/MaxMind-DB-Reader-php).
 
-## Contributing ##
+## Contributing
 
-Patches and pull requests are encouraged. All code should follow the PSR-2
+Patches and pull requests are encouraged. All code should follow the PSR-12
 style guidelines. Please include unit tests whenever possible. You may obtain
-the test data for the maxmind-db folder by running `git submodule update
---init --recursive` or adding `--recursive` to your initial clone, or from
-https://github.com/maxmind/MaxMind-DB
+the test data for the maxmind-db folder by running
+`git submodule update --init --recursive` or adding `--recursive` to your
+initial clone, or from https://github.com/maxmind/MaxMind-DB
 
-## Versioning ##
+## Versioning
 
 The GeoIP2 PHP API uses [Semantic Versioning](https://semver.org/).
 
-## Copyright and License ##
+## Copyright and License
 
-This software is Copyright (c) 2013-2025 by MaxMind, Inc.
+This software is Copyright (c) 2013-2026 by MaxMind, Inc.
 
 This is free software, licensed under the Apache License, Version 2.0.
