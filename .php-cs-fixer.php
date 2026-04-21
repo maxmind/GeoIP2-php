@@ -15,6 +15,7 @@ return $config
         'array_syntax' => ['syntax' => 'short'],
         'combine_consecutive_unsets' => true,
         'concat_space' => [ 'spacing' => 'one'],
+        'declare_strict_types' => true,
         'explicit_string_variable' => false,
         'fopen_flags' => ['b_mode' => true],
         'heredoc_to_nowdoc' => true,

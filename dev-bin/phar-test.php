@@ -1,6 +1,8 @@
 #!/usr/bin/env php
 <?php
 
+declare(strict_types=1);
+
 require_once 'geoip2.phar';
 use GeoIp2\Database\Reader;
 
