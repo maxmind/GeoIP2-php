@@ -168,18 +168,8 @@ php phpDocumentor.phar \
 
 rm -rf "$cachedir"
 
-page=index.md
-cat <<EOF >$page
----
-layout: default
-title: MaxMind GeoIP2 PHP API
-language: php
-version: $tag
----
-
-EOF
-
-cat ../README.md >>$page
+rm -f doc/latest
+ln -sfn "$tag" doc/latest
 
 git add doc/
 
