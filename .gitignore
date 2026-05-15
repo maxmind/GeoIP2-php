@@ -1,6 +1,8 @@
 _site
 .gh-pages
 .idea
+docs/.hugo_build.lock
+docs/public/
 .php_cs.cache
 .php-cs-fixer.cache
 .phpunit.cache/
