@@ -4,47 +4,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Page not found | {{ .Site.Title }}</title>
-    <style>
-      :root {
-        --fg: #2d2d2d;
-        --bg: #faf9f7;
-        --accent: #1a6b50;
-        --heading: #1a1a1a;
-      }
-
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-      }
-
-      body {
-        font-family: Charter, "Bitstream Charter", "Sitka Text", Cambria, serif;
-        font-size: 1.05rem;
-        line-height: 1.78;
-        color: var(--fg);
-        background: var(--bg);
-        max-width: 50rem;
-        margin: 0 auto;
-        padding: 3rem 1.5rem 5rem;
-      }
-
-      h1 {
-        font-family: system-ui, -apple-system, "Segoe UI", Helvetica, Arial,
-          sans-serif;
-        font-size: 1.75rem;
-        font-weight: 800;
-        line-height: 1.35;
-        color: var(--heading);
-        margin: 0 0 1.5rem;
-        padding-bottom: 0.75rem;
-        border-bottom: 3px solid var(--accent);
-      }
-
-      a {
-        color: var(--accent);
-      }
-    </style>
+    {{- $css := resources.Get "css/main.css" | fingerprint -}}
+    <link
+      rel="stylesheet"
+      href="{{ $css.RelPermalink }}"
+      integrity="{{ $css.Data.Integrity }}"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
     <main>
