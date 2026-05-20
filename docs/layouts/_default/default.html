@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ or .Title .File.BaseFileName }} | {{ .Site.Title }}{{ end }}</title>
+    {{- $title := or .Title .File.BaseFileName -}}
+    <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ $title }} | {{ .Site.Title }}{{ end }}</title>
     <style>
       :root {
         --fg: #2d2d2d;
