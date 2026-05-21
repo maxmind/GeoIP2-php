@@ -3,8 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    {{- $title := or .Title .File.BaseFileName -}}
-    <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ $title }} | {{ .Site.Title }}{{ end }}</title>
+    <title>Page not found | {{ .Site.Title }}</title>
     {{- $css := resources.Get "css/main.css" | fingerprint -}}
     <link
       rel="stylesheet"
@@ -14,12 +13,12 @@
     />
   </head>
   <body>
-    <nav class="page-nav">
-      <a href="{{ .Site.Home.RelPermalink }}"{{ if .IsHome }} class="active" aria-current="page"{{ end }}>Overview</a>
-      <a href="{{ "doc/latest/" | relURL }}">API documentation</a>
-    </nav>
     <main>
-      {{ .Content }}
+      <h1>Page not found</h1>
+      <p>
+        The page you're looking for doesn't exist. Return to
+        <a href="{{ .Site.Home.RelPermalink }}">{{ .Site.Title }}</a>.
+      </p>
     </main>
   </body>
 </html>
