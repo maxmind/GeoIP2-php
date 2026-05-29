@@ -11,7 +11,7 @@ use GeoIp2\Record\RepresentedCountry;
 use GeoIp2\Record\Traits;
 
 /**
- * Model class for the data returned by GeoIP2 Country web service and database.
+ * Model class for the data returned by GeoIP Country web service and database.
  *
  * See https://dev.maxmind.com/geoip/docs/web-services?lang=en for more details.
  */

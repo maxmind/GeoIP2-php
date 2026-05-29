@@ -5,8 +5,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Project Overview
 
 **GeoIP2-php** is MaxMind's official PHP client library for:
-- **GeoIP2/GeoLite2 Web Services**: Country, City, and Insights endpoints
-- **GeoIP2/GeoLite2 Databases**: Local MMDB file reading for various database types (City, Country, ASN, Anonymous IP, Anonymous Plus, ISP, etc.)
+- **GeoIP/GeoLite Web Services**: Country, City Plus, and Insights endpoints
+- **GeoIP/GeoLite Databases**: Local MMDB file reading for various database types (City, Country, ASN, Anonymous IP, Anonymous Plus, ISP, etc.)
 
 The library provides both web service clients and database readers that return strongly-typed model objects containing geographic, ISP, anonymizer, and other IP-related data.
 
@@ -323,6 +323,6 @@ vendor/bin/phpunit
 ## Additional Resources
 
 - [API Documentation](https://maxmind.github.io/GeoIP2-php/)
-- [GeoIP2 Web Services Docs](https://dev.maxmind.com/geoip/docs/web-services)
+- [GeoIP Web Services Docs](https://dev.maxmind.com/geoip/docs/web-services)
 - [MaxMind DB Format](https://maxmind.github.io/MaxMind-DB/)
 - GitHub Issues: https://github.com/maxmind/GeoIP2-php/issues

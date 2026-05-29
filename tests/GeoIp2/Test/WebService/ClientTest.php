@@ -322,7 +322,7 @@ class ClientTest extends TestCase
     public function testNoBodyException(): void
     {
         $this->expectException(GeoIp2Exception::class);
-        $this->expectExceptionMessage('Received a 200 response for GeoIP2 Country but did not receive a HTTP body.');
+        $this->expectExceptionMessage('Received a 200 response for GeoIP Country but did not receive a HTTP body.');
 
         $this->makeRequest('Country', '1.2.3.5');
     }
@@ -330,7 +330,7 @@ class ClientTest extends TestCase
     public function testBadBodyException(): void
     {
         $this->expectException(GeoIp2Exception::class);
-        $this->expectExceptionMessage('Received a 200 response for GeoIP2 Country but could not decode the response as JSON:');
+        $this->expectExceptionMessage('Received a 200 response for GeoIP Country but could not decode the response as JSON:');
 
         $this->makeRequest('Country', '2.2.3.5');
     }
@@ -364,7 +364,7 @@ class ClientTest extends TestCase
     {
         $this->expectException(HttpException::class);
         $this->expectExceptionCode(400);
-        $this->expectExceptionMessage('Received a 400 error for GeoIP2 Country but could not decode the response as JSON: Syntax error. Body: { invalid: }');
+        $this->expectExceptionMessage('Received a 400 error for GeoIP Country but could not decode the response as JSON: Syntax error. Body: { invalid: }');
 
         $this->makeRequest('Country', '1.2.3.9');
     }
@@ -382,7 +382,7 @@ class ClientTest extends TestCase
     {
         $this->expectException(HttpException::class);
         $this->expectExceptionCode(300);
-        $this->expectExceptionMessage('Received an unexpected HTTP status (300) for GeoIP2 Country');
+        $this->expectExceptionMessage('Received an unexpected HTTP status (300) for GeoIP Country');
 
         $this->makeRequest('Country', '1.2.3.11');
     }
@@ -391,7 +391,7 @@ class ClientTest extends TestCase
     {
         $this->expectException(HttpException::class);
         $this->expectExceptionCode(406);
-        $this->expectExceptionMessage('Received a 406 error for GeoIP2 Country with the following body: Cannot satisfy your Accept-Charset requirements');
+        $this->expectExceptionMessage('Received a 406 error for GeoIP Country with the following body: Cannot satisfy your Accept-Charset requirements');
 
         $this->makeRequest('Country', '1.2.3.12');
     }

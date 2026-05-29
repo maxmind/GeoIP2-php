@@ -20,7 +20,7 @@ use MaxMind\Db\Reader\InvalidDatabaseException;
 use MaxMind\Db\Reader\Metadata;
 
 /**
- * Instances of this class provide a reader for the GeoIP2 database format.
+ * Instances of this class provide a reader for the GeoIP database format.
  * IP addresses can be looked up using the database specific methods.
  *
  * ## Usage ##
@@ -51,7 +51,7 @@ class Reader implements ProviderInterface
     /**
      * Constructor.
      *
-     * @param string        $filename the path to the GeoIP2 database file
+     * @param string        $filename the path to the GeoIP database file
      * @param array<string> $locales  list of locale codes to use in name property
      *                                from most preferred to least preferred
      *
@@ -67,7 +67,7 @@ class Reader implements ProviderInterface
     }
 
     /**
-     * This method returns a GeoIP2 City model.
+     * This method returns a GeoIP City model.
      *
      * @param string $ipAddress an IPv4 or IPv6 address as a string
      *
@@ -81,7 +81,7 @@ class Reader implements ProviderInterface
     }
 
     /**
-     * This method returns a GeoIP2 Country model.
+     * This method returns a GeoIP Country model.
      *
      * @param string $ipAddress an IPv4 or IPv6 address as a string
      *
@@ -95,7 +95,7 @@ class Reader implements ProviderInterface
     }
 
     /**
-     * This method returns a GeoIP2 Anonymous IP model.
+     * This method returns a GeoIP Anonymous IP model.
      *
      * @param string $ipAddress an IPv4 or IPv6 address as a string
      *
@@ -131,7 +131,7 @@ class Reader implements ProviderInterface
     }
 
     /**
-     * This method returns a GeoLite2 ASN model.
+     * This method returns a GeoLite ASN model.
      *
      * @param string $ipAddress an IPv4 or IPv6 address as a string
      *
@@ -149,7 +149,7 @@ class Reader implements ProviderInterface
     }
 
     /**
-     * This method returns a GeoIP2 Connection Type model.
+     * This method returns a GeoIP Connection Type model.
      *
      * @param string $ipAddress an IPv4 or IPv6 address as a string
      *
@@ -167,7 +167,7 @@ class Reader implements ProviderInterface
     }
 
     /**
-     * This method returns a GeoIP2 Domain model.
+     * This method returns a GeoIP Domain model.
      *
      * @param string $ipAddress an IPv4 or IPv6 address as a string
      *
@@ -185,7 +185,7 @@ class Reader implements ProviderInterface
     }
 
     /**
-     * This method returns a GeoIP2 Enterprise model.
+     * This method returns a GeoIP Enterprise model.
      *
      * @param string $ipAddress an IPv4 or IPv6 address as a string
      *
@@ -199,7 +199,7 @@ class Reader implements ProviderInterface
     }
 
     /**
-     * This method returns a GeoIP2 ISP model.
+     * This method returns a GeoIP ISP model.
      *
      * @param string $ipAddress an IPv4 or IPv6 address as a string
      *
@@ -283,7 +283,7 @@ class Reader implements ProviderInterface
     }
 
     /**
-     * Closes the GeoIP2 database and returns the resources to the system.
+     * Closes the GeoIP database and returns the resources to the system.
      */
     public function close(): void
     {

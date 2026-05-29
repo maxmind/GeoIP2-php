@@ -7,7 +7,7 @@ namespace GeoIp2\Model;
 use GeoIp2\Record\Anonymizer;
 
 /**
- * Model class for the data returned by GeoIP2 Insights web service.
+ * Model class for the data returned by GeoIP Insights web service.
  *
  * See https://dev.maxmind.com/geoip/docs/web-services?lang=en for
  * more details.

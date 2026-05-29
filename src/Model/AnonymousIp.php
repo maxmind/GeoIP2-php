@@ -7,7 +7,7 @@ namespace GeoIp2\Model;
 use GeoIp2\Util;
 
 /**
- * This class provides the GeoIP2 Anonymous IP model.
+ * This class provides the GeoIP Anonymous IP model.
  */
 class AnonymousIp implements \JsonSerializable
 {

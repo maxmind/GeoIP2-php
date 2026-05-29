@@ -18,7 +18,7 @@ class Traits implements \JsonSerializable
      *               associated with the IP address. See
      *               https://en.wikipedia.org/wiki/Autonomous_system_(Internet%29. This attribute
      *               is only available from the City Plus and Insights web services and the
-     *               GeoIP2 Enterprise database.
+     *               GeoIP Enterprise database.
      */
     public readonly ?int $autonomousSystemNumber;
 
@@ -27,7 +27,7 @@ class Traits implements \JsonSerializable
      *                  associated with the registered autonomous system number for the IP address.
      *                  See https://en.wikipedia.org/wiki/Autonomous_system_(Internet%29. This
      *                  attribute is only available from the City Plus and Insights web services and
-     *                  the GeoIP2 Enterprise database.
+     *                  the GeoIP Enterprise database.
      */
     public readonly ?string $autonomousSystemOrganization;
 
@@ -35,7 +35,7 @@ class Traits implements \JsonSerializable
      * @var string|null The connection type may take the
      *                  following  values: "Dialup", "Cable/DSL", "Corporate", "Cellular", and
      *                  "Satellite". Additional values may be added in the future. This attribute is
-     *                  only available from the City Plus and Insights web services and the GeoIP2
+     *                  only available from the City Plus and Insights web services and the GeoIP
      *                  Enterprise database.
      */
     public readonly ?string $connectionType;
@@ -44,7 +44,7 @@ class Traits implements \JsonSerializable
      * @var string|null The second level domain associated with the
      *                  IP address. This will be something like "example.com" or "example.co.uk",
      *                  not "foo.example.com". This attribute is only available from the
-     *                  City Plus and Insights web services and the GeoIP2 Enterprise
+     *                  City Plus and Insights web services and the GeoIP Enterprise
      *                  database.
      */
     public readonly ?string $domain;
@@ -61,7 +61,7 @@ class Traits implements \JsonSerializable
 
     /**
      * @var bool This is true if the IP address belongs to
-     *           any sort of anonymous network. This property is only available from GeoIP2
+     *           any sort of anonymous network. This property is only available from GeoIP
      *           Insights.
      *
      * @deprecated use $anonymizer->isAnonymous in the Insights response instead
@@ -73,7 +73,7 @@ class Traits implements \JsonSerializable
      *           registered to an anonymous VPN provider. If a VPN provider does not register
      *           subnets under names associated with them, we will likely only flag their IP
      *           ranges using the isHostingProvider property. This property is only available
-     *           from GeoIP2 Insights.
+     *           from GeoIP Insights.
      *
      * @deprecated use $anonymizer->isAnonymousVpn in the Insights response instead
      */
@@ -89,7 +89,7 @@ class Traits implements \JsonSerializable
     /**
      * @var bool This is true if the IP address belongs
      *           to a hosting or VPN provider (see description of isAnonymousVpn property).
-     *           This property is only available from GeoIP2 Insights.
+     *           This property is only available from GeoIP Insights.
      *
      * @deprecated use $anonymizer->isHostingProvider in the Insights response instead
      */
@@ -98,14 +98,14 @@ class Traits implements \JsonSerializable
     /**
      * @var bool This attribute is true if MaxMind
      *           believes this IP address to be a legitimate proxy, such as an internal
-     *           VPN used by a corporation. This attribute is only available in the GeoIP2
+     *           VPN used by a corporation. This attribute is only available in the GeoIP
      *           Enterprise database.
      */
     public readonly bool $isLegitimateProxy;
 
     /**
      * @var bool This is true if the IP address belongs to
-     *           a public proxy. This property is only available from GeoIP2 Insights.
+     *           a public proxy. This property is only available from GeoIP Insights.
      *
      * @deprecated use $anonymizer->isPublicProxy in the Insights response instead
      */
@@ -114,7 +114,7 @@ class Traits implements \JsonSerializable
     /**
      * @var bool This is true if the IP address is
      *           on a suspected anonymizing network and belongs to a residential ISP. This
-     *           property is only available from GeoIP2 Insights.
+     *           property is only available from GeoIP Insights.
      *
      * @deprecated use $anonymizer->isResidentialProxy in the Insights response instead
      */
@@ -122,7 +122,7 @@ class Traits implements \JsonSerializable
 
     /**
      * @var bool This is true if the IP address is a Tor
-     *           exit node. This property is only available from GeoIP2 Insights.
+     *           exit node. This property is only available from GeoIP Insights.
      *
      * @deprecated use $anonymizer->isTorExitNode in the Insights response instead
      */
@@ -131,7 +131,7 @@ class Traits implements \JsonSerializable
     /**
      * @var string|null The name of the ISP associated with the IP
      *                  address. This attribute is only available from the City Plus and Insights
-     *                  web services and the GeoIP2 Enterprise database.
+     *                  web services and the GeoIP Enterprise database.
      */
     public readonly ?string $isp;
 
@@ -139,7 +139,7 @@ class Traits implements \JsonSerializable
      * @var string|null The [mobile country code
      *                  (MCC)](https://en.wikipedia.org/wiki/Mobile_country_code) associated with
      *                  the IP address and ISP. This property is available from the City Plus and
-     *                  Insights web services and the GeoIP2 Enterprise database.
+     *                  Insights web services and the GeoIP Enterprise database.
      */
     public readonly ?string $mobileCountryCode;
 
@@ -147,7 +147,7 @@ class Traits implements \JsonSerializable
      * @var string|null The [mobile network code
      *                  (MNC)](https://en.wikipedia.org/wiki/Mobile_country_code) associated with
      *                  the IP address and ISP. This property is available from the City Plus and
-     *                  Insights web services and the GeoIP2 Enterprise database.
+     *                  Insights web services and the GeoIP Enterprise database.
      */
     public readonly ?string $mobileNetworkCode;
 
@@ -161,7 +161,7 @@ class Traits implements \JsonSerializable
     /**
      * @var string|null The name of the organization
      *                  associated with the IP address. This attribute is only available from the
-     *                  City Plus and Insights web services and the GeoIP2 Enterprise database.
+     *                  City Plus and Insights web services and the GeoIP Enterprise database.
      */
     public readonly ?string $organization;
 
@@ -172,7 +172,7 @@ class Traits implements \JsonSerializable
      *                 IP risk score provided in minFraud and is not responsive to traffic on your
      *                 network. If you need realtime IP risk scoring based on behavioral signals on
      *                 your own network, please use minFraud. This attribute is only available from
-     *                 the GeoIP2 Insights web service.
+     *                 the GeoIP Insights web service.
      *
      *                 We do not provide an IP risk snapshot for low-risk networks. If this field
      *                 is not populated, we either do not have signals for the network or the
@@ -183,7 +183,7 @@ class Traits implements \JsonSerializable
 
     /**
      * @var float|null An indicator of how static or
-     *                 dynamic an IP address is. This property is only available from GeoIP2
+     *                 dynamic an IP address is. This property is only available from GeoIP
      *                 Insights.
      */
     public readonly ?float $staticIpScore;
@@ -192,7 +192,7 @@ class Traits implements \JsonSerializable
      * @var int|null The estimated number of users sharing
      *               the IP/network during the past 24 hours. For IPv4, the count is for the
      *               individual IP. For IPv6, the count is for the /64 network. This property is
-     *               only available from GeoIP2 Insights.
+     *               only available from GeoIP Insights.
      */
     public readonly ?int $userCount;
 
@@ -219,7 +219,7 @@ class Traits implements \JsonSerializable
      * </ul>
      * <p>
      *   This attribute is only available from the Insights web service and the
-     *   GeoIP2 Enterprise database.
+     *   GeoIP Enterprise database.
      * </p>
      */
     public readonly ?string $userType;

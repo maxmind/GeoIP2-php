@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace GeoIp2\Exception;
 
 /**
- * This class represents an error returned by MaxMind's GeoIP2
+ * This class represents an error returned by MaxMind's GeoIP
  * web service.
  */
 class InvalidRequestException extends HttpException

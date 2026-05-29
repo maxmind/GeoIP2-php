@@ -8,6 +8,8 @@ CHANGELOG
   `subdivisions` array. This provides compatibility with some third-party
   databases that publish empty subdivisions arrays. Pull request by Jarek
   Jakubowski. GitHub #290.
+* The `GeoIP2` prefix in web service error messages has been changed to
+  `GeoIP`.
 
 3.3.0 (2025-11-20)
 ------------------
