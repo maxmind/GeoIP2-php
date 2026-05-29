@@ -20,7 +20,7 @@ use MaxMind\Exception\WebServiceException;
 use MaxMind\WebService\Client as WsClient;
 
 /**
- * This class provides a client API for all the GeoIP2 web services.
+ * This class provides a client API for all the GeoIP web services.
  * The services are Country, City Plus, and Insights. Each service returns
  * a different set of data about an IP address, with Country returning the
  * least data and Insights the most.
@@ -65,11 +65,11 @@ class Client implements ProviderInterface
      *                                         from most preferred to least preferred
      * @param array<string, mixed> $options    array of options. Valid options include:
      *                                         * `host` - The host to use when querying the web
-     *                                         service. To query the GeoLite2 web service
-     *                                         instead of the GeoIP2 web service, set the
+     *                                         service. To query the GeoLite web service
+     *                                         instead of the GeoIP web service, set the
      *                                         host to `geolite.info`. To query the Sandbox
-     *                                         GeoIP2 web service instead of the production
-     *                                         GeoIP2 web service, set the host to
+     *                                         GeoIP web service instead of the production
+     *                                         GeoIP web service, set the host to
      *                                         `sandbox.maxmind.com`. The sandbox allows you to
      *                                         experiment with the API without affecting your
      *                                         production data.
@@ -167,7 +167,7 @@ class Client implements ProviderInterface
 
     /**
      * This method calls the Insights service. Insights is only supported by
-     * the GeoIP2 web service. The GeoLite2 web service does not support it.
+     * the GeoIP web service. The GeoLite web service does not support it.
      *
      * @param string $ipAddress IPv4 or IPv6 address as a string. If no
      *                          address is provided, the address that the web service is called
@@ -226,7 +226,7 @@ class Client implements ProviderInterface
 
         try {
             $service = (new \ReflectionClass($class))->getShortName();
-            $body = $this->client->get('GeoIP2 ' . $service, $path);
+            $body = $this->client->get('GeoIP ' . $service, $path);
         } catch (IpAddressNotFoundException $ex) {
             throw new AddressNotFoundException(
                 $ex->getMessage(),

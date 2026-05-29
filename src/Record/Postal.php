@@ -23,7 +23,7 @@ class Postal implements \JsonSerializable
     /**
      * @var int|null A value from 0-100 indicating MaxMind's
      *               confidence that the postal code is correct. This attribute is only
-     *               available from the Insights service and the GeoIP2 Enterprise
+     *               available from the Insights service and the GeoIP Enterprise
      *               database.
      */
     public readonly ?int $confidence;

@@ -157,7 +157,7 @@ rm -rf "$cachedir"
 php phpDocumentor.phar \
     --visibility=public \
     --cache-folder="$cachedir" \
-    --title="GeoIP2 PHP API $tag" \
+    --title="GeoIP PHP API $tag" \
     run \
     -d "$PWD/../src" \
     -t "doc/$tag"

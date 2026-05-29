@@ -1,8 +1,8 @@
-# GeoIP2 PHP API
+# GeoIP PHP API
 
 ## Description
 
-This package provides an API for the GeoIP2 and GeoLite2
+This package provides an API for the GeoIP and GeoLite
 [web services](https://dev.maxmind.com/geoip/docs/web-services?lang=en) and
 [databases](https://dev.maxmind.com/geoip/docs/databases?lang=en).
 
@@ -46,7 +46,7 @@ require 'vendor/autoload.php';
 
 Although we strongly recommend using Composer, we also provide a
 [phar archive](https://php.net/manual/en/book.phar.php) containing most of the
-dependencies for GeoIP2. Our latest phar archive is available on
+dependencies for GeoIP. Our latest phar archive is available on
 [our releases page](https://github.com/maxmind/GeoIP2-php/releases).
 
 ### Install Dependencies
@@ -80,7 +80,7 @@ require 'geoip2.phar';
 
 The [MaxMind DB API](https://github.com/maxmind/MaxMind-DB-Reader-php)
 includes an optional C extension that you may install to dramatically increase
-the performance of lookups in GeoIP2 or GeoLite2 databases. To install, please
+the performance of lookups in GeoIP or GeoLite databases. To install, please
 follow the instructions included with that API.
 
 The extension has no effect on web-service lookups.
@@ -88,7 +88,7 @@ The extension has no effect on web-service lookups.
 ## IP Geolocation Usage
 
 IP geolocation is inherently imprecise. Locations are often near the center of
-the population. Any location provided by a GeoIP2 database or web service
+the population. Any location provided by a GeoIP database or web service
 should not be used to identify a particular address or household.
 
 ## Database Reader
@@ -304,14 +304,14 @@ argument specifies the language preferences when using the `->name` method on
 the model classes that this client creates. The fourth argument is additional
 options such as `host` and `timeout`.
 
-For instance, to call the GeoLite2 web service instead of the GeoIP2 web
+For instance, to call the GeoLite web service instead of the GeoIP web
 service:
 
 ```php
 $client = new Client(42, 'abcdef123456', ['en'], ['host' => 'geolite.info']);
 ```
 
-To call the Sandbox GeoIP2 web service instead of the production GeoIP2 web
+To call the Sandbox GeoIP web service instead of the production GeoIP web
 service:
 
 ```php
@@ -344,10 +344,10 @@ use GeoIp2\WebService\Client;
 // This creates a Client object that can be reused across requests.
 // Replace "42" with your account ID and "license_key" with your license
 // key. Set the "host" to "geolite.info" in the fourth argument options
-// array to use the GeoLite2 web service instead of the GeoIP2 web
+// array to use the GeoLite web service instead of the GeoIP web
 // service. Set the "host" to "sandbox.maxmind.com" in the fourth argument
-// options array to use the Sandbox GeoIP2 web service instead of the
-// production GeoIP2 web service.
+// options array to use the Sandbox GeoIP web service instead of the
+// production GeoIP web service.
 $client = new Client(42, 'abcdef123456');
 
 // Replace "city" with the method corresponding to the web service that
@@ -398,7 +398,7 @@ Because of these factors, it is possible for any endpoint to return a record
 where some or all of the attributes are unpopulated.
 
 See the
-[GeoIP2 web service docs](https://dev.maxmind.com/geoip/docs/web-services?lang=en)
+[GeoIP web service docs](https://dev.maxmind.com/geoip/docs/web-services?lang=en)
 for details on what data each endpoint may return.
 
 The only piece of data which is always returned is the `ipAddress` attribute
@@ -411,7 +411,7 @@ databases with data on geographical features around the world, including
 populated places. They offer both free and paid premium data. Each feature is
 uniquely identified by a `geonameId`, which is an integer.
 
-Many of the records returned by the GeoIP2 web services and databases include
+Many of the records returned by the GeoIP web services and databases include
 a `geonameId` property. This is the ID of a geographical feature (city,
 region, country, etc.) in the GeoNames database.
 
@@ -460,7 +460,7 @@ initial clone, or from https://github.com/maxmind/MaxMind-DB
 
 ## Versioning
 
-The GeoIP2 PHP API uses [Semantic Versioning](https://semver.org/).
+The GeoIP PHP API uses [Semantic Versioning](https://semver.org/).
 
 ## Copyright and License
 

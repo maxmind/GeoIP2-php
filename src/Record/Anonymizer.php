@@ -7,20 +7,20 @@ namespace GeoIp2\Record;
 /**
  * Contains data for the anonymizer record associated with an IP address.
  *
- * This record is returned by the GeoIP2 Insights web service.
+ * This record is returned by the GeoIP Insights web service.
  */
 class Anonymizer implements \JsonSerializable
 {
     /**
      * @var int|null A confidence score from 1-99 indicating our confidence that the IP
      *               address is a VPN. Currently, this is either 30 or 99. This attribute is
-     *               only available from the GeoIP2 Insights web service.
+     *               only available from the GeoIP Insights web service.
      */
     public readonly ?int $confidence;
 
     /**
      * @var bool This is true if the IP address belongs to any sort of anonymous network.
-     *           This attribute is only available from the GeoIP2 Insights web service.
+     *           This attribute is only available from the GeoIP Insights web service.
      */
     public readonly bool $isAnonymous;
 
@@ -28,45 +28,45 @@ class Anonymizer implements \JsonSerializable
      * @var bool This is true if the IP address is registered to an anonymous VPN provider.
      *           If a VPN provider does not register subnets under names associated with them,
      *           we will likely only flag their IP ranges using the isHostingProvider property.
-     *           This attribute is only available from the GeoIP2 Insights web service.
+     *           This attribute is only available from the GeoIP Insights web service.
      */
     public readonly bool $isAnonymousVpn;
 
     /**
      * @var bool This is true if the IP address belongs to a hosting or VPN provider (see
      *           description of isAnonymousVpn property). This attribute is only available from
-     *           the GeoIP2 Insights web service.
+     *           the GeoIP Insights web service.
      */
     public readonly bool $isHostingProvider;
 
     /**
      * @var bool This is true if the IP address belongs to a public proxy. This attribute
-     *           is only available from the GeoIP2 Insights web service.
+     *           is only available from the GeoIP Insights web service.
      */
     public readonly bool $isPublicProxy;
 
     /**
      * @var bool This is true if the IP address is on a suspected anonymizing network and
-     *           belongs to a residential ISP. This attribute is only available from the GeoIP2
+     *           belongs to a residential ISP. This attribute is only available from the GeoIP
      *           Insights web service.
      */
     public readonly bool $isResidentialProxy;
 
     /**
      * @var bool This is true if the IP address is a Tor exit node. This attribute is only
-     *           available from the GeoIP2 Insights web service.
+     *           available from the GeoIP Insights web service.
      */
     public readonly bool $isTorExitNode;
 
     /**
      * @var string|null The date the anonymizer network was last seen in YYYY-MM-DD format.
-     *                  This attribute is only available from the GeoIP2 Insights web service.
+     *                  This attribute is only available from the GeoIP Insights web service.
      */
     public readonly ?string $networkLastSeen;
 
     /**
      * @var string|null The name of the VPN provider, for example, NordVPN or SurfShark.
-     *                  This attribute is only available from the GeoIP2 Insights web service.
+     *                  This attribute is only available from the GeoIP Insights web service.
      */
     public readonly ?string $providerName;
 

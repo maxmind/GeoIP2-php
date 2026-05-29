@@ -7,7 +7,7 @@ namespace GeoIp2\Model;
 use GeoIp2\Util;
 
 /**
- * This class provides the GeoIP2 Connection-Type model.
+ * This class provides the GeoIP Connection-Type model.
  */
 class ConnectionType implements \JsonSerializable
 {

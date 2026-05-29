@@ -7,7 +7,7 @@ namespace GeoIp2\Model;
 use GeoIp2\Util;
 
 /**
- * This class provides the GeoIP2 Domain model.
+ * This class provides the GeoIP Domain model.
  */
 class Domain implements \JsonSerializable
 {

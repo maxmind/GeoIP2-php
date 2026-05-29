@@ -1,4 +1,4 @@
-title = "MaxMind GeoIP2 PHP API"
+title = "MaxMind GeoIP PHP API"
 disableKinds = ["taxonomy", "term", "RSS"]
 
 [[cascade]]

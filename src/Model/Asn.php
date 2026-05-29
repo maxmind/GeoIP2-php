@@ -7,7 +7,7 @@ namespace GeoIp2\Model;
 use GeoIp2\Util;
 
 /**
- * This class provides the GeoLite2 ASN model.
+ * This class provides the GeoLite ASN model.
  */
 class Asn implements \JsonSerializable
 {

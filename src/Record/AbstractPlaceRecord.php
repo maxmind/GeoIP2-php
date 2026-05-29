@@ -9,7 +9,7 @@ abstract class AbstractPlaceRecord extends AbstractNamedRecord
     /**
      * @var int|null A value from 0-100 indicating MaxMind's
      *               confidence that the location level is correct. This attribute is only available
-     *               from the Insights service and the GeoIP2 Enterprise database.
+     *               from the Insights service and the GeoIP Enterprise database.
      */
     public readonly ?int $confidence;
 

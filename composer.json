@@ -1,6 +1,6 @@
 {
     "name": "geoip2/geoip2",
-    "description": "MaxMind GeoIP2 PHP API",
+    "description": "MaxMind GeoIP PHP API",
     "keywords": ["geoip", "geoip2", "geolocation", "ip", "maxmind"],
     "homepage": "https://github.com/maxmind/GeoIP2-php",
     "type": "library",
