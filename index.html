@@ -1,5 +1,5 @@
-<!doctype html><html lang=en><head><meta name=generator content="Hugo 0.161.1"><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>MaxMind GeoIP2 PHP API</title><link rel=stylesheet href=/GeoIP2-php/css/main.281d4a083c59f78015bdb60748317bf7d39ad62d8c9c6cead28bce0cc0794b5e.css integrity="sha256-KB1KCDxZ94AVvbYHSDF799Oa1i2MnGzq0ovODMB5S14=" crossorigin=anonymous></head><body><nav class=page-nav><a href=/GeoIP2-php/ class=active aria-current=page>Overview</a>
-<a href=/GeoIP2-php/doc/latest/>API documentation</a></nav><main><h1 id=geoip2-php-api>GeoIP2 PHP API<a class=heading-anchor href=#geoip2-php-api aria-label="Link to GeoIP2 PHP API">#</a></h1><h2 id=description>Description<a class=heading-anchor href=#description aria-label="Link to Description">#</a></h2><p>This package provides an API for the GeoIP2 and GeoLite2
+<!doctype html><html lang=en><head><meta name=generator content="Hugo 0.161.1"><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>MaxMind GeoIP PHP API</title><link rel=stylesheet href=/GeoIP2-php/css/main.281d4a083c59f78015bdb60748317bf7d39ad62d8c9c6cead28bce0cc0794b5e.css integrity="sha256-KB1KCDxZ94AVvbYHSDF799Oa1i2MnGzq0ovODMB5S14=" crossorigin=anonymous></head><body><nav class=page-nav><a href=/GeoIP2-php/ class=active aria-current=page>Overview</a>
+<a href=/GeoIP2-php/doc/latest/>API documentation</a></nav><main><h1 id=geoip-php-api>GeoIP PHP API<a class=heading-anchor href=#geoip-php-api aria-label="Link to GeoIP PHP API">#</a></h1><h2 id=description>Description<a class=heading-anchor href=#description aria-label="Link to Description">#</a></h2><p>This package provides an API for the GeoIP and GeoLite
 <a href="https://dev.maxmind.com/geoip/docs/web-services?lang=en">web services</a> and
 <a href="https://dev.maxmind.com/geoip/docs/databases?lang=en">databases</a>.</p><h2 id=install-via-composer>Install via Composer<a class=heading-anchor href=#install-via-composer aria-label="Link to Install via Composer">#</a></h2><p>We recommend installing this package with
 <a href=https://getcomposer.org/>Composer</a>.</p><h3 id=download-composer>Download Composer<a class=heading-anchor href=#download-composer aria-label="Link to Download Composer">#</a></h3><p>To download Composer, run in the root directory of your project:</p><div class=highlight><pre tabindex=0 style=background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>curl -sS https://getcomposer.org/installer <span style=color:#1f2328>|</span> php
@@ -10,7 +10,7 @@ system, <code>composer.json</code> should be added to it.</p><h3 id=require-auto
 from your code:</p><div class=highlight><pre tabindex=0 style=background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-php data-lang=php><span style=display:flex><span><span style=color:#cf222e>require</span> <span style=color:#0a3069>&#39;vendor/autoload.php&#39;</span><span style=color:#1f2328>;</span>
 </span></span></code></pre></div><h2 id=install-via-phar>Install via Phar<a class=heading-anchor href=#install-via-phar aria-label="Link to Install via Phar">#</a></h2><p>Although we strongly recommend using Composer, we also provide a
 <a href=https://php.net/manual/en/book.phar.php>phar archive</a> containing most of the
-dependencies for GeoIP2. Our latest phar archive is available on
+dependencies for GeoIP. Our latest phar archive is available on
 <a href=https://github.com/maxmind/GeoIP2-php/releases>our releases page</a>.</p><h3 id=install-dependencies-1>Install Dependencies<a class=heading-anchor href=#install-dependencies-1 aria-label="Link to Install Dependencies">#</a></h3><p>In order to use the phar archive, you must have the PHP
 <a href=https://php.net/manual/en/book.phar.php>Phar extension</a> installed and
 enabled.</p><p>If you will be making web service requests, you must have the PHP
@@ -22,9 +22,9 @@ your web server.</p><p>If you are missing this extension, you will see errors li
 </code></pre><h3 id=require-package>Require Package<a class=heading-anchor href=#require-package aria-label="Link to Require Package">#</a></h3><p>To use the archive, just require it from your script:</p><div class=highlight><pre tabindex=0 style=background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-php data-lang=php><span style=display:flex><span><span style=color:#cf222e>require</span> <span style=color:#0a3069>&#39;geoip2.phar&#39;</span><span style=color:#1f2328>;</span>
 </span></span></code></pre></div><h2 id=optional-c-extension>Optional C Extension<a class=heading-anchor href=#optional-c-extension aria-label="Link to Optional C Extension">#</a></h2><p>The <a href=https://github.com/maxmind/MaxMind-DB-Reader-php>MaxMind DB API</a>
 includes an optional C extension that you may install to dramatically increase
-the performance of lookups in GeoIP2 or GeoLite2 databases. To install, please
+the performance of lookups in GeoIP or GeoLite databases. To install, please
 follow the instructions included with that API.</p><p>The extension has no effect on web-service lookups.</p><h2 id=ip-geolocation-usage>IP Geolocation Usage<a class=heading-anchor href=#ip-geolocation-usage aria-label="Link to IP Geolocation Usage">#</a></h2><p>IP geolocation is inherently imprecise. Locations are often near the center of
-the population. Any location provided by a GeoIP2 database or web service
+the population. Any location provided by a GeoIP database or web service
 should not be used to identify a particular address or household.</p><h2 id=database-reader>Database Reader<a class=heading-anchor href=#database-reader aria-label="Link to Database Reader">#</a></h2><h3 id=usage>Usage<a class=heading-anchor href=#usage aria-label="Link to Usage">#</a></h3><p>To use this API, you must create a new <code>\GeoIp2\Database\Reader</code> object with
 the path to the database file as the first argument to the constructor. You
 may then call the method corresponding to the database you are using.</p><p>If the lookup succeeds, the method call will return a model class for the
@@ -169,9 +169,9 @@ your <code>$accountId</code> and <code>$licenseKey</code>:</p><div class=highlig
 </span></span></code></pre></div><p>You may also call the constructor with additional arguments. The third
 argument specifies the language preferences when using the <code>->name</code> method on
 the model classes that this client creates. The fourth argument is additional
-options such as <code>host</code> and <code>timeout</code>.</p><p>For instance, to call the GeoLite2 web service instead of the GeoIP2 web
+options such as <code>host</code> and <code>timeout</code>.</p><p>For instance, to call the GeoLite web service instead of the GeoIP web
 service:</p><div class=highlight><pre tabindex=0 style=background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-php data-lang=php><span style=display:flex><span><span style=color:#953800>$client</span> <span style=color:#0550ae>=</span> <span style=color:#cf222e>new</span> <span style=color:#1f2328>Client</span><span style=color:#1f2328>(</span><span style=color:#0550ae>42</span><span style=color:#1f2328>,</span> <span style=color:#0a3069>&#39;abcdef123456&#39;</span><span style=color:#1f2328>,</span> <span style=color:#1f2328>[</span><span style=color:#0a3069>&#39;en&#39;</span><span style=color:#1f2328>],</span> <span style=color:#1f2328>[</span><span style=color:#0a3069>&#39;host&#39;</span> <span style=color:#0550ae>=&gt;</span> <span style=color:#0a3069>&#39;geolite.info&#39;</span><span style=color:#1f2328>]);</span>
-</span></span></code></pre></div><p>To call the Sandbox GeoIP2 web service instead of the production GeoIP2 web
+</span></span></code></pre></div><p>To call the Sandbox GeoIP web service instead of the production GeoIP web
 service:</p><div class=highlight><pre tabindex=0 style=background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-php data-lang=php><span style=display:flex><span><span style=color:#953800>$client</span> <span style=color:#0550ae>=</span> <span style=color:#cf222e>new</span> <span style=color:#1f2328>Client</span><span style=color:#1f2328>(</span><span style=color:#0550ae>42</span><span style=color:#1f2328>,</span> <span style=color:#0a3069>&#39;abcdef123456&#39;</span><span style=color:#1f2328>,</span> <span style=color:#1f2328>[</span><span style=color:#0a3069>&#39;en&#39;</span><span style=color:#1f2328>],</span> <span style=color:#1f2328>[</span><span style=color:#0a3069>&#39;host&#39;</span> <span style=color:#0550ae>=&gt;</span> <span style=color:#0a3069>&#39;sandbox.maxmind.com&#39;</span><span style=color:#1f2328>]);</span>
 </span></span></code></pre></div><p>After creating the client, you may now call the method corresponding to a
 specific endpoint with the IP address to look up, e.g.:</p><div class=highlight><pre tabindex=0 style=background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-php data-lang=php><span style=display:flex><span><span style=color:#953800>$record</span> <span style=color:#0550ae>=</span> <span style=color:#953800>$client</span><span style=color:#0550ae>-&gt;</span><span style=color:#1f2328>city</span><span style=color:#1f2328>(</span><span style=color:#0a3069>&#39;128.101.101.101&#39;</span><span style=color:#1f2328>);</span>
@@ -185,10 +185,10 @@ details.</p><h3 id=example>Example<a class=heading-anchor href=#example aria-lab
 </span></span><span style=display:flex><span><span style=color:#57606a>// This creates a Client object that can be reused across requests.
 </span></span></span><span style=display:flex><span><span style=color:#57606a>// Replace &#34;42&#34; with your account ID and &#34;license_key&#34; with your license
 </span></span></span><span style=display:flex><span><span style=color:#57606a>// key. Set the &#34;host&#34; to &#34;geolite.info&#34; in the fourth argument options
-</span></span></span><span style=display:flex><span><span style=color:#57606a>// array to use the GeoLite2 web service instead of the GeoIP2 web
+</span></span></span><span style=display:flex><span><span style=color:#57606a>// array to use the GeoLite web service instead of the GeoIP web
 </span></span></span><span style=display:flex><span><span style=color:#57606a>// service. Set the &#34;host&#34; to &#34;sandbox.maxmind.com&#34; in the fourth argument
-</span></span></span><span style=display:flex><span><span style=color:#57606a>// options array to use the Sandbox GeoIP2 web service instead of the
-</span></span></span><span style=display:flex><span><span style=color:#57606a>// production GeoIP2 web service.
+</span></span></span><span style=display:flex><span><span style=color:#57606a>// options array to use the Sandbox GeoIP web service instead of the
+</span></span></span><span style=display:flex><span><span style=color:#57606a>// production GeoIP web service.
 </span></span></span><span style=display:flex><span><span style=color:#953800>$client</span> <span style=color:#0550ae>=</span> <span style=color:#cf222e>new</span> <span style=color:#1f2328>Client</span><span style=color:#1f2328>(</span><span style=color:#0550ae>42</span><span style=color:#1f2328>,</span> <span style=color:#0a3069>&#39;abcdef123456&#39;</span><span style=color:#1f2328>);</span>
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=color:#57606a>// Replace &#34;city&#34; with the method corresponding to the web service that
@@ -219,12 +219,12 @@ which can be populated vary between endpoints. In addition, while an endpoint
 may offer a particular piece of data, MaxMind does not always have every piece
 of data for any given IP address.</p><p>Because of these factors, it is possible for any endpoint to return a record
 where some or all of the attributes are unpopulated.</p><p>See the
-<a href="https://dev.maxmind.com/geoip/docs/web-services?lang=en">GeoIP2 web service docs</a>
+<a href="https://dev.maxmind.com/geoip/docs/web-services?lang=en">GeoIP web service docs</a>
 for details on what data each endpoint may return.</p><p>The only piece of data which is always returned is the <code>ipAddress</code> attribute
 in the <code>GeoIp2\Record\Traits</code> record.</p><h2 id=integration-with-geonames>Integration with GeoNames<a class=heading-anchor href=#integration-with-geonames aria-label="Link to Integration with GeoNames">#</a></h2><p><a href=https://www.geonames.org/>GeoNames</a> offers web services and downloadable
 databases with data on geographical features around the world, including
 populated places. They offer both free and paid premium data. Each feature is
-uniquely identified by a <code>geonameId</code>, which is an integer.</p><p>Many of the records returned by the GeoIP2 web services and databases include
+uniquely identified by a <code>geonameId</code>, which is an integer.</p><p>Many of the records returned by the GeoIP web services and databases include
 a <code>geonameId</code> property. This is the ID of a geographical feature (city,
 region, country, etc.) in the GeoNames database.</p><p>Some of the data that MaxMind provides is also sourced from GeoNames. We
 source things like place names, ISO codes, and other similar data from the
@@ -243,4 +243,4 @@ client API, please see <a href=https://www.maxmind.com/en/support>our support pa
 style guidelines. Please include unit tests whenever possible. You may obtain
 the test data for the maxmind-db folder by running
 <code>git submodule update --init --recursive</code> or adding <code>--recursive</code> to your
-initial clone, or from <a href=https://github.com/maxmind/MaxMind-DB>https://github.com/maxmind/MaxMind-DB</a></p><h2 id=versioning>Versioning<a class=heading-anchor href=#versioning aria-label="Link to Versioning">#</a></h2><p>The GeoIP2 PHP API uses <a href=https://semver.org/>Semantic Versioning</a>.</p><h2 id=copyright-and-license>Copyright and License<a class=heading-anchor href=#copyright-and-license aria-label="Link to Copyright and License">#</a></h2><p>This software is Copyright (c) 2013-2026 by MaxMind, Inc.</p><p>This is free software, licensed under the Apache License, Version 2.0.</p></main></body></html>
+initial clone, or from <a href=https://github.com/maxmind/MaxMind-DB>https://github.com/maxmind/MaxMind-DB</a></p><h2 id=versioning>Versioning<a class=heading-anchor href=#versioning aria-label="Link to Versioning">#</a></h2><p>The GeoIP PHP API uses <a href=https://semver.org/>Semantic Versioning</a>.</p><h2 id=copyright-and-license>Copyright and License<a class=heading-anchor href=#copyright-and-license aria-label="Link to Copyright and License">#</a></h2><p>This software is Copyright (c) 2013-2026 by MaxMind, Inc.</p><p>This is free software, licensed under the Apache License, Version 2.0.</p></main></body></html>
