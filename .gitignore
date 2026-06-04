@@ -24,3 +24,4 @@ vendor/
 # Claude Code directories
 .claude/
 .claude_cache/
+.lycheecache

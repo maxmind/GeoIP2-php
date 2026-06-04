@@ -7,6 +7,7 @@ disable_backends = [
 
 [tools]
 hugo = "latest"
+lychee = "latest"
 
 [hooks]
 enter = "mise install --quiet"
@@ -22,3 +23,7 @@ run = "hugo --source docs --minify"
 [tasks.serve-docs]
 description = "Serve the docs site locally with Hugo dev server"
 run = "hugo server --source docs"
+
+[tasks.check-links]
+description = "Check links with lychee"
+run = "lychee --no-progress './**/*.md' './src/**/*.php' './composer.json'"
