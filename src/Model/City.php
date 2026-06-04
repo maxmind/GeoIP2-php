@@ -13,7 +13,7 @@ use GeoIp2\Record\Subdivision;
  * Model class for the data returned by City Plus web service and City
  * database.
  *
- * See https://dev.maxmind.com/geoip/docs/web-services?lang=en for more
+ * See https://dev.maxmind.com/geoip/docs/web-services/?lang=en for more
  * details.
  */
 class City extends Country
