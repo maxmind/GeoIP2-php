@@ -1,7 +1,7 @@
 <!doctype html><html lang=en><head><meta name=generator content="Hugo 0.161.1"><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>MaxMind GeoIP PHP API</title><link rel=stylesheet href=/GeoIP2-php/css/main.281d4a083c59f78015bdb60748317bf7d39ad62d8c9c6cead28bce0cc0794b5e.css integrity="sha256-KB1KCDxZ94AVvbYHSDF799Oa1i2MnGzq0ovODMB5S14=" crossorigin=anonymous></head><body><nav class=page-nav><a href=/GeoIP2-php/ class=active aria-current=page>Overview</a>
 <a href=/GeoIP2-php/doc/latest/>API documentation</a></nav><main><h1 id=geoip-php-api>GeoIP PHP API<a class=heading-anchor href=#geoip-php-api aria-label="Link to GeoIP PHP API">#</a></h1><h2 id=description>Description<a class=heading-anchor href=#description aria-label="Link to Description">#</a></h2><p>This package provides an API for the GeoIP and GeoLite
-<a href="https://dev.maxmind.com/geoip/docs/web-services?lang=en">web services</a> and
-<a href="https://dev.maxmind.com/geoip/docs/databases?lang=en">databases</a>.</p><h2 id=install-via-composer>Install via Composer<a class=heading-anchor href=#install-via-composer aria-label="Link to Install via Composer">#</a></h2><p>We recommend installing this package with
+<a href="https://dev.maxmind.com/geoip/docs/web-services/?lang=en">web services</a> and
+<a href="https://dev.maxmind.com/geoip/docs/databases/?lang=en">databases</a>.</p><h2 id=install-via-composer>Install via Composer<a class=heading-anchor href=#install-via-composer aria-label="Link to Install via Composer">#</a></h2><p>We recommend installing this package with
 <a href=https://getcomposer.org/>Composer</a>.</p><h3 id=download-composer>Download Composer<a class=heading-anchor href=#download-composer aria-label="Link to Download Composer">#</a></h3><p>To download Composer, run in the root directory of your project:</p><div class=highlight><pre tabindex=0 style=background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>curl -sS https://getcomposer.org/installer <span style=color:#1f2328>|</span> php
 </span></span></code></pre></div><p>You should now have the file <code>composer.phar</code> in your project directory.</p><h3 id=install-dependencies>Install Dependencies<a class=heading-anchor href=#install-dependencies aria-label="Link to Install Dependencies">#</a></h3><p>Run in your project root:</p><div class=highlight><pre tabindex=0 style=background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-sh data-lang=sh><span style=display:flex><span>php composer.phar require geoip2/geoip2:^3.3.0
 </span></span></code></pre></div><p>You should now have the files <code>composer.json</code> and <code>composer.lock</code> as well as
@@ -9,12 +9,12 @@ the directory <code>vendor</code> in your project directory. If you use a versio
 system, <code>composer.json</code> should be added to it.</p><h3 id=require-autoloader>Require Autoloader<a class=heading-anchor href=#require-autoloader aria-label="Link to Require Autoloader">#</a></h3><p>After installing the dependencies, you need to require the Composer autoloader
 from your code:</p><div class=highlight><pre tabindex=0 style=background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-php data-lang=php><span style=display:flex><span><span style=color:#cf222e>require</span> <span style=color:#0a3069>&#39;vendor/autoload.php&#39;</span><span style=color:#1f2328>;</span>
 </span></span></code></pre></div><h2 id=install-via-phar>Install via Phar<a class=heading-anchor href=#install-via-phar aria-label="Link to Install via Phar">#</a></h2><p>Although we strongly recommend using Composer, we also provide a
-<a href=https://php.net/manual/en/book.phar.php>phar archive</a> containing most of the
+<a href=https://www.php.net/manual/en/book.phar.php>phar archive</a> containing most of the
 dependencies for GeoIP. Our latest phar archive is available on
 <a href=https://github.com/maxmind/GeoIP2-php/releases>our releases page</a>.</p><h3 id=install-dependencies-1>Install Dependencies<a class=heading-anchor href=#install-dependencies-1 aria-label="Link to Install Dependencies">#</a></h3><p>In order to use the phar archive, you must have the PHP
-<a href=https://php.net/manual/en/book.phar.php>Phar extension</a> installed and
+<a href=https://www.php.net/manual/en/book.phar.php>Phar extension</a> installed and
 enabled.</p><p>If you will be making web service requests, you must have the PHP
-<a href=https://php.net/manual/en/book.curl.php>cURL extension</a> installed to use
+<a href=https://www.php.net/manual/en/book.curl.php>cURL extension</a> installed to use
 this archive. For Debian-based distributions, this can typically be found in
 the <code>php-curl</code> package. For other operating systems, please consult the
 relevant documentation. After installing the extension you may need to restart
@@ -164,7 +164,7 @@ details.</p><h3 id=city-example>City Example<a class=heading-anchor href=#city-e
 </span></span></span><span style=display:flex><span><span style=color:#cf222e>print</span><span style=color:#1f2328>(</span><span style=color:#953800>$record</span><span style=color:#0550ae>-&gt;</span><span style=color:#1f2328>network</span> <span style=color:#0550ae>.</span> <span style=color:#0a3069>&#34;</span><span style=color:#0a3069>\n</span><span style=color:#0a3069>&#34;</span><span style=color:#1f2328>);</span> <span style=color:#57606a>// &#39;128.101.101.101/32&#39;
 </span></span></span></code></pre></div><h2 id=database-updates>Database Updates<a class=heading-anchor href=#database-updates aria-label="Link to Database Updates">#</a></h2><p>You can keep your databases up to date with our
 <a href=https://github.com/maxmind/geoipupdate/releases>GeoIP Update program</a>.
-<a href="https://dev.maxmind.com/geoip/updating-databases?lang=en">Learn more about GeoIP Update on our developer portal.</a></p><h2 id=web-service-client>Web Service Client<a class=heading-anchor href=#web-service-client aria-label="Link to Web Service Client">#</a></h2><h3 id=usage-1>Usage<a class=heading-anchor href=#usage-1 aria-label="Link to Usage">#</a></h3><p>To use this API, you must create a new <code>\GeoIp2\WebService\Client</code> object with
+<a href="https://dev.maxmind.com/geoip/updating-databases/?lang=en">Learn more about GeoIP Update on our developer portal.</a></p><h2 id=web-service-client>Web Service Client<a class=heading-anchor href=#web-service-client aria-label="Link to Web Service Client">#</a></h2><h3 id=usage-1>Usage<a class=heading-anchor href=#usage-1 aria-label="Link to Usage">#</a></h3><p>To use this API, you must create a new <code>\GeoIp2\WebService\Client</code> object with
 your <code>$accountId</code> and <code>$licenseKey</code>:</p><div class=highlight><pre tabindex=0 style=background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-php data-lang=php><span style=display:flex><span><span style=color:#953800>$client</span> <span style=color:#0550ae>=</span> <span style=color:#cf222e>new</span> <span style=color:#1f2328>Client</span><span style=color:#1f2328>(</span><span style=color:#0550ae>42</span><span style=color:#1f2328>,</span> <span style=color:#0a3069>&#39;abcdef123456&#39;</span><span style=color:#1f2328>);</span>
 </span></span></code></pre></div><p>You may also call the constructor with additional arguments. The third
 argument specifies the language preferences when using the <code>->name</code> method on
@@ -219,7 +219,7 @@ which can be populated vary between endpoints. In addition, while an endpoint
 may offer a particular piece of data, MaxMind does not always have every piece
 of data for any given IP address.</p><p>Because of these factors, it is possible for any endpoint to return a record
 where some or all of the attributes are unpopulated.</p><p>See the
-<a href="https://dev.maxmind.com/geoip/docs/web-services?lang=en">GeoIP web service docs</a>
+<a href="https://dev.maxmind.com/geoip/docs/web-services/?lang=en">GeoIP web service docs</a>
 for details on what data each endpoint may return.</p><p>The only piece of data which is always returned is the <code>ipAddress</code> attribute
 in the <code>GeoIp2\Record\Traits</code> record.</p><h2 id=integration-with-geonames>Integration with GeoNames<a class=heading-anchor href=#integration-with-geonames aria-label="Link to Integration with GeoNames">#</a></h2><p><a href=https://www.geonames.org/>GeoNames</a> offers web services and downloadable
 databases with data on geographical features around the world, including
@@ -229,16 +229,16 @@ a <code>geonameId</code> property. This is the ID of a geographical feature (cit
 region, country, etc.) in the GeoNames database.</p><p>Some of the data that MaxMind provides is also sourced from GeoNames. We
 source things like place names, ISO codes, and other similar data from the
 GeoNames premium data set.</p><h2 id=reporting-data-problems>Reporting data problems<a class=heading-anchor href=#reporting-data-problems aria-label="Link to Reporting data problems">#</a></h2><p>If the problem you find is that an IP address is incorrectly mapped, please
-<a href=https://www.maxmind.com/en/correction>submit your correction to MaxMind</a>.</p><p>If you find some other sort of mistake, like an incorrect spelling, please
+<a href=https://www.maxmind.com/en/geoip-data-correction-request>submit your correction to MaxMind</a>.</p><p>If you find some other sort of mistake, like an incorrect spelling, please
 check the <a href=https://www.geonames.org/>GeoNames site</a> first. Once you&rsquo;ve
 searched for a place and found it on the GeoNames map view, there are a number
 of links you can use to correct data (&ldquo;move&rdquo;, &ldquo;edit&rdquo;, &ldquo;alternate names&rdquo;,
 etc.). Once the correction is part of the GeoNames data set, it will be
 automatically incorporated into future MaxMind releases.</p><p>If you are a paying MaxMind customer and you&rsquo;re not sure where to submit a
 correction, please
-<a href=https://www.maxmind.com/en/support>contact MaxMind support</a> for help.</p><h2 id=other-support>Other Support<a class=heading-anchor href=#other-support aria-label="Link to Other Support">#</a></h2><p>Please report all issues with this code using the
+<a href=https://support.maxmind.com/knowledge-base>contact MaxMind support</a> for help.</p><h2 id=other-support>Other Support<a class=heading-anchor href=#other-support aria-label="Link to Other Support">#</a></h2><p>Please report all issues with this code using the
 <a href=https://github.com/maxmind/GeoIP2-php/issues>GitHub issue tracker</a>.</p><p>If you are having an issue with a MaxMind service that is not specific to the
-client API, please see <a href=https://www.maxmind.com/en/support>our support page</a>.</p><h2 id=requirements>Requirements<a class=heading-anchor href=#requirements aria-label="Link to Requirements">#</a></h2><p>This library requires PHP 8.1 or greater.</p><p>This library also relies on the
+client API, please see <a href=https://support.maxmind.com/knowledge-base>our support page</a>.</p><h2 id=requirements>Requirements<a class=heading-anchor href=#requirements aria-label="Link to Requirements">#</a></h2><p>This library requires PHP 8.1 or greater.</p><p>This library also relies on the
 <a href=https://github.com/maxmind/MaxMind-DB-Reader-php>MaxMind DB Reader</a>.</p><h2 id=contributing>Contributing<a class=heading-anchor href=#contributing aria-label="Link to Contributing">#</a></h2><p>Patches and pull requests are encouraged. All code should follow the PSR-12
 style guidelines. Please include unit tests whenever possible. You may obtain
 the test data for the maxmind-db folder by running
