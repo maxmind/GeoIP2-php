@@ -3,8 +3,8 @@
 ## Description
 
 This package provides an API for the GeoIP and GeoLite
-[web services](https://dev.maxmind.com/geoip/docs/web-services?lang=en) and
-[databases](https://dev.maxmind.com/geoip/docs/databases?lang=en).
+[web services](https://dev.maxmind.com/geoip/docs/web-services/?lang=en) and
+[databases](https://dev.maxmind.com/geoip/docs/databases/?lang=en).
 
 ## Install via Composer
 
@@ -45,18 +45,18 @@ require 'vendor/autoload.php';
 ## Install via Phar
 
 Although we strongly recommend using Composer, we also provide a
-[phar archive](https://php.net/manual/en/book.phar.php) containing most of the
+[phar archive](https://www.php.net/manual/en/book.phar.php) containing most of the
 dependencies for GeoIP. Our latest phar archive is available on
 [our releases page](https://github.com/maxmind/GeoIP2-php/releases).
 
 ### Install Dependencies
 
 In order to use the phar archive, you must have the PHP
-[Phar extension](https://php.net/manual/en/book.phar.php) installed and
+[Phar extension](https://www.php.net/manual/en/book.phar.php) installed and
 enabled.
 
 If you will be making web service requests, you must have the PHP
-[cURL extension](https://php.net/manual/en/book.curl.php) installed to use
+[cURL extension](https://www.php.net/manual/en/book.curl.php) installed to use
 this archive. For Debian-based distributions, this can typically be found in
 the `php-curl` package. For other operating systems, please consult the
 relevant documentation. After installing the extension you may need to restart
@@ -286,7 +286,7 @@ print($record->network . "\n"); // '128.101.101.101/32'
 
 You can keep your databases up to date with our
 [GeoIP Update program](https://github.com/maxmind/geoipupdate/releases).
-[Learn more about GeoIP Update on our developer portal.](https://dev.maxmind.com/geoip/updating-databases?lang=en)
+[Learn more about GeoIP Update on our developer portal.](https://dev.maxmind.com/geoip/updating-databases/?lang=en)
 
 ## Web Service Client
 
@@ -398,7 +398,7 @@ Because of these factors, it is possible for any endpoint to return a record
 where some or all of the attributes are unpopulated.
 
 See the
-[GeoIP web service docs](https://dev.maxmind.com/geoip/docs/web-services?lang=en)
+[GeoIP web service docs](https://dev.maxmind.com/geoip/docs/web-services/?lang=en)
 for details on what data each endpoint may return.
 
 The only piece of data which is always returned is the `ipAddress` attribute
@@ -422,7 +422,7 @@ GeoNames premium data set.
 ## Reporting data problems
 
 If the problem you find is that an IP address is incorrectly mapped, please
-[submit your correction to MaxMind](https://www.maxmind.com/en/correction).
+[submit your correction to MaxMind](https://www.maxmind.com/en/geoip-data-correction-request).
 
 If you find some other sort of mistake, like an incorrect spelling, please
 check the [GeoNames site](https://www.geonames.org/) first. Once you've
@@ -433,7 +433,7 @@ automatically incorporated into future MaxMind releases.
 
 If you are a paying MaxMind customer and you're not sure where to submit a
 correction, please
-[contact MaxMind support](https://www.maxmind.com/en/support) for help.
+[contact MaxMind support](https://support.maxmind.com/knowledge-base) for help.
 
 ## Other Support
 
@@ -441,7 +441,7 @@ Please report all issues with this code using the
 [GitHub issue tracker](https://github.com/maxmind/GeoIP2-php/issues).
 
 If you are having an issue with a MaxMind service that is not specific to the
-client API, please see [our support page](https://www.maxmind.com/en/support).
+client API, please see [our support page](https://support.maxmind.com/knowledge-base).
 
 ## Requirements
 
