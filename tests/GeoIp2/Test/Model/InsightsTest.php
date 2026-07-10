@@ -27,6 +27,11 @@ class InsightsTest extends TestCase
                 'is_tor_exit_node' => true,
                 'network_last_seen' => '2025-04-14',
                 'provider_name' => 'NordVPN',
+                'residential' => [
+                    'confidence' => 82,
+                    'network_last_seen' => '2026-05-11',
+                    'provider_name' => 'quickshift',
+                ],
             ],
             'city' => [
                 'confidence' => 76,
@@ -232,6 +237,30 @@ class InsightsTest extends TestCase
             '$model->anonymizer->providerName is NordVPN'
         );
 
+        $this->assertInstanceOf(
+            'GeoIp2\Record\AnonymizerFeed',
+            $model->anonymizer->residential,
+            '$model->anonymizer->residential'
+        );
+
+        $this->assertSame(
+            82,
+            $model->anonymizer->residential->confidence,
+            '$model->anonymizer->residential->confidence is 82'
+        );
+
+        $this->assertSame(
+            '2026-05-11',
+            $model->anonymizer->residential->networkLastSeen,
+            '$model->anonymizer->residential->networkLastSeen is 2026-05-11'
+        );
+
+        $this->assertSame(
+            'quickshift',
+            $model->anonymizer->residential->providerName,
+            '$model->anonymizer->residential->providerName is quickshift'
+        );
+
         $this->assertSame(
             15.37,
             $model->traits->ipRiskSnapshot,
@@ -385,10 +414,74 @@ class InsightsTest extends TestCase
                     'is_tor_exit_node' => true,
                     'network_last_seen' => '2025-04-14',
                     'provider_name' => 'NordVPN',
+                    'residential' => [
+                        'confidence' => 82,
+                        'network_last_seen' => '2026-05-11',
+                        'provider_name' => 'quickshift',
+                    ],
                 ],
             ],
             $model->jsonSerialize(),
             'jsonSerialize returns initial array'
+        );
+    }
+
+    public function testAnonymizerResidentialOnly(): void
+    {
+        // Residential proxy data may be present even when the other
+        // anonymizer properties are unset, so the anonymizer object may
+        // be returned with only the residential key set.
+        $raw = [
+            'traits' => ['ip_address' => '6.0.42.17'],
+            'anonymizer' => [
+                'residential' => [
+                    'confidence' => 95,
+                    'network_last_seen' => '2026-05-14',
+                    'provider_name' => 'novada',
+                ],
+            ],
+        ];
+
+        $model = new Insights($raw, ['en']);
+
+        $this->assertNull(
+            $model->anonymizer->confidence,
+            '$model->anonymizer->confidence is null'
+        );
+
+        $this->assertFalse(
+            $model->anonymizer->isAnonymous,
+            '$model->anonymizer->isAnonymous is false'
+        );
+
+        $this->assertInstanceOf(
+            'GeoIp2\Record\AnonymizerFeed',
+            $model->anonymizer->residential,
+            '$model->anonymizer->residential'
+        );
+
+        $this->assertSame(
+            95,
+            $model->anonymizer->residential->confidence,
+            '$model->anonymizer->residential->confidence is 95'
+        );
+
+        $this->assertSame(
+            '2026-05-14',
+            $model->anonymizer->residential->networkLastSeen,
+            '$model->anonymizer->residential->networkLastSeen is 2026-05-14'
+        );
+
+        $this->assertSame(
+            'novada',
+            $model->anonymizer->residential->providerName,
+            '$model->anonymizer->residential->providerName is novada'
+        );
+
+        $this->assertSame(
+            $raw,
+            $model->jsonSerialize(),
+            'jsonSerialize returns only the residential key in anonymizer'
         );
     }
 
@@ -456,6 +549,33 @@ class InsightsTest extends TestCase
             'GeoIp2\Record\Traits',
             $model->traits,
             '$model->traits'
+        );
+
+        $this->assertInstanceOf(
+            'GeoIp2\Record\Anonymizer',
+            $model->anonymizer,
+            '$model->anonymizer'
+        );
+
+        $this->assertInstanceOf(
+            'GeoIp2\Record\AnonymizerFeed',
+            $model->anonymizer->residential,
+            '$model->anonymizer->residential'
+        );
+
+        $this->assertNull(
+            $model->anonymizer->residential->confidence,
+            '$model->anonymizer->residential->confidence is null'
+        );
+
+        $this->assertNull(
+            $model->anonymizer->residential->networkLastSeen,
+            '$model->anonymizer->residential->networkLastSeen is null'
+        );
+
+        $this->assertNull(
+            $model->anonymizer->residential->providerName,
+            '$model->anonymizer->residential->providerName is null'
         );
 
         $this->assertSame(
