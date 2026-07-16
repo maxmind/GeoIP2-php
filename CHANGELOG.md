@@ -1,7 +1,7 @@
 CHANGELOG
 =========
 
-3.4.0 (unreleased)
+3.4.0 (2026-07-16)
 ------------------
 
 * A new `residential` property has been added to `GeoIp2\Record\Anonymizer`.
