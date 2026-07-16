@@ -1,9 +1,15 @@
 CHANGELOG
 =========
 
-3.3.1 (unreleased)
+3.4.0 (unreleased)
 ------------------
 
+* A new `residential` property has been added to `GeoIp2\Record\Anonymizer`.
+  This property is an instance of the new `GeoIp2\Record\AnonymizerFeed`
+  class and provides residential proxy data for the network, including
+  `confidence`, `networkLastSeen`, and `providerName`. This may be the only
+  property with data even when the other anonymizer properties are unset.
+  This data is available from the GeoIP Insights web service.
 * Updated the `GeoIp2\Model\City` constructor to handle an empty
   `subdivisions` array. This provides compatibility with some third-party
   databases that publish empty subdivisions arrays. Pull request by Jarek

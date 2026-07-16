@@ -71,6 +71,14 @@ class Anonymizer implements \JsonSerializable
     public readonly ?string $providerName;
 
     /**
+     * @var AnonymizerFeed Residential proxy data for the network. This may be the only
+     *                     property with data even when the other anonymizer properties are
+     *                     unset. This attribute is only available from the GeoIP Insights
+     *                     web service.
+     */
+    public readonly AnonymizerFeed $residential;
+
+    /**
      * @ignore
      *
      * @param array<string, mixed> $record
@@ -86,6 +94,7 @@ class Anonymizer implements \JsonSerializable
         $this->isTorExitNode = $record['is_tor_exit_node'] ?? false;
         $this->networkLastSeen = $record['network_last_seen'] ?? null;
         $this->providerName = $record['provider_name'] ?? null;
+        $this->residential = new AnonymizerFeed($record['residential'] ?? []);
     }
 
     /**
@@ -121,6 +130,10 @@ class Anonymizer implements \JsonSerializable
         }
         if ($this->providerName !== null) {
             $js['provider_name'] = $this->providerName;
+        }
+        $residential = $this->residential->jsonSerialize();
+        if (!empty($residential)) {
+            $js['residential'] = $residential;
         }
 
         return $js;
