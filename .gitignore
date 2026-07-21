@@ -8,11 +8,8 @@ docs/public/
 .phpunit.cache/
 .phpunit.result.cache
 GeoLite2-City.mmdb
-box.phar
 build
 composer.lock
-composer.phar
-/phpDocumentor.phar
 phpunit.xml
 geoip2.phar
 geoip2-php.sublime-*

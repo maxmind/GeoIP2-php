@@ -6,6 +6,9 @@ disable_backends = [
 ]
 
 [tools]
+"github:box-project/box" = "latest"
+"github:composer/composer" = "latest"
+"github:phpDocumentor/phpDocumentor" = "latest"
 hugo = "latest"
 lychee = "latest"
 
