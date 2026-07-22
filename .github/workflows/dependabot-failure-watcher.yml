@@ -1,0 +1,43 @@
+name: Dependabot Failure Watcher
+
+# Dependabot version updates run as GitHub Actions workflow runs named
+# "Dependabot Updates". This scheduled job looks back over the past week for any
+# of those runs that failed and fails itself if it finds one, so a silently-broken
+# ecosystem surfaces as a red scheduled run instead of only a red triangle in the
+# Dependabot tab that nobody checks.
+#
+# Runs entirely within this repo (no external service). A failed scheduled run
+# emails the person who last edited the cron below. Note: GitHub auto-disables
+# scheduled workflows after 60 days of repo inactivity.
+
+on:
+  schedule:
+    - cron: "17 14 * * 3" # Wednesdays 14:17 UTC
+  workflow_dispatch:
+
+permissions:
+  actions: read
+
+jobs:
+  check-dependabot-runs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fail if any Dependabot update failed in the last 8 days
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          since=$(date -u -d '8 days ago' +%Y-%m-%dT%H:%M:%SZ)
+          failures=$(gh run list \
+            --repo "$REPO" \
+            --workflow "Dependabot Updates" \
+            --limit 100 \
+            --json conclusion,createdAt,displayTitle,url \
+            --jq "[.[] | select((.conclusion == \"failure\" or .conclusion == \"startup_failure\" or .conclusion == \"timed_out\") and .createdAt >= \"$since\")]")
+          count=$(echo "$failures" | jq 'length')
+          if [ "$count" -gt 0 ]; then
+            echo "::error::$count failed Dependabot update run(s) in the last 8 days:"
+            echo "$failures" | jq -r '.[] | "- \(.displayTitle) (\(.createdAt))\n  \(.url)"'
+            exit 1
+          fi
+          echo "No failed Dependabot update runs in the last 8 days."
