@@ -55,7 +55,8 @@ class Reader implements ProviderInterface
      * @param array<string> $locales  list of locale codes to use in name property
      *                                from most preferred to least preferred
      *
-     * @throws InvalidDatabaseException if the database is corrupt or invalid
+     * @throws InvalidDatabaseException  if the database is corrupt or invalid
+     * @throws \InvalidArgumentException if the database file does not exist or is not readable
      */
     public function __construct(
         string $filename,
@@ -71,9 +72,10 @@ class Reader implements ProviderInterface
      *
      * @param string $ipAddress an IPv4 or IPv6 address as a string
      *
-     * @throws AddressNotFoundException if the address is not in the database
-     * @throws InvalidDatabaseException if the database is corrupt or invalid
-     * @throws \BadMethodCallException  if this database type is not supported
+     * @throws AddressNotFoundException  if the address is not in the database
+     * @throws InvalidDatabaseException  if the database is corrupt or invalid
+     * @throws \BadMethodCallException   if this database type is not supported
+     * @throws \InvalidArgumentException if the IP address is not valid
      */
     public function city(string $ipAddress): City
     {
@@ -85,9 +87,10 @@ class Reader implements ProviderInterface
      *
      * @param string $ipAddress an IPv4 or IPv6 address as a string
      *
-     * @throws AddressNotFoundException if the address is not in the database
-     * @throws InvalidDatabaseException if the database is corrupt or invalid
-     * @throws \BadMethodCallException  if this database type is not supported
+     * @throws AddressNotFoundException  if the address is not in the database
+     * @throws InvalidDatabaseException  if the database is corrupt or invalid
+     * @throws \BadMethodCallException   if this database type is not supported
+     * @throws \InvalidArgumentException if the IP address is not valid
      */
     public function country(string $ipAddress): Country
     {
@@ -99,9 +102,10 @@ class Reader implements ProviderInterface
      *
      * @param string $ipAddress an IPv4 or IPv6 address as a string
      *
-     * @throws AddressNotFoundException if the address is not in the database
-     * @throws InvalidDatabaseException if the database is corrupt or invalid
-     * @throws \BadMethodCallException  if this database type is not supported
+     * @throws AddressNotFoundException  if the address is not in the database
+     * @throws InvalidDatabaseException  if the database is corrupt or invalid
+     * @throws \BadMethodCallException   if this database type is not supported
+     * @throws \InvalidArgumentException if the IP address is not valid
      */
     public function anonymousIp(string $ipAddress): AnonymousIp
     {
@@ -117,9 +121,10 @@ class Reader implements ProviderInterface
      *
      * @param string $ipAddress an IPv4 or IPv6 address as a string
      *
-     * @throws AddressNotFoundException if the address is not in the database
-     * @throws InvalidDatabaseException if the database is corrupt or invalid
-     * @throws \BadMethodCallException  if this database type is not supported
+     * @throws AddressNotFoundException  if the address is not in the database
+     * @throws InvalidDatabaseException  if the database is corrupt or invalid
+     * @throws \BadMethodCallException   if this database type is not supported
+     * @throws \InvalidArgumentException if the IP address is not valid
      */
     public function anonymousPlus(string $ipAddress): AnonymousPlus
     {
@@ -135,9 +140,10 @@ class Reader implements ProviderInterface
      *
      * @param string $ipAddress an IPv4 or IPv6 address as a string
      *
-     * @throws AddressNotFoundException if the address is not in the database
-     * @throws InvalidDatabaseException if the database is corrupt or invalid
-     * @throws \BadMethodCallException  if this database type is not supported
+     * @throws AddressNotFoundException  if the address is not in the database
+     * @throws InvalidDatabaseException  if the database is corrupt or invalid
+     * @throws \BadMethodCallException   if this database type is not supported
+     * @throws \InvalidArgumentException if the IP address is not valid
      */
     public function asn(string $ipAddress): Asn
     {
@@ -153,9 +159,10 @@ class Reader implements ProviderInterface
      *
      * @param string $ipAddress an IPv4 or IPv6 address as a string
      *
-     * @throws AddressNotFoundException if the address is not in the database
-     * @throws InvalidDatabaseException if the database is corrupt or invalid
-     * @throws \BadMethodCallException  if this database type is not supported
+     * @throws AddressNotFoundException  if the address is not in the database
+     * @throws InvalidDatabaseException  if the database is corrupt or invalid
+     * @throws \BadMethodCallException   if this database type is not supported
+     * @throws \InvalidArgumentException if the IP address is not valid
      */
     public function connectionType(string $ipAddress): ConnectionType
     {
@@ -171,9 +178,10 @@ class Reader implements ProviderInterface
      *
      * @param string $ipAddress an IPv4 or IPv6 address as a string
      *
-     * @throws AddressNotFoundException if the address is not in the database
-     * @throws InvalidDatabaseException if the database is corrupt or invalid
-     * @throws \BadMethodCallException  if this database type is not supported
+     * @throws AddressNotFoundException  if the address is not in the database
+     * @throws InvalidDatabaseException  if the database is corrupt or invalid
+     * @throws \BadMethodCallException   if this database type is not supported
+     * @throws \InvalidArgumentException if the IP address is not valid
      */
     public function domain(string $ipAddress): Domain
     {
@@ -189,9 +197,10 @@ class Reader implements ProviderInterface
      *
      * @param string $ipAddress an IPv4 or IPv6 address as a string
      *
-     * @throws AddressNotFoundException if the address is not in the database
-     * @throws InvalidDatabaseException if the database is corrupt or invalid
-     * @throws \BadMethodCallException  if this database type is not supported
+     * @throws AddressNotFoundException  if the address is not in the database
+     * @throws InvalidDatabaseException  if the database is corrupt or invalid
+     * @throws \BadMethodCallException   if this database type is not supported
+     * @throws \InvalidArgumentException if the IP address is not valid
      */
     public function enterprise(string $ipAddress): Enterprise
     {
@@ -203,9 +212,10 @@ class Reader implements ProviderInterface
      *
      * @param string $ipAddress an IPv4 or IPv6 address as a string
      *
-     * @throws AddressNotFoundException if the address is not in the database
-     * @throws InvalidDatabaseException if the database is corrupt or invalid
-     * @throws \BadMethodCallException  if this database type is not supported
+     * @throws AddressNotFoundException  if the address is not in the database
+     * @throws InvalidDatabaseException  if the database is corrupt or invalid
+     * @throws \BadMethodCallException   if this database type is not supported
+     * @throws \InvalidArgumentException if the IP address is not valid
      */
     public function isp(string $ipAddress): Isp
     {
