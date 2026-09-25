@@ -1,6 +1,13 @@
 CHANGELOG
 =========
 
+3.4.1 (unreleased)
+------------------
+
+* The `GeoIp2\Database\Reader` constructor and lookup methods now declare the
+  `InvalidArgumentException` thrown by `MaxMind\Db\Reader` for a missing or
+  unreadable database file and for an invalid IP address.
+
 3.4.0 (2026-07-16)
 ------------------
 
