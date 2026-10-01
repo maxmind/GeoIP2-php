@@ -3,3 +3,15 @@ parameters:
     paths:
         - src
         - tests
+    exceptions:
+        # These classes signal programmer errors, so callers need not declare them.
+        uncheckedExceptionClasses:
+            - Error
+            - BadMethodCallException
+        check:
+            missingCheckedExceptionInThrows: true
+    ignoreErrors:
+        # PHPUnit handles any exception a test throws, so tests do not declare them.
+        -
+            identifier: missingType.checkedException
+            path: tests/*
