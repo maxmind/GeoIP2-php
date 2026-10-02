@@ -19,10 +19,10 @@
         "ext-json": "*"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "3.*",
+        "friendsofphp/php-cs-fixer": "^3.95",
         "phpunit/phpunit": "^10.0",
-        "squizlabs/php_codesniffer": "4.*",
-        "phpstan/phpstan": "*"
+        "squizlabs/php_codesniffer": "^4.0",
+        "phpstan/phpstan": "^2.2"
     },
     "autoload": {
         "psr-4": {
