@@ -16,3 +16,15 @@ parameters:
             identifier: missingType.checkedException
             path: tests/*
             reportUnmatched: false
+        # Older reader releases declare exceptions these calls cannot throw.
+        # Keep these ignores optional until the minimum reader version is raised.
+        -
+            message: '#^Method GeoIp2\\Database\\Reader::metadata\(\) throws checked exception InvalidArgumentException but it.s missing from the PHPDoc @throws tag\.$#'
+            identifier: missingType.checkedException
+            path: src/Database/Reader.php
+            reportUnmatched: false
+        -
+            message: '#^Method GeoIp2\\Database\\Reader::close\(\) throws checked exception Exception but it.s missing from the PHPDoc @throws tag\.$#'
+            identifier: missingType.checkedException
+            path: src/Database/Reader.php
+            reportUnmatched: false

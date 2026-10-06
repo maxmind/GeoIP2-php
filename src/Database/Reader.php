@@ -351,9 +351,6 @@ class Reader implements ProviderInterface
      */
     public function metadata(): Metadata
     {
-        // MaxMind\Db\Reader::metadata() declares InvalidArgumentException for
-        // arguments passed to it, and this call passes none.
-        // @phpstan-ignore missingType.checkedException
         return $this->dbReader->metadata();
     }
 
@@ -362,9 +359,6 @@ class Reader implements ProviderInterface
      */
     public function close(): void
     {
-        // MaxMind\Db\Reader::close() declares \Exception, but the only
-        // exception it throws is BadMethodCallException.
-        // @phpstan-ignore missingType.checkedException
         $this->dbReader->close();
     }
 }
