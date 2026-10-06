@@ -61,6 +61,9 @@ class Reader implements ProviderInterface
      * @throws InvalidDatabaseException  if the database is corrupt or invalid
      * @throws \InvalidArgumentException if the database file does not exist or
      *                                   is not readable
+     * @throws \RuntimeException         with the pure PHP reader, if metadata decoding
+     *                                   needs gmp or bcmath and neither is installed,
+     *                                   or a data offset exceeds the platform limit
      * @throws \UnexpectedValueException if the size of the database file
      *                                   cannot be determined
      */
@@ -88,6 +91,9 @@ class Reader implements ProviderInterface
      * @throws \InvalidArgumentException if the IP address is not valid, or if
      *                                   it is an IPv6 address and the database
      *                                   is IPv4-only
+     * @throws \RuntimeException         with the pure PHP reader, if decoding needs
+     *                                   gmp or bcmath and neither is installed,
+     *                                   or a data offset exceeds the platform limit
      */
     public function city(string $ipAddress): City
     {
@@ -107,6 +113,9 @@ class Reader implements ProviderInterface
      * @throws \InvalidArgumentException if the IP address is not valid, or if
      *                                   it is an IPv6 address and the database
      *                                   is IPv4-only
+     * @throws \RuntimeException         with the pure PHP reader, if decoding needs
+     *                                   gmp or bcmath and neither is installed,
+     *                                   or a data offset exceeds the platform limit
      */
     public function country(string $ipAddress): Country
     {
@@ -126,6 +135,9 @@ class Reader implements ProviderInterface
      * @throws \InvalidArgumentException if the IP address is not valid, or if
      *                                   it is an IPv6 address and the database
      *                                   is IPv4-only
+     * @throws \RuntimeException         with the pure PHP reader, if decoding needs
+     *                                   gmp or bcmath and neither is installed,
+     *                                   or a data offset exceeds the platform limit
      */
     public function anonymousIp(string $ipAddress): AnonymousIp
     {
@@ -149,6 +161,9 @@ class Reader implements ProviderInterface
      * @throws \InvalidArgumentException if the IP address is not valid, or if
      *                                   it is an IPv6 address and the database
      *                                   is IPv4-only
+     * @throws \RuntimeException         with the pure PHP reader, if decoding needs
+     *                                   gmp or bcmath and neither is installed,
+     *                                   or a data offset exceeds the platform limit
      */
     public function anonymousPlus(string $ipAddress): AnonymousPlus
     {
@@ -172,6 +187,9 @@ class Reader implements ProviderInterface
      * @throws \InvalidArgumentException if the IP address is not valid, or if
      *                                   it is an IPv6 address and the database
      *                                   is IPv4-only
+     * @throws \RuntimeException         with the pure PHP reader, if decoding needs
+     *                                   gmp or bcmath and neither is installed,
+     *                                   or a data offset exceeds the platform limit
      */
     public function asn(string $ipAddress): Asn
     {
@@ -195,6 +213,9 @@ class Reader implements ProviderInterface
      * @throws \InvalidArgumentException if the IP address is not valid, or if
      *                                   it is an IPv6 address and the database
      *                                   is IPv4-only
+     * @throws \RuntimeException         with the pure PHP reader, if decoding needs
+     *                                   gmp or bcmath and neither is installed,
+     *                                   or a data offset exceeds the platform limit
      */
     public function connectionType(string $ipAddress): ConnectionType
     {
@@ -218,6 +239,9 @@ class Reader implements ProviderInterface
      * @throws \InvalidArgumentException if the IP address is not valid, or if
      *                                   it is an IPv6 address and the database
      *                                   is IPv4-only
+     * @throws \RuntimeException         with the pure PHP reader, if decoding needs
+     *                                   gmp or bcmath and neither is installed,
+     *                                   or a data offset exceeds the platform limit
      */
     public function domain(string $ipAddress): Domain
     {
@@ -241,6 +265,9 @@ class Reader implements ProviderInterface
      * @throws \InvalidArgumentException if the IP address is not valid, or if
      *                                   it is an IPv6 address and the database
      *                                   is IPv4-only
+     * @throws \RuntimeException         with the pure PHP reader, if decoding needs
+     *                                   gmp or bcmath and neither is installed,
+     *                                   or a data offset exceeds the platform limit
      */
     public function enterprise(string $ipAddress): Enterprise
     {
@@ -260,6 +287,9 @@ class Reader implements ProviderInterface
      * @throws \InvalidArgumentException if the IP address is not valid, or if
      *                                   it is an IPv6 address and the database
      *                                   is IPv4-only
+     * @throws \RuntimeException         with the pure PHP reader, if decoding needs
+     *                                   gmp or bcmath and neither is installed,
+     *                                   or a data offset exceeds the platform limit
      */
     public function isp(string $ipAddress): Isp
     {
@@ -277,6 +307,7 @@ class Reader implements ProviderInterface
      * @throws InvalidDatabaseException
      * @throws \BadMethodCallException
      * @throws \InvalidArgumentException
+     * @throws \RuntimeException
      */
     private function modelFor(string $class, string $type, string $ipAddress): object
     {
@@ -295,6 +326,7 @@ class Reader implements ProviderInterface
      * @throws InvalidDatabaseException
      * @throws \BadMethodCallException
      * @throws \InvalidArgumentException
+     * @throws \RuntimeException
      */
     private function flatModelFor(string $class, string $type, string $ipAddress): object
     {
@@ -313,6 +345,7 @@ class Reader implements ProviderInterface
      * @throws InvalidDatabaseException
      * @throws \BadMethodCallException
      * @throws \InvalidArgumentException
+     * @throws \RuntimeException
      *
      * @return array{0:array<string, mixed>, 1:int}
      */
