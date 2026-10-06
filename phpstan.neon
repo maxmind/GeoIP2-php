@@ -11,7 +11,8 @@ parameters:
         check:
             missingCheckedExceptionInThrows: true
     ignoreErrors:
-        # PHPUnit handles any exception a test throws, so tests do not declare them.
+        # PHPUnit handles exceptions from test methods and their helpers.
         -
             identifier: missingType.checkedException
             path: tests/*
+            reportUnmatched: false
