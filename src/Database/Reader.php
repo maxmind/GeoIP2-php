@@ -87,7 +87,8 @@ class Reader implements ProviderInterface
      * @throws InvalidDatabaseException  if the database is corrupt or invalid
      * @throws \BadMethodCallException   if the database type does not support
      *                                   this method, the reader is closed, or
-     *                                   a lookup is in progress
+     *                                   a lookup is in progress (pure PHP reader
+     *                                   1.14.0 and later)
      * @throws \InvalidArgumentException if the IP address is not valid, or if
      *                                   it is an IPv6 address and the database
      *                                   is IPv4-only
@@ -109,7 +110,8 @@ class Reader implements ProviderInterface
      * @throws InvalidDatabaseException  if the database is corrupt or invalid
      * @throws \BadMethodCallException   if the database type does not support
      *                                   this method, the reader is closed, or
-     *                                   a lookup is in progress
+     *                                   a lookup is in progress (pure PHP reader
+     *                                   1.14.0 and later)
      * @throws \InvalidArgumentException if the IP address is not valid, or if
      *                                   it is an IPv6 address and the database
      *                                   is IPv4-only
@@ -131,7 +133,8 @@ class Reader implements ProviderInterface
      * @throws InvalidDatabaseException  if the database is corrupt or invalid
      * @throws \BadMethodCallException   if the database type does not support
      *                                   this method, the reader is closed, or
-     *                                   a lookup is in progress
+     *                                   a lookup is in progress (pure PHP reader
+     *                                   1.14.0 and later)
      * @throws \InvalidArgumentException if the IP address is not valid, or if
      *                                   it is an IPv6 address and the database
      *                                   is IPv4-only
@@ -157,7 +160,8 @@ class Reader implements ProviderInterface
      * @throws InvalidDatabaseException  if the database is corrupt or invalid
      * @throws \BadMethodCallException   if the database type does not support
      *                                   this method, the reader is closed, or
-     *                                   a lookup is in progress
+     *                                   a lookup is in progress (pure PHP reader
+     *                                   1.14.0 and later)
      * @throws \InvalidArgumentException if the IP address is not valid, or if
      *                                   it is an IPv6 address and the database
      *                                   is IPv4-only
@@ -183,7 +187,8 @@ class Reader implements ProviderInterface
      * @throws InvalidDatabaseException  if the database is corrupt or invalid
      * @throws \BadMethodCallException   if the database type does not support
      *                                   this method, the reader is closed, or
-     *                                   a lookup is in progress
+     *                                   a lookup is in progress (pure PHP reader
+     *                                   1.14.0 and later)
      * @throws \InvalidArgumentException if the IP address is not valid, or if
      *                                   it is an IPv6 address and the database
      *                                   is IPv4-only
@@ -209,7 +214,8 @@ class Reader implements ProviderInterface
      * @throws InvalidDatabaseException  if the database is corrupt or invalid
      * @throws \BadMethodCallException   if the database type does not support
      *                                   this method, the reader is closed, or
-     *                                   a lookup is in progress
+     *                                   a lookup is in progress (pure PHP reader
+     *                                   1.14.0 and later)
      * @throws \InvalidArgumentException if the IP address is not valid, or if
      *                                   it is an IPv6 address and the database
      *                                   is IPv4-only
@@ -235,7 +241,8 @@ class Reader implements ProviderInterface
      * @throws InvalidDatabaseException  if the database is corrupt or invalid
      * @throws \BadMethodCallException   if the database type does not support
      *                                   this method, the reader is closed, or
-     *                                   a lookup is in progress
+     *                                   a lookup is in progress (pure PHP reader
+     *                                   1.14.0 and later)
      * @throws \InvalidArgumentException if the IP address is not valid, or if
      *                                   it is an IPv6 address and the database
      *                                   is IPv4-only
@@ -261,7 +268,8 @@ class Reader implements ProviderInterface
      * @throws InvalidDatabaseException  if the database is corrupt or invalid
      * @throws \BadMethodCallException   if the database type does not support
      *                                   this method, the reader is closed, or
-     *                                   a lookup is in progress
+     *                                   a lookup is in progress (pure PHP reader
+     *                                   1.14.0 and later)
      * @throws \InvalidArgumentException if the IP address is not valid, or if
      *                                   it is an IPv6 address and the database
      *                                   is IPv4-only
@@ -283,7 +291,8 @@ class Reader implements ProviderInterface
      * @throws InvalidDatabaseException  if the database is corrupt or invalid
      * @throws \BadMethodCallException   if the database type does not support
      *                                   this method, the reader is closed, or
-     *                                   a lookup is in progress
+     *                                   a lookup is in progress (pure PHP reader
+     *                                   1.14.0 and later)
      * @throws \InvalidArgumentException if the IP address is not valid, or if
      *                                   it is an IPv6 address and the database
      *                                   is IPv4-only
