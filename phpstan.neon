@@ -7,7 +7,6 @@ parameters:
         # These classes signal programmer errors, so callers need not declare them.
         uncheckedExceptionClasses:
             - Error
-            - BadMethodCallException
         check:
             missingCheckedExceptionInThrows: true
     ignoreErrors:

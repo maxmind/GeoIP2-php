@@ -70,6 +70,8 @@ class Reader implements ProviderInterface
         public readonly array $locales = ['en']
     ) {
         $this->dbReader = new DbReader($filename);
+        // The reader was just opened, so metadata() cannot report a closed reader.
+        // @phpstan-ignore missingType.checkedException
         $this->dbType = $this->dbReader->metadata()->databaseType;
     }
 
@@ -356,6 +358,8 @@ class Reader implements ProviderInterface
 
     /**
      * Closes the GeoIP database and returns the resources to the system.
+     *
+     * @throws \BadMethodCallException if the database has already been closed
      */
     public function close(): void
     {
