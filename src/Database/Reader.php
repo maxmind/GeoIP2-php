@@ -271,6 +271,8 @@ class Reader implements ProviderInterface
     }
 
     /**
+     * @param class-string $class
+     *
      * @throws AddressNotFoundException
      * @throws InvalidDatabaseException
      * @throws \BadMethodCallException
@@ -287,6 +289,8 @@ class Reader implements ProviderInterface
     }
 
     /**
+     * @param class-string $class
+     *
      * @throws AddressNotFoundException
      * @throws InvalidDatabaseException
      * @throws \BadMethodCallException
@@ -303,6 +307,8 @@ class Reader implements ProviderInterface
     }
 
     /**
+     * @param class-string $class
+     *
      * @throws AddressNotFoundException
      * @throws InvalidDatabaseException
      * @throws \BadMethodCallException
@@ -313,8 +319,6 @@ class Reader implements ProviderInterface
     private function getRecord(string $class, string $type, string $ipAddress): array
     {
         if (!str_contains($this->dbType, $type)) {
-            // Every caller passes the ::class constant of a model class.
-            // @phpstan-ignore missingType.checkedException
             $method = lcfirst((new \ReflectionClass($class))->getShortName());
 
             throw new \BadMethodCallException(
