@@ -51,12 +51,21 @@ class Reader implements ProviderInterface
     /**
      * Constructor.
      *
+     * The declared exceptions come from the pure-PHP reader. The C extension
+     * may differ.
+     *
      * @param string        $filename the path to the GeoIP database file
      * @param array<string> $locales  list of locale codes to use in name property
      *                                from most preferred to least preferred
      *
      * @throws InvalidDatabaseException  if the database is corrupt or invalid
-     * @throws \InvalidArgumentException if the database file does not exist or is not readable
+     * @throws \InvalidArgumentException if the database file does not exist or
+     *                                   is not readable
+     * @throws \RuntimeException         with the pure PHP reader, if metadata decoding
+     *                                   needs gmp or bcmath and neither is installed,
+     *                                   or a data offset exceeds the platform limit
+     * @throws \UnexpectedValueException if the size of the database file
+     *                                   cannot be determined
      */
     public function __construct(
         string $filename,
@@ -64,6 +73,8 @@ class Reader implements ProviderInterface
         public readonly array $locales = ['en']
     ) {
         $this->dbReader = new DbReader($filename);
+        // The reader was just opened, so metadata() cannot report a closed reader.
+        // @phpstan-ignore missingType.checkedException
         $this->dbType = $this->dbReader->metadata()->databaseType;
     }
 
@@ -74,8 +85,16 @@ class Reader implements ProviderInterface
      *
      * @throws AddressNotFoundException  if the address is not in the database
      * @throws InvalidDatabaseException  if the database is corrupt or invalid
-     * @throws \BadMethodCallException   if this database type is not supported
-     * @throws \InvalidArgumentException if the IP address is not valid
+     * @throws \BadMethodCallException   if the database type does not support
+     *                                   this method, the reader is closed, or
+     *                                   a lookup is in progress (pure PHP reader
+     *                                   1.14.0 and later)
+     * @throws \InvalidArgumentException if the IP address is not valid, or if
+     *                                   it is an IPv6 address and the database
+     *                                   is IPv4-only
+     * @throws \RuntimeException         with the pure PHP reader, if decoding needs
+     *                                   gmp or bcmath and neither is installed,
+     *                                   or a data offset exceeds the platform limit
      */
     public function city(string $ipAddress): City
     {
@@ -89,8 +108,16 @@ class Reader implements ProviderInterface
      *
      * @throws AddressNotFoundException  if the address is not in the database
      * @throws InvalidDatabaseException  if the database is corrupt or invalid
-     * @throws \BadMethodCallException   if this database type is not supported
-     * @throws \InvalidArgumentException if the IP address is not valid
+     * @throws \BadMethodCallException   if the database type does not support
+     *                                   this method, the reader is closed, or
+     *                                   a lookup is in progress (pure PHP reader
+     *                                   1.14.0 and later)
+     * @throws \InvalidArgumentException if the IP address is not valid, or if
+     *                                   it is an IPv6 address and the database
+     *                                   is IPv4-only
+     * @throws \RuntimeException         with the pure PHP reader, if decoding needs
+     *                                   gmp or bcmath and neither is installed,
+     *                                   or a data offset exceeds the platform limit
      */
     public function country(string $ipAddress): Country
     {
@@ -104,8 +131,16 @@ class Reader implements ProviderInterface
      *
      * @throws AddressNotFoundException  if the address is not in the database
      * @throws InvalidDatabaseException  if the database is corrupt or invalid
-     * @throws \BadMethodCallException   if this database type is not supported
-     * @throws \InvalidArgumentException if the IP address is not valid
+     * @throws \BadMethodCallException   if the database type does not support
+     *                                   this method, the reader is closed, or
+     *                                   a lookup is in progress (pure PHP reader
+     *                                   1.14.0 and later)
+     * @throws \InvalidArgumentException if the IP address is not valid, or if
+     *                                   it is an IPv6 address and the database
+     *                                   is IPv4-only
+     * @throws \RuntimeException         with the pure PHP reader, if decoding needs
+     *                                   gmp or bcmath and neither is installed,
+     *                                   or a data offset exceeds the platform limit
      */
     public function anonymousIp(string $ipAddress): AnonymousIp
     {
@@ -123,8 +158,16 @@ class Reader implements ProviderInterface
      *
      * @throws AddressNotFoundException  if the address is not in the database
      * @throws InvalidDatabaseException  if the database is corrupt or invalid
-     * @throws \BadMethodCallException   if this database type is not supported
-     * @throws \InvalidArgumentException if the IP address is not valid
+     * @throws \BadMethodCallException   if the database type does not support
+     *                                   this method, the reader is closed, or
+     *                                   a lookup is in progress (pure PHP reader
+     *                                   1.14.0 and later)
+     * @throws \InvalidArgumentException if the IP address is not valid, or if
+     *                                   it is an IPv6 address and the database
+     *                                   is IPv4-only
+     * @throws \RuntimeException         with the pure PHP reader, if decoding needs
+     *                                   gmp or bcmath and neither is installed,
+     *                                   or a data offset exceeds the platform limit
      */
     public function anonymousPlus(string $ipAddress): AnonymousPlus
     {
@@ -142,8 +185,16 @@ class Reader implements ProviderInterface
      *
      * @throws AddressNotFoundException  if the address is not in the database
      * @throws InvalidDatabaseException  if the database is corrupt or invalid
-     * @throws \BadMethodCallException   if this database type is not supported
-     * @throws \InvalidArgumentException if the IP address is not valid
+     * @throws \BadMethodCallException   if the database type does not support
+     *                                   this method, the reader is closed, or
+     *                                   a lookup is in progress (pure PHP reader
+     *                                   1.14.0 and later)
+     * @throws \InvalidArgumentException if the IP address is not valid, or if
+     *                                   it is an IPv6 address and the database
+     *                                   is IPv4-only
+     * @throws \RuntimeException         with the pure PHP reader, if decoding needs
+     *                                   gmp or bcmath and neither is installed,
+     *                                   or a data offset exceeds the platform limit
      */
     public function asn(string $ipAddress): Asn
     {
@@ -161,8 +212,16 @@ class Reader implements ProviderInterface
      *
      * @throws AddressNotFoundException  if the address is not in the database
      * @throws InvalidDatabaseException  if the database is corrupt or invalid
-     * @throws \BadMethodCallException   if this database type is not supported
-     * @throws \InvalidArgumentException if the IP address is not valid
+     * @throws \BadMethodCallException   if the database type does not support
+     *                                   this method, the reader is closed, or
+     *                                   a lookup is in progress (pure PHP reader
+     *                                   1.14.0 and later)
+     * @throws \InvalidArgumentException if the IP address is not valid, or if
+     *                                   it is an IPv6 address and the database
+     *                                   is IPv4-only
+     * @throws \RuntimeException         with the pure PHP reader, if decoding needs
+     *                                   gmp or bcmath and neither is installed,
+     *                                   or a data offset exceeds the platform limit
      */
     public function connectionType(string $ipAddress): ConnectionType
     {
@@ -180,8 +239,16 @@ class Reader implements ProviderInterface
      *
      * @throws AddressNotFoundException  if the address is not in the database
      * @throws InvalidDatabaseException  if the database is corrupt or invalid
-     * @throws \BadMethodCallException   if this database type is not supported
-     * @throws \InvalidArgumentException if the IP address is not valid
+     * @throws \BadMethodCallException   if the database type does not support
+     *                                   this method, the reader is closed, or
+     *                                   a lookup is in progress (pure PHP reader
+     *                                   1.14.0 and later)
+     * @throws \InvalidArgumentException if the IP address is not valid, or if
+     *                                   it is an IPv6 address and the database
+     *                                   is IPv4-only
+     * @throws \RuntimeException         with the pure PHP reader, if decoding needs
+     *                                   gmp or bcmath and neither is installed,
+     *                                   or a data offset exceeds the platform limit
      */
     public function domain(string $ipAddress): Domain
     {
@@ -199,8 +266,16 @@ class Reader implements ProviderInterface
      *
      * @throws AddressNotFoundException  if the address is not in the database
      * @throws InvalidDatabaseException  if the database is corrupt or invalid
-     * @throws \BadMethodCallException   if this database type is not supported
-     * @throws \InvalidArgumentException if the IP address is not valid
+     * @throws \BadMethodCallException   if the database type does not support
+     *                                   this method, the reader is closed, or
+     *                                   a lookup is in progress (pure PHP reader
+     *                                   1.14.0 and later)
+     * @throws \InvalidArgumentException if the IP address is not valid, or if
+     *                                   it is an IPv6 address and the database
+     *                                   is IPv4-only
+     * @throws \RuntimeException         with the pure PHP reader, if decoding needs
+     *                                   gmp or bcmath and neither is installed,
+     *                                   or a data offset exceeds the platform limit
      */
     public function enterprise(string $ipAddress): Enterprise
     {
@@ -214,8 +289,16 @@ class Reader implements ProviderInterface
      *
      * @throws AddressNotFoundException  if the address is not in the database
      * @throws InvalidDatabaseException  if the database is corrupt or invalid
-     * @throws \BadMethodCallException   if this database type is not supported
-     * @throws \InvalidArgumentException if the IP address is not valid
+     * @throws \BadMethodCallException   if the database type does not support
+     *                                   this method, the reader is closed, or
+     *                                   a lookup is in progress (pure PHP reader
+     *                                   1.14.0 and later)
+     * @throws \InvalidArgumentException if the IP address is not valid, or if
+     *                                   it is an IPv6 address and the database
+     *                                   is IPv4-only
+     * @throws \RuntimeException         with the pure PHP reader, if decoding needs
+     *                                   gmp or bcmath and neither is installed,
+     *                                   or a data offset exceeds the platform limit
      */
     public function isp(string $ipAddress): Isp
     {
@@ -226,6 +309,15 @@ class Reader implements ProviderInterface
         );
     }
 
+    /**
+     * @param class-string $class
+     *
+     * @throws AddressNotFoundException
+     * @throws InvalidDatabaseException
+     * @throws \BadMethodCallException
+     * @throws \InvalidArgumentException
+     * @throws \RuntimeException
+     */
     private function modelFor(string $class, string $type, string $ipAddress): object
     {
         [$record, $prefixLen] = $this->getRecord($class, $type, $ipAddress);
@@ -236,6 +328,15 @@ class Reader implements ProviderInterface
         return new $class($record, $this->locales);
     }
 
+    /**
+     * @param class-string $class
+     *
+     * @throws AddressNotFoundException
+     * @throws InvalidDatabaseException
+     * @throws \BadMethodCallException
+     * @throws \InvalidArgumentException
+     * @throws \RuntimeException
+     */
     private function flatModelFor(string $class, string $type, string $ipAddress): object
     {
         [$record, $prefixLen] = $this->getRecord($class, $type, $ipAddress);
@@ -247,6 +348,14 @@ class Reader implements ProviderInterface
     }
 
     /**
+     * @param class-string $class
+     *
+     * @throws AddressNotFoundException
+     * @throws InvalidDatabaseException
+     * @throws \BadMethodCallException
+     * @throws \InvalidArgumentException
+     * @throws \RuntimeException
+     *
      * @return array{0:array<string, mixed>, 1:int}
      */
     private function getRecord(string $class, string $type, string $ipAddress): array
@@ -282,8 +391,9 @@ class Reader implements ProviderInterface
     }
 
     /**
-     * @throws \InvalidArgumentException if arguments are passed to the method
-     * @throws \BadMethodCallException   if the database has been closed
+     * @throws \BadMethodCallException  if the database has been closed
+     * @throws InvalidDatabaseException with the C extension, if the metadata
+     *                                  cannot be decoded
      *
      * @return Metadata object for the database
      */
@@ -294,6 +404,8 @@ class Reader implements ProviderInterface
 
     /**
      * Closes the GeoIP database and returns the resources to the system.
+     *
+     * @throws \BadMethodCallException if the database has already been closed
      */
     public function close(): void
     {

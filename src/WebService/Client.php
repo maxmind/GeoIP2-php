@@ -78,6 +78,10 @@ class Client implements ProviderInterface
      *                                         * `proxy` - The HTTP proxy to use. May include a schema, port,
      *                                         username, and password, e.g.,
      *                                         `http://username:password@127.0.0.1:10`.
+     *
+     * @throws \RuntimeException   with web-service-common 0.11.x, if CA bundle setup fails,
+     *                             or with 0.11.1, if the cURL version cannot be determined
+     * @throws WebServiceException with web-service-common 0.12.0 and later, if HTTP client setup fails
      */
     public function __construct(
         int $accountId,
@@ -129,6 +133,8 @@ class Client implements ProviderInterface
      *                                   if a 200 status code is returned but the body is invalid.
      * @throws \InvalidArgumentException if something other than a single IP address or "me" is
      *                                   passed to the method
+     * @throws \RuntimeException         with web-service-common 0.11.1, if the cURL version
+     *                                   cannot be determined or the cURL handle cannot be initialized
      */
     public function city(string $ipAddress = 'me'): City
     {
@@ -159,6 +165,8 @@ class Client implements ProviderInterface
      *                                   the body is invalid.
      * @throws \InvalidArgumentException if something other than a single IP address or "me" is
      *                                   passed to the method
+     * @throws \RuntimeException         with web-service-common 0.11.1, if the cURL version
+     *                                   cannot be determined or the cURL handle cannot be initialized
      */
     public function country(string $ipAddress = 'me'): Country
     {
@@ -190,6 +198,8 @@ class Client implements ProviderInterface
      *                                   if a 200 status code is returned but the body is invalid.
      * @throws \InvalidArgumentException if something other than a single IP address or "me" is
      *                                   passed to the method
+     * @throws \RuntimeException         with web-service-common 0.11.1, if the cURL version
+     *                                   cannot be determined or the cURL handle cannot be initialized
      */
     public function insights(string $ipAddress = 'me'): Insights
     {
@@ -212,6 +222,7 @@ class Client implements ProviderInterface
      * @throws HttpException
      * @throws GeoIp2Exception
      * @throws \InvalidArgumentException
+     * @throws \RuntimeException
      *
      * @return TModel the corresponding model object, matching the passed class string
      */

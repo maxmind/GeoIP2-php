@@ -1,12 +1,18 @@
 CHANGELOG
 =========
 
-3.4.1 (unreleased)
+3.5.0
 ------------------
 
-* The `GeoIp2\Database\Reader` constructor and lookup methods now declare the
-  `InvalidArgumentException` thrown by `MaxMind\Db\Reader` for a missing or
-  unreadable database file and for an invalid IP address.
+* The `GeoIp2\Database\Reader` lookup methods now declare the
+  `InvalidArgumentException` thrown for an invalid IP address and for an IPv6
+  address in an IPv4-only database. The constructor now declares it for a
+  missing or unreadable database file.
+* The `GeoIp2\Database\Reader` PHPDoc now lists more exceptions:
+  `UnexpectedValueException` from the constructor with the pure PHP reader,
+  and `InvalidDatabaseException` from `metadata()` with the C extension.
+  `metadata()` no longer declares `InvalidArgumentException`, which it cannot
+  throw.
 
 3.4.0 (2026-07-16)
 ------------------

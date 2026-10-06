@@ -118,6 +118,26 @@ class ReaderTest extends TestCase
         $reader->close();
     }
 
+    public function testClosedReader(): void
+    {
+        $this->expectException(\BadMethodCallException::class);
+        $this->expectExceptionMessage('closed');
+
+        $reader = new Reader('maxmind-db/test-data/GeoIP2-City-Test.mmdb');
+        $reader->close();
+        $reader->city('81.2.69.160');
+    }
+
+    public function testCloseTwice(): void
+    {
+        $reader = new Reader('maxmind-db/test-data/GeoIP2-City-Test.mmdb');
+        $reader->close();
+
+        $this->expectException(\BadMethodCallException::class);
+        $this->expectExceptionMessage('closed');
+        $reader->close();
+    }
+
     public function testAnonymousIp(): void
     {
         $reader = new Reader('maxmind-db/test-data/GeoIP2-Anonymous-IP-Test.mmdb');
