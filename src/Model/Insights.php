@@ -11,6 +11,8 @@ use GeoIp2\Record\Anonymizer;
  *
  * See https://dev.maxmind.com/geoip/docs/web-services/?lang=en for
  * more details.
+ *
+ * @final
  */
 class Insights extends City
 {

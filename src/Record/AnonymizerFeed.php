@@ -9,6 +9,8 @@ namespace GeoIp2\Record;
  * proxies. Additional anonymizer types may be added in the future.
  *
  * This record is returned by the GeoIP Insights web service.
+ *
+ * @final
  */
 class AnonymizerFeed implements \JsonSerializable
 {

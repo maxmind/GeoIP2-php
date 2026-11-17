@@ -48,6 +48,8 @@ use MaxMind\WebService\Client as WsClient;
  * service.
  *
  * If the request fails, the client class throws an exception.
+ *
+ * @final
  */
 class Client implements ProviderInterface
 {

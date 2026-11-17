@@ -6,6 +6,8 @@ namespace GeoIp2\Model;
 
 /**
  * This class provides the GeoIP Anonymous Plus model.
+ *
+ * @final
  */
 class AnonymousPlus extends AnonymousIp
 {
