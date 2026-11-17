@@ -1,7 +1,7 @@
 CHANGELOG
 =========
 
-3.5.0
+3.5.0 (2026-11-17)
 ------------------
 
 * The `GeoIp2\Database\Reader` lookup methods now declare the
