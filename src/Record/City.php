@@ -9,6 +9,8 @@ namespace GeoIp2\Record;
  *
  * This record is returned by all location services and databases besides
  * Country.
+ *
+ * @final
  */
 // phpcs:disable
 class City extends AbstractPlaceRecord {}

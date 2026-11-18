@@ -48,13 +48,15 @@ use MaxMind\WebService\Client as WsClient;
  * service.
  *
  * If the request fails, the client class throws an exception.
+ *
+ * @final
  */
 class Client implements ProviderInterface
 {
     private readonly WsClient $client;
     private static string $basePath = '/geoip/v2.1';
 
-    public const VERSION = 'v3.4.0';
+    public const VERSION = 'v3.5.0';
 
     /**
      * Constructor.

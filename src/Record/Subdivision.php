@@ -9,6 +9,8 @@ namespace GeoIp2\Record;
  *
  * This record is returned by all location databases and services besides
  * Country.
+ *
+ * @final
  */
 class Subdivision extends AbstractPlaceRecord
 {

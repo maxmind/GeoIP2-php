@@ -6,6 +6,8 @@ namespace GeoIp2\Exception;
 
 /**
  * This class represents a generic error.
+ *
+ * @final
  */
 // phpcs:disable
 class AuthenticationException extends GeoIp2Exception {}

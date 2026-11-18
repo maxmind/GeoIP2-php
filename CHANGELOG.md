@@ -1,7 +1,7 @@
 CHANGELOG
 =========
 
-3.5.0
+3.5.0 (2026-11-17)
 ------------------
 
 * The `GeoIp2\Database\Reader` lookup methods now declare the
@@ -13,6 +13,26 @@ CHANGELOG
   and `InvalidDatabaseException` from `metadata()` with the C extension.
   `metadata()` no longer declares `InvalidArgumentException`, which it cannot
   throw.
+* The minimum version of `maxmind-db/reader` is now 1.15.0, and the minimum
+  version of `maxmind/web-service-common` is now 0.12.0. `geoip2.phar` bundles
+  these versions or later. The 3.4.0 phar bundled `maxmind-db/reader` 1.13.1,
+  which lacks the decoder limits for crafted databases (GHSA-hj94-g986-h9r7).
+  See the release notes for
+  [maxmind-db/reader 1.15.0](https://github.com/maxmind/MaxMind-DB-Reader-php/releases/tag/v1.15.0)
+  and
+  [maxmind/web-service-common 0.12.0](https://github.com/maxmind/web-service-common-php/releases/tag/v0.12.0).
+* Most concrete classes that no other class extends are now marked `@final`.
+  They will be `final` in the next major version. Static analyzers such as
+  PHPStan report a class that extends them. These classes stay open:
+  * `GeoIp2\Exception\GeoIp2Exception`, `GeoIp2\Exception\HttpException`,
+    `GeoIp2\Model\AnonymousIp`, `GeoIp2\Model\City`, `GeoIp2\Model\Country`,
+    and `GeoIp2\Record\Country`, because other classes in this package extend
+    them.
+  * `GeoIp2\Record\Location`, because the minFraud PHP API extends it.
+  * `GeoIp2\Database\Reader`, `GeoIp2\Model\Asn`,
+    `GeoIp2\Model\ConnectionType`, `GeoIp2\Model\Domain`,
+    `GeoIp2\Model\Isp`, and `GeoIp2\Record\Traits`, until the next major
+    version.
 
 3.4.0 (2026-07-16)
 ------------------

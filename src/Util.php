@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace GeoIp2;
 
+/**
+ * @final
+ */
 class Util
 {
     /**

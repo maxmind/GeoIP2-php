@@ -8,6 +8,8 @@ namespace GeoIp2\Record;
  * Contains data for the continent record associated with an IP address.
  *
  * This record is returned by all location services and databases.
+ *
+ * @final
  */
 class Continent extends AbstractNamedRecord
 {

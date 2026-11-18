@@ -7,6 +7,8 @@ namespace GeoIp2\Exception;
 /**
  * This class represents an error returned by MaxMind's GeoIP
  * web service.
+ *
+ * @final
  */
 class InvalidRequestException extends HttpException
 {
